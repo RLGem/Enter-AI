@@ -1,0 +1,467 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "napp_version": "1.0",
+    "created": "2026-01-20T10:00:00",
+    "last_updated": "2026-01-25T14:30:00",
+    "storage_location": "Google Drive",
+    "language": "he"
+  },
+
+  "event": {
+    "id": "EVT-2026-001",
+    "type": "wedding",
+    "title": "חתונת שרה ודני",
+    "title_en": "Sarah & Danny's Wedding",
+    "date": "2026-09-15",
+    "time": "19:00",
+    "venue": {
+      "name": "אולם הגן",
+      "address": "רחוב הפרחים 15, תל אביב",
+      "contact": "03-1234567",
+      "capacity": 300
+    },
+    "guest_count_estimate": 250,
+    "budget": {
+      "total": 150000,
+      "currency": "ILS",
+      "spent": 45000,
+      "remaining": 105000
+    },
+    "created_at": "2026-01-20"
+  },
+
+  "users": {
+    "שרה": {
+      "id": "USR-001",
+      "role": "project_manager",
+      "event_role": "bride",
+      "event_role_display": "כלה",
+      "side": "bride",
+      "email": "sarah@email.com",
+      "phone": "+972-50-1234567",
+      "language": "he",
+      "created_at": "2026-01-20",
+      "last_login": "2026-01-25T14:00:00"
+    },
+    "דני": {
+      "id": "USR-002",
+      "role": "project_manager",
+      "event_role": "groom",
+      "event_role_display": "חתן",
+      "side": "groom",
+      "email": "danny@email.com",
+      "phone": "+972-52-9876543",
+      "language": "he",
+      "created_at": "2026-01-20",
+      "last_login": "2026-01-24T20:00:00"
+    },
+    "רפי": {
+      "id": "USR-003",
+      "role": "team_member",
+      "event_role": "father_of_bride",
+      "event_role_display": "אבא של הכלה",
+      "side": "bride",
+      "email": "rafi@email.com",
+      "phone": "+972-54-1111111",
+      "language": "he",
+      "created_at": "2026-01-21",
+      "last_login": "2026-01-25T10:00:00"
+    },
+    "מירי": {
+      "id": "USR-004",
+      "role": "team_member",
+      "event_role": "mother_of_bride",
+      "event_role_display": "אמא של הכלה",
+      "side": "bride",
+      "email": "miri@email.com",
+      "language": "he",
+      "created_at": "2026-01-21",
+      "last_login": "2026-01-23T18:00:00"
+    },
+    "אבי": {
+      "id": "USR-005",
+      "role": "team_member",
+      "event_role": "father_of_groom",
+      "event_role_display": "אבא של החתן",
+      "side": "groom",
+      "email": "avi@email.com",
+      "language": "he",
+      "created_at": "2026-01-22",
+      "last_login": "2026-01-24T19:00:00"
+    },
+    "רונית": {
+      "id": "USR-006",
+      "role": "team_member",
+      "event_role": "mother_of_groom",
+      "event_role_display": "אמא של החתן",
+      "side": "groom",
+      "email": "ronit@email.com",
+      "language": "he",
+      "created_at": "2026-01-22",
+      "last_login": "2026-01-22T20:00:00"
+    },
+    "יעל": {
+      "id": "USR-007",
+      "role": "team_member",
+      "event_role": "sister_of_bride",
+      "event_role_display": "אחות של הכלה",
+      "side": "bride",
+      "email": "yael@email.com",
+      "language": "he",
+      "created_at": "2026-01-23",
+      "last_login": "2026-01-25T08:00:00"
+    },
+    "תומר": {
+      "id": "USR-008",
+      "role": "team_member",
+      "event_role": "brother_of_groom",
+      "event_role_display": "אח של החתן",
+      "side": "groom",
+      "email": "tomer@email.com",
+      "language": "he",
+      "created_at": "2026-01-23",
+      "last_login": "2026-01-24T21:00:00"
+    }
+  },
+
+  "teams": {
+    "couple": {
+      "name": "החתן והכלה",
+      "name_en": "The Couple",
+      "members": ["שרה", "דני"]
+    },
+    "bride_side": {
+      "name": "צד הכלה",
+      "name_en": "Bride's Side",
+      "members": ["שרה", "רפי", "מירי", "יעל"]
+    },
+    "groom_side": {
+      "name": "צד החתן",
+      "name_en": "Groom's Side",
+      "members": ["דני", "אבי", "רונית", "תומר"]
+    },
+    "transport": {
+      "name": "צוות הסעות",
+      "name_en": "Transportation Team",
+      "members": ["רפי", "תומר", "אבי"]
+    },
+    "decor": {
+      "name": "צוות עיצוב",
+      "name_en": "Decoration Team",
+      "members": ["מירי", "רונית", "יעל"]
+    }
+  },
+
+  "tasks": [
+    {
+      "id": "TASK-001",
+      "title": "לסגור אולם",
+      "description": "לבקר ב-3 אולמות, להשוות מחירים, לבחור ולחתום על חוזה",
+      "category": "venue",
+      "assigned_to": ["שרה", "דני"],
+      "team": "couple",
+      "status": "completed",
+      "priority": "high",
+      "due_date": "2026-02-01",
+      "created_by": "שרה",
+      "created_at": "2026-01-20T10:00:00",
+      "completed_at": "2026-01-28T15:00:00",
+      "comments": [
+        {
+          "user": "שרה",
+          "text": "ביקרנו באולם הגן - אהבנו!",
+          "timestamp": "2026-01-25T14:00:00"
+        },
+        {
+          "user": "דני",
+          "text": "חתמנו על חוזה!",
+          "timestamp": "2026-01-28T15:00:00"
+        }
+      ],
+      "budget_allocated": 40000,
+      "budget_spent": 35000
+    },
+    {
+      "id": "TASK-002",
+      "title": "לסגור צלם",
+      "description": "לקבל הצעות מ-3 צלמים, להשוות עבודות קודמות ומחירים, לבחור",
+      "category": "photography",
+      "assigned_to": ["שרה", "דני"],
+      "team": "couple",
+      "status": "in_progress",
+      "priority": "high",
+      "due_date": "2026-02-15",
+      "created_by": "שרה",
+      "created_at": "2026-01-20T10:30:00",
+      "updated_at": "2026-01-24T10:30:00",
+      "comments": [
+        {
+          "user": "שרה",
+          "text": "קיבלנו 2 הצעות, ממתינים לשלישית",
+          "timestamp": "2026-01-24T10:30:00"
+        }
+      ],
+      "budget_allocated": 15000,
+      "budget_spent": 0
+    },
+    {
+      "id": "TASK-003",
+      "title": "לסגור דיג'יי",
+      "description": "למצוא דיג'יי לחתונה, לבדוק המלצות, להקשיב לסטים קודמים",
+      "category": "music",
+      "assigned_to": ["דני"],
+      "team": null,
+      "status": "completed",
+      "priority": "medium",
+      "due_date": "2026-02-28",
+      "created_by": "שרה",
+      "created_at": "2026-01-21T09:00:00",
+      "completed_at": "2026-01-25T12:00:00",
+      "comments": [
+        {
+          "user": "דני",
+          "text": "סגרנו עם DJ מייק! מעולה!",
+          "timestamp": "2026-01-25T12:00:00"
+        }
+      ],
+      "budget_allocated": 8000,
+      "budget_spent": 5000
+    },
+    {
+      "id": "TASK-004",
+      "title": "לארגן הסעות לאורחים",
+      "description": "לבדוק כמה אוטובוסים צריך, לקבל הצעות מחברות הסעות, לסגור",
+      "category": "transport",
+      "assigned_to": ["רפי", "תומר"],
+      "team": "transport",
+      "status": "pending_acceptance",
+      "priority": "medium",
+      "due_date": "2026-06-01",
+      "created_by": "שרה",
+      "created_at": "2026-01-22T11:00:00",
+      "comments": [],
+      "budget_allocated": 8000,
+      "budget_spent": 0
+    },
+    {
+      "id": "TASK-005",
+      "title": "להכין רשימת אורחים - צד הכלה",
+      "description": "לאסוף שמות, טלפונים וכתובות של כל האורחים מצד הכלה",
+      "category": "guests",
+      "assigned_to": ["רפי", "מירי"],
+      "team": "bride_side",
+      "status": "in_progress",
+      "priority": "high",
+      "due_date": "2026-03-01",
+      "created_by": "שרה",
+      "created_at": "2026-01-22T12:00:00",
+      "updated_at": "2026-01-24T16:00:00",
+      "comments": [
+        {
+          "user": "מירי",
+          "text": "יש לנו 80 שמות, חסרים עוד בערך 40",
+          "timestamp": "2026-01-24T16:00:00"
+        }
+      ]
+    },
+    {
+      "id": "TASK-006",
+      "title": "להכין רשימת אורחים - צד החתן",
+      "description": "לאסוף שמות, טלפונים וכתובות של כל האורחים מצד החתן",
+      "category": "guests",
+      "assigned_to": ["אבי", "רונית"],
+      "team": "groom_side",
+      "status": "accepted",
+      "priority": "high",
+      "due_date": "2026-03-01",
+      "created_by": "דני",
+      "created_at": "2026-01-22T12:30:00",
+      "comments": [
+        {
+          "user": "אבי",
+          "text": "התחלנו לאסוף, יש לנו 50 שמות",
+          "timestamp": "2026-01-23T20:00:00"
+        }
+      ]
+    },
+    {
+      "id": "TASK-007",
+      "title": "להזמין רב לחופה",
+      "description": "למצוא רב מתאים, לתאם תאריך ופרטים",
+      "category": "ceremony",
+      "assigned_to": ["דני", "אבי"],
+      "team": null,
+      "status": "pending_acceptance",
+      "priority": "medium",
+      "due_date": "2026-04-01",
+      "created_by": "שרה",
+      "created_at": "2026-01-25T14:00:00",
+      "comments": []
+    },
+    {
+      "id": "TASK-008",
+      "title": "לבחור עיצוב ופרחים",
+      "description": "לפגוש 2-3 מעצבי אירועים, לבחור סגנון, לקבוע תקציב",
+      "category": "flowers",
+      "assigned_to": ["מירי", "רונית", "יעל"],
+      "team": "decor",
+      "status": "accepted",
+      "priority": "low",
+      "due_date": "2026-05-01",
+      "created_by": "שרה",
+      "created_at": "2026-01-23T10:00:00",
+      "comments": [
+        {
+          "user": "יעל",
+          "text": "קבעתי פגישה עם מעצבת ביום שלישי",
+          "timestamp": "2026-01-25T08:00:00"
+        }
+      ],
+      "budget_allocated": 12000,
+      "budget_spent": 0
+    },
+    {
+      "id": "TASK-009",
+      "title": "לסגור קייטרינג",
+      "description": "טעימות, השוואת מחירים, בחירת תפריט",
+      "category": "catering",
+      "assigned_to": ["שרה", "דני", "מירי"],
+      "team": null,
+      "status": "accepted",
+      "priority": "high",
+      "due_date": "2026-04-15",
+      "created_by": "שרה",
+      "created_at": "2026-01-24T09:00:00",
+      "comments": [],
+      "budget_allocated": 50000,
+      "budget_spent": 0
+    },
+    {
+      "id": "TASK-010",
+      "title": "לעצב ולהדפיס הזמנות",
+      "description": "לבחור עיצוב, לאשר נוסח, להדפיס ולשלוח",
+      "category": "invitations",
+      "assigned_to": ["שרה", "יעל"],
+      "team": null,
+      "status": "pending_acceptance",
+      "priority": "medium",
+      "due_date": "2026-05-15",
+      "created_by": "שרה",
+      "created_at": "2026-01-25T11:00:00",
+      "comments": [],
+      "budget_allocated": 3000,
+      "budget_spent": 0
+    }
+  ],
+
+  "vendors": {
+    "venue": {
+      "status": "booked",
+      "selected": {
+        "name": "אולם הגן",
+        "contact_name": "יוסי",
+        "phone": "03-1234567",
+        "email": "info@haganvenue.co.il",
+        "price": 35000,
+        "deposit_paid": 10000,
+        "notes": "כולל חניה ל-100 רכבים"
+      }
+    },
+    "photographer": {
+      "status": "comparing",
+      "budget": 15000,
+      "options": [
+        {
+          "name": "סטודיו אור",
+          "phone": "054-1111111",
+          "price": 14000,
+          "package": "צילום + וידאו",
+          "rating": 5,
+          "notes": "עבודות מרשימות, זמין בתאריך"
+        },
+        {
+          "name": "צילומי רגע",
+          "phone": "052-2222222",
+          "price": 16000,
+          "package": "צילום + וידאו + אלבום",
+          "rating": 4,
+          "notes": "יקר יותר אבל כולל אלבום"
+        }
+      ],
+      "selected": null
+    },
+    "dj": {
+      "status": "booked",
+      "selected": {
+        "name": "DJ מייק",
+        "phone": "050-3333333",
+        "price": 5000,
+        "deposit_paid": 1500,
+        "notes": "מוזיקה מגוונת, יש לו המלצות מעולות"
+      }
+    },
+    "catering": {
+      "status": "searching",
+      "budget": 50000,
+      "options": [],
+      "selected": null
+    },
+    "flowers": {
+      "status": "searching",
+      "budget": 12000,
+      "options": [],
+      "selected": null
+    }
+  },
+
+  "budget_breakdown": {
+    "venue": {"allocated": 40000, "spent": 35000},
+    "photography": {"allocated": 15000, "spent": 0},
+    "music": {"allocated": 8000, "spent": 5000},
+    "catering": {"allocated": 50000, "spent": 0},
+    "flowers": {"allocated": 12000, "spent": 0},
+    "attire": {"allocated": 10000, "spent": 0},
+    "invitations": {"allocated": 3000, "spent": 0},
+    "transport": {"allocated": 8000, "spent": 0},
+    "misc": {"allocated": 4000, "spent": 5000}
+  },
+
+  "timeline": [
+    {
+      "date": "2026-01-15",
+      "event": "התארסנו! 💍",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-01-28",
+      "event": "סגרנו אולם - אולם הגן ✅",
+      "type": "task_completed"
+    },
+    {
+      "date": "2026-01-25",
+      "event": "סגרנו דיג'יי - DJ מייק ✅",
+      "type": "task_completed"
+    },
+    {
+      "date": "2026-05-15",
+      "event": "שליחת הזמנות",
+      "type": "deadline"
+    },
+    {
+      "date": "2026-09-15",
+      "event": "החתונה! 🎉",
+      "type": "event_day"
+    }
+  ],
+
+  "statistics": {
+    "total_tasks": 10,
+    "completed": 2,
+    "in_progress": 3,
+    "pending": 3,
+    "accepted": 2,
+    "completion_percentage": 20,
+    "days_until_event": 234
+  }
+}

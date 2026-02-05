@@ -1,0 +1,330 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "created": "20260110-09:00",
+    "last_updated": "20260125-14:30",
+    "last_session": 5
+  },
+
+  "project": {
+    "id": "eventapp_001",
+    "name": "EventApp",
+    "description": "אפליקציה לניהול תכנון אירועים משפחתיים",
+    "topic": "entrepreneurship",
+    "started": "20260110"
+  },
+
+  "entrepreneur": {
+    "name": "דני",
+    "technical_level": "basic",
+    "time_available": "evenings",
+    "budget": "$500",
+    "background": "מנהל שיווק, תכנן 2 חתונות במשפחה"
+  },
+
+  "current_position": {
+    "stage": "VALIDATE",
+    "sub_stage": "Customer Interviews",
+    "progress_percent": 35,
+    "status": "active"
+  },
+
+  "stages": {
+    "IDEA": {
+      "status": "completed",
+      "progress": 100,
+      "started": "20260110",
+      "completed": "20260115",
+      "outputs": ["problem_statement_v1", "fumes_analysis", "solution_sketch"]
+    },
+    "VALIDATE": {
+      "status": "in_progress",
+      "progress": 60,
+      "started": "20260116",
+      "completed": null,
+      "outputs": ["interview_script", "interview_summaries"]
+    },
+    "BUILD": {
+      "PRODUCT": {
+        "status": "not_started",
+        "progress": 0,
+        "started": null,
+        "completed": null,
+        "outputs": []
+      },
+      "TECH": {
+        "status": "not_started",
+        "progress": 0,
+        "started": null,
+        "completed": null,
+        "outputs": []
+      }
+    },
+    "LAUNCH": {
+      "status": "not_started",
+      "progress": 0,
+      "started": null,
+      "completed": null,
+      "outputs": []
+    },
+    "SCALE": {
+      "status": "not_started",
+      "progress": 0,
+      "started": null,
+      "completed": null,
+      "outputs": []
+    }
+  },
+
+  "inputs": {
+    "required": {
+      "problem": {
+        "value": "תכנון אירועים משפחתיים הוא כאוטי - אקסלים מפוזרים, שוכחים משימות קריטיות, קשה לתאם בין כל המעורבים",
+        "status": "provided"
+      },
+      "solution_idea": {
+        "value": "אפליקציה שמרכזת את כל התכנון - משימות, ספקים, תקציב, אורחים - במקום אחד עם תזכורות חכמות",
+        "status": "provided"
+      },
+      "target_audience": {
+        "value": "זוגות מאורסים בישראל, 25-35, מתכננים חתונה ב-6-12 חודשים הקרובים",
+        "status": "provided"
+      }
+    },
+    "important": {
+      "budget": {
+        "value": "$500",
+        "is_default": false,
+        "actor": "user",
+        "updated": "20260112"
+      },
+      "time_available": {
+        "value": "evenings",
+        "is_default": false,
+        "actor": "user",
+        "updated": "20260110"
+      },
+      "technical_level": {
+        "value": "basic",
+        "is_default": false,
+        "actor": "user",
+        "note": "יודע HTML בסיסי, עבד עם WordPress"
+      },
+      "pricing_estimate": {
+        "value": "49-79 ש\"ח לחודש",
+        "is_default": false,
+        "actor": "user",
+        "source": "עלה בראיונות"
+      }
+    },
+    "optional": {
+      "prior_experience": {
+        "value": "תכנן 2 חתונות במשפחה, חווה את הכאב בעצמו",
+        "is_default": false
+      },
+      "partners": {
+        "value": "solo",
+        "is_default": true
+      }
+    }
+  },
+
+  "branches": {
+    "target_audience": {
+      "B2C_couples": {
+        "status": "selected",
+        "depth": 3,
+        "actor": "user",
+        "reason": "explicit: זה הקהל שאני מכיר ומבין",
+        "findings": "מחפשים פשטות, מוכנים לשלם 50-80 ש\"ח/חודש",
+        "started": "20260116"
+      },
+      "B2B_venues": {
+        "status": "queued",
+        "depth": 0,
+        "actor": "system",
+        "reason": "implicit: B2C prioritized by user preference"
+      },
+      "B2B_planners": {
+        "status": "rejected_temp",
+        "depth": 0,
+        "actor": "user",
+        "reason": "explicit: מחזור מכירה ארוך מדי להתחלה",
+        "quote": "אני לא רוצה להתחיל עם B2B, זה לוקח יותר מדי זמן"
+      }
+    },
+    "validation_method": {
+      "interviews": {
+        "status": "selected",
+        "depth": 3,
+        "actor": "user",
+        "findings": "8 ראיונות בוצעו, 6 חיוביים מאוד"
+      },
+      "landing_page": {
+        "status": "queued",
+        "depth": 0,
+        "actor": "system",
+        "reason": "implicit: interviews first per recommendation"
+      },
+      "ads_test": {
+        "status": "queued",
+        "depth": 0,
+        "actor": "system",
+        "reason": "implicit: after landing page"
+      }
+    },
+    "mvp_approach": {
+      "no_code": {
+        "status": "queued",
+        "depth": 0,
+        "actor": "system",
+        "reason": "implicit: not yet at BUILD stage"
+      },
+      "ai_generated": {
+        "status": "queued",
+        "depth": 0,
+        "actor": "system"
+      },
+      "outsource": {
+        "status": "queued",
+        "depth": 0,
+        "actor": "system"
+      }
+    }
+  },
+
+  "decisions": {
+    "explicit": [
+      {
+        "id": "DEC-001",
+        "date": "20260110",
+        "topic": "תחום",
+        "choice": "אירועים משפחתיים",
+        "alternatives_considered": ["אירועים עסקיים", "ניהול פרויקטים כללי"],
+        "reason": "ניסיון אישי וכאב אמיתי"
+      },
+      {
+        "id": "DEC-002",
+        "date": "20260116",
+        "topic": "קהל יעד",
+        "choice": "B2C - זוגות מאורסים",
+        "alternatives_considered": ["B2B - אולמות", "B2B - מתכנני אירועים"],
+        "reason": "מכיר את הקהל, מחזור מכירה קצר"
+      },
+      {
+        "id": "DEC-003",
+        "date": "20260118",
+        "topic": "שיטת תיקוף ראשונה",
+        "choice": "ראיונות",
+        "alternatives_considered": ["Landing Page", "מודעות"],
+        "reason": "רוצה להבין לעומק לפני שבונה"
+      }
+    ],
+    "implicit": [
+      {
+        "id": "IMP-001",
+        "date": "20260110",
+        "topic": "שותפים",
+        "assumed": "יזם יחיד",
+        "reason": "לא הוזכרו שותפים"
+      }
+    ]
+  },
+
+  "recommendations": {
+    "pending": {
+      "id": "REC-005",
+      "date": "20260125",
+      "context": "סיום ראיונות",
+      "options": ["לבנות Landing Page", "להתחיל MVP", "עוד ראיונות"],
+      "recommended": "לבנות Landing Page",
+      "reasoning": "8 ראיונות מספיקים, LP יאמת נכונות לשלם",
+      "confidence": "high"
+    },
+    "history": [
+      {
+        "id": "REC-001",
+        "date": "20260110",
+        "recommended": "להתחיל עם FUMES",
+        "followed": true
+      },
+      {
+        "id": "REC-002",
+        "date": "20260115",
+        "recommended": "B2C לפני B2B",
+        "followed": true
+      },
+      {
+        "id": "REC-003",
+        "date": "20260116",
+        "recommended": "ראיונות לפני Landing Page",
+        "followed": true
+      },
+      {
+        "id": "REC-004",
+        "date": "20260120",
+        "recommended": "להמשיך ל-8 ראיונות",
+        "followed": true
+      }
+    ]
+  },
+
+  "outputs": {
+    "completed": [
+      {
+        "id": "OUT-001",
+        "type": "problem_statement",
+        "name": "Problem Statement v1",
+        "stage": "IDEA",
+        "created": "20260110",
+        "file": "outputs/problem_statement_v1.md"
+      },
+      {
+        "id": "OUT-002",
+        "type": "fumes_analysis",
+        "name": "FUMES Analysis",
+        "stage": "IDEA",
+        "created": "20260112",
+        "score": "4/5",
+        "file": "outputs/fumes_analysis.md"
+      },
+      {
+        "id": "OUT-003",
+        "type": "interview_script",
+        "name": "תסריט ראיון",
+        "stage": "VALIDATE",
+        "created": "20260116",
+        "file": "outputs/interview_script.md"
+      },
+      {
+        "id": "OUT-004",
+        "type": "interview_summaries",
+        "name": "סיכומי ראיונות",
+        "stage": "VALIDATE",
+        "created": "20260118",
+        "updated": "20260125",
+        "count": 8,
+        "file": "outputs/interview_summaries.md"
+      }
+    ],
+    "in_progress": [
+      {
+        "id": "OUT-005",
+        "type": "validation_insights",
+        "name": "תובנות מראיונות",
+        "stage": "VALIDATE",
+        "started": "20260120",
+        "progress": 80
+      }
+    ]
+  },
+
+  "blockers": [],
+
+  "next_action": {
+    "what": "להחליט על Landing Page או להמשיך לראיונות נוספים",
+    "stage": "VALIDATE",
+    "priority": "high",
+    "pending_recommendation": "REC-005"
+  }
+}

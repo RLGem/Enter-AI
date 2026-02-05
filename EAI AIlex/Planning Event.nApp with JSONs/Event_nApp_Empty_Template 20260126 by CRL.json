@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "created": null,
+    "last_updated": null,
+    "napp": "Event.nApp",
+    "setup_complete": false
+  },
+
+  "_setup_checklist": {
+    "_comment": "זה לשימוש פנימי של Event.nApp - לבדוק מה חסר",
+    "event_type": false,
+    "event_date": false,
+    "celebrants": false,
+    "project_manager": false,
+    "teams_defined": false
+  },
+
+  "event": {
+    "type": null,
+    "name": null,
+    "date": null,
+    "venue": null,
+    "couple": null,
+    "celebrant": null
+  },
+
+  "users": [],
+
+  "teams": [],
+
+  "tasks": [],
+
+  "vendors": [],
+
+  "budget": {
+    "total": null,
+    "spent": 0,
+    "breakdown": {}
+  },
+
+  "timeline": [],
+
+  "notes": []
+}

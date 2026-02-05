@@ -1,0 +1,143 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "created": "YYYYMMDD-HH:MM",
+    "last_updated": "YYYYMMDD-HH:MM",
+    "last_session": 0
+  },
+
+  "project": {
+    "id": "",
+    "name": "",
+    "description": "",
+    "topic": "entrepreneurship",
+    "started": "YYYYMMDD"
+  },
+
+  "entrepreneur": {
+    "name": "",
+    "technical_level": "none|basic|intermediate|advanced",
+    "time_available": "full-time|part-time|evenings|weekends",
+    "budget": "$0",
+    "background": ""
+  },
+
+  "current_position": {
+    "stage": "IDEA|VALIDATE|BUILD|LAUNCH|SCALE",
+    "sub_stage": "",
+    "progress_percent": 0,
+    "status": "active|paused|blocked|completed"
+  },
+
+  "stages": {
+    "IDEA": {
+      "status": "not_started|in_progress|completed|skipped",
+      "progress": 0,
+      "started": null,
+      "completed": null,
+      "outputs": []
+    },
+    "VALIDATE": {
+      "status": "not_started",
+      "progress": 0,
+      "started": null,
+      "completed": null,
+      "outputs": []
+    },
+    "BUILD": {
+      "PRODUCT": {
+        "status": "not_started",
+        "progress": 0,
+        "started": null,
+        "completed": null,
+        "outputs": []
+      },
+      "TECH": {
+        "status": "not_started",
+        "progress": 0,
+        "started": null,
+        "completed": null,
+        "outputs": []
+      }
+    },
+    "LAUNCH": {
+      "status": "not_started",
+      "progress": 0,
+      "started": null,
+      "completed": null,
+      "outputs": []
+    },
+    "SCALE": {
+      "status": "not_started",
+      "progress": 0,
+      "started": null,
+      "completed": null,
+      "outputs": []
+    }
+  },
+
+  "inputs": {
+    "required": {
+      "problem": {"value": null, "status": "missing"},
+      "solution_idea": {"value": null, "status": "missing"},
+      "target_audience": {"value": null, "status": "missing"}
+    },
+    "important": {
+      "budget": {
+        "value": "$0",
+        "is_default": true,
+        "default_reason": "לא צוין, הונח bootstrapping",
+        "actor": "system"
+      },
+      "time_available": {
+        "value": "part-time",
+        "is_default": true,
+        "default_reason": "לא צוין, הונח part-time",
+        "actor": "system"
+      },
+      "technical_level": {
+        "value": "none",
+        "is_default": true,
+        "default_reason": "לא צוין, הונח ללא רקע טכני",
+        "actor": "system"
+      }
+    },
+    "optional": {
+      "prior_experience": {
+        "value": "none",
+        "is_default": true
+      },
+      "partners": {
+        "value": "solo",
+        "is_default": true
+      }
+    }
+  },
+
+  "branches": {
+    "_comment": "מפתח = נושא ההסתעפות, ערך = אובייקט עם כל האופציות"
+  },
+
+  "decisions": {
+    "explicit": [],
+    "implicit": []
+  },
+
+  "recommendations": {
+    "pending": null,
+    "history": []
+  },
+
+  "outputs": {
+    "completed": [],
+    "in_progress": []
+  },
+
+  "blockers": [],
+
+  "next_action": {
+    "what": "",
+    "stage": "",
+    "priority": "high|medium|low"
+  }
+}

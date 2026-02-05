@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 קורס Agile 101 - מדריך מלא</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+            direction: rtl;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 25px;
+            padding: 60px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            color: #1f2937;
+            text-align: center;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 1.4rem;
+            margin-bottom: 50px;
+        }
+        
+        .toc {
+            background: #f0fdf4;
+            border: 3px solid #10b981;
+            border-radius: 20px;
+            padding: 35px;
+            margin: 40px 0;
+        }
+        
+        .toc-title {
+            font-size: 2rem;
+            color: #065f46;
+            font-weight: bold;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .toc-item {
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 12px;
+            border-right: 5px solid #10b981;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+            color: #047857;
+            font-weight: 600;
+        }
+        
+        .toc-item:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+        
+        .section {
+            margin: 60px 0;
+            padding: 40px;
+            background: #f9fafb;
+            border-radius: 20px;
+            border-right: 6px solid #7c3aed;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: #1f2937;
+            font-weight: bold;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section-icon {
+            font-size: 3rem;
+        }
+        
+        .section-content {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #374151;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 3px solid #f59e0b;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 25px 0;
+        }
+        
+        .highlight-title {
+            font-size: 1.6rem;
+            color: #92400e;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-text {
+            color: #78350f;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .info-box {
+            background: #dbeafe;
+            border-right: 5px solid #3b82f6;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 12px;
+        }
+        
+        .info-title {
+            font-size: 1.4rem;
+            color: #1e40af;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .info-text {
+            color: #1e3a8a;
+            line-height: 1.7;
+        }
+        
+        .success-box {
+            background: #d1fae5;
+            border: 3px solid #10b981;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+        
+        .success-title {
+            font-size: 1.5rem;
+            color: #065f46;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .success-text {
+            color: #047857;
+            line-height: 1.7;
+        }
+        
+        .module-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            transition: all 0.3s;
+        }
+        
+        .module-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+        
+        .module-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-left: 15px;
+        }
+        
+        .module-title {
+            font-size: 1.6rem;
+            color: #1f2937;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .module-content {
+            color: #4b5563;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .module-duration {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .steps-container {
+            counter-reset: step;
+        }
+        
+        .step {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 25px 0;
+            position: relative;
+            padding-right: 80px;
+        }
+        
+        .step::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+        
+        .step-title {
+            font-size: 1.5rem;
+            color: #1f2937;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .step-content {
+            color: #4b5563;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .personas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .persona-card {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+            border: 3px solid #a855f7;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .persona-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+        
+        .persona-name {
+            font-size: 1.8rem;
+            color: #6b21a8;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .persona-role {
+            font-size: 1.2rem;
+            color: #7c3aed;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .persona-desc {
+            color: #581c87;
+            line-height: 1.7;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 30px 0;
+        }
+        
+        .timeline-item {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            margin-right: 60px;
+            position: relative;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: #10b981;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #10b981;
+        }
+        
+        .timeline-title {
+            font-size: 1.3rem;
+            color: #1f2937;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-content {
+            color: #6b7280;
+            line-height: 1.7;
+        }
+        
+        .code-box {
+            background: #1f2937;
+            color: #10b981;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            direction: ltr;
+            text-align: left;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+        
+        .warning-box {
+            background: #fef2f2;
+            border: 3px solid #ef4444;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .warning-title {
+            font-size: 1.4rem;
+            color: #991b1b;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .warning-text {
+            color: #7f1d1d;
+            line-height: 1.7;
+        }
+        
+        ul, ol {
+            margin: 20px 0;
+            padding-right: 30px;
+        }
+        
+        li {
+            margin: 10px 0;
+            line-height: 1.8;
+            color: #4b5563;
+        }
+        
+        strong {
+            color: #1f2937;
+            font-weight: 700;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .personas {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                margin-right: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 קורס Agile 101</h1>
+        <p class="subtitle">מדריך מלא ליצירת פודקאסט AI עם NotebookLM</p>
+        
+        <!-- תוכן עניינים -->
+        <div class="toc">
+            <div class="toc-title">📋 תוכן עניינים</div>
+            <div class="toc-item">🎯 חלק 1: סקירה כללית ומטרות</div>
+            <div class="toc-item">📖 חלק 2: תוכן הקורס - 7 מודולים</div>
+            <div class="toc-item">🎙️ חלק 3: פורמט הפודקאסט - דביר וצפי</div>
+            <div class="toc-item">🤖 חלק 4: מדריך NotebookLM</div>
+            <div class="toc-item">⚙️ חלק 5: התהליך המלא צעד-אחר-צעד</div>
+            <div class="toc-item">🔗 חלק 6: אינטגרציה ב-EventApp</div>
+        </div>
+        
+        <!-- חלק 1: סקירה כללית -->
+        <div class="section" id="overview">
+            <div class="section-title">
+                <span class="section-icon">🎯</span>
+                חלק 1: סקירה כללית ומטרות
+            </div>
+            <div class="section-content">
+                <h3 style="font-size: 1.8rem; color: #1f2937; margin: 30px 0 20px 0;">מהו הפרויקט?</h3>
+                <p>
+                    <strong>קורס Agile 101 אינטראקטיבי</strong> המשלב למידה עם כלי מעשי (EventApp).
+                    הקורס הופך לפודקאסט AI באמצעות NotebookLM ומתאפשר למידה עצמית ומרתקת.
+                </p>
+                
+                <div class="highlight-box">
+                    <div class="highlight-title">💡 החידוש המרכזי</div>
+                    <div class="highlight-text">
+                        במקום הרצאות חוזרות ונשנות על Agile, יצרנו <strong>פודקאסט בפורמט ראיון</strong> 
+                        שמדגים את עקרונות Agile <strong>דרך EventApp</strong> - אפליקציה אמיתית שהמנהלים משתמשים בה!
+                    </div>
+                </div>
+                
+                <h3 style="font-size: 1.8rem; color: #1f2937; margin: 30px 0 20px 0;">קהל היעד</h3>
+                <div class="info-box">
+                    <div class="info-title">👥 למי מיועד הקורס?</div>
+                    <div class="info-text">
+                        <strong>מנהלי יחידות במשרד ממשלתי</strong> שמצטרפים להטמעת Agile:<br><br>
+                        • <strong>רקע:</strong> מנהלים ללא ידע קודם ב-Agile<br>
+                        • <strong>צורך:</strong> מבוא מהיר ויעיל (60-90 דקות)<br>
+                        • <strong>הקשר:</strong> רואים את EventApp ורוצים להבין את העקרונות<br>
+                        • <strong>מטרה:</strong> למידה עצמית ללא הרצאות חוזרות
+                    </div>
+                </div>
+                
+                <h3 style="font-size: 1.8rem; color: #1f2937; margin: 30px 0 20px 0;">מטרות הפרויקט</h3>
+                <ul style="font-size: 1.1rem;">
+                    <li><strong>יצירת תוכן עשיר:</strong> מסמך מובנה עם 7 מודולים (16,000+ מילים)</li>
+                    <li><strong>פודקאסט אינטראקטיבי:</strong> שיחה בין דביר (מראיין) וצפי (מומחה)</li>
+                    <li><strong>חיבור למעשה:</strong> כל מושג מקושר ל-EventApp כדוגמה חיה</li>
+                    <li><strong>נגישות:</strong> פודקאסט שאפשר להאזין בדרכים, בנסיעה, בכל מקום</li>
+                    <li><strong>משולב באפליקציה:</strong> הפודקאסט יהיה חלק מ-EventApp</li>
+                </ul>
+                
+                <div class="success-box">
+                    <div class="success-title">✅ התוצר הסופי</div>
+                    <div class="success-text">
+                        <strong>EventApp Agile Edition</strong> - אפליקציה שמשלבת:<br><br>
+                        ✓ כלי לניהול אירועים (Burndown Chart, Tasks)<br>
+                        ✓ קורס Agile 101 מובנה עם פודקאסט<br>
+                        ✓ למידה אינטראקטיבית עם קוויזים<br>
+                        ✓ דוגמה חיה של Agile בפועל
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- חלק 2: תוכן הקורס -->
+        <div class="section" id="content">
+            <div class="section-title">
+                <span class="section-icon">📖</span>
+                חלק 2: תוכן הקורס - 7 מודולים
+            </div>
+            <div class="section-content">
+                <p style="font-size: 1.2rem; margin-bottom: 30px;">
+                    הקורס מחולק ל-<strong>7 מודולים</strong> שמכסים את כל היסודות של Agile, 
+                    מהמושגים הבסיסיים ועד כלים מתקדמים כמו Burndown Chart.
+                </p>
+                
+                <!-- מודול 1 -->
+                <div class="module-card">
+                    <div class="module-title">
+                        <span class="module-number">1</span>
+                        מה זה Agile ולמה זה חשוב?
+                    </div>
+                    <div class="module-content">
+                        <strong>נושאים מרכזיים:</strong><br>
+                        • הבעיה עם Waterfall (גישות מסורתיות)<br>
+                        • מהי Agile? - הגדרה פשוטה ונגישה<br>
+                        • דוגמאות מהמגזר הציבורי<br>
+                        • למה זה רלוונטי למשרד ממשלתי<br><br>
+                        <strong>קישור ל-EventApp:</strong> "בדיוק כמו שאתם רואים ב-EventApp - גמישות בתכנון אירוע"
+                    </div>
+                    <span class="module-duration">⏱️ 15 דקות | ~1,750 מילים</span>
+                </div>
+                
+                <!-- מודול 2 -->
+                <div class="module-card">
+                    <div class="module-title">
+                        <span class="module-number">2</span>
+                        Agile Manifesto - 4 הערכים
+                    </div>
+                    <div class="module-content">
+                        <strong>4 הערכים:</strong><br>
+                        1. <strong>אנשים ואינטראקציות</strong> מעל תהליכים וכלים<br>
+                        2. <strong>תוכנה עובדת</strong> מעל תיעוד מקיף<br>
+                        3. <strong>שיתוף פעולה עם הלקוח</strong> מעל משא ומתן על חוזים<br>
+                        4. <strong>תגובה לשינוי</strong> מעל ביצוע תוכנית<br><br>
+                        לכל ערך: הסבר פשוט, דוגמה מעשית, רלוונטיות למגזר ציבורי
+                    </div>
+                    <span class="module-duration">⏱️ 10 דקות | ~2,050 מילים</span>
+                </div>
+                
+                <!-- מודול 3 -->
+                <div class="module-card">
+                    <div class="module-title">
+                        <span class="module-number">3</span>
+                        עקרונות מרכזיים ב-Agile
+                    </div>
+                    <div class="module-content">
+                        <strong>עקרונות מעשיים:</strong><br>
+                        • <strong>ספרינטים (Sprints):</strong> עבודה במחזורים קצרים (2-4 שבועות)<br>
+                        • <strong>User Stories:</strong> הגדרת דרישות מנקודת מבט המשתמש<br>
+                        • <strong>Stand-ups יומיים:</strong> סנכרון מהיר של 15 דקות<br>
+                        • <strong>Retrospective:</strong> למידה ושיפור מתמיד<br>
+                        • <strong>הצגה (Demo):</strong> הדגמת תוצרים בסוף כל ספרינט<br><br>
+                        <strong>דוגמה ממשלתית מפורטת</strong> של יחידה שעובדת בספרינטים
+                    </div>
+                    <span class="module-duration">⏱️ 15 דקות | ~2,300 מילים</span>
+                </div>
+                
+                <!-- מודול 4 -->
+                <div class="module-card">
+                    <div class="module-title">
+                        <span class="module-number">4</span>
+                        התפקידים ב-Agile
+                    </div>
+                    <div class="module-content">
+                        <strong>3 התפקידים המרכזיים:</strong><br>
+                        • <strong>Product Owner:</strong> "בעל המוצר" - מגדיר מה בונים<br>
+                        • <strong>Scrum Master:</strong> המנחה - מסיר מחסומים ומנחה את התהליך<br>
+                        • <strong>צוות הפיתוח:</strong> מי שבונה בפועל<br><br>
+                        <strong>התאמה למשרד ממשלתי:</strong> איך התפקידים האלה נראים בארגון ציבורי
+                    </div>
+                    <span class="module-duration">⏱️ 10 דקות | ~1,800 מילים</span>
+                </div>
+                
+                <!-- מודול 5 -->
+                <div class="module-card">
+                    <div class="module-title">
+                        <span class="module-number">5</span>
+                        כלים וטכניקות מעשיות
+                    </div>
+                    <div class="module-content">
+                        <strong>כלי עבודה חשובים:</strong><br>
+                        • <strong>Backlog:</strong> רשימת העדיפויות המתעדכנת<br>
+                        • <strong>Planning Poker:</strong> אומדן משימות בצוות<br>
+                        • <strong>Kanban Board:</strong> לוח ויזואלי (To Do, In Progress, Done)<br>
+                        • <strong>Definition of Done:</strong> מתי משימה הסתיימה?<br><br>
+                        <strong>תרגיל מעשי:</strong> יצירת Kanban Board פשוט<br>
+                        <strong>קישור ל-EventApp:</strong> "המשימות ב-EventApp = Backlog שלכם"
+                    </div>
+                    <span class="module-duration">⏱️ 15 דקות | ~2,200 מילים</span>
+                </div>
+                
+                <!-- מודול 6 - החשוב ביותר! -->
+                <div class="module-card" style="border: 3px solid #f59e0b; background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);">
+                    <div class="module-title">
+                        <span class="module-number" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">6</span>
+                        Burndown Chart - המדריך המלא ⭐
+                    </div>
+                    <div class="module-content">
+                        <strong>המודול החשוב ביותר!</strong> חיבור ישיר ל-EventApp<br><br>
+                        
+                        <strong>תוכן מפורט:</strong><br>
+                        • מהו Burndown Chart? - הסבר מקיף<br>
+                        • איך לקרוא את הגרף (ציר X, ציר Y, קווים)<br>
+                        • הקו האידיאלי vs. הקו בפועל<br>
+                        • 3 תרחישים מפורטים עם דוגמאות<br>
+                        • מתי להדליק נורה אדומה (אזהרות)<br>
+                        • איך להגיב לסטיות מהתכנון<br><br>
+                        
+                        <strong>🔗 דוגמה חיה:</strong><br>
+                        "עכשיו חזרו ל-Dashboard של EventApp ותראו את ה-Burndown Chart שלכם - 
+                        זה בדיוק מה שדיברנו עליו!"<br><br>
+                        
+                        <strong>תרגיל:</strong> ניתוח הגרף שלכם - האם אתם על המסלול?
+                    </div>
+                    <span class="module-duration" style="background: #f59e0b; color: white;">⏱️ 15 דקות | ~4,000 מילים</span>
+                </div>
+                
+                <!-- מודול 7 -->
+                <div class="module-card">
+                    <div class="module-title">
+                        <span class="module-number">7</span>
+                        אתגרים והצלחה ביישום
+                    </div>
+                    <div class="module-content">
+                        <strong>מלכודות נפוצות:</strong><br>
+                        • "Agile Theater" - עושים Agile אבל לא באמת<br>
+                        • התנגדות לשינוי בארגון<br>
+                        • ביורוקרטיה ותקציבים קשיחים<br><br>
+                        
+                        <strong>טיפים להצלחה:</strong><br>
+                        • איך להתמודד עם אתגרים ממשלתיים<br>
+                        • סיפורי הצלחה ממשרדים אחרים<br>
+                        • משאבים נוספים וצעדים הבאים<br><br>
+                        
+                        <strong>סיום:</strong> מי לפנות לשאלות, הזמנה לסדנה
+                    </div>
+                    <span class="module-duration">⏱️ 10 דקות | ~2,500 מילים</span>
+                </div>
+                
+                <div class="info-box" style="margin-top: 40px;">
+                    <div class="info-title">📊 סיכום נתונים</div>
+                    <div class="info-text">
+                        <strong>סה"כ:</strong> 7 מודולים | ~90 דקות האזנה | ~16,100 מילים | ~34 עמודים
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- חלק 3: פורמט הפודקאסט -->
+        <div class="section" id="podcast-format">
+            <div class="section-title">
+                <span class="section-icon">🎙️</span>
+                חלק 3: פורמט הפודקאסט - דביר וצפי
+            </div>
+            <div class="section-content">
+                <h3 style="font-size: 1.8rem; color: #1f2937; margin: 30px 0 20px 0;">הדמויות</h3>
+                
+                <div class="personas">
+                    <div class="persona-card">
+                        <div class="persona-icon">🎤</div>
+                        <div class="persona-name">דביר</div>
+                        <div class="persona-role">המראיין</div>
+                        <div class="persona-desc">
+                            <strong>תפקיד:</strong> שואל שאלות, מבקש הבהרות, מייצג את הקהל<br><br>
+                            <strong>סגנון:</strong> סקרן, מעורב, חכם<br><br>
+                            <strong>מטרה:</strong> לגרום למומחה להסביר בפשטות
+                        </div>
+                    </div>
+                    
+                    <div class="persona-card">
+                        <div class="persona-icon">👨‍🏫</div>
+                        <div class="persona-name">צפי</div>
+                        <div class="persona-role">המומחה</div>
+                        <div class="persona-desc">
+                            <strong>תפקיד:</strong> מומחה ל-Agile, מסביר ומדגים<br><br>
+                            <strong>סגנון:</strong> ברור, נגיש, מלא דוגמאות<br><br>
+                            <strong>רקע:</strong> מנחה הטמעות Agile במגזר הציבורי
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 style="font-size: 1.8rem; color: #1f2937; margin: 40px 0 20px 0;">איך זה עובד?</h3>
+                
+                <div class="highlight-box">
+                    <div class="highlight-title">💬 דוגמה לדיאלוג</div>
+                    <div class="highlight-text" style="font-family: 'Heebo', sans-serif;">
+                        <strong>דביר:</strong> "אז ספר לי צפי, מה זה Burndown Chart?"<br><br>
+                        
+                        <strong>צפי:</strong> "זה ממש פשוט! תחשוב על זה כמו מד דלק לפרויקט שלך. 
+                        אתה רואה כמה 'דלק' נשאר לך - כלומר, כמה משימות עוד צריך לסיים."<br><br>
+                        
+                        <strong>דביר:</strong> "אה, הבנתי! אז אם אני רואה שאני מתקרב לסוף הזמן אבל עוד יש לי הרבה משימות..."<br><br>
+                        
+                        <strong>צפי:</strong> "בדיוק! זה כמו שאתה רואה שהדלק נגמר לך לפני שהגעת ליעד. 
+                        זה הסימן לך - צריך להאיץ או להסיר משימות לא קריטיות!"<br><br>
+                        
+                        <strong>דביר:</strong> "מגניב! ואיפה אפשר לראות את זה בפועל?"<br><br>
+                        
+                        <strong>צפי:</strong> "יש דוגמה מעולה באפליקציה EventApp..."
+                    </div>
+                </div>
+                
+                <h3 style="font-size: 1.8rem; color: #1f2937; margin: 40px 0 20px 0;">עקרונות כתיבה</h3>
+                
+                <div class="info-box">
+                    <div class="info-title">✍️ איך כותבים בפורמט ראיון?</div>
+                    <div class="info-text">
+                        <strong>במקום:</strong> "Burndown Chart הוא כלי ויזואלי המציג..."<br><br>
+                        <strong>כותבים:</strong> "בואו נדבר על Burndown Chart - מה זה בעצם? 
+                        תארו לעצמכם פרויקט עם 15 משימות ב-30 יום..."<br><br>
+                        
+                        <strong>טכניקות:</strong><br>
+                        • שאלות רטוריות: "אז מה זה אומר למנהל כמוכם?"<br>
+                        • דיאלוגים לדוגמה בתוך הטקסט<br>
+                        • המשכיות טבעית: "עכשיו, אחרי שהבנו..."<br>
+                        • חיבורים ל-EventApp: "רואים? זה בדיוק מה שקורה ב..."
+                    </div>
+                </div>
+                
+                <div class="warning-box">
+                    <div class="warning-title">⚠️ הערה חשובה על NotebookLM</div>
+                    <div class="warning-text">
+                        <strong>מה שכן יעבוד:</strong><br>
+                        ✓ הסגנון של ראיון ישמר<br>
+                        ✓ הדינמיקה של מראיין-מומחה תעבוד<br>
+                        ✓ התוכן יהיה מעולה<br><br>
+                        
+                        <strong>מה שאולי לא:</strong><br>
+                        ⚠️ NotebookLM לא תמיד מאפשר שליטה על שמות הדוברים<br>
+                        ⚠️ עלולים להיות "Host 1" ו-"Host 2" במקום דביר וצפי<br><br>
+                        
+                        <strong>פתרון:</strong> אפשר לערוך את הכותרת והתיאור אחר כך
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- חלק 4: מדריך NotebookLM -->
+        <div class="section" id="notebooklm-guide">
+            <div class="section-title">
+                <span class="section-icon">🤖</span>
+                חלק 4: מדריך NotebookLM
+            </div>
+            <div class="section-content">
+                <h3 style="font-size: 1.8rem; color: #1f2937; margin: 30px 0 20px 0;">מהו NotebookLM?</h3>
+                
+                <p style="font-size: 1.15rem; margin-bottom: 25px;">
+                    <strong>NotebookLM</strong> הוא כלי של Google שהופך מסמכים לפודקאסט AI אינטראקטיבי.
+                    שני דוברי AI משוחחים על התוכן בצורה טבעית ומרתקת.
+                </p>
+                
+                <div class="success-box">
+                    <div class="success-title">✨ יכולות NotebookLM</div>
+                    <div class="success-text">
+                        ✓ יצירת פודקאסט באורך 5-15 דקות<br>
+                        ✓ שיחה טבעית בין שני מגישים<br>
+                        ✓ תמיכה בעברית ובאנגלית<br>
+                        ✓ הורדת MP3 לשימוש חופשי<br>
+                        ✓ יצירת Study Guide ו-FAQ אוטומטיים<br>
+                        ✓ שיחה אינטראקטיבית עם ה-AI על התוכן
+                    </div>
+                </div>
+                
+                <h3 style="font-size: 1.8rem; color: #1f2937; margin: 40px 0 20px 0;">מדריך שימוש צעד-אחר-צעד</h3>
+                
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-title">גש ל-NotebookLM</div>
+                        <div class="step-content">
+                            פתח דפדפן וגש לכתובת:<br>
+                            <div class="code-box">https://notebooklm.google.com</div>
+                            התחבר עם חשבון Google שלך (חינם!)
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">צור Notebook חדש</div>
+                        <div class="step-content">
+                            • לחץ על <strong>"New notebook"</strong><br>
+                            • תן שם: <strong>"Agile 101 Course"</strong><br>
+                            • הכרטיס שלך מוכן!
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">העלה את המסמך</div>
+                        <div class="step-content">
+                            • לחץ על <strong>"Add source"</strong> → <strong>"Upload"</strong><br>
+                            • בחר את הקובץ <code>agile-101-full-content.docx</code> (או PDF)<br>
+                            • NotebookLM יקרא וינתח את כל התוכן (לוקח כ-30 שניות)
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">צור את הפודקאסט</div>
+                        <div class="step-content">
+                            • בתפריט הימני, לחץ על <strong>"Generate"</strong><br>
+                            • בחר <strong>"Audio Overview"</strong><br>
+                            • NotebookLM יתחיל ליצור את הפודקאסט (5-10 דקות)<br>
+                            • תראה התקדמות בזמן אמת
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">האזן לפודקאסט</div>
+                        <div class="step-content">
+                            • נגן אודיו יופיע עם הפודקאסט<br>
+                            • האזן ובדוק שהתוכן טוב<br>
+                            • תוכל לראות טרנסקריפט (לפעמים)<br>
+                            • אורך צפוי: 12-18 דקות
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">הורד את הקובץ</div>
+                        <div class="step-content">
+                            • לחץ על כפתור <strong>"Download"</strong> (3 נקודות)<br>
+                            • שמור את קובץ ה-MP3<br>
+                            • הקובץ שלך - תוכל להשתמש בו בחופשיות!
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 style="font-size: 1.8rem; color: #1f2937; margin: 40px 0 20px 0;">תכונות נוספות</h3>
+                
+                <div class="info-box">
+                    <div class="info-title">🎓 Study Guide</div>
+                    <div class="info-text">
+                        NotebookLM יכול ליצור <strong>מדריך לימוד אוטומטי</strong>:<br>
+                        • נקודות מפתח<br>
+                        • שאלות ותשובות<br>
+                        • Timeline של הנושאים<br><br>
+                        <strong>איך?</strong> לחץ "Generate" → "Study Guide"
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-title">❓ FAQ אוטומטי</div>
+                    <div class="info-text">
+                        יצירת שאלות נפוצות מהתוכן:<br>
+                        • שאלות שנוצרות אוטומטית<br>
+                        • תשובות מבוססות על המסמך<br><br>
+                        <strong>איך?</strong> לחץ "Generate" → "FAQ"
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-title">💬 שיחה עם ה-AI</div>
+                    <div class="info-text">
+                        תוכל לשאול שאלות על התוכן:<br>
+                        • "תן לי 10 שאלות לקוויז על Burndown Chart"<br>
+                        • "תמצת את מודול 3 ב-3 נקודות"<br>
+                        • "תסביר מה זה Sprint בפשטות"<br><br>
+                        <strong>איך?</strong> פשוט כתוב בשדה הטקסט למטה
+                    </div>
+                </div>
+                
+                <h3 style="font-size: 1.8rem; color: #1f2937; margin: 40px 0 20px 0;">טיפים חשובים</h3>
+                
+                <ul style="font-size: 1.1rem;">
+                    <li><strong>איכות הקלט = איכות הפלט:</strong> ככל שהמסמך מובנה יותר, הפודקאסט יהיה טוב יותר</li>
+                    <li><strong>תמיכה בעברית:</strong> NotebookLM תומך בעברית, אבל האיכות משתנה</li>
+                    <li><strong>אורך:</strong> מסמך של 16,000 מילים יצור פודקאסט של 12-18 דקות</li>
+                    <li><strong>אפשר לנסות שוב:</strong> לא אהבת? צור Audio Overview חדש!</li>
+                    <li><strong>חינמי לחלוטין:</strong> NotebookLM חינמי (לפי המצב ב-2024)</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <div class="warning-title">⚠️ מגבלות ידועות</div>
+                    <div class="warning-text">
+                        • <strong>שליטה על שמות:</strong> לא תמיד אפשר לשלוט על שמות הדוברים<br>
+                        • <strong>אורך:</strong> מוגבל ל-~20 דקות לפודקאסט<br>
+                        • <strong>שפה:</strong> העברית לא תמיד מושלמת (אבל טובה!)<br>
+                        • <strong>עריכה:</strong> לא אפשר לערוך את הפודקאסט אחרי יצירה
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- חלק 5: התהליך המלא -->
+        <div class="section" id="full-process">
+            <div class="section-title">
+                <span class="section-icon">⚙️</span>
+                חלק 5: התהליך המלא צעד-אחר-צעד
+            </div>
+            <div class="section-content">
+                <h3 style="font-size: 1.8rem; color: #1f2937; margin: 30px 0 20px 0;">סקירה כללית</h3>
+                
+                <div class="highlight-box">
+                    <div class="highlight-title">🎯 התהליך בקצרה</div>
+                    <div class="highlight-text">
+                        <strong>Claude</strong> → כתיבת מסמך → <strong>אתה</strong> → העלאה ל-NotebookLM → 
+                        <strong>NotebookLM</strong> → פודקאסט → <strong>אתה</strong> → הורדה → 
+                        <strong>Claude</strong> → אינטגרציה ב-EventApp
+                    </div>
+                </div>
+                
+                <h3 style="font-size: 1.8rem; color: #1f2937; margin: 40px 0 20px 0;">Timeline מפורט</h3>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-title">📅 שיחה #1: תכנון (✅ הושלם)</div>
+                        <div class="timeline-content">
+                            • יצירת מסמכי תשתית (PROJECT-CONTEXT, PROGRESS-TRACKER, ACTION-PLAN)<br>
+                            • הגדרת 7 מודולים<br>
+                            • הגדרת דביר וצפי<br>
+                            • מוכן לכתיבה!
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-title">📅 שיחה #2: מודול 1+2</div>
+                        <div class="timeline-content">
+                            • כתיבת מודול 1: מבוא ל-Agile (~1,750 מילים)<br>
+                            • כתיבת מודול 2: Agile Manifesto (~2,050 מילים)<br>
+                            • סה"כ: ~3,800 מילים, 6-8 עמודים
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-title">📅 שיחה #3: מודול 3+4</div>
+                        <div class="timeline-content">
+                            • כתיבת מודול 3: עקרונות מרכזיים (~2,300 מילים)<br>
+                            • כתיבת מודול 4: תפקידים (~1,800 מילים)<br>
+                            • סה"כ: ~4,100 מילים, 8-9 עמודים
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-title">📅 שיחה #4: מודול 5+6</div>
+                        <div class="timeline-content">
+                            • כתיבת מודול 5: כלים וטכניקות (~2,200 מילים)<br>
+                            • כתיבת מודול 6: Burndown Chart ⭐ (~4,000 מילים)<br>
+                            • סה"כ: ~6,200 מילים, 12-13 עמודים
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-title">📅 שיחה #5: מודול 7 + עריכה</div>
+                        <div class="timeline-content">
+                            • כתיבת מודול 7: אתגרים והצלחה (~2,500 מילים)<br>
+                            • עריכה כללית של כל המסמך<br>
+                            • בדיקת זרימה וקישורים
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-title">📅 שיחה #6: עיצוב ופורמט</div>
+                        <div class="timeline-content">
+                            • המרה ל-Word מעוצב<br>
+                            • הוספת עיצוב גרפי<br>
+                            • יצירת כריכה ותוכן עניינים<br>
+                            • ייצוא ל-PDF<br>
+                            • <strong>תוצר: agile-101-full-content.docx + PDF</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-color: #f59e0b;">
+                        <div class="timeline-dot" style="background: #f59e0b; box-shadow: 0 0 0 4px #f59e0b;"></div>
+                        <div class="timeline-title">🎙️ אתה: NotebookLM (15 דקות)</div>
+                        <div class="timeline-content">
+                            1. העלה את agile-101-full-content.docx ל-NotebookLM<br>
+                            2. צור Audio Overview<br>
+                            3. האזן ובדוק<br>
+                            4. הורד MP3<br>
+                            5. שתף עם Claude
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-title">📅 שיחה #7: אינטגרציה ב-EventApp</div>
+                        <div class="timeline-content">
+                            • יצירת עמוד קורס (course.html)<br>
+                            • שילוב נגן אודיו עם הפודקאסט<br>
+                            • הוספת תמציות טקסטואליות<br>
+                            • יצירת קוויזים (5-10 שאלות)<br>
+                            • קישורים חזרה ל-Dashboard<br>
+                            • <strong>תוצר סופי: EventApp Agile Edition!</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="success-box" style="margin-top: 40px;">
+                    <div class="success-title">⏱️ זמן משוער כולל</div>
+                    <div class="success-text">
+                        <strong>כתיבה:</strong> 5-6 שיחות (כל שיחה: 30-60 דקות)<br>
+                        <strong>NotebookLM:</strong> 15 דקות<br>
+                        <strong>אינטגרציה:</strong> שיחה אחת (30-45 דקות)<br><br>
+                        <strong>סה"כ:</strong> ~7 שיחות על פני מספר ימים
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- חלק 6: אינטגרציה -->
+        <div class="section" id="integration">
+            <div class="section-title">
+                <span class="section-icon">🔗</span>
+                חלק 6: אינטגרציה ב-EventApp
+            </div>
+            <div class="section-content">
+                <h3 style="font-size: 1.8rem; color: #1f2937; margin: 30px 0 20px 0;">איך זה ייראה?</h3>
+                
+                <div class="highlight-box">
+                    <div class="highlight-title">🎨 המוצר הסופי</div>
+                    <div class="highlight-text" style="direction: ltr; text-align: left; font-family: monospace;">
+┌─────────────────────────────────────┐<br>
+│  EventApp - חתונת שרה ודוד         │<br>
+├─────────────────────────────────────┤<br>
+│  [Dashboard] [Tasks] [📚 Agile 101] │  ← טאב חדש<br>
+└─────────────────────────────────────┘<br>
+<br>
+בעמוד הקורס:<br>
+━━━━━━━━━━━━━━━━━━━━━━━━━<br>
+🎓 קורס Agile 101<br>
+<br>
+🎧 פודקאסט מלא (12-18 דקות)<br>
+[▶️ נגן אודיו מוטמע]<br>
+<br>
+📝 תמצית:<br>
+• מה זה Agile ולמה זה חשוב<br>
+• 4 הערכים של Agile Manifesto<br>
+• כלים מעשיים: Burndown Chart<br>
+• איך זה עוזר לכם כאן ב-EventApp<br>
+<br>
+🎯 דוגמה חיה:<br>
+חזרו ל-Dashboard ושימו לב ל-Burndown<br>
+Chart - זה בדיוק מה שדיברנו עליו!<br>
+<br>
+✅ קוויז:<br>
+1. מה מראה הקו הירוק בגרף?<br>
+   ○ הקצב האידיאלי<br>
+   ○ המצב בפועל<br>
+━━━━━━━━━━━━━━━━━━━━━━━━━
+                    </div>
+                </div>
+                
+                <h3 style="font-size: 1.8rem; color: #1f2937; margin: 40px 0 20px 0;">תכונות העמוד</h3>
+                
+                <ul style="font-size: 1.1rem;">
+                    <li><strong>נגן אודיו מוטמע:</strong> הפודקאסט משולב ישירות בעמוד</li>
+                    <li><strong>תמציות מודולים:</strong> רשימת נושאים מרכזיים</li>
+                    <li><strong>קוויזים אינטראקטיביים:</strong> 5-10 שאלות לבדיקת הבנה</li>
+                    <li><strong>קישורים ל-Dashboard:</strong> "ראו את זה בפועל!"</li>
+                    <li><strong>עיצוב responsive:</strong> עובד גם בנייד</li>
+                    <li><strong>שמירת התקדמות:</strong> מעקב אחרי מה שהאזנת</li>
+                </ul>
+                
+                <h3 style="font-size: 1.8rem; color: #1f2937; margin: 40px 0 20px 0;">User Flow</h3>
+                
+                <div class="info-box">
+                    <div class="info-title">🎯 המסע של המשתמש</div>
+                    <div class="info-text" style="direction: ltr; text-align: left;">
+1. משתמש נכנס ל-EventApp<br>
+2. רואה Burndown Chart ב-Dashboard<br>
+3. לוחץ על "?" ליד הגרף<br>
+4. "רוצה ללמוד על Burndown Chart?"<br>
+5. עובר לקורס Agile 101<br>
+6. מאזין לפודקאסט<br>
+7. עושה קוויז<br>
+8. חוזר ל-Dashboard עם הבנה מלאה!
+                    </div>
+                </div>
+                
+                <h3 style="font-size: 1.8rem; color: #1f2937; margin: 40px 0 20px 0;">יתרונות</h3>
+                
+                <div class="success-box">
+                    <div class="success-title">✨ למה זה מושלם?</div>
+                    <div class="success-text">
+                        ✓ <strong>למידה תוך כדי שימוש:</strong> מבינים את הכלי שמשתמשים בו<br>
+                        ✓ <strong>פודקאסט בדרכים:</strong> לומדים בנסיעה לעבודה<br>
+                        ✓ <strong>אינטראקטיבי:</strong> קוויזים לבדיקת הבנה<br>
+                        ✓ <strong>ממכר:</strong> הפודקאסט של NotebookLM ממש טוב!<br>
+                        ✓ <strong>מקצועי:</strong> נותן ערך נוסף למשתמשים<br>
+                        ✓ <strong>דוגמה חיה:</strong> EventApp הוא הדוגמה המושלמת
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- סיכום -->
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 50px; border-radius: 20px; margin-top: 60px; text-align: center;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">🎉 מוכן להתחיל?</h2>
+            <p style="font-size: 1.3rem; opacity: 0.95; line-height: 1.8;">
+                עכשיו אתה מכיר את כל התהליך!<br>
+                פתח שיחה חדשה ואמור: <strong>"המשך פרויקט קורס Agile 101"</strong><br>
+                Claude יקרא את המסמכים ויתחיל לכתוב מיד! 🚀
+            </p>
+        </div>
+        
+        <!-- פוטר -->
+        <div style="text-align: center; color: #6b7280; margin-top: 50px; padding-top: 40px; border-top: 3px solid #e5e7eb;">
+            <p style="font-size: 1.1rem;">
+                <strong>קורס Agile 101 - EventApp Agile Edition</strong><br>
+                מסמך ריכוז מקיף | גרסה 1.0 | 11/12/2024
+            </p>
+        </div>
+    </div>
+</body>
+</html>

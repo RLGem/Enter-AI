@@ -1,0 +1,310 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "created": "20260126-05:19",
+    "last_updated": "20260126-08:45",
+    "last_session": 2
+  },
+
+  "project": {
+    "id": "event_napp_001",
+    "name": "Event.nApp",
+    "description": "AI-Native Event Planning Assistant - עוזר AI לתכנון אירועים משפחתיים",
+    "topic": "nApp_development",
+    "started": "20260126",
+    "naming_convention": "[Domain].nApp = [Domain] Specialized AI Assistant"
+  },
+
+  "entrepreneur": {
+    "name": "רפי",
+    "technical_level": "advanced",
+    "time_available": "part-time",
+    "budget": "bootstrap",
+    "background": "מפתח Enter AI platform, יוצר מתודולוגיית nApp"
+  },
+
+  "current_position": {
+    "stage": "BUILD",
+    "sub_stage": "Documentation Complete - Ready for Validation",
+    "progress_percent": 65,
+    "status": "active"
+  },
+
+  "stages": {
+    "IDEA": {
+      "status": "completed",
+      "progress": 100,
+      "started": "20260126",
+      "completed": "20260126",
+      "outputs": ["problem_definition", "solution_concept", "napp_architecture"]
+    },
+    "VALIDATE": {
+      "status": "in_progress",
+      "progress": 30,
+      "started": "20260126",
+      "completed": null,
+      "outputs": ["competitor_analysis"],
+      "notes": "Need to validate with real users - key risk: will users prefer AI conversation over buttons?"
+    },
+    "BUILD": {
+      "PRODUCT": {
+        "status": "completed",
+        "progress": 100,
+        "started": "20260126",
+        "completed": "20260126",
+        "outputs": ["prd_v1", "ux_ui_guidelines"]
+      },
+      "TECH": {
+        "status": "completed",
+        "progress": 100,
+        "started": "20260126",
+        "completed": "20260126",
+        "outputs": ["prompt_file_v1", "json_data_structure", "example_data"]
+      }
+    },
+    "LAUNCH": {
+      "status": "not_started",
+      "progress": 0,
+      "started": null,
+      "completed": null,
+      "outputs": []
+    },
+    "SCALE": {
+      "status": "not_started",
+      "progress": 0,
+      "started": null,
+      "completed": null,
+      "outputs": []
+    }
+  },
+
+  "inputs": {
+    "required": {
+      "problem": {
+        "value": "תכנון אירועים משפחתיים הוא כאוטי - אפליקציות קיימות מיועדות רק לזוג, לא למשפחה שלמה. חסר כלי גמיש שמדבר בשפה טבעית.",
+        "status": "provided"
+      },
+      "solution_idea": {
+        "value": "Event.nApp - עוזר AI לתכנון אירועים שעובד דרך שיחה טבעית, מנהל משימות למשפחה שלמה, ומתאים את עצמו לצרכים. Zero infrastructure - Prompt + JSON + Claude.",
+        "status": "provided"
+      },
+      "target_audience": {
+        "value": "משפחות ישראליות שמתכננות אירועים (חתונות, בר מצווה). Early adopters: משתמשי Claude, משפחות טכיות.",
+        "status": "provided"
+      }
+    },
+    "important": {
+      "differentiation": {
+        "value": "AI-Native (לא AI-Washed), Family-First (לא רק זוג), Global (כל שפה), Flexible (בקש-תקבל)",
+        "is_default": false,
+        "actor": "user"
+      },
+      "tech_stack": {
+        "value": "Claude AI + Prompt file + JSON data + Cloud storage (user's)",
+        "is_default": false,
+        "actor": "user"
+      },
+      "naming": {
+        "value": "Event.nApp - [Domain].nApp format",
+        "is_default": false,
+        "actor": "user",
+        "updated": "20260126"
+      }
+    },
+    "optional": {
+      "business_model": {
+        "value": "TBD - options: Freemium+Leads, Premium features, White label",
+        "is_default": true
+      }
+    }
+  },
+
+  "branches": {
+    "target_market": {
+      "israel_hebrew": {
+        "status": "selected",
+        "depth": 2,
+        "actor": "user",
+        "reason": "explicit: start with known market"
+      },
+      "global_english": {
+        "status": "queued",
+        "depth": 0,
+        "actor": "system",
+        "reason": "implicit: phase 2"
+      }
+    },
+    "event_type_focus": {
+      "weddings": {
+        "status": "selected",
+        "depth": 2,
+        "actor": "user",
+        "reason": "explicit: most complex, biggest pain"
+      },
+      "bar_mitzvah": {
+        "status": "queued",
+        "depth": 0,
+        "actor": "system"
+      },
+      "other_events": {
+        "status": "queued",
+        "depth": 0,
+        "actor": "system"
+      }
+    },
+    "validation_approach": {
+      "user_testing": {
+        "status": "selected",
+        "depth": 1,
+        "actor": "user",
+        "reason": "next step after documentation"
+      },
+      "landing_page": {
+        "status": "queued",
+        "depth": 0,
+        "actor": "system"
+      }
+    }
+  },
+
+  "decisions": {
+    "explicit": [
+      {
+        "id": "DEC-001",
+        "date": "20260126",
+        "topic": "Architecture",
+        "choice": "nApp architecture: Prompt + JSON + Claude",
+        "reason": "Zero infrastructure, maximum flexibility, user owns data"
+      },
+      {
+        "id": "DEC-002",
+        "date": "20260126",
+        "topic": "Naming",
+        "choice": "Event.nApp (not EventApp.nApp)",
+        "reason": "Cleaner format: [Domain].nApp"
+      },
+      {
+        "id": "DEC-003",
+        "date": "20260126",
+        "topic": "UX Philosophy",
+        "choice": "Encourage discovery of AI flexibility beyond 'screens'",
+        "reason": "Key differentiator - users should feel they can ask anything"
+      }
+    ],
+    "implicit": []
+  },
+
+  "recommendations": {
+    "pending": {
+      "id": "REC-001",
+      "date": "20260126",
+      "context": "Documentation complete",
+      "options": ["Start user testing", "Refine prompt first", "Create more examples"],
+      "recommended": "Start user testing with real family",
+      "reasoning": "Documents are ready. Key risk is whether users will prefer AI conversation over buttons - need to validate.",
+      "confidence": "high"
+    },
+    "history": []
+  },
+
+  "outputs": {
+    "completed": [
+      {
+        "id": "OUT-001",
+        "type": "prompt_file",
+        "name": "Event.nApp Prompt v1.0",
+        "stage": "BUILD.TECH",
+        "created": "20260126-session1",
+        "file": "EventApp_nApp_Prompt_v1.md"
+      },
+      {
+        "id": "OUT-002",
+        "type": "data_structure",
+        "name": "Event JSON Data Structure + Example",
+        "stage": "BUILD.TECH",
+        "created": "20260126-session1",
+        "file": "eventapp_napp_example.json"
+      },
+      {
+        "id": "OUT-003",
+        "type": "competitor_analysis",
+        "name": "Competitor Analysis - 8 Competitors",
+        "stage": "VALIDATE",
+        "created": "20260126-session2",
+        "file": "EventApp_nApp_Competitor_Analysis.md",
+        "summary": "מתחרים מציעים ניהול משימות אבל לא AI-Native, לא Family-oriented"
+      },
+      {
+        "id": "OUT-004",
+        "type": "prd",
+        "name": "Product Requirements Document v1",
+        "stage": "BUILD.PRODUCT",
+        "created": "20260126-session2",
+        "file": "EventApp_nApp_PRD.md",
+        "summary": "12 sections, includes user stories, MVP scope, roadmap, risks"
+      },
+      {
+        "id": "OUT-005",
+        "type": "ux_guidelines",
+        "name": "UX/UI Guidelines with Discovery Prompts",
+        "stage": "BUILD.PRODUCT",
+        "created": "20260126-session2",
+        "file": "EventApp_nApp_UX_UI_Guidelines.md",
+        "summary": "8 sections, focus on encouraging users to discover AI flexibility"
+      }
+    ],
+    "in_progress": []
+  },
+
+  "blockers": [],
+
+  "next_action": {
+    "what": "להריץ Event.nApp עם משתמשים אמיתיים (משפחה של רפי)",
+    "stage": "VALIDATE",
+    "priority": "high",
+    "pending_recommendation": "REC-001"
+  },
+
+  "risks": {
+    "critical": [
+      {
+        "id": "RISK-001",
+        "description": "משתמשים יעדיפו כפתורים על שיחה עם AI",
+        "probability": "40%",
+        "impact": "critical",
+        "mitigation": "לבדוק ב-validation, Discovery Prompts בכל אינטראקציה"
+      }
+    ],
+    "high": [
+      {
+        "id": "RISK-002",
+        "description": "עלות Claude API",
+        "probability": "50%",
+        "impact": "high",
+        "mitigation": "Free tier for users, Leads model for revenue"
+      },
+      {
+        "id": "RISK-003",
+        "description": "Money validation unclear (FUMES M=2/5)",
+        "probability": "50%",
+        "impact": "high",
+        "mitigation": "Test willingness to pay in validation"
+      }
+    ]
+  },
+
+  "insights": [
+    {
+      "id": "INS-001",
+      "date": "20260126",
+      "insight": "Discovery Prompts are key - users need to be constantly reminded they can ask for anything beyond 'screens'",
+      "source": "UX guidelines development"
+    },
+    {
+      "id": "INS-002",
+      "date": "20260126",
+      "insight": "Competitors are AI-Washed (just ChatGPT wrapper). True AI-Native = conversation IS the interface",
+      "source": "Competitor analysis"
+    }
+  ]
+}

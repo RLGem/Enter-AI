@@ -1,0 +1,77 @@
+{"k":"_SESSION","t":"20260110-09:00","e":"SESSION_START","d":{"session":1,"mode":"new_project"}}
+{"k":"IDEA","t":"20260110-09:05","e":"STARTED","d":{"actor":"system"}}
+{"k":"IDEA.DOMAIN","t":"20260110-09:10","e":"INPUT_PROVIDED","d":{"actor":"user","field":"domain","value":"אירועים","source":"יזם סיפר על ניסיון אישי"}}
+{"k":"IDEA.PROBLEM","t":"20260110-09:30","e":"BRANCHES_IDENTIFIED","d":{"actor":"system","options":["כאוס בתכנון","עלויות גבוהות","תקשורת עם ספקים"]}}
+{"k":"IDEA.PROBLEM","t":"20260110-09:35","e":"REC_GIVEN","d":{"actor":"system","recommended":"כאוס בתכנון","reason":"FUMES גבוה יותר","confidence":"high"}}
+{"k":"IDEA.PROBLEM","t":"20260110-09:40","e":"DECISION","d":{"actor":"user","action":"select","choice":"כאוס בתכנון","following_rec":true}}
+{"k":"IDEA.PROBLEM.כאוס","t":"20260110-09:40","e":"BRANCH_SELECTED","d":{"actor":"user","depth":1}}
+{"k":"IDEA.PROBLEM.עלויות","t":"20260110-09:40","e":"BRANCH_QUEUED","d":{"actor":"system","reason":"implicit: כאוס prioritized"}}
+{"k":"IDEA.PROBLEM.תקשורת","t":"20260110-09:40","e":"BRANCH_QUEUED","d":{"actor":"system","reason":"implicit: כאוס prioritized"}}
+{"k":"IDEA.FUMES","t":"20260110-10:00","e":"STARTED","d":{"actor":"system"}}
+{"k":"IDEA.FUMES","t":"20260110-10:30","e":"OUTPUT_CREATED","d":{"actor":"system","type":"fumes_analysis","version":1}}
+{"k":"IDEA.FUMES","t":"20260110-10:30","e":"COMPLETED","d":{"score":"4/5","details":{"F":5,"U":4,"M":4,"E":3,"S":4}}}
+{"k":"IDEA","t":"20260110-11:00","e":"OUTPUT_CREATED","d":{"actor":"system","type":"problem_statement","version":1}}
+{"k":"_SESSION","t":"20260110-11:30","e":"SESSION_END","d":{"session":1,"duration_min":150,"outputs_created":2}}
+
+{"k":"_SESSION","t":"20260112-14:00","e":"SESSION_START","d":{"session":2}}
+{"k":"IDEA.SOLUTION","t":"20260112-14:10","e":"STARTED","d":{"actor":"system","method":"crazy_8s"}}
+{"k":"IDEA.SOLUTION","t":"20260112-14:45","e":"BRANCHES_IDENTIFIED","d":{"actor":"user","options":["אפליקציה מרכזת","בוט וואטסאפ","אתר עם תבניות","שירות אנושי+טכנולוגיה"]}}
+{"k":"IDEA.SOLUTION","t":"20260112-14:50","e":"REC_GIVEN","d":{"actor":"system","recommended":"אפליקציה מרכזת","reason":"סקיילבילי, מתאים ליזם סולו","confidence":"medium"}}
+{"k":"IDEA.SOLUTION","t":"20260112-15:00","e":"DECISION","d":{"actor":"user","action":"select","choice":"אפליקציה מרכזת","following_rec":true}}
+{"k":"IDEA.SOLUTION.אפליקציה","t":"20260112-15:00","e":"BRANCH_SELECTED","d":{"actor":"user","depth":1}}
+{"k":"IDEA.BUDGET","t":"20260112-15:30","e":"INPUT_PROVIDED","d":{"actor":"user","field":"budget","value":"$500","previous":"$0 (default)"}}
+{"k":"IDEA.BUDGET","t":"20260112-15:30","e":"INPUT_CHANGED","d":{"actor":"user","from":"$0","to":"$500","reason":"יזם ציין תקציב התחלתי"}}
+{"k":"IDEA","t":"20260112-16:00","e":"OUTPUT_CREATED","d":{"actor":"system","type":"solution_sketch","version":1}}
+{"k":"_SESSION","t":"20260112-16:30","e":"SESSION_END","d":{"session":2,"duration_min":150}}
+
+{"k":"_SESSION","t":"20260115-10:00","e":"SESSION_START","d":{"session":3}}
+{"k":"IDEA","t":"20260115-10:05","e":"PROGRESS","d":{"status":"completing","percent":95}}
+{"k":"IDEA","t":"20260115-10:30","e":"COMPLETED","d":{"duration_days":5,"outputs":["problem_statement","fumes_analysis","solution_sketch"]}}
+{"k":"VALIDATE","t":"20260115-10:35","e":"STARTED","d":{"actor":"system"}}
+{"k":"VALIDATE.TARGET","t":"20260115-10:40","e":"BRANCHES_IDENTIFIED","d":{"actor":"system","options":["B2C_couples","B2B_venues","B2B_planners"]}}
+{"k":"VALIDATE.TARGET","t":"20260115-10:45","e":"REC_GIVEN","d":{"actor":"system","recommended":"B2C_couples","reason":"מחזור מכירה קצר, יזם מכיר את הקהל","confidence":"medium","alternatives":["B2B_venues","B2B_planners"]}}
+{"k":"VALIDATE.TARGET","t":"20260115-11:00","e":"DECISION","d":{"actor":"user","action":"select","choice":"B2C_couples","quote":"זה הקהל שאני מכיר ומבין"}}
+{"k":"VALIDATE.TARGET.B2C_couples","t":"20260115-11:00","e":"BRANCH_SELECTED","d":{"actor":"user","depth":1,"reason":"explicit: זה הקהל שאני מכיר ומבין"}}
+{"k":"VALIDATE.TARGET.B2B_venues","t":"20260115-11:00","e":"BRANCH_QUEUED","d":{"actor":"system","reason":"implicit: B2C prioritized by user preference"}}
+{"k":"VALIDATE.TARGET.B2B_planners","t":"20260115-11:05","e":"DECISION","d":{"actor":"user","action":"reject_temp","quote":"אני לא רוצה להתחיל עם B2B, זה לוקח יותר מדי זמן"}}
+{"k":"VALIDATE.TARGET.B2B_planners","t":"20260115-11:05","e":"BRANCH_REJECTED_TEMP","d":{"actor":"user","reason":"explicit: מחזור מכירה ארוך מדי להתחלה"}}
+{"k":"_SESSION","t":"20260115-12:00","e":"SESSION_END","d":{"session":3,"duration_min":120}}
+
+{"k":"_SESSION","t":"20260116-09:00","e":"SESSION_START","d":{"session":4}}
+{"k":"VALIDATE.METHOD","t":"20260116-09:10","e":"BRANCHES_IDENTIFIED","d":{"actor":"system","options":["interviews","landing_page","ads_test"]}}
+{"k":"VALIDATE.METHOD","t":"20260116-09:15","e":"REC_GIVEN","d":{"actor":"system","recommended":"interviews","reason":"להבין לעומק לפני בנייה","confidence":"high"}}
+{"k":"VALIDATE.METHOD","t":"20260116-09:20","e":"DECISION","d":{"actor":"user","action":"select","choice":"interviews","following_rec":true}}
+{"k":"VALIDATE.METHOD.interviews","t":"20260116-09:20","e":"BRANCH_SELECTED","d":{"actor":"user","depth":1}}
+{"k":"VALIDATE.METHOD.landing_page","t":"20260116-09:20","e":"BRANCH_QUEUED","d":{"actor":"system","reason":"implicit: interviews first per recommendation"}}
+{"k":"VALIDATE.INTERVIEWS","t":"20260116-10:00","e":"STARTED","d":{"actor":"system","target":8}}
+{"k":"VALIDATE.INTERVIEWS","t":"20260116-10:30","e":"OUTPUT_CREATED","d":{"actor":"system","type":"interview_script","version":1}}
+{"k":"_SESSION","t":"20260116-12:00","e":"SESSION_END","d":{"session":4,"duration_min":180}}
+
+{"k":"_SESSION","t":"20260118-20:00","e":"SESSION_START","d":{"session":5}}
+{"k":"VALIDATE.INTERVIEWS","t":"20260118-20:05","e":"PROGRESS","d":{"done":3,"target":8,"findings":"כולם מתלוננים על אקסלים"}}
+{"k":"VALIDATE.INTERVIEWS.INT001","t":"20260118-20:10","e":"OUTPUT_CREATED","d":{"actor":"user","type":"interview_summary","interviewee":"זוג א","sentiment":"positive","key_insight":"שכחו לסגור צלם"}}
+{"k":"VALIDATE.INTERVIEWS.INT002","t":"20260118-20:15","e":"OUTPUT_CREATED","d":{"actor":"user","type":"interview_summary","interviewee":"זוג ב","sentiment":"very_positive","key_insight":"היו משלמים 80 ש״ח בשמחה"}}
+{"k":"VALIDATE.INTERVIEWS.INT003","t":"20260118-20:20","e":"OUTPUT_CREATED","d":{"actor":"user","type":"interview_summary","interviewee":"זוג ג","sentiment":"positive","key_insight":"הבעיה העיקרית - תיאום עם ספקים"}}
+{"k":"VALIDATE.INTERVIEWS","t":"20260118-20:30","e":"REC_GIVEN","d":{"actor":"system","recommended":"להמשיך ל-8 ראיונות","reason":"3 לא מספיק לדפוס ברור","confidence":"high"}}
+{"k":"VALIDATE.INTERVIEWS","t":"20260118-20:35","e":"DECISION","d":{"actor":"user","action":"accept","choice":"להמשיך לראיונות","following_rec":true}}
+{"k":"_SESSION","t":"20260118-21:30","e":"SESSION_END","d":{"session":5,"duration_min":90}}
+
+{"k":"_SESSION","t":"20260120-19:00","e":"SESSION_START","d":{"session":6}}
+{"k":"VALIDATE.INTERVIEWS","t":"20260120-19:05","e":"PROGRESS","d":{"done":5,"target":8}}
+{"k":"VALIDATE.INTERVIEWS.INT004","t":"20260120-19:10","e":"OUTPUT_CREATED","d":{"actor":"user","type":"interview_summary","interviewee":"זוג ד","sentiment":"neutral","key_insight":"השתמשו באפליקציה אחרת, לא אהבו"}}
+{"k":"VALIDATE.INTERVIEWS.INT005","t":"20260120-19:15","e":"OUTPUT_CREATED","d":{"actor":"user","type":"interview_summary","interviewee":"זוג ה","sentiment":"very_positive","key_insight":"בדיוק מה שחיפשנו"}}
+{"k":"VALIDATE.TARGET.B2C_couples","t":"20260120-19:30","e":"BRANCH_EXPLORED","d":{"actor":"user","depth":2,"new_findings":"מוכנים לשלם 49-79 ש״ח/חודש"}}
+{"k":"VALIDATE.PRICING","t":"20260120-19:35","e":"INPUT_PROVIDED","d":{"actor":"user","field":"pricing_estimate","value":"49-79 ש\"ח לחודש","source":"עלה בראיונות"}}
+{"k":"_SESSION","t":"20260120-20:30","e":"SESSION_END","d":{"session":6,"duration_min":90}}
+
+{"k":"_SESSION","t":"20260125-14:00","e":"SESSION_START","d":{"session":7}}
+{"k":"VALIDATE.INTERVIEWS","t":"20260125-14:05","e":"PROGRESS","d":{"done":8,"target":8,"status":"target_reached"}}
+{"k":"VALIDATE.INTERVIEWS.INT006","t":"20260125-14:10","e":"OUTPUT_CREATED","d":{"actor":"user","type":"interview_summary","interviewee":"זוג ו","sentiment":"positive"}}
+{"k":"VALIDATE.INTERVIEWS.INT007","t":"20260125-14:12","e":"OUTPUT_CREATED","d":{"actor":"user","type":"interview_summary","interviewee":"זוג ז","sentiment":"very_positive"}}
+{"k":"VALIDATE.INTERVIEWS.INT008","t":"20260125-14:14","e":"OUTPUT_CREATED","d":{"actor":"user","type":"interview_summary","interviewee":"זוג ח","sentiment":"positive"}}
+{"k":"VALIDATE.INTERVIEWS","t":"20260125-14:20","e":"COMPLETED","d":{"total":8,"positive":6,"neutral":1,"negative":1}}
+{"k":"VALIDATE.TARGET.B2C_couples","t":"20260125-14:25","e":"BRANCH_EXPLORED","d":{"actor":"user","depth":3,"findings":"מחפשים פשטות, מוכנים לשלם 50-80 ש\"ח/חודש"}}
+{"k":"VALIDATE.INSIGHTS","t":"20260125-14:30","e":"OUTPUT_CREATED","d":{"actor":"system","type":"validation_insights","version":1,"progress":80}}
+{"k":"VALIDATE","t":"20260125-14:35","e":"REC_GIVEN","d":{"actor":"system","id":"REC-005","recommended":"לבנות Landing Page","options":["לבנות Landing Page","להתחיל MVP","עוד ראיונות"],"reason":"8 ראיונות מספיקים, LP יאמת נכונות לשלם","confidence":"high"}}
+{"k":"VALIDATE","t":"20260125-14:40","e":"REC_PENDING","d":{"id":"REC-005","awaiting_user_decision":true}}
+{"k":"_SESSION","t":"20260125-14:45","e":"SESSION_END","d":{"session":7,"duration_min":45,"pending_decision":"REC-005"}}

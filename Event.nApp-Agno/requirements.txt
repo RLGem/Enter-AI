@@ -1,0 +1,31 @@
+# Event.nApp-Agno Requirements
+# Python 3.11+
+
+# AI Agent Framework
+agno>=0.1.0
+
+# Anthropic Claude API
+anthropic>=0.34.0
+
+# Supabase Database
+supabase>=2.0.0
+
+# Web Framework
+fastapi>=0.109.0
+uvicorn>=0.27.0
+
+# Telegram Bot
+python-telegram-bot>=20.7
+
+# Data Validation
+pydantic>=2.5.0
+
+# Environment Variables
+python-dotenv>=1.0.0
+
+# HTTP Client
+httpx>=0.26.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.23.0

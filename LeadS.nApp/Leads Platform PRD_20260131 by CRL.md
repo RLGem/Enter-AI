@@ -1,0 +1,1672 @@
+# 🎯 Leads Platform - PRD מלא
+
+## פלטפורמת לידים לעסקים ישראליים
+
+### 💡 מרעיון ללקוח משלם: חיבור בין אפליקציות AI לעסקים מקומיים
+
+*גרסה 1.0 | 31 בינואר 2026*
+
+---
+
+**📚 מסמך מקיף | 🎯 מוכן לפיתוח**
+
+---
+
+## 📋 תוכן עניינים
+
+| # | נושא | תיאור |
+|:-:|:-----|:------|
+| 1 | סקירה כללית | החזון, הבעיה, הפתרון |
+| 2 | ארכיטקטורה | מבנה המערכת והזרימות |
+| 3 | בסיס נתוני עסקים | סריקה, גיוס, רישום |
+| 4 | מודל התשלומים | Prepaid, Pay-per-lead, מדיניות |
+| 5 | AI Matching | התאמת לידים לעסקים |
+| 6 | Partner API | ממשק לאפליקציות AI |
+| 7 | פורטל עסקים | ממשק לעסקים |
+| 8 | Database Schema | מבנה בסיס הנתונים |
+| 9 | ספקי תשלום | אינטגרציות ישראליות |
+| 10 | מודל עסקי | תמחור והכנסות |
+| 11 | Roadmap | תוכנית פיתוח |
+
+---
+
+# 1️⃣ סקירה כללית
+
+## 🎯 החזון
+
+```
+┌────────────────────────────────────────────────────────────┐
+│                                                            │
+│   אפליקציות AI        Leads Platform        עסקים מקומיים │
+│   ─────────────       ───────────────       ─────────────  │
+│                                                            │
+│   Event.nApp    ─┐                      ┌─  צלם חתונות    │
+│                  │                      │                  │
+│   Restaurant.nApp├──►  🎯 Matching  ◄───┤  מסעדה          │
+│                  │                      │                  │
+│   Travel.nApp   ─┘                      └─  מלון          │
+│                                                            │
+│   המשתמש מקבל      הפלטפורמה מתאימה      העסק מקבל        │
+│   המלצה מדויקת     ומתווכת              ליד חם ומשלם      │
+│                                                            │
+└────────────────────────────────────────────────────────────┘
+```
+
+## 😤 הבעיה
+
+### מצד אפליקציות AI:
+- יש להן משתמשים שמחפשים שירותים
+- אין להן דרך להרוויח מההמלצות
+- אין בסיס נתונים של עסקים מקומיים
+
+### מצד עסקים מקומיים:
+- משלמים הרבה על פרסום (Google, Facebook)
+- לא יודעים מה עובד
+- לידים קרים ולא ממוקדים
+
+## 💡 הפתרון
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ Leads Platform = Marketplace לידים                        │
+│                                                            │
+│ • אפליקציות AI שולחות לידים דרך API                       │
+│ • הפלטפורמה מתאימה ליד לעסק הנכון                         │
+│ • העסק משלם רק על לידים שמעניינים אותו                    │
+│ • האפליקציה מקבלת 70% מההכנסה                             │
+│ • הפלטפורמה מקבלת 30%                                     │
+└────────────────────────────────────────────────────────────┘
+```
+
+## 🏆 יתרונות תחרותיים
+
+| לעומת | היתרון שלנו |
+|:------|:-----------|
+| Google Ads | לידים חמים, לא קליקים |
+| Facebook Ads | התאמה מדויקת ע"י AI |
+| דפי זהב | משלם רק על ליד, לא על חשיפה |
+| Angi/Thumbtack | ממוקד לשוק הישראלי |
+
+---
+
+# 2️⃣ ארכיטקטורה
+
+## 🏗️ מבנה המערכת
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│                           LEADS PLATFORM                                    │
+│                                                                             │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐            │
+│  │   Partner API   │  │  Business Portal │  │   Admin Panel   │            │
+│  │   (לאפליקציות)  │  │    (לעסקים)      │  │    (לנו)        │            │
+│  └────────┬────────┘  └────────┬────────┘  └────────┬────────┘            │
+│           │                    │                    │                      │
+│           └────────────────────┼────────────────────┘                      │
+│                                │                                           │
+│                    ┌───────────┴───────────┐                              │
+│                    │     Core Services      │                              │
+│                    │  ┌─────────────────┐  │                              │
+│                    │  │  Lead Router    │  │  ← התאמת ליד לעסק           │
+│                    │  │  AI Matching    │  │  ← חיפוש סמנטי              │
+│                    │  │  Payment Engine │  │  ← חיובים והחזרים           │
+│                    │  │  Notification   │  │  ← Email, SMS, WhatsApp     │
+│                    │  │  Scraper        │  │  ← סריקת עסקים              │
+│                    │  └─────────────────┘  │                              │
+│                    └───────────┬───────────┘                              │
+│                                │                                           │
+│                    ┌───────────┴───────────┐                              │
+│                    │      Database          │                              │
+│                    │  ┌─────┬─────┬─────┐  │                              │
+│                    │  │Part-│Busi-│Leads│  │                              │
+│                    │  │ners │ness │     │  │                              │
+│                    │  └─────┴─────┴─────┘  │                              │
+│                    └───────────────────────┘                              │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+## 🔄 זרימת ליד מלאה
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  1. USER                    2. AI APP                   3. PLATFORM         │
+│  ──────                     ────────                    ──────────          │
+│  "אני מחפש צלם             Event.nApp אוסף             API מקבל ליד        │
+│   לחתונה ברעננה"           פרטים ושולח ליד             ומפעיל Matching      │
+│                                                                             │
+│       │                         │                           │               │
+│       ▼                         ▼                           ▼               │
+│  ┌─────────┐              ┌─────────┐                 ┌─────────┐          │
+│  │  User   │──►שאלות──►   │ Event   │──►API Call──►   │ Leads   │          │
+│  │  Chat   │              │  .nApp  │                 │Platform │          │
+│  └─────────┘              └─────────┘                 └────┬────┘          │
+│                                                            │               │
+│                                                            ▼               │
+│  4. MATCHING               5. BUSINESS                6. CONVERSION        │
+│  ───────────               ──────────                 ────────────          │
+│  מוצא 3 צלמים              צלם עם יתרה מקבל          צלם יוצר קשר          │
+│  מתאימים באזור             הודעה + פרטי ליד          עם הלקוח              │
+│                                                                             │
+│       │                         │                           │               │
+│       ▼                         ▼                           ▼               │
+│  ┌─────────┐              ┌─────────┐                 ┌─────────┐          │
+│  │   AI    │──►בחירה──►   │Business │──►Contact──►    │  Deal   │          │
+│  │ Match   │              │ Portal  │                 │ Closed  │          │
+│  └─────────┘              └─────────┘                 └─────────┘          │
+│                                                                             │
+│  7. REVENUE                                                                 │
+│  ─────────                                                                  │
+│  חיוב ₪40 מיתרת העסק                                                       │
+│  ₪28 → Event.nApp                                                          │
+│  ₪12 → Platform                                                            │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+# 3️⃣ בסיס נתוני עסקים
+
+## 🎯 האסטרטגיה
+
+```
+┌────────────────────────────────────────────────────────────┐
+│                                                            │
+│  Phase 1: Bootstrap        Phase 2: Scale                 │
+│  ─────────────────         ──────────────                 │
+│  50-100 עסקים ידנית        סריקה + Outreach              │
+│  יחס אישי                  אוטומציה                       │
+│  לימוד מה עובד             Volume                         │
+│                                                            │
+│  Phase 3: Viral                                           │
+│  ──────────────                                           │
+│  עסקים מביאים עסקים                                       │
+│  "הפנה וקבל 3 לידים חינם"                                 │
+│                                                            │
+└────────────────────────────────────────────────────────────┘
+```
+
+## 🔍 מקורות לסריקה
+
+### מקורות ראשיים:
+
+| מקור | מה מקבלים | עלות |
+|:-----|:----------|:-----|
+| **Google Places API** | שם, כתובת, טלפון, אתר, דירוג | $200 חינמי/חודש (~6,000 עסקים) |
+| **Facebook Pages** | עסקים עם עמודים | חינמי (סריקה) |
+| **Instagram Business** | עסקים ויזואליים | חינמי (סריקה) |
+| **דפי זהב (d.co.il)** | מאגר ישראלי | חינמי (סריקה) |
+
+### מקורות סקטוריאליים:
+
+| תחום | אתרים |
+|:-----|:------|
+| חתונות | WeddingMarket, EasyEvent, Storelove |
+| מסעדות | Rest.co.il, 2eat, TripAdvisor |
+| תיירות | Booking, Hotels.co.il |
+| בעלי מקצוע | Drivimo, HomeRepair |
+
+## 📧 תהליך גיוס עסקים
+
+### שלב 1: סריקה
+
+```typescript
+// Google Places API - חיפוש עסקים
+async function scrapeBusinesses(category: string, location: string) {
+  const response = await fetch(
+    `https://maps.googleapis.com/maps/api/place/textsearch/json?` +
+    `query=${encodeURIComponent(category)}+${encodeURIComponent(location)}&` +
+    `key=${GOOGLE_API_KEY}&language=he`
+  );
+  
+  const { results } = await response.json();
+  
+  for (const place of results) {
+    // קבל פרטים נוספים
+    const details = await getPlaceDetails(place.place_id);
+    
+    await db.scraped_businesses.create({
+      data: {
+        google_place_id: place.place_id,
+        name: place.name,
+        address: place.formatted_address,
+        phone: details.formatted_phone_number,
+        website: details.website,
+        email: extractEmailFromWebsite(details.website), // סריקת האתר
+        rating: place.rating,
+        reviews_count: place.user_ratings_total,
+        category: category,
+        location: location,
+        source: 'google_places',
+        status: 'scraped', // ממתין לפנייה
+        scraped_at: new Date()
+      }
+    });
+  }
+}
+```
+
+### שלב 2: שליחת הזמנה
+
+```markdown
+**נושא:** 🎯 לידים חמים לעסק שלך - בלי מאמץ
+
+היי [שם העסק],
+
+אני בונה פלטפורמה שמחברת בין אנשים שמחפשים 
+[קטגוריה] לבין עסקים כמוך.
+
+**איך זה עובד:**
+1. אתה מתאר את העסק שלך (2 דקות)
+2. אנחנו שולחים לך לידים רלוונטיים
+3. אתה משלם רק על לידים שמעניינים אותך
+
+🎁 **5 לידים ראשונים - חינם!**
+
+[כפתור: להצטרפות →]
+
+---
+להסרה מרשימת התפוצה: [לינק]
+```
+
+### שלב 3: רישום פשוט
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 📝 ספר לנו על העסק שלך                                   │
+│                                                            │
+│ שם העסק: [________________]                               │
+│                                                            │
+│ תאר את השירותים שלך בכמה משפטים:                         │
+│ ┌──────────────────────────────────────────────────────┐  │
+│ │                                                      │  │
+│ │  (טקסט חופשי - ה-AI יפרסר)                          │  │
+│ │                                                      │  │
+│ └──────────────────────────────────────────────────────┘  │
+│                                                            │
+│ טלפון: [________________]                                 │
+│ אימייל: [________________]                                │
+│                                                            │
+│ [שלח ותתחיל לקבל לידים 🚀]                               │
+└────────────────────────────────────────────────────────────┘
+```
+
+### שלב 4: AI Parsing
+
+```typescript
+async function parseBusinessDescription(description: string) {
+  const prompt = `
+    נתח את תיאור העסק הבא וחלץ מידע מובנה:
+    
+    "${description}"
+    
+    החזר JSON עם:
+    - categories: רשימת קטגוריות (photography, weddings, events, etc.)
+    - services: רשימת שירותים ספציפיים
+    - areas: אזורים גיאוגרפיים
+    - price_range: { min, max, currency, unit } (אם צוין)
+    - keywords: מילות מפתח לחיפוש
+  `;
+  
+  const response = await llm.complete(prompt);
+  return JSON.parse(response);
+}
+
+// דוגמת Input:
+// "אנחנו סטודיו לצילום אירועים - חתונות, בר מצוות, 
+//  אירועי חברה. מתמחים בסגנון טבעי ודוקומנטרי. 
+//  עובדים בכל אזור המרכז והשרון. 
+//  מחירים: 5,000-15,000 ש"ח לאירוע."
+
+// דוגמת Output:
+{
+  "categories": ["photography", "events", "weddings", "bar_mitzvah", "corporate"],
+  "services": ["צילום חתונות", "צילום בר מצווה", "צילום אירועי חברה"],
+  "areas": ["מרכז", "השרון"],
+  "price_range": { "min": 5000, "max": 15000, "currency": "ILS", "unit": "event" },
+  "keywords": ["צילום", "סטודיו", "טבעי", "דוקומנטרי", "אירועים"]
+}
+```
+
+## 📊 סטטיסטיקות צפויות
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 📈 תחזית גיוס עסקים:                                      │
+│                                                            │
+│ Cold Email Response Rate: 0.5-1%                          │
+│                                                            │
+│ Phase 1 (חודש 1-2):                                       │
+│ • 100 עסקים ידנית → 30-50 נרשמים                         │
+│                                                            │
+│ Phase 2 (חודש 3-6):                                       │
+│ • 10,000 emails → 50-100 נרשמים                          │
+│ • עסקים ממליצים → +50                                    │
+│ • סה"כ: 150-200 עסקים                                    │
+│                                                            │
+│ Phase 3 (חודש 6-12):                                      │
+│ • Viral + Referrals → 500-1,000 עסקים                    │
+└────────────────────────────────────────────────────────────┘
+```
+
+---
+
+# 4️⃣ מודל התשלומים
+
+## 💰 סוגי מודלים
+
+### מודל 1: Prepaid Credits (מומלץ כעיקרי)
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 💳 Prepaid Credits                                        │
+│                                                            │
+│ איך זה עובד:                                              │
+│ 1. עסק מפקיד ₪500                                         │
+│ 2. ליד נכנס ומתאים → נשלח אוטומטית                       │
+│ 3. יתרה יורדת: ₪500 - ₪40 = ₪460                         │
+│ 4. התראה כשיתרה נמוכה                                     │
+│                                                            │
+│ יתרונות:                                                  │
+│ ✅ מסירת ליד מיידית (שניות)                              │
+│ ✅ אין חיכוך בכל ליד                                      │
+│ ✅ העסק מחויב = רציני                                     │
+│ ✅ הכנסה צפויה לפלטפורמה                                  │
+│                                                            │
+│ בונוסים להפקדה:                                           │
+│ • ₪500 → ₪550 (10% בונוס)                                │
+│ • ₪1,000 → ₪1,200 (20% בונוס)                            │
+└────────────────────────────────────────────────────────────┘
+```
+
+### מודל 2: Pay-Per-Lead (משני/גיבוי)
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 💵 Pay-Per-Lead                                           │
+│                                                            │
+│ איך זה עובד:                                              │
+│ 1. ליד נכנס ומתאים                                        │
+│ 2. עסק מקבל הודעה: "יש ליד חדש!"                         │
+│ 3. עסק משלם ₪40 כדי לקבל פרטים                           │
+│ 4. 30 דקות לשלם, אחרת עובר לעסק הבא                      │
+│                                                            │
+│ יתרונות:                                                  │
+│ ✅ גמישות מלאה לעסק                                       │
+│ ✅ אין סיכון להפקדה                                       │
+│                                                            │
+│ חסרונות:                                                  │
+│ ❌ איטי (צריך לחכות לתשלום)                               │
+│ ❌ ליד יכול להתקרר                                        │
+│ ❌ חיכוך בכל פעם                                          │
+│                                                            │
+│ שימוש: לעסקים שמהססים להפקיד                              │
+└────────────────────────────────────────────────────────────┘
+```
+
+### מודל 3: Subscription (אופציונלי)
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 📅 Subscription                                           │
+│                                                            │
+│ Basic: ₪199/חודש                                          │
+│ • 5 לידים כלולים                                          │
+│ • ₪45 לכל ליד נוסף                                       │
+│                                                            │
+│ Business: ₪499/חודש                                       │
+│ • 15 לידים כלולים                                         │
+│ • ₪35 לכל ליד נוסף                                       │
+│ • עדיפות ב-Matching                                       │
+│                                                            │
+│ Premium: ₪999/חודש                                        │
+│ • לידים ללא הגבלה                                         │
+│ • ₪25 לכל ליד                                            │
+│ • בלעדיות באזור                                          │
+│                                                            │
+│ שימוש: לעסקים גדולים עם Volume קבוע                      │
+└────────────────────────────────────────────────────────────┘
+```
+
+## 🔄 מודל Hybrid (המומלץ)
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 🎯 הגישה המשולבת:                                         │
+│                                                            │
+│ עסק חדש:                                                  │
+│ ──────────                                                 │
+│ 1. נרשם → מקבל 3-5 לידים חינם (Trial)                    │
+│ 2. אם מרוצה → בוחר מסלול:                                │
+│    • Prepaid (מומלץ, עם בונוס)                           │
+│    • Pay-per-lead (בלי בונוס)                            │
+│                                                            │
+│ לוגיקת שליחת ליד:                                         │
+│ ────────────────────                                       │
+│ Priority 1: עסקים עם יתרה → ליד נשלח מיידית             │
+│ Priority 2: עסקים בלי יתרה → הצעה לשלם (30 דקות)        │
+│ Priority 3: עסק לא שילם → ליד עובר לבא בתור             │
+│                                                            │
+└────────────────────────────────────────────────────────────┘
+```
+
+## 📋 מדיניות יתרות והחזרים
+
+### תנאי שימוש:
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ ⚖️ מדיניות יתרות:                                         │
+│                                                            │
+│ תוקף היתרה:                                               │
+│ • יתרה תקפה ל-12 חודשים מיום ההפקדה                      │
+│ • התראות: 90, 30, 7 ימים לפני פקיעה                      │
+│                                                            │
+│ לפני פקיעה - אפשרויות:                                    │
+│ • הרחב אזור גיאוגרפי                                      │
+│ • הוסף קטגוריות/שירותים                                   │
+│ • הורד מחיר מקסימלי לליד                                  │
+│ • העבר לעסק אחר באותו חשבון                               │
+│                                                            │
+│ החזר כספי:                                                │
+│ ❌ אין החזר על יתרה שפגה                                  │
+│ ✅ החזר מלא רק ב: תקלה טכנית / סגירת שירות / טעות חיוב  │
+│                                                            │
+│ Premium (תוספת 10%):                                      │
+│ • ערבות: מינימום 5 לידים בשנה                            │
+│ • לא קיבל? החזר מלא על היתרה                             │
+└────────────────────────────────────────────────────────────┘
+```
+
+### התראות אוטומטיות:
+
+```typescript
+// Cron Jobs לניהול יתרות
+
+// 1. התראת יתרה נמוכה
+async function alertLowBalance() {
+  const businesses = await db.businesses.findMany({
+    where: { credit_balance: { lt: 100, gt: 0 } }
+  });
+  
+  for (const biz of businesses) {
+    await sendNotification(biz, {
+      type: 'low_balance',
+      message: `היתרה שלך עומדת על ₪${biz.credit_balance}. הפקד עכשיו וקבל 10% בונוס!`
+    });
+  }
+}
+
+// 2. התראת פקיעה קרבה
+async function alertExpiringBalance() {
+  const threeMonthsFromNow = addMonths(new Date(), 3);
+  
+  const businesses = await db.businesses.findMany({
+    where: {
+      credit_balance: { gt: 0 },
+      balance_expires_at: { lte: threeMonthsFromNow }
+    }
+  });
+  
+  for (const biz of businesses) {
+    const daysLeft = differenceInDays(biz.balance_expires_at, new Date());
+    await sendNotification(biz, {
+      type: 'expiring_balance',
+      message: `היתרה שלך (₪${biz.credit_balance}) תפוג בעוד ${daysLeft} ימים. הרחב קריטריונים או השתמש!`
+    });
+  }
+}
+
+// 3. התראת חוסר פעילות
+async function alertInactiveBusinesses() {
+  const sixtyDaysAgo = subDays(new Date(), 60);
+  
+  const inactive = await db.businesses.findMany({
+    where: {
+      credit_balance: { gt: 0 },
+      last_lead_received_at: { lt: sixtyDaysAgo }
+    }
+  });
+  
+  for (const biz of inactive) {
+    await sendNotification(biz, {
+      type: 'no_leads',
+      message: `לא קיבלת לידים ב-60 הימים האחרונים. הנה טיפים לשיפור...`,
+      suggestions: [
+        'הרחב אזור גיאוגרפי',
+        'הוסף עוד שירותים',
+        'עדכן את תיאור העסק'
+      ]
+    });
+  }
+}
+```
+
+---
+
+# 5️⃣ AI Matching
+
+## 🧠 עקרונות ההתאמה
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 🎯 Matching Algorithm                                     │
+│                                                            │
+│ Input: Lead                                                │
+│ {                                                          │
+│   type: "wedding",                                         │
+│   service: "צלם",                                          │
+│   location: "רעננה",                                       │
+│   date: "2026-06-01",                                      │
+│   budget: "8000",                                          │
+│   notes: "מחפשים סגנון טבעי"                              │
+│ }                                                          │
+│                                                            │
+│ Process:                                                   │
+│ 1. Filter: קטגוריה מתאימה                                 │
+│ 2. Filter: אזור גיאוגרפי                                  │
+│ 3. Filter: טווח מחירים                                    │
+│ 4. Filter: יש יתרה / מוכן לשלם                           │
+│ 5. Rank: Semantic similarity                              │
+│ 6. Rank: דירוג העסק                                       │
+│ 7. Rank: זמינות (לא עמוס בלידים)                         │
+│                                                            │
+│ Output: Top 3 Businesses (sorted by score)                │
+└────────────────────────────────────────────────────────────┘
+```
+
+## 🔍 אלגוריתם מפורט
+
+```typescript
+interface Lead {
+  id: string;
+  partner_id: string;
+  service_type: string;
+  location: string;
+  date?: string;
+  budget?: number;
+  notes?: string;
+  customer_name: string;
+  customer_phone: string;
+  customer_email?: string;
+}
+
+interface MatchResult {
+  business_id: string;
+  score: number;
+  reasons: string[];
+}
+
+async function findMatchingBusinesses(lead: Lead): Promise<MatchResult[]> {
+  
+  // 1. שליפת עסקים פוטנציאליים
+  let candidates = await db.businesses.findMany({
+    where: {
+      status: 'active',
+      credit_balance: { gt: 0 }, // או מוכן ל-pay-per-lead
+      max_leads_per_day: { gt: db.raw('leads_today_count') }
+    }
+  });
+  
+  // 2. Filter לפי קטגוריה
+  candidates = candidates.filter(biz => 
+    biz.categories.some(cat => 
+      isRelatedCategory(cat, lead.service_type)
+    )
+  );
+  
+  // 3. Filter לפי אזור
+  candidates = candidates.filter(biz =>
+    biz.areas.some(area => 
+      isInArea(lead.location, area)
+    )
+  );
+  
+  // 4. Filter לפי מחיר (אם צוין)
+  if (lead.budget) {
+    candidates = candidates.filter(biz =>
+      !biz.price_range || 
+      (biz.price_range.min <= lead.budget && 
+       biz.price_range.max >= lead.budget)
+    );
+  }
+  
+  // 5. Scoring
+  const scored = await Promise.all(
+    candidates.map(async (biz) => {
+      let score = 0;
+      const reasons: string[] = [];
+      
+      // Semantic similarity (0-40 points)
+      if (lead.notes && biz.description) {
+        const similarity = await calculateSimilarity(
+          lead.notes, 
+          biz.description
+        );
+        score += similarity * 40;
+        if (similarity > 0.7) {
+          reasons.push('התאמה גבוהה לדרישות');
+        }
+      }
+      
+      // Rating (0-20 points)
+      if (biz.rating) {
+        score += (biz.rating / 5) * 20;
+        if (biz.rating >= 4.5) {
+          reasons.push('דירוג מעולה');
+        }
+      }
+      
+      // Availability (0-20 points)
+      const leadLoadRatio = biz.leads_today_count / biz.max_leads_per_day;
+      score += (1 - leadLoadRatio) * 20;
+      if (leadLoadRatio < 0.3) {
+        reasons.push('זמינות גבוהה');
+      }
+      
+      // Response rate (0-20 points)
+      if (biz.response_rate) {
+        score += biz.response_rate * 20;
+        if (biz.response_rate > 0.8) {
+          reasons.push('אחוז מענה גבוה');
+        }
+      }
+      
+      return { business_id: biz.id, score, reasons };
+    })
+  );
+  
+  // 6. Sort and return top 3
+  return scored
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3);
+}
+
+// Helper: חישוב Semantic Similarity
+async function calculateSimilarity(text1: string, text2: string): Promise<number> {
+  // Option 1: OpenAI Embeddings
+  const [emb1, emb2] = await Promise.all([
+    getEmbedding(text1),
+    getEmbedding(text2)
+  ]);
+  return cosineSimilarity(emb1, emb2);
+  
+  // Option 2: LLM-based scoring
+  // const response = await llm.complete(`
+  //   Score similarity 0-1 between:
+  //   "${text1}" and "${text2}"
+  // `);
+  // return parseFloat(response);
+}
+```
+
+## 📊 שקיפות ב-Matching
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 🔍 לפני הפקדה - הצג לעסק:                                │
+│                                                            │
+│ "צלמי חתונות באזור השרון"                                │
+│                                                            │
+│ 📊 סטטיסטיקות:                                            │
+│ • ממוצע לידים בחודש: 12                                   │
+│ • עסקים פעילים בקטגוריה: 8                                │
+│ • ליד ממוצע לעסק: 1-2 בחודש                              │
+│                                                            │
+│ ⚠️ קטגוריות עם מעט ביקוש:                                │
+│ • "DJ באילת" - 2 לידים בחודש האחרון                      │
+│ • מומלץ: להרחיב לכל הדרום                                │
+└────────────────────────────────────────────────────────────┘
+```
+
+---
+
+# 6️⃣ Partner API
+
+## 🔌 ממשק לאפליקציות AI
+
+### Authentication:
+
+```typescript
+// כל Partner מקבל API Key
+// Header: Authorization: Bearer {API_KEY}
+```
+
+### Endpoints:
+
+#### POST /api/leads - שליחת ליד
+
+```typescript
+// Request
+POST /api/leads
+{
+  "service_type": "photography",    // סוג שירות
+  "event_type": "wedding",          // סוג אירוע (אופציונלי)
+  "location": "רעננה",              // מיקום
+  "date": "2026-06-01",             // תאריך (אופציונלי)
+  "budget": 8000,                   // תקציב (אופציונלי)
+  "notes": "מחפשים סגנון טבעי",    // הערות (אופציונלי)
+  "customer": {
+    "name": "יוסי כהן",
+    "phone": "050-1234567",
+    "email": "yossi@email.com"      // אופציונלי
+  },
+  "context": {                      // קונטקסט מהשיחה (אופציונלי)
+    "conversation_summary": "...",
+    "preferences": ["טבעי", "לא מבוים"]
+  }
+}
+
+// Response - Success
+{
+  "success": true,
+  "lead_id": "lead_abc123",
+  "matched_businesses": 3,
+  "estimated_revenue": 40,          // הכנסה צפויה ל-Partner
+  "status": "sent"                  // sent / pending / no_match
+}
+
+// Response - No Match
+{
+  "success": true,
+  "lead_id": "lead_abc123",
+  "matched_businesses": 0,
+  "status": "no_match",
+  "reason": "אין עסקים פעילים באזור/קטגוריה"
+}
+```
+
+#### GET /api/leads/{lead_id} - סטטוס ליד
+
+```typescript
+// Response
+{
+  "lead_id": "lead_abc123",
+  "status": "converted",            // pending/sent/viewed/contacted/converted/rejected
+  "created_at": "2026-01-31T10:00:00Z",
+  "business": {
+    "name": "סטודיו אור",           // רק אחרי המרה
+    "contacted_at": "2026-01-31T10:05:00Z"
+  },
+  "revenue": {
+    "lead_price": 40,
+    "partner_share": 28,
+    "status": "paid"                // pending/paid
+  }
+}
+```
+
+#### GET /api/partners/me - פרטי Partner
+
+```typescript
+// Response
+{
+  "partner_id": "partner_xyz",
+  "name": "Event.nApp",
+  "balance": 1250,                  // יתרה לתשלום
+  "stats": {
+    "total_leads": 156,
+    "converted_leads": 89,
+    "conversion_rate": 0.57,
+    "total_revenue": 3920
+  },
+  "this_month": {
+    "leads": 23,
+    "revenue": 644
+  }
+}
+```
+
+#### GET /api/categories - קטגוריות זמינות
+
+```typescript
+// Response
+{
+  "categories": [
+    {
+      "id": "photography",
+      "name": "צילום",
+      "subcategories": ["weddings", "events", "portraits"],
+      "avg_lead_price": 40,
+      "active_businesses": 45
+    },
+    // ...
+  ]
+}
+```
+
+### Webhooks:
+
+```typescript
+// Partner מגדיר webhook_url
+// הפלטפורמה שולחת עדכונים:
+
+// Lead Status Changed
+POST {webhook_url}
+{
+  "event": "lead.status_changed",
+  "lead_id": "lead_abc123",
+  "old_status": "sent",
+  "new_status": "converted",
+  "timestamp": "2026-01-31T10:30:00Z"
+}
+
+// Revenue Credited
+POST {webhook_url}
+{
+  "event": "revenue.credited",
+  "lead_id": "lead_abc123",
+  "amount": 28,
+  "new_balance": 1278,
+  "timestamp": "2026-01-31T10:30:00Z"
+}
+
+// Monthly Payout
+POST {webhook_url}
+{
+  "event": "payout.sent",
+  "amount": 3920,
+  "leads_count": 140,
+  "period": "2026-01",
+  "timestamp": "2026-02-01T00:00:00Z"
+}
+```
+
+---
+
+# 7️⃣ פורטל עסקים
+
+## 📱 ממשק משתמש לעסקים
+
+### Dashboard:
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 🏠 Dashboard - סטודיו אור                                 │
+│                                                            │
+│ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐        │
+│ │   יתרה       │ │ לידים החודש │ │ המרות       │        │
+│ │   ₪460      │ │     8        │ │    5 (62%)  │        │
+│ └──────────────┘ └──────────────┘ └──────────────┘        │
+│                                                            │
+│ 📋 לידים אחרונים:                                         │
+│ ┌──────────────────────────────────────────────────────┐  │
+│ │ 🟢 יוסי כהן | צילום חתונה | רעננה | לפני 2 שעות    │  │
+│ │    תקציב: ₪8,000 | "מחפשים סגנון טבעי"              │  │
+│ │    [📞 התקשר] [📧 שלח מייל] [✅ סומן כטופל]         │  │
+│ ├──────────────────────────────────────────────────────┤  │
+│ │ 🟡 דנה לוי | בר מצווה | הרצליה | לפני יום           │  │
+│ │    תקציב: ₪5,000 | ממתין לתשובה                      │  │
+│ │    [📞 התקשר] [📧 תזכורת]                            │  │
+│ └──────────────────────────────────────────────────────┘  │
+│                                                            │
+│ [➕ הפקד יתרה] [⚙️ הגדרות] [📊 דוחות]                    │
+└────────────────────────────────────────────────────────────┘
+```
+
+### הגדרות עסק:
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ ⚙️ הגדרות - סטודיו אור                                   │
+│                                                            │
+│ 📝 תיאור העסק:                                            │
+│ ┌──────────────────────────────────────────────────────┐  │
+│ │ אנחנו סטודיו לצילום אירועים - חתונות, בר מצוות,    │  │
+│ │ אירועי חברה. מתמחים בסגנון טבעי ודוקומנטרי.        │  │
+│ │ עובדים בכל אזור המרכז והשרון.                       │  │
+│ └──────────────────────────────────────────────────────┘  │
+│ [עדכן תיאור]                                              │
+│                                                            │
+│ 🗺️ אזורי שירות:                                          │
+│ [✓] מרכז  [✓] השרון  [ ] דרום  [ ] צפון  [ ] ירושלים   │
+│                                                            │
+│ 💰 טווח מחירים:                                           │
+│ מינימום: [₪5,000]  מקסימום: [₪15,000]                    │
+│                                                            │
+│ 📊 העדפות לידים:                                          │
+│ מקסימום לידים ביום: [5]                                   │
+│ מחיר מקסימלי לליד: [₪60]                                 │
+│                                                            │
+│ 📱 פרטי קשר:                                              │
+│ טלפון: [054-1234567]                                      │
+│ אימייל: [studio@email.com]                                │
+│ WhatsApp: [✓] קבל הודעות ב-WhatsApp                      │
+│                                                            │
+│ [💾 שמור הגדרות]                                          │
+└────────────────────────────────────────────────────────────┘
+```
+
+### תשלום והפקדה:
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 💳 הפקדת יתרה                                             │
+│                                                            │
+│ יתרה נוכחית: ₪460                                         │
+│ תוקף: עד 15/07/2026 (167 ימים)                           │
+│                                                            │
+│ בחר סכום להפקדה:                                          │
+│                                                            │
+│ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐          │
+│ │    ₪200     │ │    ₪500     │ │   ₪1,000    │          │
+│ │             │ │  +10% בונוס │ │  +20% בונוס │          │
+│ │             │ │   = ₪550    │ │   = ₪1,200  │          │
+│ │   [בחר]     │ │   [בחר]     │ │   [בחר]     │          │
+│ └─────────────┘ └─────────────┘ └─────────────┘          │
+│                                                            │
+│ סכום אחר: [________] ₪                                    │
+│                                                            │
+│ 💳 אמצעי תשלום:                                           │
+│ ○ כרטיס אשראי                                             │
+│ ○ Bit                                                      │
+│ ○ העברה בנקאית                                            │
+│                                                            │
+│ [המשך לתשלום →]                                           │
+│                                                            │
+│ ─────────────────────────────────────────────────────     │
+│ 📜 תנאים: היתרה תקפה 12 חודשים. ראה מדיניות מלאה.       │
+└────────────────────────────────────────────────────────────┘
+```
+
+---
+
+# 8️⃣ Database Schema
+
+## 📊 מבנה בסיס הנתונים
+
+### ERD Diagram:
+
+```
+┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
+│    partners     │       │     leads       │       │   businesses    │
+├─────────────────┤       ├─────────────────┤       ├─────────────────┤
+│ id              │───┐   │ id              │   ┌───│ id              │
+│ name            │   │   │ partner_id      │───┘   │ name            │
+│ api_key         │   └──►│ business_id     │◄──────│ description     │
+│ webhook_url     │       │ status          │       │ categories      │
+│ revenue_share   │       │ customer_*      │       │ areas           │
+│ balance         │       │ service_type    │       │ credit_balance  │
+│ created_at      │       │ location        │       │ status          │
+└─────────────────┘       │ lead_price      │       │ created_at      │
+                          │ partner_share   │       └─────────────────┘
+                          │ created_at      │                │
+                          └─────────────────┘                │
+                                   │                         │
+                                   │                         │
+                          ┌────────┴────────┐       ┌───────┴───────┐
+                          │  lead_events    │       │  transactions │
+                          ├─────────────────┤       ├───────────────┤
+                          │ id              │       │ id            │
+                          │ lead_id         │       │ business_id   │
+                          │ event_type      │       │ type          │
+                          │ metadata        │       │ amount        │
+                          │ created_at      │       │ created_at    │
+                          └─────────────────┘       └───────────────┘
+```
+
+### Tables:
+
+#### partners (אפליקציות AI)
+
+```sql
+CREATE TABLE partners (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name VARCHAR(255) NOT NULL,
+  api_key VARCHAR(255) UNIQUE NOT NULL,
+  api_key_hash VARCHAR(255) NOT NULL,
+  webhook_url VARCHAR(500),
+  revenue_share DECIMAL(3,2) DEFAULT 0.70,  -- 70%
+  balance DECIMAL(10,2) DEFAULT 0,           -- יתרה לתשלום
+  status VARCHAR(20) DEFAULT 'active',       -- active, suspended, inactive
+  contact_email VARCHAR(255),
+  contact_name VARCHAR(255),
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_partners_api_key ON partners(api_key_hash);
+```
+
+#### businesses (עסקים)
+
+```sql
+CREATE TABLE businesses (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  
+  -- פרטי העסק
+  name VARCHAR(255) NOT NULL,
+  description TEXT,                          -- תיאור חופשי
+  categories JSONB DEFAULT '[]',             -- ["photography", "weddings"]
+  services JSONB DEFAULT '[]',               -- ["צילום חתונות", "צילום בר מצווה"]
+  areas JSONB DEFAULT '[]',                  -- ["מרכז", "השרון"]
+  keywords JSONB DEFAULT '[]',               -- מילות מפתח
+  price_range JSONB,                         -- {min, max, currency, unit}
+  
+  -- פרטי קשר
+  phone VARCHAR(20),
+  email VARCHAR(255),
+  website VARCHAR(500),
+  whatsapp_enabled BOOLEAN DEFAULT false,
+  
+  -- יתרות ותשלומים
+  credit_balance DECIMAL(10,2) DEFAULT 0,
+  balance_expires_at TIMESTAMPTZ,
+  payment_model VARCHAR(20) DEFAULT 'prepaid', -- prepaid, pay_per_lead
+  max_lead_price DECIMAL(10,2) DEFAULT 100,
+  
+  -- הגדרות לידים
+  max_leads_per_day INT DEFAULT 10,
+  leads_today_count INT DEFAULT 0,
+  
+  -- סטטיסטיקות
+  total_leads_received INT DEFAULT 0,
+  total_leads_converted INT DEFAULT 0,
+  response_rate DECIMAL(3,2),
+  rating DECIMAL(2,1),
+  reviews_count INT DEFAULT 0,
+  last_lead_received_at TIMESTAMPTZ,
+  
+  -- מקור
+  source VARCHAR(50),                        -- google_places, manual, referral
+  google_place_id VARCHAR(255),
+  scraped_from VARCHAR(500),
+  
+  -- סטטוס
+  status VARCHAR(20) DEFAULT 'pending',      -- pending, active, suspended, inactive
+  verified_at TIMESTAMPTZ,
+  
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_businesses_categories ON businesses USING GIN(categories);
+CREATE INDEX idx_businesses_areas ON businesses USING GIN(areas);
+CREATE INDEX idx_businesses_status ON businesses(status);
+CREATE INDEX idx_businesses_balance ON businesses(credit_balance);
+```
+
+#### leads (לידים)
+
+```sql
+CREATE TABLE leads (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  
+  -- קשרים
+  partner_id UUID REFERENCES partners(id),
+  business_id UUID REFERENCES businesses(id),
+  
+  -- פרטי הליד
+  service_type VARCHAR(100) NOT NULL,
+  event_type VARCHAR(100),
+  location VARCHAR(255),
+  date DATE,
+  budget DECIMAL(10,2),
+  notes TEXT,
+  context JSONB,                             -- קונטקסט מהשיחה
+  
+  -- פרטי הלקוח
+  customer_name VARCHAR(255) NOT NULL,
+  customer_phone VARCHAR(20) NOT NULL,
+  customer_email VARCHAR(255),
+  
+  -- סטטוס
+  status VARCHAR(20) DEFAULT 'pending',      -- pending, sent, viewed, contacted, converted, rejected, expired
+  
+  -- כספים
+  lead_price DECIMAL(10,2),
+  partner_share DECIMAL(10,2),
+  platform_share DECIMAL(10,2),
+  
+  -- מעקב
+  sent_at TIMESTAMPTZ,
+  viewed_at TIMESTAMPTZ,
+  contacted_at TIMESTAMPTZ,
+  converted_at TIMESTAMPTZ,
+  business_feedback TEXT,
+  business_rating INT,                       -- 1-5
+  
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_leads_partner ON leads(partner_id);
+CREATE INDEX idx_leads_business ON leads(business_id);
+CREATE INDEX idx_leads_status ON leads(status);
+CREATE INDEX idx_leads_created ON leads(created_at DESC);
+```
+
+#### lead_events (היסטוריית אירועים)
+
+```sql
+CREATE TABLE lead_events (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  lead_id UUID REFERENCES leads(id),
+  event_type VARCHAR(50) NOT NULL,           -- created, matched, sent, viewed, contacted, converted, rejected
+  actor VARCHAR(20),                         -- system, business, customer
+  metadata JSONB,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_lead_events_lead ON lead_events(lead_id);
+CREATE INDEX idx_lead_events_type ON lead_events(event_type);
+```
+
+#### transactions (עסקאות כספיות)
+
+```sql
+CREATE TABLE transactions (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  
+  -- קשרים
+  business_id UUID REFERENCES businesses(id),
+  partner_id UUID REFERENCES partners(id),
+  lead_id UUID REFERENCES leads(id),
+  
+  -- פרטי העסקה
+  type VARCHAR(30) NOT NULL,                 -- deposit, lead_charge, refund, payout, bonus
+  amount DECIMAL(10,2) NOT NULL,
+  balance_before DECIMAL(10,2),
+  balance_after DECIMAL(10,2),
+  
+  -- תשלום חיצוני
+  payment_provider VARCHAR(50),              -- payplus, tranzila, cardcom, bit
+  payment_reference VARCHAR(255),
+  
+  -- סטטוס
+  status VARCHAR(20) DEFAULT 'completed',    -- pending, completed, failed, refunded
+  
+  description TEXT,
+  metadata JSONB,
+  
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_transactions_business ON transactions(business_id);
+CREATE INDEX idx_transactions_partner ON transactions(partner_id);
+CREATE INDEX idx_transactions_type ON transactions(type);
+```
+
+#### partner_payouts (תשלומים ל-Partners)
+
+```sql
+CREATE TABLE partner_payouts (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  partner_id UUID REFERENCES partners(id),
+  
+  amount DECIMAL(10,2) NOT NULL,
+  leads_count INT NOT NULL,
+  period_start DATE NOT NULL,
+  period_end DATE NOT NULL,
+  
+  status VARCHAR(20) DEFAULT 'pending',      -- pending, processing, paid, failed
+  paid_at TIMESTAMPTZ,
+  payment_method VARCHAR(50),
+  payment_reference VARCHAR(255),
+  
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_payouts_partner ON partner_payouts(partner_id);
+CREATE INDEX idx_payouts_status ON partner_payouts(status);
+```
+
+#### scraped_businesses (עסקים שנסרקו - טרום רישום)
+
+```sql
+CREATE TABLE scraped_businesses (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  
+  -- מידע שנסרק
+  name VARCHAR(255) NOT NULL,
+  address VARCHAR(500),
+  phone VARCHAR(20),
+  email VARCHAR(255),
+  website VARCHAR(500),
+  
+  -- מקור
+  source VARCHAR(50) NOT NULL,               -- google_places, facebook, dapei_zahav
+  source_id VARCHAR(255),                    -- ID במקור
+  source_url VARCHAR(500),
+  
+  -- מידע נוסף
+  category VARCHAR(100),
+  rating DECIMAL(2,1),
+  reviews_count INT,
+  
+  -- סטטוס Outreach
+  outreach_status VARCHAR(20) DEFAULT 'pending', -- pending, sent, responded, converted, unsubscribed
+  outreach_sent_at TIMESTAMPTZ,
+  outreach_response_at TIMESTAMPTZ,
+  
+  scraped_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_scraped_source ON scraped_businesses(source, source_id);
+CREATE INDEX idx_scraped_status ON scraped_businesses(outreach_status);
+```
+
+---
+
+# 9️⃣ ספקי תשלום
+
+## 💳 אינטגרציות ישראליות
+
+### למה לא Stripe?
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ ❌ Stripe לא זמין רשמית בישראל                           │
+│                                                            │
+│ • אין אפשרות לפתוח חשבון ישראלי                          │
+│ • אפשרי רק דרך LLC אמריקאית (מסובך)                      │
+│ • בעיות עם סליקת כרטיסים ישראלים                         │
+└────────────────────────────────────────────────────────────┘
+```
+
+### האלטרנטיבות:
+
+| ספק | יתרונות | עמלות |
+|:----|:--------|:-------|
+| **PayPlus** | API מודרני, תומך Bit, דוקומנטציה טובה | ~₪200 הקמה, ₪50-60/חודש, 1.8% |
+| **Tranzila** | רישיון בנק ישראל, טוקנים, ותיק ויציב | דומה |
+| **CardCom** | תמיכה טכנית מעולה, ספק+מסוף במקום אחד | דומה |
+
+### המלצה: PayPlus (להתחלה)
+
+```typescript
+// PayPlus Integration Example
+
+// 1. יצירת לינק תשלום להפקדה
+async function createDepositLink(businessId: string, amount: number) {
+  const business = await db.businesses.findUnique({ where: { id: businessId }});
+  
+  // חישוב בונוס
+  let bonus = 0;
+  if (amount >= 1000) bonus = amount * 0.20;
+  else if (amount >= 500) bonus = amount * 0.10;
+  
+  const response = await fetch('https://api.payplus.co.il/api/v1.0/PaymentPages/generatePaymentPageLink', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${process.env.PAYPLUS_SECRET_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      payment_page_uid: process.env.PAYPLUS_PAGE_UID,
+      amount: amount,
+      currency: 'ILS',
+      description: `הפקדת יתרה - ${business.name}`,
+      customer: {
+        name: business.name,
+        email: business.email,
+        phone: business.phone
+      },
+      callback_url: `${process.env.API_URL}/webhooks/payplus`,
+      success_url: `${process.env.APP_URL}/business/deposit/success`,
+      failure_url: `${process.env.APP_URL}/business/deposit/failed`,
+      more_info: JSON.stringify({
+        business_id: businessId,
+        amount: amount,
+        bonus: bonus,
+        type: 'deposit'
+      })
+    })
+  });
+  
+  const data = await response.json();
+  return data.data.generated_url;
+}
+
+// 2. Webhook לאישור תשלום
+async function handlePayPlusWebhook(payload: any) {
+  const { transaction_uid, status, more_info } = payload;
+  
+  if (status !== 'approved') return;
+  
+  const info = JSON.parse(more_info);
+  const totalCredit = info.amount + info.bonus;
+  
+  await db.$transaction([
+    // עדכון יתרה
+    db.businesses.update({
+      where: { id: info.business_id },
+      data: {
+        credit_balance: { increment: totalCredit },
+        balance_expires_at: addMonths(new Date(), 12)
+      }
+    }),
+    
+    // רישום עסקה
+    db.transactions.create({
+      data: {
+        business_id: info.business_id,
+        type: 'deposit',
+        amount: info.amount,
+        payment_provider: 'payplus',
+        payment_reference: transaction_uid,
+        description: info.bonus > 0 
+          ? `הפקדה ₪${info.amount} + בונוס ₪${info.bonus}`
+          : `הפקדה ₪${info.amount}`
+      }
+    }),
+    
+    // בונוס כעסקה נפרדת
+    info.bonus > 0 && db.transactions.create({
+      data: {
+        business_id: info.business_id,
+        type: 'bonus',
+        amount: info.bonus,
+        description: `בונוס הפקדה ${info.bonus > info.amount * 0.15 ? '20%' : '10%'}`
+      }
+    })
+  ].filter(Boolean));
+}
+```
+
+### Bit Integration (אופציונלי):
+
+```typescript
+// Bit Business API
+// מאפשר תשלומים מיידיים
+
+async function requestBitPayment(businessId: string, amount: number) {
+  // Bit דורש חשבון עסקי מאומת
+  // API דומה ל-PayPlus
+  
+  const response = await fetch('https://api.bitpay.co.il/v1/payment-request', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${process.env.BIT_API_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      amount,
+      description: 'הפקדת יתרה',
+      callback_url: `${process.env.API_URL}/webhooks/bit`,
+      metadata: { business_id: businessId }
+    })
+  });
+  
+  const { payment_url } = await response.json();
+  return payment_url;
+}
+```
+
+---
+
+# 🔟 מודל עסקי
+
+## 💰 תמחור לידים לפי קטגוריה
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 📊 טבלת מחירים:                                           │
+│                                                            │
+│ קטגוריה          │ מחיר ליד │ Partner (70%) │ Platform   │
+│ ─────────────────┼──────────┼───────────────┼────────────│
+│ אולם אירועים    │   ₪150   │     ₪105      │    ₪45     │
+│ צילום           │   ₪40    │     ₪28       │    ₪12     │
+│ קייטרינג        │   ₪60    │     ₪42       │    ₪18     │
+│ DJ / מוזיקה     │   ₪35    │     ₪24.50    │    ₪10.50  │
+│ מסעדה           │   ₪20    │     ₪14       │    ₪6      │
+│ מלון            │   ₪80    │     ₪56       │    ₪24     │
+│ בעל מקצוע       │   ₪25    │     ₪17.50    │    ₪7.50   │
+│ עורך דין        │   ₪100   │     ₪70       │    ₪30     │
+│ רופא/רפואה      │   ₪80    │     ₪56       │    ₪24     │
+└────────────────────────────────────────────────────────────┘
+```
+
+## 📈 תחזית הכנסות
+
+### שנה ראשונה:
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 📊 תחזית שנה 1:                                           │
+│                                                            │
+│ חודש 1-3: Bootstrap                                       │
+│ • 50 עסקים פעילים                                         │
+│ • 200 לידים/חודש                                          │
+│ • הכנסה: ₪8,000/חודש (Platform share)                    │
+│                                                            │
+│ חודש 4-6: Growth                                          │
+│ • 200 עסקים פעילים                                        │
+│ • 800 לידים/חודש                                          │
+│ • הכנסה: ₪32,000/חודש                                    │
+│                                                            │
+│ חודש 7-12: Scale                                          │
+│ • 500 עסקים פעילים                                        │
+│ • 2,000 לידים/חודש                                        │
+│ • הכנסה: ₪80,000/חודש                                    │
+│                                                            │
+│ סה"כ שנה 1: ~₪500,000                                     │
+└────────────────────────────────────────────────────────────┘
+```
+
+### הוצאות צפויות:
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 💸 הוצאות חודשיות (בשלב Scale):                          │
+│                                                            │
+│ • Hosting (Supabase Pro): $25                             │
+│ • LLM APIs (matching): $100-200                           │
+│ • Email Service: $50                                      │
+│ • SMS/WhatsApp: $100                                      │
+│ • Google Places API: $0 (free tier)                       │
+│ • Payment Processing: ~2% מההכנסות                       │
+│                                                            │
+│ סה"כ: ~₪1,500-2,000/חודש                                 │
+│                                                            │
+│ 📊 Margin: ~97% (בשלב Scale)                              │
+└────────────────────────────────────────────────────────────┘
+```
+
+---
+
+# 1️⃣1️⃣ Roadmap
+
+## 🗓️ תוכנית פיתוח
+
+### Phase 1: Foundation (שבועות 1-4)
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 🏗️ שבוע 1-2: Infrastructure                              │
+│                                                            │
+│ □ Setup Supabase project                                  │
+│ □ Database schema implementation                          │
+│ □ Basic authentication                                    │
+│ □ Partner API skeleton                                    │
+│                                                            │
+│ 🔌 שבוע 3-4: Core Features                               │
+│                                                            │
+│ □ Lead submission endpoint                                │
+│ □ Basic matching algorithm                                │
+│ □ Business registration flow                              │
+│ □ Email notifications                                     │
+│                                                            │
+│ ✅ Milestone: First lead sent manually                    │
+└────────────────────────────────────────────────────────────┘
+```
+
+### Phase 2: MVP (שבועות 5-8)
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 💳 שבוע 5-6: Payments                                     │
+│                                                            │
+│ □ PayPlus integration                                     │
+│ □ Deposit flow                                            │
+│ □ Balance management                                      │
+│ □ Automatic lead charging                                 │
+│                                                            │
+│ 🎯 שבוע 7-8: Matching                                     │
+│                                                            │
+│ □ AI-powered description parsing                          │
+│ □ Semantic search implementation                          │
+│ □ Scoring algorithm                                       │
+│ □ Business preferences                                    │
+│                                                            │
+│ ✅ Milestone: 10 paying businesses, automated flow        │
+└────────────────────────────────────────────────────────────┘
+```
+
+### Phase 3: Scale (שבועות 9-12)
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 🔍 שבוע 9-10: Business Acquisition                       │
+│                                                            │
+│ □ Google Places scraper                                   │
+│ □ Automated outreach system                               │
+│ □ Landing page for businesses                             │
+│ □ Referral program                                        │
+│                                                            │
+│ 📊 שבוע 11-12: Analytics & Optimization                  │
+│                                                            │
+│ □ Business dashboard                                      │
+│ □ Partner dashboard                                       │
+│ □ Admin panel                                             │
+│ □ Reporting system                                        │
+│                                                            │
+│ ✅ Milestone: 100 businesses, 500 leads/month             │
+└────────────────────────────────────────────────────────────┘
+```
+
+### Phase 4: Growth (שבועות 13-16)
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 📱 שבוע 13-14: Enhanced UX                               │
+│                                                            │
+│ □ WhatsApp Business integration                           │
+│ □ Mobile-optimized portal                                 │
+│ □ Real-time notifications                                 │
+│ □ Bit payment option                                      │
+│                                                            │
+│ 🚀 שבוע 15-16: Advanced Features                         │
+│                                                            │
+│ □ Subscription plans                                      │
+│ □ Premium guarantees                                      │
+│ □ Multi-business accounts                                 │
+│ □ API v2 with webhooks                                    │
+│                                                            │
+│ ✅ Milestone: 500 businesses, 2000 leads/month            │
+└────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 📎 נספחים
+
+### נספח א': Environment Variables
+
+```bash
+# Database
+DATABASE_URL=postgresql://...
+SUPABASE_URL=https://xxx.supabase.co
+SUPABASE_ANON_KEY=xxx
+SUPABASE_SERVICE_KEY=xxx
+
+# Payment Providers
+PAYPLUS_API_KEY=xxx
+PAYPLUS_SECRET_KEY=xxx
+PAYPLUS_PAGE_UID=xxx
+
+# LLM
+OPENAI_API_KEY=xxx
+# OR
+GROQ_API_KEY=xxx
+
+# Google
+GOOGLE_PLACES_API_KEY=xxx
+
+# Email
+RESEND_API_KEY=xxx
+
+# SMS/WhatsApp
+TWILIO_ACCOUNT_SID=xxx
+TWILIO_AUTH_TOKEN=xxx
+
+# App
+APP_URL=https://leads-platform.co.il
+API_URL=https://api.leads-platform.co.il
+```
+
+### נספח ב': API Error Codes
+
+| Code | Message | Description |
+|:-----|:--------|:------------|
+| 400 | INVALID_REQUEST | בקשה לא תקינה |
+| 401 | UNAUTHORIZED | API Key לא תקין |
+| 403 | FORBIDDEN | אין הרשאה |
+| 404 | NOT_FOUND | לא נמצא |
+| 409 | DUPLICATE_LEAD | ליד כפול |
+| 422 | NO_MATCH | אין עסקים מתאימים |
+| 429 | RATE_LIMITED | יותר מדי בקשות |
+| 500 | INTERNAL_ERROR | שגיאת שרת |
+
+### נספח ג': Lead Statuses
+
+| Status | Description | Next Statuses |
+|:-------|:------------|:--------------|
+| `pending` | ליד נוצר, ממתין להתאמה | sent, no_match |
+| `sent` | נשלח לעסק | viewed, expired |
+| `viewed` | העסק צפה בפרטים | contacted, expired |
+| `contacted` | העסק יצר קשר | converted, rejected |
+| `converted` | עסקה נסגרה | - |
+| `rejected` | העסק דחה | - |
+| `expired` | פג תוקף | - |
+| `no_match` | אין עסקים מתאימים | - |
+
+---
+
+## 🎯 סיכום
+
+```
+┌────────────────────────────────────────────────────────────┐
+│ 💡 Leads Platform - סיכום                                 │
+│                                                            │
+│ מה בונים:                                                 │
+│ • פלטפורמה לחיבור אפליקציות AI לעסקים מקומיים            │
+│ • מודל הכנסה: 30% מכל ליד                                │
+│                                                            │
+│ איך מגייסים עסקים:                                        │
+│ • סריקת Google Places + Cold Email                       │
+│ • רישום פשוט - רק תיאור טקסטואלי                         │
+│ • AI מפרסר ומתאים לידים                                   │
+│                                                            │
+│ מודל תשלום:                                               │
+│ • Prepaid (עיקרי) - הפקדה + בונוס                        │
+│ • Pay-per-lead (משני) - לסקפטיים                         │
+│ • יתרה תקפה 12 חודשים                                    │
+│                                                            │
+│ ספקי תשלום:                                               │
+│ • PayPlus / Tranzila / CardCom (ישראלי)                  │
+│ • לא Stripe (לא זמין בישראל)                             │
+│                                                            │
+│ יעדים:                                                    │
+│ • שנה 1: 500 עסקים, ₪500K הכנסות                        │
+│ • Margin: ~97%                                            │
+│                                                            │
+│ 🚀 Ready to build!                                        │
+└────────────────────────────────────────────────────────────┘
+```
+
+---
+
+**📅 נוצר:** 31 בינואר 2026
+
+**✍️ גרסה:** 1.0
+
+**🔄 סטטוס:** מוכן לפיתוח
+
+---
+
+*Leads Platform | Connecting AI Apps to Local Businesses*

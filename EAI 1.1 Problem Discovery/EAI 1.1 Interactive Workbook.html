@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חוברת עבודה - קורס 1.1: Problem Discovery</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Heebo', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f5f5f5;
+        }
+        
+        .workbook {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Cover Page */
+        .cover {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #ed8936;
+        }
+        
+        .cover-icon {
+            font-size: 72px;
+            margin-bottom: 20px;
+        }
+        
+        .cover h1 {
+            color: #1a365d;
+            font-size: 36px;
+            margin: 0 0 10px 0;
+        }
+        
+        .cover h2 {
+            color: #ed8936;
+            font-size: 24px;
+            margin: 0 0 10px 0;
+        }
+        
+        .cover .tagline {
+            font-style: italic;
+            color: #888;
+            margin: 20px 0;
+        }
+        
+        /* Action buttons */
+        .action-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #1a365d;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .action-bar button {
+            background: #ed8936;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Heebo', Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        
+        .action-bar button:hover {
+            background: #dd7826;
+        }
+        
+        .action-bar .status {
+            color: #90cdf4;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        body {
+            padding-top: 70px;
+        }
+        
+        /* Highlight box */
+        .highlight-box {
+            background: #e6f3ff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        /* Headings */
+        h1.section {
+            color: #1a365d;
+            font-size: 26px;
+            border-bottom: 3px solid #ed8936;
+            padding-bottom: 10px;
+            margin-top: 50px;
+        }
+        
+        h2 {
+            color: #1a365d;
+            font-size: 20px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: #333;
+            font-size: 18px;
+            margin-top: 25px;
+        }
+        
+        /* Divider */
+        .divider {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 30px 0;
+        }
+        
+        /* Input Fields */
+        .input-field {
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid #ddd;
+            padding: 10px 5px;
+            margin: 8px 0;
+            font-family: 'Heebo', Arial, sans-serif;
+            font-size: 16px;
+            background: transparent;
+            transition: border-color 0.2s;
+            direction: rtl;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-bottom-color: #ed8936;
+        }
+        
+        .input-field::placeholder {
+            color: #aaa;
+        }
+        
+        textarea.input-field {
+            min-height: 80px;
+            resize: vertical;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            padding: 10px;
+        }
+        
+        textarea.input-field:focus {
+            border-color: #ed8936;
+        }
+        
+        /* Checkboxes */
+        .checkbox-group {
+            margin: 10px 0;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            accent-color: #ed8936;
+        }
+        
+        .checkbox-item label {
+            cursor: pointer;
+            flex: 1;
+        }
+        
+        /* Radio buttons */
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+        
+        .radio-item {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .radio-item input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            margin-left: 8px;
+            cursor: pointer;
+            accent-color: #ed8936;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th {
+            background: #1a365d;
+            color: white;
+            padding: 12px 10px;
+            text-align: right;
+            font-weight: 500;
+        }
+        
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: right;
+        }
+        
+        tr:nth-child(even) td {
+            background: #f9f9f9;
+        }
+        
+        .center {
+            text-align: center;
+        }
+        
+        td input[type="checkbox"],
+        td input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #ed8936;
+        }
+        
+        td input[type="text"] {
+            width: 100%;
+            border: none;
+            background: transparent;
+            text-align: center;
+            font-family: 'Heebo', Arial, sans-serif;
+            font-size: 14px;
+        }
+        
+        /* Module Complete */
+        .module-complete {
+            background: linear-gradient(135deg, #e6f3ff, #d4edda);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .module-complete input[type="date"] {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Heebo', Arial, sans-serif;
+        }
+        
+        /* Video instruction */
+        .video-instruction {
+            background: #f5f5f5;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            border-right: 4px solid #ed8936;
+        }
+        
+        /* Example box */
+        .example {
+            background: #e6f3ff;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            margin: 10px 0;
+            border-right: 4px solid #1a365d;
+        }
+        
+        /* Warning box */
+        .warning {
+            background: #fff3cd;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-weight: 500;
+        }
+        
+        /* Success box */
+        .success {
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        /* Final box */
+        .final-box {
+            border: 2px solid #1a365d;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            background: #fafafa;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ed8936;
+            color: #666;
+        }
+        
+        /* Student info */
+        .student-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+        
+        .student-info label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #666;
+        }
+        
+        /* Print styles */
+        @media print {
+            .action-bar {
+                display: none;
+            }
+            body {
+                padding-top: 20px;
+                background: white;
+            }
+            .workbook {
+                box-shadow: none;
+            }
+            .input-field {
+                border-bottom: 1px solid #999;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .workbook {
+                padding: 20px;
+            }
+            .student-info {
+                grid-template-columns: 1fr;
+            }
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="action-bar">
+    <button onclick="saveData()">💾 שמור</button>
+    <button onclick="window.print()">🖨️ הדפס / PDF</button>
+    <button onclick="clearData()">🗑️ נקה הכל</button>
+    <span class="status" id="saveStatus">נשמר אוטומטית ✓</span>
+</div>
+
+<div class="workbook">
+
+<!-- עמוד שער -->
+<div class="cover">
+    <div class="cover-icon">📓</div>
+    <h1>חוברת עבודה</h1>
+    <h2>קורס 1.1: Problem Discovery</h2>
+    <p class="tagline">Enter AI | Entrepreneurship in the AI Age</p>
+    
+    <div class="highlight-box">
+        <strong>💡 נעשה ונשמע:</strong> נמלא את החוברת תוך כדי צפייה בסרטונים ונסיים עם Problem Statement מוכן! 🚀
+    </div>
+    
+    <div class="student-info">
+        <div>
+            <label>שם התלמיד/ה:</label>
+            <input type="text" class="input-field" id="studentName" placeholder="הקלד/י את שמך">
+        </div>
+        <div>
+            <label>תאריך התחלה:</label>
+            <input type="date" class="input-field" id="startDate">
+        </div>
+    </div>
+</div>
+
+<!-- תוכן עניינים -->
+<h1 class="section">📋 תוכן החוברת</h1>
+
+<table>
+    <tr>
+        <th class="center" style="width: 50px;">#</th>
+        <th>נושא</th>
+        <th class="center" style="width: 80px;">זמן</th>
+        <th class="center" style="width: 50px;">✓</th>
+    </tr>
+    <tr>
+        <td class="center">1</td>
+        <td>זיהוי בעיות - מציאת תסכולים ובחירת בעיה</td>
+        <td class="center">10 דק׳</td>
+        <td class="center"><input type="checkbox" id="toc1"></td>
+    </tr>
+    <tr>
+        <td class="center">2</td>
+        <td>FUMES - מה זו בעיה טובה?</td>
+        <td class="center">12 דק׳</td>
+        <td class="center"><input type="checkbox" id="toc2"></td>
+    </tr>
+    <tr>
+        <td class="center">3</td>
+        <td>מקורות - איפה מוצאים בעיות?</td>
+        <td class="center">10 דק׳</td>
+        <td class="center"><input type="checkbox" id="toc3"></td>
+    </tr>
+    <tr>
+        <td class="center">4</td>
+        <td>ניסוח - מבעיה להזדמנות</td>
+        <td class="center">12 דק׳</td>
+        <td class="center"><input type="checkbox" id="toc4"></td>
+    </tr>
+</table>
+
+<div class="highlight-box center">
+    🎯 <strong>תוצר הקורס:</strong> Problem Statement מוכן + ציון FUMES
+</div>
+
+<!-- מודול 1 -->
+<h1 class="section">📝 מודול 1: זיהוי בעיות</h1>
+
+<div class="video-instruction">🎬 צפה בסרטון 1 ואז מלא:</div>
+
+<h2>משימה 1.1: שלושת התסכולים שלי</h2>
+
+<p>חשוב על השבוע האחרון. מה תסכל אותך? כתוב 3 דברים.</p>
+
+<p><strong>כללים:</strong></p>
+<p>✅ משהו שקרה לך אישית<br>
+✅ משהו שחזר על עצמו (לא פעם אחת)<br>
+✅ משהו שגרם לתחושה שלילית אמיתית</p>
+
+<hr class="divider">
+
+<h3>תסכול #1:</h3>
+<p><strong>מה קרה?</strong></p>
+<textarea class="input-field" id="frustration1_what" placeholder="תאר את המצב..."></textarea>
+<p><strong>מתי זה קורה?</strong></p>
+<input type="text" class="input-field" id="frustration1_when" placeholder="כל יום? פעם בשבוע?">
+<p><strong>איך זה גרם לך להרגיש?</strong></p>
+<input type="text" class="input-field" id="frustration1_feel" placeholder="מתוסכל, כועס, חסר אונים...">
+
+<hr class="divider">
+
+<h3>תסכול #2:</h3>
+<p><strong>מה קרה?</strong></p>
+<textarea class="input-field" id="frustration2_what" placeholder="תאר את המצב..."></textarea>
+<p><strong>מתי זה קורה?</strong></p>
+<input type="text" class="input-field" id="frustration2_when" placeholder="כל יום? פעם בשבוע?">
+<p><strong>איך זה גרם לך להרגיש?</strong></p>
+<input type="text" class="input-field" id="frustration2_feel" placeholder="מתוסכל, כועס, חסר אונים...">
+
+<hr class="divider">
+
+<h3>תסכול #3:</h3>
+<p><strong>מה קרה?</strong></p>
+<textarea class="input-field" id="frustration3_what" placeholder="תאר את המצב..."></textarea>
+<p><strong>מתי זה קורה?</strong></p>
+<input type="text" class="input-field" id="frustration3_when" placeholder="כל יום? פעם בשבוע?">
+<p><strong>איך זה גרם לך להרגיש?</strong></p>
+<input type="text" class="input-field" id="frustration3_feel" placeholder="מתוסכל, כועס, חסר אונים...">
+
+<hr class="divider">
+
+<h2>משימה 1.2: בחירת הבעיה</h2>
+<p>מהשלושה שכתבת, בחר אחד:</p>
+
+<table>
+    <tr>
+        <th>שאלה</th>
+        <th class="center">תסכול 1</th>
+        <th class="center">תסכול 2</th>
+        <th class="center">תסכול 3</th>
+    </tr>
+    <tr>
+        <td>קורה הכי הרבה?</td>
+        <td class="center"><input type="checkbox" id="choose_freq_1"></td>
+        <td class="center"><input type="checkbox" id="choose_freq_2"></td>
+        <td class="center"><input type="checkbox" id="choose_freq_3"></td>
+    </tr>
+    <tr>
+        <td>מפריע הכי הרבה?</td>
+        <td class="center"><input type="checkbox" id="choose_bother_1"></td>
+        <td class="center"><input type="checkbox" id="choose_bother_2"></td>
+        <td class="center"><input type="checkbox" id="choose_bother_3"></td>
+    </tr>
+    <tr>
+        <td>הכי רוצה שייפתר?</td>
+        <td class="center"><input type="checkbox" id="choose_want_1"></td>
+        <td class="center"><input type="checkbox" id="choose_want_2"></td>
+        <td class="center"><input type="checkbox" id="choose_want_3"></td>
+    </tr>
+</table>
+
+<p><strong>הבעיה שבחרתי:</strong></p>
+<div class="radio-group">
+    <label class="radio-item"><input type="radio" name="chosenProblem" value="1"> תסכול 1</label>
+    <label class="radio-item"><input type="radio" name="chosenProblem" value="2"> תסכול 2</label>
+    <label class="radio-item"><input type="radio" name="chosenProblem" value="3"> תסכול 3</label>
+</div>
+
+<hr class="divider">
+
+<h2>משימה 1.3: ניסוח ראשוני</h2>
+<p>כתוב את הבעיה שבחרת בפורמט:</p>
+
+<div class="example">
+    "[מי?] מתקשים ל[מה?], מה שגורם ל[תוצאה שלילית]."
+</div>
+
+<p><strong>הניסוח שלי:</strong></p>
+<textarea class="input-field" id="initialStatement" placeholder='דוגמה: "הורים לילדים קטנים מתקשים למצוא בייביסיטר אמין בהתראה קצרה, מה שגורם לביטול תוכניות ולחץ."'></textarea>
+
+<div class="module-complete">
+    <span>✅ סיימתי מודול 1</span>
+    <span>תאריך: <input type="date" id="module1Date"></span>
+</div>
+
+<!-- מודול 2 -->
+<h1 class="section">📝 מודול 2: מה זו בעיה טובה? (FUMES)</h1>
+
+<div class="video-instruction">🎬 צפה בסרטון 2 ואז מלא:</div>
+
+<h2>משימה 2.1: בדיקת FUMES</h2>
+<p>קח את הבעיה שבחרת במודול 1 ובדוק אותה:</p>
+
+<p><strong>הבעיה שלי:</strong></p>
+<input type="text" class="input-field" id="fumesMyProblem" placeholder="העתק את הבעיה שבחרת...">
+
+<hr class="divider">
+
+<h3>F - Frequent (תכופה)</h3>
+<p>כמה פעמים הבעיה קורה?</p>
+<div class="checkbox-group">
+    <label class="checkbox-item"><input type="radio" name="fumes_f" value="green"> כל יום / כל שבוע → ✅</label>
+    <label class="checkbox-item"><input type="radio" name="fumes_f" value="yellow"> כל חודש → 🟡</label>
+    <label class="checkbox-item"><input type="radio" name="fumes_f" value="red"> פעם בשנה / פעם בחיים → ❌</label>
+</div>
+<p><strong>פירוט:</strong></p>
+<input type="text" class="input-field" id="fumes_f_detail" placeholder="הסבר...">
+
+<hr class="divider">
+
+<h3>U - Urgent (דחופה)</h3>
+<p>כמה דחוף לפתור?</p>
+<div class="checkbox-group">
+    <label class="checkbox-item"><input type="radio" name="fumes_u" value="green"> "צריך פתרון עכשיו!" → ✅</label>
+    <label class="checkbox-item"><input type="radio" name="fumes_u" value="yellow"> "היה נחמד אם היה" → 🟡</label>
+    <label class="checkbox-item"><input type="radio" name="fumes_u" value="red"> "לא ממש דחוף" → ❌</label>
+</div>
+<p><strong>פירוט:</strong></p>
+<input type="text" class="input-field" id="fumes_u_detail" placeholder="הסבר...">
+
+<hr class="divider">
+
+<h3>M - Money (כסף)</h3>
+<p>האם אנשים ישלמו על פתרון?</p>
+<div class="checkbox-group">
+    <label class="checkbox-item"><input type="radio" name="fumes_m" value="green"> "בטח! זה שווה לי כסף" → ✅</label>
+    <label class="checkbox-item"><input type="radio" name="fumes_m" value="yellow"> "אולי, אם לא יקר" → 🟡</label>
+    <label class="checkbox-item"><input type="radio" name="fumes_m" value="red"> "יש פתרונות חינם" → ❌</label>
+</div>
+<p><strong>פירוט:</strong></p>
+<input type="text" class="input-field" id="fumes_m_detail" placeholder="הסבר...">
+<p><strong>כמה לדעתך ישלמו?</strong></p>
+<input type="text" class="input-field" id="fumes_m_price" placeholder="₪ ...">
+
+<hr class="divider">
+
+<h3>E - Easy to Find (קל למצוא)</h3>
+<p>האם אפשר למצוא את הלקוחות בקלות?</p>
+<div class="checkbox-group">
+    <label class="checkbox-item"><input type="radio" name="fumes_e" value="green"> יש קבוצות / פורומים / אירועים → ✅</label>
+    <label class="checkbox-item"><input type="radio" name="fumes_e" value="yellow"> צריך לחפש אבל אפשר → 🟡</label>
+    <label class="checkbox-item"><input type="radio" name="fumes_e" value="red"> אין מושג איפה הם → ❌</label>
+</div>
+<p><strong>איפה הלקוחות?</strong></p>
+<input type="text" class="input-field" id="fumes_e_detail" placeholder="קבוצות פייסבוק, אירועים...">
+
+<hr class="divider">
+
+<h3>S - Solvable (פתירה)</h3>
+<p>האם אפשר באמת לפתור?</p>
+<div class="checkbox-group">
+    <label class="checkbox-item"><input type="radio" name="fumes_s" value="green"> כן, עם טכנולוגיה / מוצר → ✅</label>
+    <label class="checkbox-item"><input type="radio" name="fumes_s" value="yellow"> חלקית → 🟡</label>
+    <label class="checkbox-item"><input type="radio" name="fumes_s" value="red"> בעיה של טבע האדם → ❌</label>
+</div>
+<p><strong>איך אפשר לפתור?</strong></p>
+<input type="text" class="input-field" id="fumes_s_detail" placeholder="אפליקציה, שירות, מוצר...">
+
+<hr class="divider">
+
+<h2>משימה 2.2: סיכום FUMES</h2>
+
+<table>
+    <tr>
+        <th>קריטריון</th>
+        <th class="center">✅</th>
+        <th class="center">🟡</th>
+        <th class="center">❌</th>
+    </tr>
+    <tr>
+        <td>F - תכופה</td>
+        <td class="center"><input type="radio" name="summary_f" value="green"></td>
+        <td class="center"><input type="radio" name="summary_f" value="yellow"></td>
+        <td class="center"><input type="radio" name="summary_f" value="red"></td>
+    </tr>
+    <tr>
+        <td>U - דחופה</td>
+        <td class="center"><input type="radio" name="summary_u" value="green"></td>
+        <td class="center"><input type="radio" name="summary_u" value="yellow"></td>
+        <td class="center"><input type="radio" name="summary_u" value="red"></td>
+    </tr>
+    <tr>
+        <td>M - ישלמו</td>
+        <td class="center"><input type="radio" name="summary_m" value="green"></td>
+        <td class="center"><input type="radio" name="summary_m" value="yellow"></td>
+        <td class="center"><input type="radio" name="summary_m" value="red"></td>
+    </tr>
+    <tr>
+        <td>E - קל למצוא</td>
+        <td class="center"><input type="radio" name="summary_e" value="green"></td>
+        <td class="center"><input type="radio" name="summary_e" value="yellow"></td>
+        <td class="center"><input type="radio" name="summary_e" value="red"></td>
+    </tr>
+    <tr>
+        <td>S - פתירה</td>
+        <td class="center"><input type="radio" name="summary_s" value="green"></td>
+        <td class="center"><input type="radio" name="summary_s" value="yellow"></td>
+        <td class="center"><input type="radio" name="summary_s" value="red"></td>
+    </tr>
+</table>
+
+<p><strong>סה״כ ירוקים (✅):</strong> <input type="number" id="greenCount" min="0" max="5" style="width: 50px;"> / 5</p>
+
+<p><strong>הערכה:</strong></p>
+<div class="checkbox-group">
+    <label class="checkbox-item"><input type="radio" name="fumesResult" value="go"> 4-5 ✅ = 🟢 בעיה מעולה! ממשיכים</label>
+    <label class="checkbox-item"><input type="radio" name="fumesResult" value="maybe"> 3 ✅ = 🟡 יש פוטנציאל, לחקור יותר</label>
+    <label class="checkbox-item"><input type="radio" name="fumesResult" value="stop"> 0-2 ✅ = 🔴 כדאי לחשוב על בעיה אחרת</label>
+</div>
+
+<p><strong>ההחלטה שלי:</strong></p>
+<div class="radio-group">
+    <label class="radio-item"><input type="radio" name="fumesDecision" value="continue"> ממשיך עם הבעיה הזו</label>
+    <label class="radio-item"><input type="radio" name="fumesDecision" value="return"> חוזר למודול 1</label>
+</div>
+
+<div class="module-complete">
+    <span>✅ סיימתי מודול 2</span>
+    <span>תאריך: <input type="date" id="module2Date"></span>
+</div>
+
+<!-- מודול 3 -->
+<h1 class="section">📝 מודול 3: איפה מוצאים בעיות?</h1>
+
+<div class="video-instruction">🎬 צפה בסרטון 3 ואז מלא:</div>
+
+<h2>משימה 3.1: תרגול טכניקה</h2>
+<p>בחר טכניקה אחת ועשה אותה עכשיו:</p>
+
+<p><strong>הטכניקה שבחרתי:</strong></p>
+<div class="radio-group">
+    <label class="radio-item"><input type="radio" name="technique" value="journal"> יומן תסכולים (2 דק׳)</label>
+    <label class="radio-item"><input type="radio" name="technique" value="safari"> ספארי דיגיטלי (2 דק׳)</label>
+</div>
+
+<hr class="divider">
+
+<h3>אם בחרת יומן תסכולים:</h3>
+<p>כתוב 3 דברים שתסכלו אותך היום:</p>
+<input type="text" class="input-field" id="journal1" placeholder="1.">
+<input type="text" class="input-field" id="journal2" placeholder="2.">
+<input type="text" class="input-field" id="journal3" placeholder="3.">
+
+<hr class="divider">
+
+<h3>אם בחרת ספארי דיגיטלי:</h3>
+<p><strong>איפה חיפשת?</strong></p>
+<div class="radio-group">
+    <label class="radio-item"><input type="radio" name="safariWhere" value="reddit"> Reddit</label>
+    <label class="radio-item"><input type="radio" name="safariWhere" value="facebook"> Facebook</label>
+    <label class="radio-item"><input type="radio" name="safariWhere" value="other"> אחר</label>
+</div>
+<input type="text" class="input-field" id="safariOther" placeholder="אם אחר - איפה?">
+<p><strong>מה חיפשת?</strong></p>
+<input type="text" class="input-field" id="safariSearch" placeholder="מילות חיפוש...">
+<p><strong>3 בעיות/תלונות שמצאת:</strong></p>
+<input type="text" class="input-field" id="safari1" placeholder="1.">
+<input type="text" class="input-field" id="safari2" placeholder="2.">
+<input type="text" class="input-field" id="safari3" placeholder="3.">
+
+<hr class="divider">
+
+<h2>משימה 3.2: תוכנית לשבוע הקרוב</h2>
+
+<table>
+    <tr>
+        <th>טכניקה</th>
+        <th class="center">אעשה?</th>
+        <th class="center">מתי?</th>
+    </tr>
+    <tr>
+        <td>יומן תסכולים (5 דק׳/יום)</td>
+        <td class="center"><input type="checkbox" id="plan_journal"></td>
+        <td><input type="text" id="plan_journal_when" placeholder="יום/שעה"></td>
+    </tr>
+    <tr>
+        <td>ראיון קפה (20 דק׳)</td>
+        <td class="center"><input type="checkbox" id="plan_coffee"></td>
+        <td><input type="text" id="plan_coffee_when" placeholder="יום/שעה"></td>
+    </tr>
+    <tr>
+        <td>ספארי דיגיטלי (30 דק׳)</td>
+        <td class="center"><input type="checkbox" id="plan_safari"></td>
+        <td><input type="text" id="plan_safari_when" placeholder="יום/שעה"></td>
+    </tr>
+</table>
+
+<div class="module-complete">
+    <span>✅ סיימתי מודול 3</span>
+    <span>תאריך: <input type="date" id="module3Date"></span>
+</div>
+
+<!-- מודול 4 -->
+<h1 class="section">📝 מודול 4: מבעיה להזדמנות</h1>
+
+<div class="video-instruction">🎬 צפה בסרטון 4 ואז מלא:</div>
+
+<h2>משימה 4.1: Problem Statement מושלם</h2>
+
+<hr class="divider">
+
+<h3>1. מי? (קהל יעד ספציפי)</h3>
+<textarea class="input-field" id="ps_who" placeholder="תאר את קהל היעד בפירוט - גיל, מיקום, מצב..."></textarea>
+<div class="example">דוגמה: "זוגות מאורסים בישראל בגילאי 25-35 שמתכננים חתונה בפעם הראשונה"</div>
+
+<hr class="divider">
+
+<h3>2. מה הבעיה? (הכאב)</h3>
+<textarea class="input-field" id="ps_problem" placeholder="מה בדיוק קשה להם?"></textarea>
+<div class="example">דוגמה: "מתקשים לעקוב אחרי 50+ משימות ו-15+ ספקים לאורך 6-12 חודשים"</div>
+
+<hr class="divider">
+
+<h3>3. מה קורה בגלל זה? (ההשלכות)</h3>
+<textarea class="input-field" id="ps_consequence" placeholder="מה התוצאות השליליות?"></textarea>
+<div class="example">דוגמה: "מה שגורם לשכחת פרטים קריטיים, חריגה מתקציב, ולחץ ומתחים בזוגיות"</div>
+
+<hr class="divider">
+
+<h3>4. למה עכשיו? (הדחיפות)</h3>
+<textarea class="input-field" id="ps_urgency" placeholder="למה חשוב לפתור עכשיו?"></textarea>
+<div class="example">דוגמה: "קריטי עכשיו כי עלות חתונה ממוצעת עלתה ל-180K ואין כלי מקומי מותאם"</div>
+
+<hr class="divider">
+
+<h2>משימה 4.2: המשפט המלא</h2>
+
+<div class="example">
+    <strong>פורמט:</strong> "[קהל יעד] מתקשים ל[בעיה], מה שגורם ל[השלכות]. זה קריטי עכשיו כי [דחיפות]."
+</div>
+
+<p><strong>ה-Problem Statement שלי:</strong></p>
+<textarea class="input-field" id="finalStatement" style="min-height: 120px;" placeholder="כתוב את המשפט המלא כאן..."></textarea>
+
+<hr class="divider">
+
+<h2>משימה 4.3: בדיקה עצמית</h2>
+
+<table>
+    <tr>
+        <th>שאלה</th>
+        <th class="center">כן</th>
+        <th class="center">לא</th>
+    </tr>
+    <tr>
+        <td>יש קהל יעד ספציפי? (לא "אנשים")</td>
+        <td class="center"><input type="radio" name="check1" value="yes"></td>
+        <td class="center"><input type="radio" name="check1" value="no"></td>
+    </tr>
+    <tr>
+        <td>יש בעיה ברורה? (לא "קושי כללי")</td>
+        <td class="center"><input type="radio" name="check2" value="yes"></td>
+        <td class="center"><input type="radio" name="check2" value="no"></td>
+    </tr>
+    <tr>
+        <td>יש השלכות מדידות? (כסף/זמן/רגש)</td>
+        <td class="center"><input type="radio" name="check3" value="yes"></td>
+        <td class="center"><input type="radio" name="check3" value="no"></td>
+    </tr>
+    <tr>
+        <td>יש דחיפות מוסברת?</td>
+        <td class="center"><input type="radio" name="check4" value="yes"></td>
+        <td class="center"><input type="radio" name="check4" value="no"></td>
+    </tr>
+    <tr>
+        <td>אני יכול לזהות לקוח ברחוב?</td>
+        <td class="center"><input type="radio" name="check5" value="yes"></td>
+        <td class="center"><input type="radio" name="check5" value="no"></td>
+    </tr>
+</table>
+
+<div class="warning">⚠️ אם יש "לא" - חזור ותקן!</div>
+
+<div class="module-complete">
+    <span>✅ סיימתי מודול 4</span>
+    <span>תאריך: <input type="date" id="module4Date"></span>
+</div>
+
+<!-- סיכום -->
+<h1 class="section">🏆 סיכום ותוצר סופי</h1>
+
+<h2>התוצר שלי מקורס 1.1</h2>
+
+<div class="final-box">
+    <p class="center"><strong>✨ Problem Statement מאושר:</strong></p>
+    <textarea class="input-field" id="approvedStatement" style="min-height: 100px; font-size: 18px;" placeholder="העתק לכאן את ה-Problem Statement הסופי שלך"></textarea>
+</div>
+
+<h3>ציון FUMES סופי:</h3>
+<table>
+    <tr>
+        <th class="center">F</th>
+        <th class="center">U</th>
+        <th class="center">M</th>
+        <th class="center">E</th>
+        <th class="center">S</th>
+        <th class="center">סה״כ</th>
+    </tr>
+    <tr>
+        <td class="center">
+            <select id="final_f">
+                <option value="">-</option>
+                <option value="green">✅</option>
+                <option value="yellow">🟡</option>
+                <option value="red">❌</option>
+            </select>
+        </td>
+        <td class="center">
+            <select id="final_u">
+                <option value="">-</option>
+                <option value="green">✅</option>
+                <option value="yellow">🟡</option>
+                <option value="red">❌</option>
+            </select>
+        </td>
+        <td class="center">
+            <select id="final_m">
+                <option value="">-</option>
+                <option value="green">✅</option>
+                <option value="yellow">🟡</option>
+                <option value="red">❌</option>
+            </select>
+        </td>
+        <td class="center">
+            <select id="final_e">
+                <option value="">-</option>
+                <option value="green">✅</option>
+                <option value="yellow">🟡</option>
+                <option value="red">❌</option>
+            </select>
+        </td>
+        <td class="center">
+            <select id="final_s">
+                <option value="">-</option>
+                <option value="green">✅</option>
+                <option value="yellow">🟡</option>
+                <option value="red">❌</option>
+            </select>
+        </td>
+        <td class="center"><strong><span id="finalScore">0</span>/5</strong></td>
+    </tr>
+</table>
+
+<hr class="divider">
+
+<h2>🎯 המשימה לפני הקורס הבא</h2>
+
+<div class="success">
+    <p><strong>לפני קורס 2.1 (Customer Discovery):</strong></p>
+    <p>לך לדבר עם 3 אנשים מקהל היעד שלך. שאל אותם: "האם גם אתה חווה את הבעיה הזו?"</p>
+</div>
+
+<table>
+    <tr>
+        <th>אדם</th>
+        <th>שם</th>
+        <th class="center">כן</th>
+        <th class="center">לא</th>
+        <th class="center">חלקית</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td><input type="text" id="person1_name" placeholder="שם"></td>
+        <td class="center"><input type="radio" name="person1" value="yes"></td>
+        <td class="center"><input type="radio" name="person1" value="no"></td>
+        <td class="center"><input type="radio" name="person1" value="partial"></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td><input type="text" id="person2_name" placeholder="שם"></td>
+        <td class="center"><input type="radio" name="person2" value="yes"></td>
+        <td class="center"><input type="radio" name="person2" value="no"></td>
+        <td class="center"><input type="radio" name="person2" value="partial"></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td><input type="text" id="person3_name" placeholder="שם"></td>
+        <td class="center"><input type="radio" name="person3" value="yes"></td>
+        <td class="center"><input type="radio" name="person3" value="no"></td>
+        <td class="center"><input type="radio" name="person3" value="partial"></td>
+    </tr>
+</table>
+
+<p><strong>📝 הערות:</strong></p>
+<textarea class="input-field" id="nextStepNotes" placeholder="מה למדת מהשיחות?"></textarea>
+
+<hr class="divider">
+
+<h2>✅ אישור סיום הקורס</h2>
+
+<p><strong>סיימתי את קורס 1.1: Problem Discovery</strong></p>
+
+<div class="checkbox-group">
+    <label class="checkbox-item"><input type="checkbox" id="complete1"> צפיתי בכל 4 הסרטונים</label>
+    <label class="checkbox-item"><input type="checkbox" id="complete2"> מילאתי את כל המשימות</label>
+    <label class="checkbox-item"><input type="checkbox" id="complete3"> יש לי Problem Statement מוכן</label>
+    <label class="checkbox-item"><input type="checkbox" id="complete4"> בדקתי FUMES ויש לי לפחות 3 ירוקים</label>
+</div>
+
+<div class="student-info" style="margin-top: 30px;">
+    <div>
+        <label>חתימה (שם מלא):</label>
+        <input type="text" class="input-field" id="signature">
+    </div>
+    <div>
+        <label>תאריך סיום:</label>
+        <input type="date" class="input-field" id="completionDate">
+    </div>
+</div>
+
+<hr class="divider">
+
+<div class="highlight-box center">
+    <h3 style="margin: 0; color: #1a365d;">🔜 הקורס הבא</h3>
+    <p style="margin: 10px 0 5px 0; color: #ed8936; font-size: 20px;"><strong>קורס 2.1: Customer Discovery</strong></p>
+    <p style="margin: 0;">שיחות גילוי עם לקוחות פוטנציאליים</p>
+</div>
+
+<div class="footer">
+    <p style="font-size: 24px;">🚀 כל הכבוד! עכשיו יש לך בעיה מאומתת.</p>
+    <p>Enter AI | Entrepreneurship in the AI Age</p>
+</div>
+
+</div>
+
+<script>
+// Auto-save functionality
+function saveData() {
+    const inputs = document.querySelectorAll('input, textarea, select');
+    const data = {};
+    
+    inputs.forEach(input => {
+        if (input.id) {
+            if (input.type === 'checkbox') {
+                data[input.id] = input.checked;
+            } else if (input.type === 'radio') {
+                if (input.checked) {
+                    data[input.name] = input.value;
+                }
+            } else {
+                data[input.id] = input.value;
+            }
+        }
+    });
+    
+    localStorage.setItem('workbook_1_1', JSON.stringify(data));
+    
+    const status = document.getElementById('saveStatus');
+    status.textContent = 'נשמר! ✓';
+    setTimeout(() => {
+        status.textContent = 'נשמר אוטומטית ✓';
+    }, 2000);
+}
+
+function loadData() {
+    const saved = localStorage.getItem('workbook_1_1');
+    if (saved) {
+        const data = JSON.parse(saved);
+        
+        Object.keys(data).forEach(key => {
+            const element = document.getElementById(key);
+            if (element) {
+                if (element.type === 'checkbox') {
+                    element.checked = data[key];
+                } else {
+                    element.value = data[key];
+                }
+            } else {
+                // Handle radio buttons
+                const radio = document.querySelector(`input[name="${key}"][value="${data[key]}"]`);
+                if (radio) {
+                    radio.checked = true;
+                }
+            }
+        });
+    }
+}
+
+function clearData() {
+    if (confirm('האם אתה בטוח? כל המידע שמילאת יימחק.')) {
+        localStorage.removeItem('workbook_1_1');
+        location.reload();
+    }
+}
+
+// Calculate FUMES score
+function updateFinalScore() {
+    const selects = ['final_f', 'final_u', 'final_m', 'final_e', 'final_s'];
+    let greenCount = 0;
+    
+    selects.forEach(id => {
+        const select = document.getElementById(id);
+        if (select && select.value === 'green') {
+            greenCount++;
+        }
+    });
+    
+    document.getElementById('finalScore').textContent = greenCount;
+}
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', loadData);
+
+// Auto-save on change
+document.querySelectorAll('input, textarea, select').forEach(element => {
+    element.addEventListener('change', saveData);
+    element.addEventListener('blur', saveData);
+});
+
+// Update FUMES score
+['final_f', 'final_u', 'final_m', 'final_e', 'final_s'].forEach(id => {
+    const select = document.getElementById(id);
+    if (select) {
+        select.addEventListener('change', updateFinalScore);
+    }
+});
+</script>
+
+</body>
+</html>

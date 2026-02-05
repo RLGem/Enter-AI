@@ -1,0 +1,128 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "napp": "Event.nApp",
+    "created": "YYYYMMDD-HH:MM",
+    "last_updated": "YYYYMMDD-HH:MM",
+    "last_session": 0
+  },
+
+  "event": {
+    "id": "",
+    "name": "",
+    "type": null,
+    "date": null,
+    "venue": null,
+    "celebrants": [],
+    "description": ""
+  },
+
+  "current_position": {
+    "stage": "SETUP",
+    "sub_stage": "",
+    "progress_percent": 0,
+    "status": "active"
+  },
+
+  "stages": {
+    "SETUP": {
+      "status": "not_started",
+      "progress": 0,
+      "started": null,
+      "completed": null,
+      "outputs": []
+    },
+    "PLANNING": {
+      "status": "not_started",
+      "progress": 0,
+      "started": null,
+      "completed": null,
+      "outputs": []
+    },
+    "EXECUTION": {
+      "status": "not_started",
+      "progress": 0,
+      "started": null,
+      "completed": null,
+      "outputs": []
+    },
+    "POST_EVENT": {
+      "status": "not_started",
+      "progress": 0,
+      "started": null,
+      "completed": null,
+      "outputs": []
+    }
+  },
+
+  "inputs": {
+    "required": {
+      "event_type": {"value": null, "status": "missing"},
+      "event_date": {"value": null, "status": "missing"},
+      "celebrants": {"value": null, "status": "missing"},
+      "project_manager": {"value": null, "status": "missing"}
+    },
+    "important": {
+      "budget": {
+        "value": null,
+        "is_default": true,
+        "default_reason": "לא צוין",
+        "actor": "system"
+      },
+      "venue": {
+        "value": null,
+        "is_default": true,
+        "default_reason": "לא צוין",
+        "actor": "system"
+      },
+      "guest_count": {
+        "value": null,
+        "is_default": true,
+        "default_reason": "לא צוין",
+        "actor": "system"
+      }
+    },
+    "optional": {
+      "theme": {"value": null, "is_default": true}
+    }
+  },
+
+  "users": [],
+
+  "teams": [],
+
+  "tasks": [],
+
+  "vendors": [],
+
+  "budget": {
+    "total": null,
+    "spent": 0,
+    "by_category": {}
+  },
+
+  "branches": {},
+
+  "decisions": {
+    "explicit": [],
+    "implicit": []
+  },
+
+  "recommendations": {
+    "pending": null,
+    "history": []
+  },
+
+  "outputs": {
+    "completed": [],
+    "in_progress": []
+  },
+
+  "blockers": [],
+
+  "next_action": {
+    "what": "להגדיר תשתית בסיסית",
+    "stage": "SETUP",
+    "priority": "high"
+  }
+}

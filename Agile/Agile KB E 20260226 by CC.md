@@ -26,12 +26,12 @@ The Manifesto states:
 
 > "We are uncovering better ways of developing software by doing it and helping others do it. Through this work we have come to value:"
 
-| # | We Value More | Over | Practical Meaning |
-|:-:|---------------|------|-------------------|
-| 1 | **Individuals and interactions** | Processes and tools | A five-minute conversation between a developer and a PO beats a 20-page spec document. Tools like Azure DevOps support the work — they do not replace human communication. |
-| 2 | **Working software** | Comprehensive documentation | The real measure of progress is software the customer can see, touch, and give feedback on — not the number of documents produced. Document what is necessary, but the test is working code. |
-| 3 | **Customer collaboration** | Contract negotiation | The customer is a partner, not an adversary. They participate in Sprint Reviews every 3 weeks, give feedback, and help steer direction — instead of arguing about what the contract says. |
-| 4 | **Responding to change** | Following a plan | Plans are essential but not sacred. When reality changes — and in software it always does — adapt the plan. A 3-week sprint limits the blast radius of any wrong assumption. |
+| Practical Meaning | Over | We Value More | # |
+|-------------------|------|---------------|:-:|
+| A five-minute conversation between a developer and a PO beats a 20-page spec document. Tools like Azure DevOps support the work — they do not replace human communication. | Processes and tools | **Individuals and interactions** | 1 |
+| The real measure of progress is software the customer can see, touch, and give feedback on — not the number of documents produced. Document what is necessary, but the test is working code. | Comprehensive documentation | **Working software** | 2 |
+| The customer is a partner, not an adversary. They participate in Sprint Reviews every 3 weeks, give feedback, and help steer direction — instead of arguing about what the contract says. | Contract negotiation | **Customer collaboration** | 3 |
+| Plans are essential but not sacred. When reality changes — and in software it always does — adapt the plan. A 3-week sprint limits the blast radius of any wrong assumption. | Following a plan | **Responding to change** | 4 |
 
 **Critical nuance:** The Manifesto says "over," not "instead of." Processes, tools, documentation, contracts, and plans all matter. But when there is tension, the left side takes priority.
 
@@ -39,20 +39,20 @@ The Manifesto states:
 
 Behind the four values stand twelve guiding principles. Below is each principle with a practical example relevant to a software development team working in 3-week sprints.
 
-| # | Principle | Practical Example |
-|:-:|-----------|-------------------|
-| 1 | **Satisfy the customer** through early and continuous delivery of valuable software. | Even in Sprint 1, deliver something the customer can see — a login screen, a basic dashboard. Do not wait six months. |
-| 2 | **Welcome changing requirements**, even late in development. Agile processes harness change for the customer's competitive advantage. | The customer realizes after Sprint 3 that the reporting interface needs rework? Good — update the Backlog, reprioritize, and address it in the next Sprint. |
-| 3 | **Deliver working software frequently**, from a couple of weeks to a couple of months, with a preference for shorter timescales. | Every 3 weeks (our sprint cadence), the team produces a tested, demonstrable Increment. |
-| 4 | **Business people and developers must work together daily** throughout the project. | The PO is available to the team every day — not just at ceremonies. A developer has a question? They ask the PO directly. |
-| 5 | **Build projects around motivated individuals.** Give them the environment and support they need, and **trust them** to get the job done. | The team decides *how* to implement stories — not management or the PO. They receive the "what"; they own the "how." |
-| 6 | The most efficient method of conveying information is **face-to-face conversation** (or the closest equivalent). | When a story is unclear, do not write a long email chain. Walk over, call, or video-chat for two minutes. The Daily Standup is a face-to-face sync, not a written report. |
-| 7 | **Working software is the primary measure of progress.** | Do not measure progress by lines of code, documents completed, or hours logged. Measure by "how many tested, working features were completed this Sprint." |
-| 8 | Agile processes promote **sustainable development**. Everyone should maintain a constant pace indefinitely. | If the team works overtime every Sprint, something is broken. Sprint Planning must match work to real Capacity. Burnout kills Agility. |
-| 9 | Continuous attention to **technical excellence and good design** enhances agility. | Code reviews, automated testing, CI/CD — these are not luxuries. They are what allow the team to change direction quickly without the system collapsing. Technical debt slows you down. |
-| 10 | **Simplicity** — the art of maximizing the amount of work not done — is essential. | Do not build features "just in case." Do not add abstraction layers nobody needs yet. Build the simplest solution that meets the need. YAGNI — You Ain't Gonna Need It. |
-| 11 | The best architectures, requirements, and designs emerge from **self-organizing teams**. | The team collectively decides in Sprint Planning who works on what and how to split tasks — not a manager assigning work top-down. |
-| 12 | At regular intervals, the team **reflects** on how to become more effective, then tunes and adjusts its behavior accordingly. | The Retrospective at the end of every Sprint: What worked? What did not? What will we change? Then — real Action Items, not just "a nice discussion." |
+| Practical Example | Principle | # |
+|-------------------|-----------|:-:|
+| Even in Sprint 1, deliver something the customer can see — a login screen, a basic dashboard. Do not wait six months. | **Satisfy the customer** through early and continuous delivery of valuable software. | 1 |
+| The customer realizes after Sprint 3 that the reporting interface needs rework? Good — update the Backlog, reprioritize, and address it in the next Sprint. | **Welcome changing requirements**, even late in development. Agile processes harness change for the customer's competitive advantage. | 2 |
+| Every 3 weeks (our sprint cadence), the team produces a tested, demonstrable Increment. | **Deliver working software frequently**, from a couple of weeks to a couple of months, with a preference for shorter timescales. | 3 |
+| The PO is available to the team every day — not just at ceremonies. A developer has a question? They ask the PO directly. | **Business people and developers must work together daily** throughout the project. | 4 |
+| The team decides *how* to implement stories — not management or the PO. They receive the "what"; they own the "how." | **Build projects around motivated individuals.** Give them the environment and support they need, and **trust them** to get the job done. | 5 |
+| When a story is unclear, do not write a long email chain. Walk over, call, or video-chat for two minutes. The Daily Standup is a face-to-face sync, not a written report. | The most efficient method of conveying information is **face-to-face conversation** (or the closest equivalent). | 6 |
+| Do not measure progress by lines of code, documents completed, or hours logged. Measure by "how many tested, working features were completed this Sprint." | **Working software is the primary measure of progress.** | 7 |
+| If the team works overtime every Sprint, something is broken. Sprint Planning must match work to real Capacity. Burnout kills Agility. | Agile processes promote **sustainable development**. Everyone should maintain a constant pace indefinitely. | 8 |
+| Code reviews, automated testing, CI/CD — these are not luxuries. They are what allow the team to change direction quickly without the system collapsing. Technical debt slows you down. | Continuous attention to **technical excellence and good design** enhances agility. | 9 |
+| Do not build features "just in case." Do not add abstraction layers nobody needs yet. Build the simplest solution that meets the need. YAGNI — You Ain't Gonna Need It. | **Simplicity** — the art of maximizing the amount of work not done — is essential. | 10 |
+| The team collectively decides in Sprint Planning who works on what and how to split tasks — not a manager assigning work top-down. | The best architectures, requirements, and designs emerge from **self-organizing teams**. | 11 |
+| The Retrospective at the end of every Sprint: What worked? What did not? What will we change? Then — real Action Items, not just "a nice discussion." | At regular intervals, the team **reflects** on how to become more effective, then tunes and adjusts its behavior accordingly. | 12 |
 
 ### 1.1.3 Common Questions — Agile Foundations
 
@@ -73,11 +73,11 @@ A: Yes, but it requires adaptation. See [Section 10.5 — Agile Contracts and Fi
 
 Scrum is founded on **empirical process control theory** (empiricism), asserting that knowledge comes from experience and that decisions should be based on what is observed. Three pillars support empiricism:
 
-| Pillar | Meaning | How It Manifests |
-|--------|---------|-----------------|
-| **Transparency** | All participants see the same reality — what is done, what is in progress, what is blocked. | The Sprint Board in Azure DevOps is visible to everyone. The Daily Standup keeps everyone informed. No surprises. |
-| **Inspection** | Frequently examine progress and artifacts to detect variances. | Sprint Review — inspect the product with the customer. Retrospective — inspect the process with the team. |
-| **Adaptation** | When inspection reveals a deviation, adjust immediately. | After Review — PO updates priorities. After Retro — the team implements improvements. Do not continue doing what is not working. |
+| How It Manifests | Meaning | Pillar |
+|-----------------|---------|--------|
+| The Sprint Board in Azure DevOps is visible to everyone. The Daily Standup keeps everyone informed. No surprises. | All participants see the same reality — what is done, what is in progress, what is blocked. | **Transparency** |
+| Sprint Review — inspect the product with the customer. Retrospective — inspect the process with the team. | Frequently examine progress and artifacts to detect variances. | **Inspection** |
+| After Review — PO updates priorities. After Retro — the team implements improvements. Do not continue doing what is not working. | When inspection reveals a deviation, adjust immediately. | **Adaptation** |
 
 ### Scrum at a Glance
 
@@ -110,26 +110,26 @@ For detailed coverage of each element:
 
 ### Core Practices of Kanban
 
-| Practice | Description |
-|----------|-------------|
-| **Visualize the workflow** | Make all work visible on a board with columns representing stages (e.g., To Do, In Progress, Review, Done). |
-| **Limit Work in Progress (WIP)** | Set explicit limits on how many items can be in each stage simultaneously. This prevents overloading and exposes bottlenecks. |
-| **Manage flow** | Monitor and optimize the flow of work items through the system. Track Cycle Time and Lead Time. |
-| **Make policies explicit** | Write down the rules — what "Done" means, what triggers a pull, how blocked items are handled. |
-| **Implement feedback loops** | Regular standups, delivery reviews, and operations reviews provide feedback at different cadences. |
-| **Improve collaboratively, evolve experimentally** | Use data (metrics) to identify improvements, run small experiments, and evolve the process. |
+| Description | Practice |
+|-------------|----------|
+| Make all work visible on a board with columns representing stages (e.g., To Do, In Progress, Review, Done). | **Visualize the workflow** |
+| Set explicit limits on how many items can be in each stage simultaneously. This prevents overloading and exposes bottlenecks. | **Limit Work in Progress (WIP)** |
+| Monitor and optimize the flow of work items through the system. Track Cycle Time and Lead Time. | **Manage flow** |
+| Write down the rules — what "Done" means, what triggers a pull, how blocked items are handled. | **Make policies explicit** |
+| Regular standups, delivery reviews, and operations reviews provide feedback at different cadences. | **Implement feedback loops** |
+| Use data (metrics) to identify improvements, run small experiments, and evolve the process. | **Improve collaboratively, evolve experimentally** |
 
 ### Kanban vs. Scrum: Key Differences
 
-| Aspect | Scrum | Kanban |
+| Kanban | Scrum | Aspect |
 |--------|-------|--------|
-| **Cadence** | Fixed-length sprints (e.g., 3 weeks) | Continuous flow — no fixed iterations |
-| **Roles** | PO, SM, Dev Team (prescribed) | No prescribed roles |
-| **Planning** | Sprint Planning at start of each sprint | Continuous — pull when ready |
-| **Change policy** | No changes during Sprint | Items can be added/removed anytime |
-| **Commitment** | Sprint Backlog is committed | WIP limits govern flow |
-| **Metrics** | Velocity, Burndown | Cycle Time, Lead Time, Throughput |
-| **Board resets** | Board resets each sprint | Board is persistent |
+| Continuous flow — no fixed iterations | Fixed-length sprints (e.g., 3 weeks) | **Cadence** |
+| No prescribed roles | PO, SM, Dev Team (prescribed) | **Roles** |
+| Continuous — pull when ready | Sprint Planning at start of each sprint | **Planning** |
+| Items can be added/removed anytime | No changes during Sprint | **Change policy** |
+| WIP limits govern flow | Sprint Backlog is committed | **Commitment** |
+| Cycle Time, Lead Time, Throughput | Velocity, Burndown | **Metrics** |
+| Board is persistent | Board resets each sprint | **Board resets** |
 
 ---
 
@@ -137,28 +137,28 @@ For detailed coverage of each element:
 
 Agile draws heavily from **Lean thinking**, originally developed in manufacturing (Toyota Production System). The seven Lean principles applied to software development:
 
-| # | Lean Principle | Agile Application |
-|:-:|----------------|-------------------|
-| 1 | **Eliminate waste** | Remove activities that do not produce value — unnecessary documentation, handoffs, waiting, partially done work, task switching. |
-| 2 | **Amplify learning** | Short iterations, frequent feedback, pair programming, code reviews, retrospectives — all amplify learning. |
-| 3 | **Decide as late as possible** | Defer decisions until the "last responsible moment" when you have the most information. Do not lock in architecture decisions in Sprint 1 that can wait until Sprint 4. |
-| 4 | **Deliver as fast as possible** | Shorter cycle times, smaller batch sizes, continuous delivery. The faster you deliver, the faster you learn. |
-| 5 | **Empower the team** | Trust the people doing the work to make decisions about how to do the work. Avoid micromanagement. |
-| 6 | **Build integrity in** | Quality is not inspected in at the end — it is built in throughout. Automated testing, CI/CD, Definition of Done, code reviews. |
-| 7 | **Optimize the whole** | Optimize for the entire value stream, not local efficiencies. A developer finishing their Task fast does not help if QA is the bottleneck. |
+| Agile Application | Lean Principle | # |
+|-------------------|----------------|:-:|
+| Remove activities that do not produce value — unnecessary documentation, handoffs, waiting, partially done work, task switching. | **Eliminate waste** | 1 |
+| Short iterations, frequent feedback, pair programming, code reviews, retrospectives — all amplify learning. | **Amplify learning** | 2 |
+| Defer decisions until the "last responsible moment" when you have the most information. Do not lock in architecture decisions in Sprint 1 that can wait until Sprint 4. | **Decide as late as possible** | 3 |
+| Shorter cycle times, smaller batch sizes, continuous delivery. The faster you deliver, the faster you learn. | **Deliver as fast as possible** | 4 |
+| Trust the people doing the work to make decisions about how to do the work. Avoid micromanagement. | **Empower the team** | 5 |
+| Quality is not inspected in at the end — it is built in throughout. Automated testing, CI/CD, Definition of Done, code reviews. | **Build integrity in** | 6 |
+| Optimize for the entire value stream, not local efficiencies. A developer finishing their Task fast does not help if QA is the bottleneck. | **Optimize the whole** | 7 |
 
 ---
 
 ## 1.5 When to Use Scrum vs. Kanban vs. Hybrid
 
-| Scenario | Recommended Approach | Why |
-|----------|---------------------|-----|
-| New team starting Agile | **Scrum** | The prescribed roles, events, and timeboxes provide necessary structure for teams learning Agile. |
-| Established team with predictable work | **Kanban** | When work is continuous (e.g., support, maintenance), fixed sprints can feel forced. Kanban's flow-based approach fits better. |
-| Team doing both project work and support | **Hybrid (Scrumban)** | Use Scrum's sprint cadence and planning for project work, while applying Kanban's WIP limits and flow optimization for support/bug work. |
-| Ops/DevOps team | **Kanban** | Operations work is interrupt-driven and unpredictable — Kanban accommodates this naturally. |
-| Team within a larger Scrum organization | **Scrum** (aligned) | Consistency across teams in ceremonies, cadence, and integration points matters for scaling. |
-| **Our context** (software dev, 3-week sprints, Azure DevOps) | **Scrum with Kanban practices** | We use Scrum as our framework (sprints, roles, ceremonies) but apply Kanban practices (WIP limits, board visualization, flow metrics) within sprints. |
+| Why | Recommended Approach | Scenario |
+|-----|---------------------|----------|
+| The prescribed roles, events, and timeboxes provide necessary structure for teams learning Agile. | **Scrum** | New team starting Agile |
+| When work is continuous (e.g., support, maintenance), fixed sprints can feel forced. Kanban's flow-based approach fits better. | **Kanban** | Established team with predictable work |
+| Use Scrum's sprint cadence and planning for project work, while applying Kanban's WIP limits and flow optimization for support/bug work. | **Hybrid (Scrumban)** | Team doing both project work and support |
+| Operations work is interrupt-driven and unpredictable — Kanban accommodates this naturally. | **Kanban** | Ops/DevOps team |
+| Consistency across teams in ceremonies, cadence, and integration points matters for scaling. | **Scrum** (aligned) | Team within a larger Scrum organization |
+| We use Scrum as our framework (sprints, roles, ceremonies) but apply Kanban practices (WIP limits, board visualization, flow metrics) within sprints. | **Scrum with Kanban practices** | **Our context** (software dev, 3-week sprints, Azure DevOps) |
 
 ### What is Scrumban?
 
@@ -181,15 +181,15 @@ This is effectively what most modern Scrum teams practice, including ours.
 
 The Product Owner is **one person** (not a committee) who is responsible for maximizing the value of the product and the work of the Development Team. Key responsibilities:
 
-| Responsibility | What It Means In Practice |
-|----------------|--------------------------|
-| **Own the Product Backlog** | The PO is the single source of truth for what needs to be built. They create, order, and maintain Product Backlog Items (PBIs). |
-| **Define and communicate the Product Goal** | The PO sets the long-term objective for the product and ensures the team understands why they are building what they are building. |
-| **Prioritize ruthlessly** | Using techniques like MoSCoW (Must/Should/Could/Won't) or WSJF (Weighted Shortest Job First), the PO ensures the team always works on the highest-value items first. |
-| **Write or ensure quality User Stories** | Stories must be clear, valuable, and testable. The PO writes them (or works with stakeholders to write them) and ensures they meet the Definition of Ready. [See Section 5] |
-| **Accept or reject work** | At Sprint Review, the PO determines whether each completed item meets the Acceptance Criteria and Definition of Done. |
-| **Be available** | The PO must be accessible to the team daily for questions and clarifications — not just at ceremonies. An absent PO is one of the most damaging anti-patterns. [See Section 9] |
-| **Manage stakeholder expectations** | The PO communicates progress, manages competing demands from stakeholders, and shields the team from external pressure. |
+| What It Means In Practice | Responsibility |
+|--------------------------|----------------|
+| The PO is the single source of truth for what needs to be built. They create, order, and maintain Product Backlog Items (PBIs). | **Own the Product Backlog** |
+| The PO sets the long-term objective for the product and ensures the team understands why they are building what they are building. | **Define and communicate the Product Goal** |
+| Using techniques like MoSCoW (Must/Should/Could/Won't) or WSJF (Weighted Shortest Job First), the PO ensures the team always works on the highest-value items first. | **Prioritize ruthlessly** |
+| Stories must be clear, valuable, and testable. The PO writes them (or works with stakeholders to write them) and ensures they meet the Definition of Ready. [See Section 5] | **Write or ensure quality User Stories** |
+| At Sprint Review, the PO determines whether each completed item meets the Acceptance Criteria and Definition of Done. | **Accept or reject work** |
+| The PO must be accessible to the team daily for questions and clarifications — not just at ceremonies. An absent PO is one of the most damaging anti-patterns. [See Section 9] | **Be available** |
+| The PO communicates progress, manages competing demands from stakeholders, and shields the team from external pressure. | **Manage stakeholder expectations** |
 
 ### 2.1.2 Authority
 
@@ -205,13 +205,13 @@ The PO does **not** have authority over:
 
 ### 2.1.3 Common PO Mistakes
 
-| Mistake | Symptom | Remedy |
-|---------|---------|--------|
-| **Absent PO** | Team waits days for clarification; Stories are interpreted incorrectly; Sprint Review has no meaningful acceptance. | PO must dedicate significant time (minimum 50% for a single team) and be reachable daily. If the PO cannot commit, assign a proxy with real decision-making authority. |
-| **PO as order-taker** | PO simply transcribes stakeholder requests without prioritizing, questioning, or adding context. Backlog becomes a wish list. | PO must understand the product vision and have authority to say "no" or "not yet" to stakeholders. |
-| **PO dictating implementation** | PO tells the team *how* to build, not just *what* to build. Prescribes database schemas, APIs, or architecture. | PO defines the "what" and "why." The team owns the "how." The PO can participate in technical discussions but should not override the team. |
-| **PO writing Stories alone** | Stories lack technical considerations, are ambiguous, or miss edge cases because the PO did not involve the team. | Stories should be refined collaboratively in Backlog Refinement sessions with the team. [See Section 3.4] |
-| **Over-detailed Stories** | Stories read like detailed specification documents with no room for conversation. | A User Story is a placeholder for a conversation, not a contract. Keep Stories concise and use Acceptance Criteria to define scope. [See Section 5] |
+| Remedy | Symptom | Mistake |
+|--------|---------|---------|
+| PO must dedicate significant time (minimum 50% for a single team) and be reachable daily. If the PO cannot commit, assign a proxy with real decision-making authority. | Team waits days for clarification; Stories are interpreted incorrectly; Sprint Review has no meaningful acceptance. | **Absent PO** |
+| PO must understand the product vision and have authority to say "no" or "not yet" to stakeholders. | PO simply transcribes stakeholder requests without prioritizing, questioning, or adding context. Backlog becomes a wish list. | **PO as order-taker** |
+| PO defines the "what" and "why." The team owns the "how." The PO can participate in technical discussions but should not override the team. | PO tells the team *how* to build, not just *what* to build. Prescribes database schemas, APIs, or architecture. | **PO dictating implementation** |
+| Stories should be refined collaboratively in Backlog Refinement sessions with the team. [See Section 3.4] | Stories lack technical considerations, are ambiguous, or miss edge cases because the PO did not involve the team. | **PO writing Stories alone** |
+| A User Story is a placeholder for a conversation, not a contract. Keep Stories concise and use Acceptance Criteria to define scope. [See Section 5] | Stories read like detailed specification documents with no room for conversation. | **Over-detailed Stories** |
 
 ---
 
@@ -229,13 +229,13 @@ The Scrum Master is **not** a project manager, a team secretary, or a police off
 
 ### 2.2.2 Facilitation vs. Management
 
-| Facilitation (SM does this) | Management (SM does NOT do this) |
-|----------------------------|----------------------------------|
-| Guides discussions so all voices are heard | Makes decisions on behalf of the team |
-| Ensures ceremonies stay timeboxed and focused | Assigns tasks to individuals |
-| Asks powerful questions that prompt reflection | Tells people what to do |
-| Creates a safe space for honest feedback | Reports team performance to management |
-| Helps the team self-organize | Serves as a proxy manager or "team lead" |
+| Management (SM does NOT do this) | Facilitation (SM does this) |
+|----------------------------------|----------------------------|
+| Makes decisions on behalf of the team | Guides discussions so all voices are heard |
+| Assigns tasks to individuals | Ensures ceremonies stay timeboxed and focused |
+| Tells people what to do | Asks powerful questions that prompt reflection |
+| Reports team performance to management | Creates a safe space for honest feedback |
+| Serves as a proxy manager or "team lead" | Helps the team self-organize |
 
 ### 2.2.3 Coaching vs. Managing
 
@@ -249,13 +249,13 @@ A coach **asks questions** to help someone find their own answer. A manager **gi
 
 ### 2.2.4 Common SM Mistakes
 
-| Mistake | Symptom | Remedy |
-|---------|---------|--------|
-| **SM = Project Manager** | SM assigns work, tracks hours, creates Gantt charts, reports to management on individual performance. Team stops self-organizing. | SM must step back from command-and-control. Focus on process, not individual task management. |
-| **SM = Secretary** | SM only books meetings, takes notes, and updates the board. No coaching, no improvement, no impediment removal. | SM must actively coach the team, facilitate discussions, and drive process improvement. |
-| **SM = Police** | SM enforces rules rigidly, punishes deviation, and creates fear. Team hides problems instead of surfacing them. | SM should create psychological safety. Rules are guardrails, not prisons. Adapt the process to the team, not the other way around. |
-| **SM does not remove impediments** | Impediments are raised in Daily Standup and then forgotten. The same blockers appear day after day. | SM must own an impediment log, track resolution, and escalate when needed. If an impediment is outside the team's control, escalate to management. |
-| **SM skips Retro or makes it superficial** | No continuous improvement. The team repeats the same mistakes. | Retrospective is the SM's most important ceremony. Prepare it, vary the format, ensure real Action Items, and follow up on them. [See Section 3.6] |
+| Remedy | Symptom | Mistake |
+|--------|---------|---------|
+| SM must step back from command-and-control. Focus on process, not individual task management. | SM assigns work, tracks hours, creates Gantt charts, reports to management on individual performance. Team stops self-organizing. | **SM = Project Manager** |
+| SM must actively coach the team, facilitate discussions, and drive process improvement. | SM only books meetings, takes notes, and updates the board. No coaching, no improvement, no impediment removal. | **SM = Secretary** |
+| SM should create psychological safety. Rules are guardrails, not prisons. Adapt the process to the team, not the other way around. | SM enforces rules rigidly, punishes deviation, and creates fear. Team hides problems instead of surfacing them. | **SM = Police** |
+| SM must own an impediment log, track resolution, and escalate when needed. If an impediment is outside the team's control, escalate to management. | Impediments are raised in Daily Standup and then forgotten. The same blockers appear day after day. | **SM does not remove impediments** |
+| Retrospective is the SM's most important ceremony. Prepare it, vary the format, ensure real Action Items, and follow up on them. [See Section 3.6] | No continuous improvement. The team repeats the same mistakes. | **SM skips Retro or makes it superficial** |
 
 ---
 
@@ -303,13 +303,13 @@ The Scrum Guide recommends **3-9 developers** (not counting PO and SM). The reas
 
 ### 2.3.5 Common Developer Mistakes in Agile
 
-| Mistake | Description | Remedy |
-|---------|-------------|--------|
-| **Cherry-picking** | Always choosing the "fun" or familiar Tasks, leaving difficult or boring ones for others. | During Sprint Planning, distribute work collaboratively. Address the pattern in Retro if it persists. |
-| **Gold plating** | Adding features or polish beyond what the Acceptance Criteria require. | "Done" means the Acceptance Criteria are met and DoD is satisfied — no more, no less. |
-| **Not updating the board** | Tasks stay in "In Progress" for days without updates. The board does not reflect reality. | Update your Task status at least once daily — ideally as soon as status changes. The board must always be the source of truth. |
-| **Working in isolation** | Developer goes silent for days, only to reveal at the Daily that they are stuck or went in the wrong direction. | Raise blockers immediately. Ask for help. The Daily Standup exists precisely for this synchronization. |
-| **Ignoring the Sprint Goal** | Developer focuses on individual Tasks without understanding how they contribute to the Sprint Goal. | Always know the Sprint Goal. If you are unsure how your work connects, ask. |
+| Remedy | Description | Mistake |
+|--------|-------------|---------|
+| During Sprint Planning, distribute work collaboratively. Address the pattern in Retro if it persists. | Always choosing the "fun" or familiar Tasks, leaving difficult or boring ones for others. | **Cherry-picking** |
+| "Done" means the Acceptance Criteria are met and DoD is satisfied — no more, no less. | Adding features or polish beyond what the Acceptance Criteria require. | **Gold plating** |
+| Update your Task status at least once daily — ideally as soon as status changes. The board must always be the source of truth. | Tasks stay in "In Progress" for days without updates. The board does not reflect reality. | **Not updating the board** |
+| Raise blockers immediately. Ask for help. The Daily Standup exists precisely for this synchronization. | Developer goes silent for days, only to reveal at the Daily that they are stuck or went in the wrong direction. | **Working in isolation** |
+| Always know the Sprint Goal. If you are unsure how your work connects, ask. | Developer focuses on individual Tasks without understanding how they contribute to the Sprint Goal. | **Ignoring the Sprint Goal** |
 
 ---
 
@@ -326,12 +326,12 @@ Anyone outside the Scrum Team who has an interest in or is affected by the produ
 
 ### 2.4.2 Engagement Model
 
-| Activity | Stakeholder Role | Frequency |
-|----------|-----------------|-----------|
-| **Sprint Review** | Attend, observe demo, provide feedback | Every 3 weeks |
-| **Backlog input** | Submit requests through the PO | Ongoing |
-| **Priority discussions** | Discuss priorities with the PO (not the team directly) | As needed |
-| **Feedback on delivered features** | Use the software and provide structured feedback | After each Increment |
+| Frequency | Stakeholder Role | Activity |
+|-----------|-----------------|----------|
+| Every 3 weeks | Attend, observe demo, provide feedback | **Sprint Review** |
+| Ongoing | Submit requests through the PO | **Backlog input** |
+| As needed | Discuss priorities with the PO (not the team directly) | **Priority discussions** |
+| After each Increment | Use the software and provide structured feedback | **Feedback on delivered features** |
 
 ### 2.4.3 What Stakeholders Should NOT Do
 
@@ -348,13 +348,13 @@ Anyone outside the Scrum Team who has an interest in or is affected by the produ
 
 In traditional project management, the manager assigns work, tracks progress, and makes decisions. In Agile, this authority is distributed:
 
-| Traditional Manager | Agile Manager |
-|--------------------|---------------|
-| Assigns tasks to individuals | Helps the team self-organize; removes organizational blockers |
-| Tracks hours and utilization | Focuses on outcomes and value delivered |
-| Makes technical decisions | Trusts the team's expertise; provides strategic direction |
-| Reports on individual performance | Creates an environment where the team can succeed |
-| Controls information flow | Promotes transparency and open communication |
+| Agile Manager | Traditional Manager |
+|---------------|--------------------|
+| Helps the team self-organize; removes organizational blockers | Assigns tasks to individuals |
+| Focuses on outcomes and value delivered | Tracks hours and utilization |
+| Trusts the team's expertise; provides strategic direction | Makes technical decisions |
+| Creates an environment where the team can succeed | Reports on individual performance |
+| Promotes transparency and open communication | Controls information flow |
 
 ### 2.5.2 The "Frozen Middle" Problem
 
@@ -381,14 +381,14 @@ One of the biggest obstacles to Agile adoption is the **"frozen middle"** — mi
 
 All Scrum events are **timeboxed** — they have a maximum duration that should not be exceeded. The values below are calibrated for our **3-week Sprint** (standard Scrum Guide values assume 2-week or 1-month sprints; we use 3 weeks, so timeboxes are proportionally adjusted).
 
-| Event | When | Timebox | Participants |
-|-------|------|:-------:|-------------|
-| **Sprint** | Continuous (3 weeks) | 3 weeks | Entire Scrum Team |
-| **Sprint Planning** | Day 1 of Sprint | Up to 4 hours | PO + SM + Dev Team |
-| **Daily Standup** | Every workday | 15 minutes | Dev Team + SM (PO optional) |
-| **Backlog Refinement** | Mid-Sprint (ongoing) | ~1 hour per session, 1-2x/week | PO + SM + Dev Team |
-| **Sprint Review** | Last day of Sprint | Up to 2 hours | PO + SM + Dev Team + Stakeholders |
-| **Sprint Retrospective** | Last day of Sprint (after Review) | Up to 1.5 hours | SM + Dev Team (PO optional, no stakeholders) |
+| Participants | Timebox | When | Event |
+|-------------|:-------:|------|-------|
+| Entire Scrum Team | 3 weeks | Continuous (3 weeks) | **Sprint** |
+| PO + SM + Dev Team | Up to 4 hours | Day 1 of Sprint | **Sprint Planning** |
+| Dev Team + SM (PO optional) | 15 minutes | Every workday | **Daily Standup** |
+| PO + SM + Dev Team | ~1 hour per session, 1-2x/week | Mid-Sprint (ongoing) | **Backlog Refinement** |
+| PO + SM + Dev Team + Stakeholders | Up to 2 hours | Last day of Sprint | **Sprint Review** |
+| SM + Dev Team (PO optional, no stakeholders) | Up to 1.5 hours | Last day of Sprint (after Review) | **Sprint Retrospective** |
 
 ---
 
@@ -400,27 +400,27 @@ A Sprint is a **fixed-length timebox** during which the team creates a "Done," u
 
 ### 3.1.2 Sprint Rules
 
-| Rule | Rationale |
-|------|-----------|
-| **The Sprint Goal does not change** | Once Sprint Planning is complete, the Sprint Goal is fixed. This provides focus and stability. |
-| **Quality standards do not decrease** | The Definition of Done is never relaxed to "fit more in." |
-| **Scope may be clarified and renegotiated** | The PO and Dev Team may clarify scope or negotiate scope if the initial estimate was off — but the Sprint Goal remains stable. |
-| **No external interference** | The team is shielded from ad-hoc requests. If something truly urgent arises, it goes through the PO, who may negotiate scope. |
-| **A Sprint can be cancelled** | Only the PO can cancel a Sprint, and only if the Sprint Goal becomes obsolete. This is extremely rare. |
+| Rationale | Rule |
+|-----------|------|
+| Once Sprint Planning is complete, the Sprint Goal is fixed. This provides focus and stability. | **The Sprint Goal does not change** |
+| The Definition of Done is never relaxed to "fit more in." | **Quality standards do not decrease** |
+| The PO and Dev Team may clarify scope or negotiate scope if the initial estimate was off — but the Sprint Goal remains stable. | **Scope may be clarified and renegotiated** |
+| The team is shielded from ad-hoc requests. If something truly urgent arises, it goes through the PO, who may negotiate scope. | **No external interference** |
+| Only the PO can cancel a Sprint, and only if the Sprint Goal becomes obsolete. This is extremely rare. | **A Sprint can be cancelled** |
 
 ### 3.1.3 Notes for 3-Week Sprints
 
 Standard Scrum describes sprints of 1-4 weeks (most commonly 2 weeks). Our 3-week sprints have specific implications:
 
-| Aspect | 2-Week Sprint | 3-Week Sprint (Ours) | Implication |
-|--------|:------------:|:-------------------:|-------------|
-| Working days | 10 | 15 | 50% more capacity per sprint |
-| Planning timebox | ~2-3 hours | Up to 4 hours | Proportionally longer due to more work to plan |
-| Review timebox | ~1-1.5 hours | Up to 2 hours | More to demo |
-| Retro timebox | ~1 hour | Up to 1.5 hours | More time to reflect on 3 weeks of work |
-| Refinement sessions | 1-2 total | 2-3 total | Need more refinement to keep backlog ready for the larger sprint |
-| Feedback cycle | Every 2 weeks | Every 3 weeks | Slightly longer feedback loop — compensate by being extra diligent about stakeholder communication |
-| Velocity baseline | Points/2 weeks | Points/3 weeks | Do not compare velocity numbers with 2-week-sprint teams without normalizing |
+| Implication | 3-Week Sprint (Ours) | 2-Week Sprint | Aspect |
+|-------------|:-------------------:|:------------:|--------|
+| 50% more capacity per sprint | 15 | 10 | Working days |
+| Proportionally longer due to more work to plan | Up to 4 hours | ~2-3 hours | Planning timebox |
+| More to demo | Up to 2 hours | ~1-1.5 hours | Review timebox |
+| More time to reflect on 3 weeks of work | Up to 1.5 hours | ~1 hour | Retro timebox |
+| Need more refinement to keep backlog ready for the larger sprint | 2-3 total | 1-2 total | Refinement sessions |
+| Slightly longer feedback loop — compensate by being extra diligent about stakeholder communication | Every 3 weeks | Every 2 weeks | Feedback cycle |
+| Do not compare velocity numbers with 2-week-sprint teams without normalizing | Points/3 weeks | Points/2 weeks | Velocity baseline |
 
 ---
 
@@ -436,11 +436,11 @@ The output is the **Sprint Backlog** — the set of Product Backlog Items select
 
 ### 3.2.2 Preparation (Before the Meeting)
 
-| Who | What to Prepare |
-|-----|----------------|
-| **PO** | Product Backlog is ordered by priority. Top items meet the Definition of Ready. PO can articulate the value of each top item. Proposed Sprint Goal is drafted. |
-| **SM** | Room/meeting is set up. Previous Sprint's velocity is known. Team capacity is calculated (accounting for vacations, holidays, meetings). Azure DevOps Sprint is configured. |
-| **Dev Team** | Developers have reviewed the top Backlog items. They come prepared to ask questions and estimate. |
+| What to Prepare | Who |
+|----------------|-----|
+| Product Backlog is ordered by priority. Top items meet the Definition of Ready. PO can articulate the value of each top item. Proposed Sprint Goal is drafted. | **PO** |
+| Room/meeting is set up. Previous Sprint's velocity is known. Team capacity is calculated (accounting for vacations, holidays, meetings). Azure DevOps Sprint is configured. | **SM** |
+| Developers have reviewed the top Backlog items. They come prepared to ask questions and estimate. | **Dev Team** |
 
 ### 3.2.3 Part 1: The "What" (Selecting Stories)
 
@@ -489,23 +489,23 @@ Capacity planning ensures the team does not over-commit or under-commit.
 
 **Example:**
 
-| Team Member | Working Days | Absences | Net Days | Hours/Day | Focus (75%) | Capacity (hrs) |
-|-------------|:-----------:|:--------:|:--------:|:---------:|:-----------:|:--------------:|
-| Dev A       | 15          | 0        | 15       | 8         | 0.75        | 90             |
-| Dev B       | 15          | 2        | 13       | 8         | 0.75        | 78             |
-| Dev C       | 15          | 0        | 15       | 8         | 0.75        | 90             |
-| Dev D       | 15          | 1        | 14       | 8         | 0.75        | 84             |
-| **Total**   |             |          |          |           |             | **342 hrs**    |
+| Capacity (hrs) | Focus (75%) | Hours/Day | Net Days | Absences | Working Days | Team Member |
+|:--------------:|:-----------:|:---------:|:--------:|:--------:|:-----------:|-------------|
+| 90             | 0.75        | 8         | 15       | 0        | 15          | Dev A       |
+| 78             | 0.75        | 8         | 13       | 2        | 15          | Dev B       |
+| 90             | 0.75        | 8         | 15       | 0        | 15          | Dev C       |
+| 84             | 0.75        | 8         | 14       | 1        | 15          | Dev D       |
+| **342 hrs**    |             |           |          |          |             | **Total**   |
 
 ### 3.2.7 Common Sprint Planning Mistakes
 
-| Mistake | Impact | Fix |
-|---------|--------|-----|
-| **Over-commitment** | Team consistently fails to complete all planned work. Morale drops. Trust erodes. | Use historical velocity as the primary guide. Resist the temptation to plan for the "ideal" scenario. |
-| **No Sprint Goal** | Sprint becomes a grab-bag of unrelated items. No focus. Hard to make scope trade-offs. | Always define a Sprint Goal first, then select items that support it. |
-| **PO not prepared** | Stories are vague, poorly ordered, missing Acceptance Criteria. Planning takes too long. | Backlog Refinement must happen *before* Sprint Planning. The top items must meet Definition of Ready. |
-| **Skipping Task breakdown** | Team commits to Stories without understanding the work involved. Estimates are inaccurate. | Always break Stories into Tasks and estimate in hours. This is where hidden complexity is discovered. |
-| **Planning by hours only** | Team ignores Story Points and plans purely by hours. Loses the benefits of relative estimation and velocity. | Use Story Points for sizing (Sprint commitment) and hours for task-level planning (daily tracking). Both serve different purposes. |
+| Fix | Impact | Mistake |
+|-----|--------|---------|
+| Use historical velocity as the primary guide. Resist the temptation to plan for the "ideal" scenario. | Team consistently fails to complete all planned work. Morale drops. Trust erodes. | **Over-commitment** |
+| Always define a Sprint Goal first, then select items that support it. | Sprint becomes a grab-bag of unrelated items. No focus. Hard to make scope trade-offs. | **No Sprint Goal** |
+| Backlog Refinement must happen *before* Sprint Planning. The top items must meet Definition of Ready. | Stories are vague, poorly ordered, missing Acceptance Criteria. Planning takes too long. | **PO not prepared** |
+| Always break Stories into Tasks and estimate in hours. This is where hidden complexity is discovered. | Team commits to Stories without understanding the work involved. Estimates are inaccurate. | **Skipping Task breakdown** |
+| Use Story Points for sizing (Sprint commitment) and hours for task-level planning (daily tracking). Both serve different purposes. | Team ignores Story Points and plans purely by hours. Loses the benefits of relative estimation and velocity. | **Planning by hours only** |
 
 ---
 
@@ -525,14 +525,14 @@ Each team member answers:
 
 ### 3.3.3 Rules
 
-| Rule | Rationale |
-|------|-----------|
-| **15 minutes maximum** | Long standups lose effectiveness. Detailed discussions happen *after* the standup in "parking lot" conversations. |
-| **Same time, same place, every day** | Consistency reduces coordination overhead. |
-| **Standing up** (if in person) | Standing discourages long-winded updates. |
-| **Team talks to team** | Developers address each other, not the SM or PO. It is a peer synchronization, not a report-up. |
-| **No problem-solving** | Identify problems; do not solve them in the standup. Take detailed discussions offline. |
-| **SM facilitates, does not interrogate** | The SM ensures the meeting runs smoothly but does not turn it into an inquisition. |
+| Rationale | Rule |
+|-----------|------|
+| Long standups lose effectiveness. Detailed discussions happen *after* the standup in "parking lot" conversations. | **15 minutes maximum** |
+| Consistency reduces coordination overhead. | **Same time, same place, every day** |
+| Standing discourages long-winded updates. | **Standing up** (if in person) |
+| Developers address each other, not the SM or PO. It is a peer synchronization, not a report-up. | **Team talks to team** |
+| Identify problems; do not solve them in the standup. Take detailed discussions offline. | **No problem-solving** |
+| The SM ensures the meeting runs smoothly but does not turn it into an inquisition. | **SM facilitates, does not interrogate** |
 
 ### 3.3.4 Async Daily Alternatives
 
@@ -548,13 +548,13 @@ For distributed or remote teams, an **asynchronous Daily** can work:
 
 ### 3.3.5 Common Daily Standup Anti-Patterns
 
-| Anti-Pattern | What It Looks Like | Fix |
-|-------------|-------------------|-----|
-| **Status report to the boss** | Team members face the SM or manager, not each other. Updates feel like justification. | SM should physically step back. The Daily is for the team. Management should not attend unless invited by the team. |
-| **Problem-solving session** | Two developers dive into a 10-minute technical discussion while everyone else waits. | Park it: "Great topic — let's discuss right after the standup." |
-| **Monologues** | One person gives a 5-minute update. | Each person gets ~1-2 minutes. SM enforces timebox politely. |
-| **Blame game** | "I couldn't do anything because X didn't deliver." Finger-pointing instead of problem-solving. | Focus on impediments, not blame. The SM addresses systemic issues outside the Daily. |
-| **Skipping the Daily** | Team stops doing Dailies or attendance is spotty. Synchronization breaks down. | Reinforce the value of the Daily. If it is not valuable, fix the format — do not cancel it. |
+| Fix | What It Looks Like | Anti-Pattern |
+|-----|-------------------|-------------|
+| SM should physically step back. The Daily is for the team. Management should not attend unless invited by the team. | Team members face the SM or manager, not each other. Updates feel like justification. | **Status report to the boss** |
+| Park it: "Great topic — let's discuss right after the standup." | Two developers dive into a 10-minute technical discussion while everyone else waits. | **Problem-solving session** |
+| Each person gets ~1-2 minutes. SM enforces timebox politely. | One person gives a 5-minute update. | **Monologues** |
+| Focus on impediments, not blame. The SM addresses systemic issues outside the Daily. | "I couldn't do anything because X didn't deliver." Finger-pointing instead of problem-solving. | **Blame game** |
+| Reinforce the value of the Daily. If it is not valuable, fix the format — do not cancel it. | Team stops doing Dailies or attendance is spotty. Synchronization breaks down. | **Skipping the Daily** |
 
 ---
 
@@ -566,35 +566,35 @@ Backlog Refinement is the **ongoing activity** of preparing Product Backlog Item
 
 ### 3.4.2 What Happens in Refinement
 
-| Activity | Description |
-|----------|-------------|
-| **Clarify Stories** | PO explains the "what" and "why." Team asks questions. Ambiguities are resolved. |
-| **Write/refine Acceptance Criteria** | Define the conditions under which a Story is considered complete. Use Given/When/Then format. [See Section 5] |
-| **Estimate** | Team estimates Stories using Planning Poker (Story Points). [See Section 6] |
-| **Split** | Large Stories (typically 13+ points) are split into smaller, independently valuable Stories. [See Section 5.5] |
-| **Order** | PO re-orders the Backlog based on value, risk, and dependencies. |
-| **Identify dependencies** | Note technical dependencies, cross-team dependencies, or external dependencies. |
+| Description | Activity |
+|-------------|----------|
+| PO explains the "what" and "why." Team asks questions. Ambiguities are resolved. | **Clarify Stories** |
+| Define the conditions under which a Story is considered complete. Use Given/When/Then format. [See Section 5] | **Write/refine Acceptance Criteria** |
+| Team estimates Stories using Planning Poker (Story Points). [See Section 6] | **Estimate** |
+| Large Stories (typically 13+ points) are split into smaller, independently valuable Stories. [See Section 5.5] | **Split** |
+| PO re-orders the Backlog based on value, risk, and dependencies. | **Order** |
+| Note technical dependencies, cross-team dependencies, or external dependencies. | **Identify dependencies** |
 
 ### 3.4.3 Definition of Ready (DoR)
 
 A Story is "Ready" for Sprint Planning when it meets these criteria:
 
-| Criterion | Description |
-|-----------|-------------|
-| **Clear** | The Story is written in a standard format, and all team members understand what it means. |
-| **Estimated** | The Story has a Story Point estimate agreed on by the team. |
-| **Small enough** | The Story can be completed within one Sprint (ideally 1-5 points for a 3-week sprint). |
-| **Acceptance Criteria defined** | Specific, testable criteria are written. |
-| **Dependencies identified** | Any dependencies on other stories, teams, or external factors are known. |
-| **No open questions** | Major questions are resolved. Minor details can be clarified during the Sprint. |
+| Description | Criterion |
+|-------------|-----------|
+| The Story is written in a standard format, and all team members understand what it means. | **Clear** |
+| The Story has a Story Point estimate agreed on by the team. | **Estimated** |
+| The Story can be completed within one Sprint (ideally 1-5 points for a 3-week sprint). | **Small enough** |
+| Specific, testable criteria are written. | **Acceptance Criteria defined** |
+| Any dependencies on other stories, teams, or external factors are known. | **Dependencies identified** |
+| Major questions are resolved. Minor details can be clarified during the Sprint. | **No open questions** |
 
 ### 3.4.4 Refinement Cadence for 3-Week Sprints
 
-| Timing | Recommended Practice |
-|--------|---------------------|
-| **Week 1 of Sprint** | Light refinement — team is focused on current Sprint work. Maybe one 1-hour session. |
-| **Week 2 of Sprint** | Primary refinement — 1-2 sessions of ~1 hour each. Focus on top items for the *next* Sprint. |
-| **Week 3 of Sprint** | Final refinement polish — ensure top items meet DoR before Sprint Planning. Short session (30-60 min) if needed. |
+| Recommended Practice | Timing |
+|---------------------|--------|
+| Light refinement — team is focused on current Sprint work. Maybe one 1-hour session. | **Week 1 of Sprint** |
+| Primary refinement — 1-2 sessions of ~1 hour each. Focus on top items for the *next* Sprint. | **Week 2 of Sprint** |
+| Final refinement polish — ensure top items meet DoR before Sprint Planning. Short session (30-60 min) if needed. | **Week 3 of Sprint** |
 
 **Rule of thumb:** The team should spend about **10% of its Sprint capacity** on refinement. For a 3-week Sprint, that is roughly 6 hours total (spread across 2-3 sessions).
 
@@ -612,13 +612,13 @@ The Sprint Review is an **inspection of the Increment** combined with **collabor
 
 ### 3.5.2 Who Attends
 
-| Role | Attendance | Role in the Meeting |
-|------|:----------:|-------------------|
-| PO | Required | Opens the meeting, presents Sprint Goal and results, accepts/rejects work |
-| SM | Required | Facilitates the meeting, keeps it timeboxed |
-| Dev Team | Required | Demos the completed work |
-| Stakeholders/Clients | Invited | Observe, ask questions, provide feedback |
-| Management | Invited | Observe, understand progress |
+| Role in the Meeting | Attendance | Role |
+|-------------------|:----------:|------|
+| Opens the meeting, presents Sprint Goal and results, accepts/rejects work | Required | PO |
+| Facilitates the meeting, keeps it timeboxed | Required | SM |
+| Demos the completed work | Required | Dev Team |
+| Observe, ask questions, provide feedback | Invited | Stakeholders/Clients |
+| Observe, understand progress | Invited | Management |
 
 ### 3.5.3 Meeting Structure
 
@@ -638,13 +638,13 @@ The Sprint Review is an **inspection of the Increment** combined with **collabor
 
 ### 3.5.5 Common Sprint Review Anti-Patterns
 
-| Anti-Pattern | Fix |
-|-------------|-----|
-| **PowerPoint instead of live demo** | Always demonstrate working software. If the feature is a backend API, demonstrate it through a test or tool (Postman, Swagger). |
-| **No stakeholders attend** | Actively invite stakeholders. Make the Review valuable for them. If they never come, discuss why — maybe the cadence, timing, or content needs adjustment. |
-| **Demoing unfinished work** | Only demo items that meet DoD. If something is 90% done, it is not done. |
-| **No feedback collected** | Explicitly ask for feedback. Use prompting questions: "What do you think?" "Is this what you expected?" "What would you change?" |
-| **Review turns into a blame session** | Focus on the product, not the people. The SM protects the tone. |
+| Fix | Anti-Pattern |
+|-----|-------------|
+| Always demonstrate working software. If the feature is a backend API, demonstrate it through a test or tool (Postman, Swagger). | **PowerPoint instead of live demo** |
+| Actively invite stakeholders. Make the Review valuable for them. If they never come, discuss why — maybe the cadence, timing, or content needs adjustment. | **No stakeholders attend** |
+| Only demo items that meet DoD. If something is 90% done, it is not done. | **Demoing unfinished work** |
+| Explicitly ask for feedback. Use prompting questions: "What do you think?" "Is this what you expected?" "What would you change?" | **No feedback collected** |
+| Focus on the product, not the people. The SM protects the tone. | **Review turns into a blame session** |
 
 ---
 
@@ -665,11 +665,11 @@ The Retrospective is the team's opportunity to **inspect itself** — its proces
 Vary the format regularly to keep Retros fresh and effective.
 
 **Format 1: Start / Stop / Continue**
-| Category | Question |
+| Question | Category |
 |----------|----------|
-| **Start** | What should we start doing that we are not doing now? |
-| **Stop** | What should we stop doing because it is not working? |
-| **Continue** | What is working well that we should keep doing? |
+| What should we start doing that we are not doing now? | **Start** |
+| What should we stop doing because it is not working? | **Stop** |
+| What is working well that we should keep doing? | **Continue** |
 
 **Format 2: Sailboat**
 ```
@@ -681,19 +681,19 @@ Vary the format regularly to keep Retros fresh and effective.
 ```
 
 **Format 3: 4L**
-| Category | Question |
+| Question | Category |
 |----------|----------|
-| **Liked** | What did you enjoy this Sprint? |
-| **Learned** | What did you learn? |
-| **Lacked** | What was missing? |
-| **Longed For** | What do you wish you had? |
+| What did you enjoy this Sprint? | **Liked** |
+| What did you learn? | **Learned** |
+| What was missing? | **Lacked** |
+| What do you wish you had? | **Longed For** |
 
 **Format 4: Mad / Sad / Glad**
-| Category | Prompt |
-|----------|--------|
-| **Mad** | What frustrated you this Sprint? |
-| **Sad** | What disappointed you? |
-| **Glad** | What made you happy? |
+| Prompt | Category |
+|--------|----------|
+| What frustrated you this Sprint? | **Mad** |
+| What disappointed you? | **Sad** |
+| What made you happy? | **Glad** |
 
 ### 3.6.4 Running a Retro — Step by Step
 
@@ -708,13 +708,13 @@ Vary the format regularly to keep Retros fresh and effective.
 
 A Retro without Action Items is just a venting session. Action Items must be:
 
-| Property | Description | Example |
-|----------|-------------|---------|
-| **Specific** | Clearly defined action | "Add code review as a step in the DoD" — not "improve code quality" |
-| **Owned** | One person is responsible for driving it | "SM will update the DoD by Wednesday" |
-| **Time-bound** | Has a deadline | "Before next Sprint Planning" |
-| **Tracked** | Written down and reviewed | Add to the Sprint Backlog or a dedicated improvement backlog |
-| **Reviewed** | Checked at the next Retro | First agenda item of next Retro: "How did our Action Items go?" |
+| Example | Description | Property |
+|---------|-------------|----------|
+| "Add code review as a step in the DoD" — not "improve code quality" | Clearly defined action | **Specific** |
+| "SM will update the DoD by Wednesday" | One person is responsible for driving it | **Owned** |
+| "Before next Sprint Planning" | Has a deadline | **Time-bound** |
+| Add to the Sprint Backlog or a dedicated improvement backlog | Written down and reviewed | **Tracked** |
+| First agenda item of next Retro: "How did our Action Items go?" | Checked at the next Retro | **Reviewed** |
 
 ### 3.6.6 Psychological Safety
 
@@ -733,13 +733,13 @@ The Retro only works if people feel safe to speak honestly. Signs of poor psycho
 
 ### 3.6.7 Common Retro Anti-Patterns
 
-| Anti-Pattern | Fix |
-|-------------|-----|
-| **No Action Items** | Every Retro must produce at least 1-2 concrete Action Items. If the team cannot decide, vote and take the top item. |
-| **Same issues every Sprint** | If an issue keeps recurring, the fix is not working. Dig deeper into root causes. Consider bringing it to management if it is outside the team's control. |
-| **Blame game** | Reinforce the Prime Directive. Focus on processes and systems, not individuals. |
-| **Boring/repetitive format** | Rotate between at least 3-4 formats. Surprise the team occasionally. |
-| **Skipping the Retro** | Never skip the Retro. It is the engine of continuous improvement. If time is short, do a mini-Retro (30 min) — but always do it. |
+| Fix | Anti-Pattern |
+|-----|-------------|
+| Every Retro must produce at least 1-2 concrete Action Items. If the team cannot decide, vote and take the top item. | **No Action Items** |
+| If an issue keeps recurring, the fix is not working. Dig deeper into root causes. Consider bringing it to management if it is outside the team's control. | **Same issues every Sprint** |
+| Reinforce the Prime Directive. Focus on processes and systems, not individuals. | **Blame game** |
+| Rotate between at least 3-4 formats. Surprise the team occasionally. | **Boring/repetitive format** |
+| Never skip the Retro. It is the engine of continuous improvement. If time is short, do a mini-Retro (30 min) — but always do it. | **Skipping the Retro** |
 
 ---
 
@@ -760,12 +760,12 @@ The Product Backlog is the **single, ordered list of everything** that is needed
 
 A healthy Product Backlog exhibits the **DEEP** properties:
 
-| Property | Meaning |
-|----------|---------|
-| **D**etailed appropriately | Items at the top are detailed and refined (ready for the next Sprint). Items lower in the backlog are less detailed — that is fine, they will be refined later. |
-| **E**stimated | Items have relative size estimates (Story Points). Top items have more precise estimates. |
-| **E**mergent | The Backlog is not static. Items are added, removed, split, re-ordered, and refined continuously. |
-| **P**rioritized (ordered) | Items are in a single, sequential order reflecting business value, risk, and dependencies. |
+| Meaning | Property |
+|---------|----------|
+| Items at the top are detailed and refined (ready for the next Sprint). Items lower in the backlog are less detailed — that is fine, they will be refined later. | **D**etailed appropriately |
+| Items have relative size estimates (Story Points). Top items have more precise estimates. | **E**stimated |
+| The Backlog is not static. Items are added, removed, split, re-ordered, and refined continuously. | **E**mergent |
+| Items are in a single, sequential order reflecting business value, risk, and dependencies. | **P**rioritized (ordered) |
 
 ### 4.1.3 Backlog Item Types (Azure DevOps Hierarchy)
 
@@ -777,26 +777,26 @@ Epic (large body of work — e.g., "User Management Module")
                     └── Bug (a defect — can be linked at any level)
 ```
 
-| Item Type | Scope | Typical Size | Who Creates |
-|-----------|-------|:------------:|:-----------:|
-| **Epic** | Large strategic initiative spanning multiple sprints | Months of work | PO + Stakeholders |
-| **Feature** | Distinct capability within an Epic | 1-3 sprints | PO |
-| **User Story** | Single, user-facing behavior | 1-8 Story Points (fits in 1 sprint) | PO + Team |
-| **Task** | Developer work unit within a Story | Hours (2-16 hrs typically) | Dev Team |
-| **Bug** | Defect or unexpected behavior | Variable | Anyone (usually Dev Team or QA) |
+| Who Creates | Typical Size | Scope | Item Type |
+|:-----------:|:------------:|-------|-----------|
+| PO + Stakeholders | Months of work | Large strategic initiative spanning multiple sprints | **Epic** |
+| PO | 1-3 sprints | Distinct capability within an Epic | **Feature** |
+| PO + Team | 1-8 Story Points (fits in 1 sprint) | Single, user-facing behavior | **User Story** |
+| Dev Team | Hours (2-16 hrs typically) | Developer work unit within a Story | **Task** |
+| Anyone (usually Dev Team or QA) | Variable | Defect or unexpected behavior | **Bug** |
 
 ### 4.1.4 Backlog Ordering Principles
 
 The PO orders the Backlog considering:
 
-| Factor | Description |
-|--------|-------------|
-| **Business value** | Higher value = higher priority. What delivers the most impact to users or the business? |
-| **Risk** | High-risk items should be addressed early to reduce uncertainty (fail fast). |
-| **Dependencies** | If Story B depends on Story A, Story A must come first. |
-| **Effort** | Sometimes a "quick win" (high value, low effort) should be pulled up. |
-| **Stakeholder input** | Feedback from Sprint Reviews and stakeholder conversations informs ordering. |
-| **Technical debt** | Some capacity should always be reserved for addressing technical debt. [See Section 10.3] |
+| Description | Factor |
+|-------------|--------|
+| Higher value = higher priority. What delivers the most impact to users or the business? | **Business value** |
+| High-risk items should be addressed early to reduce uncertainty (fail fast). | **Risk** |
+| If Story B depends on Story A, Story A must come first. | **Dependencies** |
+| Sometimes a "quick win" (high value, low effort) should be pulled up. | **Effort** |
+| Feedback from Sprint Reviews and stakeholder conversations informs ordering. | **Stakeholder input** |
+| Some capacity should always be reserved for addressing technical debt. [See Section 10.3] | **Technical debt** |
 
 ### 4.1.5 Common Questions — Product Backlog
 
@@ -827,12 +827,12 @@ The Development Team commits to the **Sprint Goal**, not to every individual Sto
 
 ### 4.2.3 Task Breakdown Best Practices
 
-| Practice | Guidance |
+| Guidance | Practice |
 |----------|----------|
-| **Task size** | Each Task should be 2-16 hours of work. Larger Tasks need splitting. |
-| **Task types** | Common task types: Development, Code Review, Unit Testing, Integration Testing, Documentation, Deployment Configuration. |
-| **Task ownership** | A Task is owned by one person at a time (even if pair programming). |
-| **Task status** | Track: New → In Progress → Done (or your team's specific statuses). Update status at least daily. |
+| Each Task should be 2-16 hours of work. Larger Tasks need splitting. | **Task size** |
+| Common task types: Development, Code Review, Unit Testing, Integration Testing, Documentation, Deployment Configuration. | **Task types** |
+| A Task is owned by one person at a time (even if pair programming). | **Task ownership** |
+| Track: New → In Progress → Done (or your team's specific statuses). Update status at least daily. | **Task status** |
 
 ---
 
@@ -852,17 +852,17 @@ The Definition of Done is the team's **shared checklist** of what "Done" means. 
 
 **Sample Definition of Done:**
 
-| # | Criterion | Verified By |
-|:-:|-----------|:-----------:|
-| 1 | Code is complete and implements all Acceptance Criteria | Developer |
-| 2 | Unit tests written and passing (minimum coverage: TBD%) | Developer |
-| 3 | Code reviewed by at least one other developer | Peer |
-| 4 | No critical or high-severity bugs outstanding | Developer + QA |
-| 5 | Integration tests passing | CI/CD pipeline |
-| 6 | Code merged to the main/develop branch | Developer |
-| 7 | Feature is deployable to the staging environment | DevOps/Developer |
-| 8 | Documentation updated (if applicable — API docs, user guides) | Developer |
-| 9 | PO has reviewed and accepted the work | PO |
+| Verified By | Criterion | # |
+|:-----------:|-----------|:-:|
+| Developer | Code is complete and implements all Acceptance Criteria | 1 |
+| Developer | Unit tests written and passing (minimum coverage: TBD%) | 2 |
+| Peer | Code reviewed by at least one other developer | 3 |
+| Developer + QA | No critical or high-severity bugs outstanding | 4 |
+| CI/CD pipeline | Integration tests passing | 5 |
+| Developer | Code merged to the main/develop branch | 6 |
+| DevOps/Developer | Feature is deployable to the staging environment | 7 |
+| Developer | Documentation updated (if applicable — API docs, user guides) | 8 |
+| PO | PO has reviewed and accepted the work | 9 |
 
 **Evolving the DoD:** The team should review and potentially strengthen the DoD during Retrospectives. As the team matures, the DoD typically becomes more rigorous (e.g., adding performance testing, security scanning, accessibility checks).
 
@@ -946,15 +946,15 @@ An **information radiator** is any highly visible display of key project informa
 
 ### Examples
 
-| Radiator | What It Shows | Where |
-|----------|---------------|-------|
-| **Sprint Board** | Current Sprint work items and their status | Azure DevOps Board (+ physical board if co-located) |
-| **Burndown Chart** | Remaining work in the current Sprint | Azure DevOps Dashboard widget |
-| **Velocity Chart** | Historical velocity across sprints | Azure DevOps Dashboard widget |
-| **Sprint Goal** | The current Sprint's objective | Posted on the wall / pinned in chat channel |
-| **Impediment Board** | Current blockers and their status | Whiteboard / shared document |
-| **Team Agreements** | Working agreements, DoD, DoR | Posted on the wall / wiki page |
-| **Action Items from Retro** | Improvement actions from the last Retrospective | Sprint Board (as improvement Stories) or posted on wall |
+| Where | What It Shows | Radiator |
+|-------|---------------|----------|
+| Azure DevOps Board (+ physical board if co-located) | Current Sprint work items and their status | **Sprint Board** |
+| Azure DevOps Dashboard widget | Remaining work in the current Sprint | **Burndown Chart** |
+| Azure DevOps Dashboard widget | Historical velocity across sprints | **Velocity Chart** |
+| Posted on the wall / pinned in chat channel | The current Sprint's objective | **Sprint Goal** |
+| Whiteboard / shared document | Current blockers and their status | **Impediment Board** |
+| Posted on the wall / wiki page | Working agreements, DoD, DoR | **Team Agreements** |
+| Sprint Board (as improvement Stories) or posted on wall | Improvement actions from the last Retrospective | **Action Items from Retro** |
 
 **Key principle:** Information radiators should be **big, visible, and always up-to-date**. A dashboard nobody looks at is not a radiator.
 
@@ -983,11 +983,11 @@ So that I can regain access to my account if I forget my password.
 
 The three parts serve specific purposes:
 
-| Part | Purpose | What to Check |
-|------|---------|---------------|
-| **As a [user]** | Identifies *who* wants this | Is this a real user role? Not "As a developer" or "As the system" — those are usually Tasks, not Stories. |
-| **I want [action]** | Describes *what* they want to do | Is it expressed as a user behavior, not a technical implementation? |
-| **So that [benefit]** | Explains *why* they want it | Does it articulate real business value? If you cannot fill this in, question whether the Story is needed. |
+| What to Check | Purpose | Part |
+|---------------|---------|------|
+| Is this a real user role? Not "As a developer" or "As the system" — those are usually Tasks, not Stories. | Identifies *who* wants this | **As a [user]** |
+| Is it expressed as a user behavior, not a technical implementation? | Describes *what* they want to do | **I want [action]** |
+| Does it articulate real business value? If you cannot fill this in, question whether the Story is needed. | Explains *why* they want it | **So that [benefit]** |
 
 ### 5.1.2 Common Questions — User Stories
 
@@ -1003,14 +1003,14 @@ A: Technical work that does not directly face a user is typically handled as a *
 
 Good User Stories meet the **INVEST** criteria:
 
-| Letter | Criterion | What It Means | Red Flag If Violated |
-|:------:|-----------|---------------|---------------------|
-| **I** | **Independent** | The Story can be developed, tested, and delivered independently of other Stories. | "We can't start Story B until Story A is done" — try to restructure to reduce dependencies. |
-| **N** | **Negotiable** | The Story is not a fixed contract. Details are discussed between PO and team. | A Story that reads like a 3-page specification leaves no room for conversation. |
-| **V** | **Valuable** | The Story delivers value to the end user or the business. | "Create database tables" has no user-visible value — it is a Task, not a Story. |
-| **E** | **Estimable** | The team can estimate the Story's size. | If the team says "we have no idea how big this is," it needs refinement — usually more information or a spike. |
-| **S** | **Small** | The Story can be completed within a single Sprint. | A Story estimated at 20+ points is too large. Split it. [See Section 5.5] |
-| **T** | **Testable** | There are clear Acceptance Criteria that can verify the Story is done. | "The UI should be intuitive" is not testable. "The user can complete registration in under 2 minutes" is testable. |
+| Red Flag If Violated | What It Means | Criterion | Letter |
+|---------------------|---------------|-----------|:------:|
+| "We can't start Story B until Story A is done" — try to restructure to reduce dependencies. | The Story can be developed, tested, and delivered independently of other Stories. | **Independent** | **I** |
+| A Story that reads like a 3-page specification leaves no room for conversation. | The Story is not a fixed contract. Details are discussed between PO and team. | **Negotiable** | **N** |
+| "Create database tables" has no user-visible value — it is a Task, not a Story. | The Story delivers value to the end user or the business. | **Valuable** | **V** |
+| If the team says "we have no idea how big this is," it needs refinement — usually more information or a spike. | The team can estimate the Story's size. | **Estimable** | **E** |
+| A Story estimated at 20+ points is too large. Split it. [See Section 5.5] | The Story can be completed within a single Sprint. | **Small** | **S** |
+| "The UI should be intuitive" is not testable. "The user can complete registration in under 2 minutes" is testable. | There are clear Acceptance Criteria that can verify the Story is done. | **Testable** | **T** |
 
 ---
 
@@ -1095,12 +1095,12 @@ Vision
 
 ### Azure DevOps Mapping
 
-| Concept | Azure DevOps Item Type |
-|---------|----------------------|
-| Theme | Tag or Area Path |
+| Azure DevOps Item Type | Concept |
+|----------------------|---------|
+| Tag or Area Path | Theme |
 | Epic | Epic |
 | Feature | Feature |
-| User Story | User Story (or Product Backlog Item) |
+| User Story (or Product Backlog Item) | User Story |
 | Task | Task |
 | Bug | Bug |
 
@@ -1205,18 +1205,18 @@ Browse:       Search:       Select:       Purchase:       Track:
 
 ## 5.7 Examples: Good vs. Bad Stories
 
-| Quality | Story | Why |
-|:-------:|-------|-----|
-| **Bad** | "Implement login functionality" | No user perspective. No value stated. Sounds like a Task. |
-| **Good** | "As a registered user, I want to log in with my email and password, so that I can access my account." | Clear user, clear action, clear value. |
-| **Bad** | "As a user, I want the system to be fast." | Not testable. Not specific. Not estimable. |
-| **Good** | "As a user, I want the dashboard to load within 2 seconds, so that I can quickly access my daily metrics." | Specific, testable, valuable. |
-| **Bad** | "Create database tables for the user module." | This is a Task, not a Story. No user value. |
-| **Good** | "As an admin, I want to view a list of all registered users, so that I can manage user accounts." | User-facing. The database work becomes a Task within this Story. |
-| **Bad** | "As a PO, I want the entire reporting module built." | Way too large. Not estimable. Needs to be an Epic, broken into Features and Stories. |
-| **Good** | "As a manager, I want to export the monthly sales report as a PDF, so that I can share it with stakeholders." | Specific, small, testable, valuable. |
-| **Bad** | "As a developer, I want to refactor the authentication module." | The user should be the end user, not the developer. Reframe: why are we refactoring? |
-| **Better** | "As a user, I want login to be reliable (no timeouts), so that I can access my account without frustration." (Technical: refactor auth module to fix timeout issues.) | The Story captures user value. The technical approach is noted but not the Story itself. |
+| Why | Story | Quality |
+|-----|-------|:-------:|
+| No user perspective. No value stated. Sounds like a Task. | "Implement login functionality" | **Bad** |
+| Clear user, clear action, clear value. | "As a registered user, I want to log in with my email and password, so that I can access my account." | **Good** |
+| Not testable. Not specific. Not estimable. | "As a user, I want the system to be fast." | **Bad** |
+| Specific, testable, valuable. | "As a user, I want the dashboard to load within 2 seconds, so that I can quickly access my daily metrics." | **Good** |
+| This is a Task, not a Story. No user value. | "Create database tables for the user module." | **Bad** |
+| User-facing. The database work becomes a Task within this Story. | "As an admin, I want to view a list of all registered users, so that I can manage user accounts." | **Good** |
+| Way too large. Not estimable. Needs to be an Epic, broken into Features and Stories. | "As a PO, I want the entire reporting module built." | **Bad** |
+| Specific, small, testable, valuable. | "As a manager, I want to export the monthly sales report as a PDF, so that I can share it with stakeholders." | **Good** |
+| The user should be the end user, not the developer. Reframe: why are we refactoring? | "As a developer, I want to refactor the authentication module." | **Bad** |
+| The Story captures user value. The technical approach is noted but not the Story itself. | "As a user, I want login to be reliable (no timeouts), so that I can access my account without frustration." (Technical: refactor auth module to fix timeout issues.) | **Better** |
 
 ---
 
@@ -1247,11 +1247,11 @@ Why Fibonacci and not linear (1, 2, 3, 4, 5...)?
 
 Three factors contribute to the size of a Story:
 
-| Factor | Description | Example |
-|--------|-------------|---------|
-| **Effort** | The raw amount of work involved | A CRUD screen for one entity (small) vs. a complex multi-step wizard (large) |
-| **Complexity** | The technical difficulty or number of unknowns | A simple API call (low) vs. integrating with an unfamiliar third-party system (high) |
-| **Uncertainty / Risk** | How much is unknown or could go wrong | Well-understood technology (low) vs. "we've never done this before" (high) |
+| Example | Description | Factor |
+|---------|-------------|--------|
+| A CRUD screen for one entity (small) vs. a complex multi-step wizard (large) | The raw amount of work involved | **Effort** |
+| A simple API call (low) vs. integrating with an unfamiliar third-party system (high) | The technical difficulty or number of unknowns | **Complexity** |
+| Well-understood technology (low) vs. "we've never done this before" (high) | How much is unknown or could go wrong | **Uncertainty / Risk** |
 
 ---
 
@@ -1272,11 +1272,11 @@ Planning Poker is a **consensus-based estimation technique** used during Backlog
 
 ### 6.2.2 Special Cards
 
-| Card | Meaning |
-|------|---------|
-| **?** | "I don't have enough information to estimate." (Triggers more discussion or a spike.) |
-| **∞** | "This is way too big to estimate. It needs to be broken down." |
-| **☕** | "I need a break." (Optional — some decks include this.) |
+| Meaning | Card |
+|---------|------|
+| "I don't have enough information to estimate." (Triggers more discussion or a spike.) | **?** |
+| "This is way too big to estimate. It needs to be broken down." | **∞** |
+| "I need a break." (Optional — some decks include this.) | **☕** |
 
 ### 6.2.3 Tips for Effective Planning Poker
 
@@ -1294,13 +1294,13 @@ Planning Poker is a **consensus-based estimation technique** used during Backlog
 
 At the start of a project (or when a new team forms), select 3-5 completed Stories that represent different sizes:
 
-| Points | Reference Story Example |
-|:------:|------------------------|
-| 1 | "Add a new field to an existing form with validation" |
-| 3 | "Create a new CRUD page with list, detail, create, edit, delete" |
-| 5 | "Implement email notification system with templates and retry logic" |
-| 8 | "Build a report generator with filters, sorting, and PDF export" |
-| 13 | "Integrate with external payment gateway including error handling and reconciliation" |
+| Reference Story Example | Points |
+|------------------------|:------:|
+| "Add a new field to an existing form with validation" | 1 |
+| "Create a new CRUD page with list, detail, create, edit, delete" | 3 |
+| "Implement email notification system with templates and retry logic" | 5 |
+| "Build a report generator with filters, sorting, and PDF export" | 8 |
+| "Integrate with external payment gateway including error handling and reconciliation" | 13 |
 
 These references anchor future estimates: "Is this new Story closer to a 3 (like the CRUD page) or a 5 (like the email system)?"
 
@@ -1320,14 +1320,14 @@ Velocity is the **total number of Story Points completed** (meeting Definition o
 
 ### 6.4.2 Calculating Velocity
 
-| Sprint | Story Points Completed |
-|:------:|:---------------------:|
-| Sprint 1 | 25 |
-| Sprint 2 | 30 |
-| Sprint 3 | 28 |
-| Sprint 4 | 32 |
-| Sprint 5 | 27 |
-| **Average Velocity** | **28.4** |
+| Story Points Completed | Sprint |
+|:---------------------:|:------:|
+| 25 | Sprint 1 |
+| 30 | Sprint 2 |
+| 28 | Sprint 3 |
+| 32 | Sprint 4 |
+| 27 | Sprint 5 |
+| **28.4** | **Average Velocity** |
 
 **Use the average of the last 3-5 Sprints** for forecasting. Do not use a single Sprint's velocity — it is too noisy.
 
@@ -1340,12 +1340,12 @@ For Sprint Planning, use the team's average velocity as the **starting point** f
 
 ### 6.4.4 Velocity Misuse — WARNING
 
-| Misuse | Why It Is Harmful | What to Do Instead |
-|--------|-------------------|-------------------|
-| **Comparing velocity across teams** | Each team estimates differently. Team A's "5" is not Team B's "5." | Use velocity only within a team for that team's forecasting. |
-| **Using velocity as a performance metric** | Teams will inflate estimates to show "higher velocity." This is Goodhart's Law in action. [See Section 8.7] | Velocity is a planning tool, not a performance measure. |
-| **Demanding velocity increase** | Pressure to "do more points" leads to gaming, cutting quality, or inflating estimates. | Focus on outcomes (value delivered), not output (points completed). |
-| **Penalizing low velocity** | A Sprint with lower velocity might mean the team tackled hard problems, paid down tech debt, or dealt with unexpected complexity. | Investigate trends, not individual data points. Ask "why?" with curiosity, not judgment. |
+| What to Do Instead | Why It Is Harmful | Misuse |
+|-------------------|-------------------|--------|
+| Use velocity only within a team for that team's forecasting. | Each team estimates differently. Team A's "5" is not Team B's "5." | **Comparing velocity across teams** |
+| Velocity is a planning tool, not a performance measure. | Teams will inflate estimates to show "higher velocity." This is Goodhart's Law in action. [See Section 8.7] | **Using velocity as a performance metric** |
+| Focus on outcomes (value delivered), not output (points completed). | Pressure to "do more points" leads to gaming, cutting quality, or inflating estimates. | **Demanding velocity increase** |
+| Investigate trends, not individual data points. Ask "why?" with curiosity, not judgment. | A Sprint with lower velocity might mean the team tackled hard problems, paid down tech debt, or dealt with unexpected complexity. | **Penalizing low velocity** |
 
 ---
 
@@ -1410,12 +1410,12 @@ Uncertainty
 
 The #NoEstimates movement argues that **estimation is waste** — the effort spent estimating could be spent building. Key ideas:
 
-| Argument | Counter-Argument |
-|----------|-----------------|
-| "Estimation does not improve accuracy meaningfully." | Estimation forces valuable discussion about scope, complexity, and risk — the conversation is the value, not the number. |
-| "Just track throughput (stories/sprint) instead." | This works for mature teams with consistently-sized Stories. Less useful for teams with wildly varying Story sizes. |
-| "Estimation creates false precision." | Agreed — but Story Points already acknowledge imprecision (Fibonacci gaps). The solution is to estimate better, not to stop estimating. |
-| "Split all Stories to roughly the same size and just count them." | This is actually a valid approach — if the team has the discipline to split consistently. Count becomes a de facto estimate. |
+| Counter-Argument | Argument |
+|-----------------|----------|
+| Estimation forces valuable discussion about scope, complexity, and risk — the conversation is the value, not the number. | "Estimation does not improve accuracy meaningfully." |
+| This works for mature teams with consistently-sized Stories. Less useful for teams with wildly varying Story sizes. | "Just track throughput (stories/sprint) instead." |
+| Agreed — but Story Points already acknowledge imprecision (Fibonacci gaps). The solution is to estimate better, not to stop estimating. | "Estimation creates false precision." |
+| This is actually a valid approach — if the team has the discipline to split consistently. Count becomes a de facto estimate. | "Split all Stories to roughly the same size and just count them." |
 
 **Practical recommendation for our teams:** Use Story Points. The planning and discussion value of estimation outweighs the time cost. If the team matures to a point where all Stories are consistently small (1-3 points), consider shifting to simple counting.
 
@@ -1442,13 +1442,13 @@ The Sprint Board visualizes the flow of work through the Sprint. The recommended
 
 ### 7.1.2 Column Definitions
 
-| Column | Entry Criteria | Exit Criteria |
-|--------|---------------|---------------|
-| **New** | Item is in the Sprint Backlog | Item has been reviewed and is ready for work |
-| **Approved** | Team has reviewed and understands the item; dependencies are clear | Developer picks it up and starts working |
-| **In Progress** | Developer has started working on the item | All development work is complete; ready for review/testing |
-| **Testing** | Development is complete; code review is in progress or QA is testing | All tests pass; code review approved; no critical bugs |
-| **Done** | Meets the Definition of Done | — (terminal state) |
+| Exit Criteria | Entry Criteria | Column |
+|---------------|---------------|--------|
+| Item has been reviewed and is ready for work | Item is in the Sprint Backlog | **New** |
+| Developer picks it up and starts working | Team has reviewed and understands the item; dependencies are clear | **Approved** |
+| All development work is complete; ready for review/testing | Developer has started working on the item | **In Progress** |
+| All tests pass; code review approved; no critical bugs | Development is complete; code review is in progress or QA is testing | **Testing** |
+| — (terminal state) | Meets the Definition of Done | **Done** |
 
 ### 7.1.3 Customization Tips
 
@@ -1475,12 +1475,12 @@ WIP (Work in Progress) limits are **maximum numbers of items** allowed in a boar
 
 ### 7.2.2 Why WIP Limits Matter
 
-| Without WIP Limits | With WIP Limits |
-|-------------------|----------------|
-| Developers start many items, finish few | Focus on finishing items before starting new ones |
-| Items sit in "In Progress" for days | Items flow through quickly |
-| Multitasking reduces quality | Deep focus on one or two items at a time |
-| Bottlenecks are hidden | Bottlenecks become immediately visible (a full column means something is wrong upstream or downstream) |
+| With WIP Limits | Without WIP Limits |
+|----------------|-------------------|
+| Focus on finishing items before starting new ones | Developers start many items, finish few |
+| Items flow through quickly | Items sit in "In Progress" for days |
+| Deep focus on one or two items at a time | Multitasking reduces quality |
+| Bottlenecks become immediately visible (a full column means something is wrong upstream or downstream) | Bottlenecks are hidden |
 
 ### 7.2.3 Pull System
 
@@ -1508,14 +1508,14 @@ An item is "blocked" when the developer **cannot make progress** due to an exter
 
 ### 7.3.2 Handling Blocked Items
 
-| Step | Action | Who |
-|:----:|--------|:---:|
-| 1 | **Flag the item** on the board (use a "Blocked" tag or move to a "Blocked" swim lane) | Developer |
-| 2 | **Raise it in the Daily Standup** | Developer |
-| 3 | **Document the blocker** — what exactly is blocking and what is needed to unblock | Developer |
-| 4 | **SM takes ownership** of removing the impediment | SM |
-| 5 | **Escalate if needed** — if the SM cannot resolve it within 24-48 hours, escalate to management | SM |
-| 6 | **Track resolution** — maintain an impediment log | SM |
+| Who | Action | Step |
+|:---:|--------|:----:|
+| Developer | **Flag the item** on the board (use a "Blocked" tag or move to a "Blocked" swim lane) | 1 |
+| Developer | **Raise it in the Daily Standup** | 2 |
+| Developer | **Document the blocker** — what exactly is blocking and what is needed to unblock | 3 |
+| SM | **SM takes ownership** of removing the impediment | 4 |
+| SM | **Escalate if needed** — if the SM cannot resolve it within 24-48 hours, escalate to management | 5 |
+| SM | **Track resolution** — maintain an impediment log | 6 |
 
 ### 7.3.3 Escalation Path
 
@@ -1535,14 +1535,14 @@ If still unresolved → Raise in Sprint Review as impediment
 
 ### 7.4.1 Key Settings
 
-| Setting | Where to Find It | Recommendation |
-|---------|-------------------|----------------|
-| **Board columns** | Board Settings → Columns | Configure to match your workflow: New → Approved → In Progress → Testing → Done |
-| **WIP limits** | Board Settings → Columns → set WIP for each column | Set per guidance in Section 7.2.4 |
-| **Swimlanes** | Board Settings → Swimlanes | Add swimlanes for: Expedite (urgent items), Bugs, Standard Work |
-| **Card fields** | Board Settings → Card fields | Show: Title, Assigned To, Story Points, Tags, Remaining Work |
-| **Card styles** | Board Settings → Styles | Color-code by: Blocked (red), Bug (orange), Story (blue) |
-| **Definition of Done** | Board Settings → Columns → set DoD text for the "Done" column | Paste your team's DoD here for easy reference |
+| Recommendation | Where to Find It | Setting |
+|----------------|-------------------|---------|
+| Configure to match your workflow: New → Approved → In Progress → Testing → Done | Board Settings → Columns | **Board columns** |
+| Set per guidance in Section 7.2.4 | Board Settings → Columns → set WIP for each column | **WIP limits** |
+| Add swimlanes for: Expedite (urgent items), Bugs, Standard Work | Board Settings → Swimlanes | **Swimlanes** |
+| Show: Title, Assigned To, Story Points, Tags, Remaining Work | Board Settings → Card fields | **Card fields** |
+| Color-code by: Blocked (red), Bug (orange), Story (blue) | Board Settings → Styles | **Card styles** |
+| Paste your team's DoD here for easy reference | Board Settings → Columns → set DoD text for the "Done" column | **Definition of Done** |
 
 ### 7.4.2 Navigation Path
 
@@ -1558,12 +1558,12 @@ Azure DevOps → Project → Boards → Sprints → [Select Sprint] → Taskboar
 
 Swimlanes are **horizontal rows** on the board that separate different types of work:
 
-| Swimlane | Purpose | Example Items |
-|----------|---------|---------------|
-| **Expedite** | Urgent items that bypass WIP limits | Critical production bugs, security incidents |
-| **Standard** | Normal Sprint work | User Stories being developed |
-| **Bugs** | Bug fixes | Non-critical bugs being addressed this Sprint |
-| **Tech Debt** | Technical improvement work | Refactoring, performance optimization |
+| Example Items | Purpose | Swimlane |
+|---------------|---------|----------|
+| Critical production bugs, security incidents | Urgent items that bypass WIP limits | **Expedite** |
+| User Stories being developed | Normal Sprint work | **Standard** |
+| Non-critical bugs being addressed this Sprint | Bug fixes | **Bugs** |
+| Refactoring, performance optimization | Technical improvement work | **Tech Debt** |
 
 **Rule:** The "Expedite" lane should be empty most of the time. If it is always occupied, the team has a prioritization problem.
 
@@ -1575,16 +1575,16 @@ Swimlanes are **horizontal rows** on the board that separate different types of 
 
 A well-designed card shows essential information at a glance:
 
-| Field | Why |
-|-------|-----|
-| **Title** | What the item is about |
-| **ID** | For quick reference (e.g., #1234) |
-| **Assigned To** | Who is currently working on it |
-| **Story Points** | Size of the Story (for Stories, not Tasks) |
-| **Remaining Work** | Hours remaining (for Tasks) |
-| **Tags** | Quick categorization (e.g., "Frontend," "Backend," "Blocked") |
-| **State** | Current column (visual by position on board) |
-| **Priority** | Visual indicator of importance |
+| Why | Field |
+|-----|-------|
+| What the item is about | **Title** |
+| For quick reference (e.g., #1234) | **ID** |
+| Who is currently working on it | **Assigned To** |
+| Size of the Story (for Stories, not Tasks) | **Story Points** |
+| Hours remaining (for Tasks) | **Remaining Work** |
+| Quick categorization (e.g., "Frontend," "Backend," "Blocked") | **Tags** |
+| Current column (visual by position on board) | **State** |
+| Visual indicator of importance | **Priority** |
 
 **Keep cards clean.** Too much information makes the board hard to read. Put details in the item itself, not on the card.
 
@@ -1668,21 +1668,21 @@ Day 1              Day 15
 
 Velocity should be tracked **over time** (across Sprints) to identify trends:
 
-| Trend | What It May Indicate |
-|-------|---------------------|
-| **Stable** | The team is performing consistently. Good for forecasting. |
-| **Increasing** | The team is improving, or estimates are inflating (verify with outcomes). |
-| **Decreasing** | The team may be dealing with increasing complexity, technical debt, reduced capacity, or declining morale. Investigate. |
-| **Highly variable** | Estimation is inconsistent, scope changes mid-Sprint, or team composition is unstable. Work on estimation calibration and Sprint discipline. |
+| What It May Indicate | Trend |
+|---------------------|-------|
+| The team is performing consistently. Good for forecasting. | **Stable** |
+| The team is improving, or estimates are inflating (verify with outcomes). | **Increasing** |
+| The team may be dealing with increasing complexity, technical debt, reduced capacity, or declining morale. Investigate. | **Decreasing** |
+| Estimation is inconsistent, scope changes mid-Sprint, or team composition is unstable. Work on estimation calibration and Sprint discipline. | **Highly variable** |
 
 ---
 
 ## 8.3 Cycle Time and Lead Time
 
-| Metric | Definition | What It Measures |
-|--------|-----------|-----------------|
-| **Lead Time** | Time from when an item is *created* (or requested) to when it is *delivered* (Done). | The customer's experience — how long they wait for their request. |
-| **Cycle Time** | Time from when work *starts* (In Progress) to when it is *delivered* (Done). | The team's efficiency — how long it takes to complete work once started. |
+| What It Measures | Definition | Metric |
+|-----------------|-----------|--------|
+| The customer's experience — how long they wait for their request. | Time from when an item is *created* (or requested) to when it is *delivered* (Done). | **Lead Time** |
+| The team's efficiency — how long it takes to complete work once started. | Time from when work *starts* (In Progress) to when it is *delivered* (Done). | **Cycle Time** |
 
 ```
            Lead Time
@@ -1727,14 +1727,14 @@ Items │     ██████████████████████
 
 A quick health check for each Sprint:
 
-| Indicator | Healthy | Warning | Critical |
-|-----------|---------|---------|----------|
-| **Burndown trajectory** | On or near the ideal line | Significantly above ideal at mid-Sprint | Flat or going up |
-| **Sprint Goal progress** | Core Stories are on track | Some core Stories are delayed | Sprint Goal appears unachievable |
-| **Blocked items** | 0-1 blocked items | 2-3 blocked items | 4+ blocked items or same item blocked for 3+ days |
-| **Team mood** | Engaged, collaborating | Some frustration or disengagement | Conflict, burnout, or apathy |
-| **Board accuracy** | Board reflects reality | Some items outdated (1 day behind) | Board is not updated — nobody trusts it |
-| **Scope changes** | No changes | Minor clarifications | Significant scope added or removed mid-Sprint |
+| Critical | Warning | Healthy | Indicator |
+|----------|---------|---------|-----------|
+| Flat or going up | Significantly above ideal at mid-Sprint | On or near the ideal line | **Burndown trajectory** |
+| Sprint Goal appears unachievable | Some core Stories are delayed | Core Stories are on track | **Sprint Goal progress** |
+| 4+ blocked items or same item blocked for 3+ days | 2-3 blocked items | 0-1 blocked items | **Blocked items** |
+| Conflict, burnout, or apathy | Some frustration or disengagement | Engaged, collaborating | **Team mood** |
+| Board is not updated — nobody trusts it | Some items outdated (1 day behind) | Board reflects reality | **Board accuracy** |
+| Significant scope added or removed mid-Sprint | Minor clarifications | No changes | **Scope changes** |
 
 ---
 
@@ -1742,14 +1742,14 @@ A quick health check for each Sprint:
 
 Not everything that can be measured should be measured. Some metrics **actively harm** the team when used:
 
-| Dangerous Metric | Why It Is Harmful |
-|-----------------|-------------------|
-| **Lines of code** | Rewards verbosity. Punishes elegant, concise solutions. A developer who deletes 500 lines of unnecessary code created more value than one who wrote 500 lines of spaghetti. |
-| **Hours logged** | Measures presence, not productivity. Encourages "looking busy" instead of solving problems efficiently. |
-| **Individual velocity** | Pits team members against each other. Discourages collaboration and helping others. |
-| **Bugs found** | If used to judge QA: rewards finding bugs over preventing them. If used to judge developers: encourages hiding bugs. |
-| **Meeting attendance** | Measures compliance, not engagement. A person who attends every meeting but contributes nothing is worse than someone who misses one but is fully engaged when present. |
-| **Utilization rate (100%)** | A team at 100% utilization has no capacity for anything unexpected — no slack for improvement, learning, helping others, or dealing with emergencies. Target 70-80%. |
+| Why It Is Harmful | Dangerous Metric |
+|-------------------|-----------------|
+| Rewards verbosity. Punishes elegant, concise solutions. A developer who deletes 500 lines of unnecessary code created more value than one who wrote 500 lines of spaghetti. | **Lines of code** |
+| Measures presence, not productivity. Encourages "looking busy" instead of solving problems efficiently. | **Hours logged** |
+| Pits team members against each other. Discourages collaboration and helping others. | **Individual velocity** |
+| If used to judge QA: rewards finding bugs over preventing them. If used to judge developers: encourages hiding bugs. | **Bugs found** |
+| Measures compliance, not engagement. A person who attends every meeting but contributes nothing is worse than someone who misses one but is fully engaged when present. | **Meeting attendance** |
+| A team at 100% utilization has no capacity for anything unexpected — no slack for improvement, learning, helping others, or dealing with emergencies. Target 70-80%. | **Utilization rate (100%)** |
 
 ---
 
@@ -1757,11 +1757,11 @@ Not everything that can be measured should be measured. Some metrics **actively 
 
 > **Goodhart's Law:** "When a measure becomes a target, it ceases to be a good measure."
 
-| Scenario | What Happens |
-|----------|-------------|
-| Management says "increase velocity" | Team inflates estimates. A Story that was a 3 becomes a 5. Velocity goes up, but actual work does not change. |
-| Management says "reduce bugs" | Team stops logging bugs or reclassifies them as "enhancements." Bug count drops, but quality does not improve. |
-| Management says "complete all committed Stories" | Team commits to less. Or they cut quality corners to "finish everything." Or they stop using DoD rigorously. |
+| What Happens | Scenario |
+|-------------|----------|
+| Team inflates estimates. A Story that was a 3 becomes a 5. Velocity goes up, but actual work does not change. | Management says "increase velocity" |
+| Team stops logging bugs or reclassifies them as "enhancements." Bug count drops, but quality does not improve. | Management says "reduce bugs" |
+| Team commits to less. Or they cut quality corners to "finish everything." Or they stop using DoD rigorously. | Management says "complete all committed Stories" |
 
 **The antidote:** Use metrics for **observation and conversation**, not for targets and rewards. Ask "what does this metric tell us?" rather than "how do we make this number go up?"
 
@@ -2072,23 +2072,23 @@ An anti-pattern is a common response to a recurring problem that is **usually in
 
 Use this checklist to quickly assess whether the team is in trouble. Each "yes" answer is a red flag:
 
-| # | Red Flag | Severity |
-|:-:|----------|:--------:|
-| 1 | Sprint Goal is consistently not achieved (3+ Sprints in a row) | High |
-| 2 | More than 30% of Stories carry over to the next Sprint | High |
-| 3 | PO is not available for questions during the Sprint | High |
-| 4 | Retrospective produces no Action Items | Medium |
-| 5 | Daily Standup consistently exceeds 15 minutes | Medium |
-| 6 | No stakeholders attend Sprint Review | Medium |
-| 7 | The Burndown chart is flat for 3+ days | High |
-| 8 | WIP limits are ignored or not set | Low |
-| 9 | The Sprint Board does not reflect reality | Medium |
-| 10 | Team members are working overtime every Sprint | High |
-| 11 | Velocity is declining Sprint over Sprint | Medium |
-| 12 | The same issue appears in 3+ consecutive Retros | Medium |
-| 13 | Definition of Done is routinely ignored | High |
-| 14 | New items are added mid-Sprint without removing anything | Medium |
-| 15 | One person does most of the work (Hero Developer) | High |
+| Severity | Red Flag | # |
+|:--------:|----------|:-:|
+| High | Sprint Goal is consistently not achieved (3+ Sprints in a row) | 1 |
+| High | More than 30% of Stories carry over to the next Sprint | 2 |
+| High | PO is not available for questions during the Sprint | 3 |
+| Medium | Retrospective produces no Action Items | 4 |
+| Medium | Daily Standup consistently exceeds 15 minutes | 5 |
+| Medium | No stakeholders attend Sprint Review | 6 |
+| High | The Burndown chart is flat for 3+ days | 7 |
+| Low | WIP limits are ignored or not set | 8 |
+| Medium | The Sprint Board does not reflect reality | 9 |
+| High | Team members are working overtime every Sprint | 10 |
+| Medium | Velocity is declining Sprint over Sprint | 11 |
+| Medium | The same issue appears in 3+ consecutive Retros | 12 |
+| High | Definition of Done is routinely ignored | 13 |
+| Medium | New items are added mid-Sprint without removing anything | 14 |
+| High | One person does most of the work (Hero Developer) | 15 |
 
 **Scoring:**
 - **0-2 red flags:** Healthy team with minor issues. Address in Retro.
@@ -2143,22 +2143,22 @@ Use this checklist to quickly assess whether the team is in trouble. Each "yes" 
 
 When an organization has multiple teams working on the same product or related products, coordination becomes essential. Several frameworks address this:
 
-| Framework | Core Idea | Scale | Complexity |
-|-----------|-----------|:-----:|:----------:|
-| **SAFe** (Scaled Agile Framework) | Comprehensive framework with multiple levels: Team, Program, Large Solution, Portfolio. Includes roles like Release Train Engineer, Product Manager, Solution Architect. | 50-1000+ people | High |
-| **LeSS** (Large-Scale Scrum) | "Keep it simple." Multiple teams work on one Product Backlog with one PO. Minimal additional roles or ceremonies. | 2-8 teams | Low |
-| **Nexus** | Extension of Scrum for 3-9 teams. Adds a Nexus Integration Team and Nexus Sprint events for cross-team integration. | 3-9 teams | Medium |
-| **Spotify Model** | Not a framework but an organizational culture model. Teams ("Squads") are grouped into "Tribes." "Chapters" connect specialists across Squads. "Guilds" are cross-tribe communities of interest. | Variable | Low-Medium |
+| Complexity | Scale | Core Idea | Framework |
+|:----------:|:-----:|-----------|-----------|
+| High | 50-1000+ people | Comprehensive framework with multiple levels: Team, Program, Large Solution, Portfolio. Includes roles like Release Train Engineer, Product Manager, Solution Architect. | **SAFe** (Scaled Agile Framework) |
+| Low | 2-8 teams | "Keep it simple." Multiple teams work on one Product Backlog with one PO. Minimal additional roles or ceremonies. | **LeSS** (Large-Scale Scrum) |
+| Medium | 3-9 teams | Extension of Scrum for 3-9 teams. Adds a Nexus Integration Team and Nexus Sprint events for cross-team integration. | **Nexus** |
+| Low-Medium | Variable | Not a framework but an organizational culture model. Teams ("Squads") are grouped into "Tribes." "Chapters" connect specialists across Squads. "Guilds" are cross-tribe communities of interest. | **Spotify Model** |
 
 ### Which to Consider?
 
-| Situation | Recommendation |
-|-----------|---------------|
-| 2-3 teams, one product | LeSS or Nexus — minimal overhead |
-| 4-10 teams, one product line | Nexus or SAFe Essential |
-| 10+ teams, multiple product lines | SAFe (full configuration) |
-| Organization values autonomy and culture over process | Spotify-inspired model |
-| **Our context** (small number of teams) | Start simple. Use cross-team Refinement and joint Sprint Review. Adopt a framework only if coordination becomes a consistent pain point. |
+| Recommendation | Situation |
+|---------------|-----------|
+| LeSS or Nexus — minimal overhead | 2-3 teams, one product |
+| Nexus or SAFe Essential | 4-10 teams, one product line |
+| SAFe (full configuration) | 10+ teams, multiple product lines |
+| Spotify-inspired model | Organization values autonomy and culture over process |
+| Start simple. Use cross-team Refinement and joint Sprint Review. Adopt a framework only if coordination becomes a consistent pain point. | **Our context** (small number of teams) |
 
 ---
 
@@ -2166,14 +2166,14 @@ When an organization has multiple teams working on the same product or related p
 
 Dependencies between teams are a major source of delays and friction. Strategies for managing them:
 
-| Strategy | Description |
-|----------|-------------|
-| **Dependency board** | A shared board showing inter-team dependencies: who needs what from whom, by when. |
-| **Scrum of Scrums** | A regular (daily or 2-3x/week) meeting where representatives from each team sync on dependencies and blockers. |
-| **Integration Sprint** | In some scaling approaches, a dedicated Sprint or timebox for integrating work from multiple teams. |
-| **Shared Backlog Refinement** | Teams that depend on each other attend joint Refinement sessions to align on interfaces and expectations. |
-| **API contracts** | When teams integrate through APIs, define the contract early and let teams work independently against it. |
-| **Feature toggling** | Teams deploy code independently using feature flags, enabling integration without tight coupling. |
+| Description | Strategy |
+|-------------|----------|
+| A shared board showing inter-team dependencies: who needs what from whom, by when. | **Dependency board** |
+| A regular (daily or 2-3x/week) meeting where representatives from each team sync on dependencies and blockers. | **Scrum of Scrums** |
+| In some scaling approaches, a dedicated Sprint or timebox for integrating work from multiple teams. | **Integration Sprint** |
+| Teams that depend on each other attend joint Refinement sessions to align on interfaces and expectations. | **Shared Backlog Refinement** |
+| When teams integrate through APIs, define the contract early and let teams work independently against it. | **API contracts** |
+| Teams deploy code independently using feature flags, enabling integration without tight coupling. | **Feature toggling** |
 
 ---
 
@@ -2185,22 +2185,22 @@ Technical debt is the **implied cost of future rework** caused by choosing an ea
 
 ### Types of Technical Debt
 
-| Type | Example | Deliberate vs. Inadvertent |
-|------|---------|:--------------------------:|
-| **Design debt** | Skipping proper architecture because "we need to ship" | Deliberate |
-| **Code debt** | Copy-paste code, missing abstractions, dead code | Both |
-| **Test debt** | No unit tests, no integration tests, low coverage | Deliberate |
-| **Infrastructure debt** | Manual deployments, no CI/CD, outdated libraries | Inadvertent (often) |
-| **Documentation debt** | No API docs, no architecture diagrams, no onboarding guide | Deliberate |
+| Deliberate vs. Inadvertent | Example | Type |
+|:--------------------------:|---------|------|
+| Deliberate | Skipping proper architecture because "we need to ship" | **Design debt** |
+| Both | Copy-paste code, missing abstractions, dead code | **Code debt** |
+| Deliberate | No unit tests, no integration tests, low coverage | **Test debt** |
+| Inadvertent (often) | Manual deployments, no CI/CD, outdated libraries | **Infrastructure debt** |
+| Deliberate | No API docs, no architecture diagrams, no onboarding guide | **Documentation debt** |
 
 ### Managing Technical Debt in Sprints
 
-| Approach | Description |
-|----------|-------------|
-| **Dedicate a percentage** | Reserve 10-20% of each Sprint's capacity for tech debt. This prevents debt from growing out of control. |
-| **Tech debt Backlog** | Maintain a separate tech debt Backlog (or tag items). PO and team jointly prioritize which debt to address. |
-| **"Boy Scout Rule"** | Leave the code better than you found it. When working on a Story, clean up nearby tech debt as part of the work. |
-| **Tech debt Sprints** | Some teams dedicate an entire Sprint to tech debt every 4-6 Sprints. This is controversial — it can be effective but also used as an excuse to defer debt indefinitely. |
+| Description | Approach |
+|-------------|----------|
+| Reserve 10-20% of each Sprint's capacity for tech debt. This prevents debt from growing out of control. | **Dedicate a percentage** |
+| Maintain a separate tech debt Backlog (or tag items). PO and team jointly prioritize which debt to address. | **Tech debt Backlog** |
+| Leave the code better than you found it. When working on a Story, clean up nearby tech debt as part of the work. | **"Boy Scout Rule"** |
+| Some teams dedicate an entire Sprint to tech debt every 4-6 Sprints. This is controversial — it can be effective but also used as an excuse to defer debt indefinitely. | **Tech debt Sprints** |
 
 ### Communicating Tech Debt to Non-Technical Stakeholders
 
@@ -2212,13 +2212,13 @@ Use this analogy: "Technical debt is like deferred maintenance on a building. Yo
 
 DevOps and CI/CD are **not optional extras** for Agile teams — they are essential enablers.
 
-| Practice | What It Means | Why It Matters for Agile |
-|----------|---------------|-------------------------|
-| **Continuous Integration (CI)** | Developers merge code to the main branch multiple times a day. Automated builds and tests run on every merge. | Catches integration issues early. Supports "working software" at all times. |
-| **Continuous Delivery (CD)** | Every successful CI build is deployable to production with a single click. | Enables "potentially shippable Increment" at the end of every Sprint. |
-| **Continuous Deployment** | Every successful CI build is *automatically* deployed to production. | The fastest feedback loop possible. |
-| **Infrastructure as Code** | Server configurations, environments, and deployments are managed through code, not manual steps. | Reproducible, reliable deployments. Reduces "it works on my machine" problems. |
-| **Monitoring & Observability** | Production is monitored with alerts, dashboards, and logs. | Fast feedback on whether the delivered software is actually working in the real world. |
+| Why It Matters for Agile | What It Means | Practice |
+|-------------------------|---------------|----------|
+| Catches integration issues early. Supports "working software" at all times. | Developers merge code to the main branch multiple times a day. Automated builds and tests run on every merge. | **Continuous Integration (CI)** |
+| Enables "potentially shippable Increment" at the end of every Sprint. | Every successful CI build is deployable to production with a single click. | **Continuous Delivery (CD)** |
+| The fastest feedback loop possible. | Every successful CI build is *automatically* deployed to production. | **Continuous Deployment** |
+| Reproducible, reliable deployments. Reduces "it works on my machine" problems. | Server configurations, environments, and deployments are managed through code, not manual steps. | **Infrastructure as Code** |
+| Fast feedback on whether the delivered software is actually working in the real world. | Production is monitored with alerts, dashboards, and logs. | **Monitoring & Observability** |
 
 ---
 
@@ -2228,13 +2228,13 @@ Agile and fixed-price contracts are not inherently incompatible, but they requir
 
 ### Approaches
 
-| Approach | Description | Risk Distribution |
-|----------|-------------|:-----------------:|
-| **Fixed scope, fixed price** (traditional) | All requirements defined upfront. Fixed cost. | Vendor bears risk of scope creep; customer bears risk of unmet needs |
-| **Time & Materials** | Customer pays for time spent. Scope is flexible. | Customer bears cost risk; vendor bears reputational risk |
-| **Fixed price per Sprint** | Customer pays a fixed rate per Sprint. Scope is flexible within each Sprint. PO prioritizes. | Balanced risk — customer controls scope, vendor controls effort |
-| **Money for nothing, changes for free** | Fixed total budget. Customer can change scope at any time (swap items in/out of backlog) as long as the total estimated effort stays within budget. Customer can stop early and pay only for completed work. | Balanced — both sides benefit from early delivery and flexibility |
-| **Phased contracts** | Start with a short discovery phase (fixed price). Then negotiate the full build phase based on discovery findings. | Reduced risk for both sides — better information leads to better estimates |
+| Risk Distribution | Description | Approach |
+|:-----------------:|-------------|----------|
+| Vendor bears risk of scope creep; customer bears risk of unmet needs | All requirements defined upfront. Fixed cost. | **Fixed scope, fixed price** (traditional) |
+| Customer bears cost risk; vendor bears reputational risk | Customer pays for time spent. Scope is flexible. | **Time & Materials** |
+| Balanced risk — customer controls scope, vendor controls effort | Customer pays a fixed rate per Sprint. Scope is flexible within each Sprint. PO prioritizes. | **Fixed price per Sprint** |
+| Balanced — both sides benefit from early delivery and flexibility | Fixed total budget. Customer can change scope at any time (swap items in/out of backlog) as long as the total estimated effort stays within budget. Customer can stop early and pay only for completed work. | **Money for nothing, changes for free** |
+| Reduced risk for both sides — better information leads to better estimates | Start with a short discovery phase (fixed price). Then negotiate the full build phase based on discovery findings. | **Phased contracts** |
 
 **Recommendation for our context:** When working with external clients on fixed-price projects, prefer the "Fixed price per Sprint" or "Phased contracts" approach. This preserves Agile flexibility while giving the client cost predictability.
 
@@ -2244,24 +2244,24 @@ Agile and fixed-price contracts are not inherently incompatible, but they requir
 
 ### Challenges
 
-| Challenge | Impact |
-|-----------|--------|
-| **Time zone differences** | Synchronous ceremonies are difficult. The Daily Standup may not work at a time that suits everyone. |
-| **Communication gaps** | Without face-to-face interaction, misunderstandings are more common. Nuance is lost in text. |
-| **Reduced social bonding** | Team cohesion is harder to build when people do not share a physical space. |
-| **Visibility** | It is harder to see whether someone is stuck, disengaged, or overloaded when you are not in the same room. |
+| Impact | Challenge |
+|--------|-----------|
+| Synchronous ceremonies are difficult. The Daily Standup may not work at a time that suits everyone. | **Time zone differences** |
+| Without face-to-face interaction, misunderstandings are more common. Nuance is lost in text. | **Communication gaps** |
+| Team cohesion is harder to build when people do not share a physical space. | **Reduced social bonding** |
+| It is harder to see whether someone is stuck, disengaged, or overloaded when you are not in the same room. | **Visibility** |
 
 ### Mitigation Strategies
 
-| Strategy | Implementation |
-|----------|---------------|
-| **Overlap hours** | Define 2-4 hours per day when everyone is online simultaneously. Schedule ceremonies in this window. |
-| **Async Dailies** | Use written updates in a shared channel instead of (or in addition to) video calls. [See Section 3.3.4] |
-| **Video on** | Encourage video-on for ceremonies to increase engagement and read social cues. |
-| **Over-communicate** | In text, err on the side of more detail. What is obvious in person may not be obvious in writing. |
-| **Digital boards** | Use Azure DevOps (or similar) as the single source of truth. No "local" tracking tools. |
-| **Virtual social time** | Dedicated non-work time for the team to connect (virtual coffee, team games, informal chat). |
-| **Document decisions** | Decisions made in conversations must be documented (in the relevant Work Item, wiki, or shared doc). Remote team members should never miss a decision because they were not online. |
+| Implementation | Strategy |
+|---------------|----------|
+| Define 2-4 hours per day when everyone is online simultaneously. Schedule ceremonies in this window. | **Overlap hours** |
+| Use written updates in a shared channel instead of (or in addition to) video calls. [See Section 3.3.4] | **Async Dailies** |
+| Encourage video-on for ceremonies to increase engagement and read social cues. | **Video on** |
+| In text, err on the side of more detail. What is obvious in person may not be obvious in writing. | **Over-communicate** |
+| Use Azure DevOps (or similar) as the single source of truth. No "local" tracking tools. | **Digital boards** |
+| Dedicated non-work time for the team to connect (virtual coffee, team games, informal chat). | **Virtual social time** |
+| Decisions made in conversations must be documented (in the relevant Work Item, wiki, or shared doc). Remote team members should never miss a decision because they were not online. | **Document decisions** |
 
 ---
 
@@ -2271,14 +2271,14 @@ Agile and fixed-price contracts are not inherently incompatible, but they requir
 
 Most Agile transitions fail not because of the framework, but because of **people and culture**:
 
-| Failure Reason | Frequency | Description |
-|----------------|:---------:|-------------|
-| **Lack of management support** | Very Common | Management says "go Agile" but does not change their own behavior, expectations, or organizational structure. |
-| **Treating Agile as a process change only** | Very Common | Adopting Scrum ceremonies without adopting Agile values. [See Anti-Pattern #2: Scrummerfall] |
-| **Insufficient training** | Common | Teams are expected to "figure it out" without coaching, training, or a knowledge base. |
-| **The "frozen middle"** | Common | Middle managers resist because their role is unclear in Agile. [See Section 2.5.2] |
-| **No patience** | Common | Management expects immediate results. Agile adoption takes 3-6 months for basic fluency, 12-18 months for maturity. |
-| **Partial adoption** | Common | "We do Agile, but we skip Retros and the PO is part-time." Selective adoption undermines the framework. |
+| Description | Frequency | Failure Reason |
+|-------------|:---------:|----------------|
+| Management says "go Agile" but does not change their own behavior, expectations, or organizational structure. | Very Common | **Lack of management support** |
+| Adopting Scrum ceremonies without adopting Agile values. [See Anti-Pattern #2: Scrummerfall] | Very Common | **Treating Agile as a process change only** |
+| Teams are expected to "figure it out" without coaching, training, or a knowledge base. | Common | **Insufficient training** |
+| Middle managers resist because their role is unclear in Agile. [See Section 2.5.2] | Common | **The "frozen middle"** |
+| Management expects immediate results. Agile adoption takes 3-6 months for basic fluency, 12-18 months for maturity. | Common | **No patience** |
+| "We do Agile, but we skip Retros and the PO is part-time." Selective adoption undermines the framework. | Common | **Partial adoption** |
 
 ---
 
@@ -2286,12 +2286,12 @@ Most Agile transitions fail not because of the framework, but because of **peopl
 
 Middle managers are often the **most resistant** to Agile adoption because:
 
-| Concern | Reality |
+| Reality | Concern |
 |---------|---------|
-| "I will lose my job" | Not if they adapt. The organization still needs people who remove obstacles, develop talent, and align teams. |
-| "I will lose authority" | Authority shifts from command-and-control to influence-and-enable. Some managers thrive; others struggle. |
-| "Teams can't organize themselves" | They can, with the right support and guardrails. Self-organization does not mean no organization. |
-| "How will I know what people are doing?" | Transparency. The Sprint Board, Burndown, Sprint Review, and velocity charts provide more visibility than status meetings ever did. |
+| Not if they adapt. The organization still needs people who remove obstacles, develop talent, and align teams. | "I will lose my job" |
+| Authority shifts from command-and-control to influence-and-enable. Some managers thrive; others struggle. | "I will lose authority" |
+| They can, with the right support and guardrails. Self-organization does not mean no organization. | "Teams can't organize themselves" |
+| Transparency. The Sprint Board, Burndown, Sprint Review, and velocity charts provide more visibility than status meetings ever did. | "How will I know what people are doing?" |
 
 **What the organization must do:**
 - Clearly define what managers do in Agile (enablers, not controllers). [See Section 2.5]
@@ -2306,43 +2306,43 @@ Do not try to change everything at once. A phased approach reduces risk:
 
 ### Phase 1: Foundation (Sprints 1-3, ~9 weeks)
 
-| Action | Focus |
-|--------|-------|
-| Train the team | Agile basics, Scrum framework, roles, ceremonies |
-| Establish the Sprint cadence | 3-week sprints, consistent schedule |
-| Set up tools | Azure DevOps board, Backlog, Sprint configuration |
-| Hold all ceremonies | Even if awkward at first — consistency builds habit |
-| Define initial DoD | Start simple, strengthen over time |
-| Assign roles | PO, SM, Dev Team |
+| Focus | Action |
+|-------|--------|
+| Agile basics, Scrum framework, roles, ceremonies | Train the team |
+| 3-week sprints, consistent schedule | Establish the Sprint cadence |
+| Azure DevOps board, Backlog, Sprint configuration | Set up tools |
+| Even if awkward at first — consistency builds habit | Hold all ceremonies |
+| Start simple, strengthen over time | Define initial DoD |
+| PO, SM, Dev Team | Assign roles |
 
 ### Phase 2: Stabilization (Sprints 4-6, ~9 weeks)
 
-| Action | Focus |
-|--------|-------|
-| Refine estimation | Establish reference stories, calibrate velocity |
-| Improve Refinement | Backlog items meet Definition of Ready |
-| Start tracking metrics | Velocity, Burndown, Cycle Time |
-| Retros produce Action Items | Follow up and track improvement |
-| Engage stakeholders | Regular Sprint Review attendance |
+| Focus | Action |
+|-------|--------|
+| Establish reference stories, calibrate velocity | Refine estimation |
+| Backlog items meet Definition of Ready | Improve Refinement |
+| Velocity, Burndown, Cycle Time | Start tracking metrics |
+| Follow up and track improvement | Retros produce Action Items |
+| Regular Sprint Review attendance | Engage stakeholders |
 
 ### Phase 3: Optimization (Sprints 7-12, ~18 weeks)
 
-| Action | Focus |
-|--------|-------|
-| Advanced practices | WIP limits, Kanban practices within Scrum, story splitting |
-| Process experiments | Try new Retro formats, adjust ceremonies based on data |
-| Technical practices | CI/CD, automated testing, code review standards |
-| Scale if needed | Cross-team coordination, shared refinement |
-| Measure improvement | Compare velocity trends, cycle time, stakeholder satisfaction |
+| Focus | Action |
+|-------|--------|
+| WIP limits, Kanban practices within Scrum, story splitting | Advanced practices |
+| Try new Retro formats, adjust ceremonies based on data | Process experiments |
+| CI/CD, automated testing, code review standards | Technical practices |
+| Cross-team coordination, shared refinement | Scale if needed |
+| Compare velocity trends, cycle time, stakeholder satisfaction | Measure improvement |
 
 ### Phase 4: Maturity (Sprint 13+)
 
-| Action | Focus |
-|--------|-------|
-| Continuous improvement is self-sustaining | The team drives its own evolution |
-| Advanced metrics | CFD, Lead Time optimization, predictability |
-| Coaching others | The team can help other teams adopt Agile |
-| Innovation time | The team has slack for experimentation and learning |
+| Focus | Action |
+|-------|--------|
+| The team drives its own evolution | Continuous improvement is self-sustaining |
+| CFD, Lead Time optimization, predictability | Advanced metrics |
+| The team can help other teams adopt Agile | Coaching others |
+| The team has slack for experimentation and learning | Innovation time |
 
 ---
 
@@ -2350,12 +2350,12 @@ Do not try to change everything at once. A phased approach reduces risk:
 
 ### Key Messages for Managers
 
-| Message | Explanation |
-|---------|-------------|
-| "Your role is more important, not less." | Teams need someone to remove organizational blockers, secure resources, develop people, and align teams. |
-| "Trust is not abdication." | Trusting the team to self-organize does not mean abandoning them. It means giving them the space to solve problems while you clear the path. |
-| "You still need to manage — differently." | Manage outcomes, not activities. Set direction, not step-by-step instructions. |
-| "Transparency helps you." | The Sprint Board, velocity, and Sprint Review give you more real-time insight than any status meeting ever could. |
+| Explanation | Message |
+|-------------|---------|
+| Teams need someone to remove organizational blockers, secure resources, develop people, and align teams. | "Your role is more important, not less." |
+| Trusting the team to self-organize does not mean abandoning them. It means giving them the space to solve problems while you clear the path. | "Trust is not abdication." |
+| Manage outcomes, not activities. Set direction, not step-by-step instructions. | "You still need to manage — differently." |
+| The Sprint Board, velocity, and Sprint Review give you more real-time insight than any status meeting ever could. | "Transparency helps you." |
 
 ### What Managers Should Do
 
@@ -2372,29 +2372,29 @@ Do not try to change everything at once. A phased approach reduces risk:
 
 How do you know the Agile transition is working? Track these indicators over time:
 
-| Indicator | How to Measure | Target |
-|-----------|---------------|--------|
-| **Sprint Goal achievement** | % of Sprints where the Sprint Goal was met | >80% |
-| **Velocity stability** | Coefficient of variation of velocity over 6+ Sprints | <25% |
-| **Stakeholder satisfaction** | Survey or NPS after Sprint Reviews | Trending upward |
-| **Cycle Time** | Average time from "In Progress" to "Done" | Decreasing over time |
-| **Retro Action Item completion** | % of Action Items completed before next Retro | >70% |
-| **Team satisfaction** | Regular team health surveys | Stable or improving |
-| **Quality** | Bug escape rate (bugs found in production) | Decreasing over time |
-| **Predictability** | Difference between planned and actual delivery | Improving over time |
+| Target | How to Measure | Indicator |
+|--------|---------------|-----------|
+| >80% | % of Sprints where the Sprint Goal was met | **Sprint Goal achievement** |
+| <25% | Coefficient of variation of velocity over 6+ Sprints | **Velocity stability** |
+| Trending upward | Survey or NPS after Sprint Reviews | **Stakeholder satisfaction** |
+| Decreasing over time | Average time from "In Progress" to "Done" | **Cycle Time** |
+| >70% | % of Action Items completed before next Retro | **Retro Action Item completion** |
+| Stable or improving | Regular team health surveys | **Team satisfaction** |
+| Decreasing over time | Bug escape rate (bugs found in production) | **Quality** |
+| Improving over time | Difference between planned and actual delivery | **Predictability** |
 
 ---
 
 ## 11.6 Common Resistance Patterns and Responses
 
-| Resistance Pattern | What They Say | What They Mean | How to Respond |
-|-------------------|---------------|----------------|----------------|
-| **Denial** | "We already do Agile." | "We do standups, isn't that enough?" | Show the gaps: "Let's compare our practices to the Scrum Guide and see where we align and where we diverge." |
-| **Fear** | "This will never work here." | "I'm afraid of change / losing control." | Start small: "Let's try one Sprint and evaluate." Reduce the perceived risk. |
-| **Overwhelm** | "Too many changes at once." | "I can't absorb all this." | Phase the transition. [See Section 11.3] Focus on one or two practices at a time. |
-| **Cynicism** | "Management will kill this in 3 months." | "I've seen initiatives come and go." | Demonstrate management commitment. Show early wins. Be transparent about the challenges. |
-| **Passive resistance** | (silence, non-participation) | "I disagree but won't say it." | Create safe spaces for dissent. Ask direct questions in 1-on-1s. Address the elephant in the room. |
-| **Scrum-butting** | "We do Scrum, but..." (followed by exceptions) | "We want the label without the discipline." | Address each "but" explicitly: "Why are we skipping this? What is the cost?" |
+| How to Respond | What They Mean | What They Say | Resistance Pattern |
+|----------------|----------------|---------------|-------------------|
+| Show the gaps: "Let's compare our practices to the Scrum Guide and see where we align and where we diverge." | "We do standups, isn't that enough?" | "We already do Agile." | **Denial** |
+| Start small: "Let's try one Sprint and evaluate." Reduce the perceived risk. | "I'm afraid of change / losing control." | "This will never work here." | **Fear** |
+| Phase the transition. [See Section 11.3] Focus on one or two practices at a time. | "I can't absorb all this." | "Too many changes at once." | **Overwhelm** |
+| Demonstrate management commitment. Show early wins. Be transparent about the challenges. | "I've seen initiatives come and go." | "Management will kill this in 3 months." | **Cynicism** |
+| Create safe spaces for dissent. Ask direct questions in 1-on-1s. Address the elephant in the room. | "I disagree but won't say it." | (silence, non-participation) | **Passive resistance** |
+| Address each "but" explicitly: "Why are we skipping this? What is the cost?" | "We want the label without the discipline." | "We do Scrum, but..." (followed by exceptions) | **Scrum-butting** |
 
 ---
 

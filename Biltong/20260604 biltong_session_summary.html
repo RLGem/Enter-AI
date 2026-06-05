@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>סיכום סשן | בילטונג בוטיקי | Enter AI</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Heebo',sans-serif;background:#0d1117;color:#e6edf3;line-height:1.7;}
+.page{max-width:900px;margin:0 auto;padding:48px 28px;}
+
+/* Header */
+.header{border-bottom:1px solid #21262d;padding-bottom:32px;margin-bottom:40px;}
+.header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.brand{font-size:11px;font-weight:700;color:#58a6ff;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.session-title{font-size:28px;font-weight:700;color:#f0f6fc;line-height:1.2;margin-bottom:6px;}
+.session-sub{font-size:14px;color:#8b949e;}
+.meta{display:flex;flex-direction:column;gap:6px;align-items:flex-end;}
+.chip{display:inline-flex;align-items:center;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;white-space:nowrap;}
+.c-blue{background:rgba(88,166,255,.1);color:#58a6ff;border:1px solid rgba(88,166,255,.2);}
+.c-green{background:rgba(63,185,80,.1);color:#3fb950;border:1px solid rgba(63,185,80,.2);}
+.c-orange{background:rgba(240,136,62,.1);color:#f0883e;border:1px solid rgba(240,136,62,.2);}
+
+/* People */
+.people{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px;}
+.person{background:#161b22;border:1px solid #21262d;border-radius:8px;padding:16px 18px;}
+.person-name{font-size:15px;font-weight:700;color:#f0f6fc;margin-bottom:4px;}
+.person-role{font-size:12px;color:#8b949e;margin-bottom:10px;}
+.person-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{font-size:11px;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,.05);color:#8b949e;border:1px solid #21262d;}
+
+/* Section headings */
+.sec{margin-bottom:36px;}
+.sec-title{font-size:16px;font-weight:700;color:#f0f6fc;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-title::after{content:'';flex:1;height:1px;background:#21262d;}
+
+/* Done list */
+.done-list{display:flex;flex-direction:column;gap:8px;}
+.done-item{display:grid;grid-template-columns:20px 1fr auto;align-items:flex-start;gap:12px;padding:12px 16px;background:#161b22;border:1px solid #21262d;border-radius:8px;}
+.done-check{width:20px;height:20px;border-radius:50%;background:#3fb950;display:flex;align-items:center;justify-content:center;font-size:10px;color:#0d1117;font-weight:700;flex-shrink:0;margin-top:2px;}
+.done-text{font-size:13px;color:#e6edf3;line-height:1.5;}
+.done-text small{display:block;color:#8b949e;font-size:12px;margin-top:2px;}
+.done-badge{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap;align-self:flex-start;}
+.db-green{background:rgba(63,185,80,.12);color:#3fb950;}
+.db-blue{background:rgba(88,166,255,.1);color:#58a6ff;}
+
+/* Files */
+.files-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.file-item{background:#161b22;border:1px solid #21262d;border-radius:8px;padding:14px 16px;display:flex;align-items:flex-start;gap:10px;}
+.file-icon{font-size:20px;flex-shrink:0;}
+.file-name{font-size:13px;font-weight:500;color:#f0f6fc;margin-bottom:2px;}
+.file-desc{font-size:12px;color:#8b949e;}
+
+/* Open debts */
+.debt-list{display:flex;flex-direction:column;gap:8px;}
+.debt-item{display:grid;grid-template-columns:8px 1fr auto;align-items:flex-start;gap:12px;padding:12px 16px;background:#161b22;border:1px solid #21262d;border-radius:8px;}
+.debt-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+.d-red{background:#f85149;}
+.d-orange{background:#f0883e;}
+.d-yellow{background:#e3b341;}
+.debt-text{font-size:13px;color:#e6edf3;line-height:1.5;}
+.debt-text small{display:block;color:#8b949e;font-size:12px;}
+.debt-who{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap;align-self:flex-start;}
+.dw-n{background:rgba(88,166,255,.1);color:#58a6ff;}
+.dw-r{background:rgba(63,185,80,.1);color:#3fb950;}
+.dw-b{background:rgba(188,140,255,.1);color:#bc8cff;}
+
+/* FUMES table */
+.fumes-table{width:100%;border-collapse:collapse;font-size:13px;}
+.fumes-table th{background:#161b22;padding:10px 14px;text-align:right;font-size:11px;font-weight:700;color:#8b949e;letter-spacing:.5px;border-bottom:1px solid #21262d;}
+.fumes-table td{padding:10px 14px;border-bottom:1px solid #21262d;vertical-align:top;}
+.fumes-table tr:last-child td{border-bottom:none;}
+.fumes-table tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+.score-high{color:#3fb950;font-weight:700;}
+.score-mid{color:#e3b341;font-weight:700;}
+.score-low{color:#f85149;font-weight:700;}
+
+/* International market */
+.intl-box{background:#161b22;border:1px solid #21262d;border-radius:10px;overflow:hidden;margin-bottom:12px;}
+.intl-header{padding:14px 18px;border-bottom:1px solid #21262d;display:flex;align-items:center;gap:10px;}
+.intl-header .flag{font-size:20px;}
+.intl-header .country{font-size:15px;font-weight:600;color:#f0f6fc;}
+.intl-header .pop{font-size:12px;color:#8b949e;margin-right:auto;}
+.intl-header .score{font-size:13px;font-weight:700;}
+.intl-body{padding:14px 18px;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.intl-col-label{font-size:11px;color:#8b949e;font-weight:700;margin-bottom:6px;letter-spacing:.5px;}
+.intl-point{font-size:12px;color:#8b949e;padding:3px 0;line-height:1.5;}
+.intl-point strong{color:#e6edf3;font-weight:500;}
+
+/* Key insight */
+.insight{background:rgba(88,166,255,.06);border:1px solid rgba(88,166,255,.2);border-right:3px solid #58a6ff;border-radius:8px;padding:16px 20px;margin-bottom:12px;}
+.insight-t{font-size:13px;font-weight:700;color:#58a6ff;margin-bottom:6px;}
+.insight p{font-size:13px;color:#8b949e;line-height:1.7;}
+.insight strong{color:#e6edf3;font-weight:500;}
+
+.warn{background:rgba(227,179,65,.06);border:1px solid rgba(227,179,65,.2);border-right:3px solid #e3b341;border-radius:8px;padding:16px 20px;margin-bottom:12px;}
+.warn-t{font-size:13px;font-weight:700;color:#e3b341;margin-bottom:6px;}
+.warn p{font-size:13px;color:#8b949e;line-height:1.7;}
+.warn strong{color:#e6edf3;font-weight:500;}
+
+/* Next steps */
+.next-box{background:rgba(63,185,80,.06);border:1px solid rgba(63,185,80,.2);border-radius:10px;padding:20px 22px;}
+.next-title{font-size:14px;font-weight:700;color:#3fb950;margin-bottom:14px;}
+.next-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.next-item:last-child{border-bottom:none;}
+.next-num{width:22px;height:22px;border-radius:50%;background:#3fb950;color:#0d1117;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.next-content{flex:1;}
+.next-action{font-size:13px;font-weight:500;color:#f0f6fc;margin-bottom:2px;}
+.next-detail{font-size:12px;color:#8b949e;}
+.next-who{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap;align-self:flex-start;margin-top:2px;}
+
+/* Milestone */
+.milestone{background:#161b22;border:1px solid #21262d;border-radius:10px;padding:20px 22px;margin-top:24px;}
+.milestone-title{font-size:13px;font-weight:700;color:#f0f6fc;margin-bottom:12px;}
+.ms-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.ms-item{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:#8b949e;}
+.ms-box{width:14px;height:14px;border:1px solid #30363d;border-radius:3px;flex-shrink:0;margin-top:2px;}
+
+footer{text-align:center;padding:32px 0 16px;font-size:12px;color:#484f58;border-top:1px solid #21262d;margin-top:48px;}
+@media(max-width:600px){
+  .people{grid-template-columns:1fr;}
+  .files-grid{grid-template-columns:1fr;}
+  .intl-body{grid-template-columns:1fr;}
+  .ms-grid{grid-template-columns:1fr;}
+  .session-title{font-size:22px;}
+}
+.print-btn{position:fixed;bottom:24px;left:24px;background:#f0883e;color:#0d1117;border:none;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;box-shadow:0 4px 12px rgba(240,136,62,.4);z-index:999;}
+.print-btn:hover{background:#e07a30;}
+@media print{.print-btn{display:none;}body{background:#fff;color:#111;}.page{max-width:100%;padding:20px;}}
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">🖨 הדפס / שמור PDF</button>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <div class="brand">Enter AI · סיכום סשן</div>
+        <div class="session-title">בילטונג בוטיקי — סשן 1</div>
+        <div class="session-sub">סשן פתיחה · הוכחת כאב + הוכחת ביקוש · יוני 2026</div>
+      </div>
+      <div class="meta">
+        <span class="chip c-green">שלב 1 — ~80% ✓</span>
+        <span class="chip c-orange">שלב 2 — בביצוע</span>
+        <span class="chip c-blue">7 תוצרים ביד</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- People -->
+  <div class="people">
+    <div class="person">
+      <div class="person-name">ראל קאהן</div>
+      <div class="person-role">מייצר · יזם מוביל</div>
+      <div class="person-tags">
+        <span class="tag">20+ שנות ניסיון</span><span class="tag">בישולים מקצועי</span>
+        <span class="tag">לחמן שנייה</span><span class="tag">אייקידו</span>
+        <span class="tag">עובד בלמ"ס</span>
+      </div>
+    </div>
+    <div class="person">
+      <div class="person-name">נועם קרני</div>
+      <div class="person-role">שותף פוטנציאלי · תפעול ושיווק</div>
+      <div class="person-tags">
+        <span class="tag">ניהול תפעולי</span><span class="tag">מ"פ פיקוד עורף</span>
+        <span class="tag">מרכז יזמות אוניב'</span><span class="tag">offset smoker</span>
+        <span class="tag">מסיים 9/26</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- What we did -->
+  <div class="sec">
+    <div class="sec-title">✅ מה עשינו</div>
+    <div class="done-list">
+      <div class="done-item">
+        <div class="done-check">✓</div>
+        <div class="done-text">מיפוי מלא של המוצר, הכישורים, וההיסטוריה העסקית
+          <small>בילטונג מותאם אישית, 20+ שנות ניסיון, 15 ק"ג/שבוע קיבולת, אצוות 8 שעות עבודה</small></div>
+        <span class="done-badge db-green">הושלם</span>
+      </div>
+      <div class="done-item">
+        <div class="done-check">✓</div>
+        <div class="done-text">מודל עלות מלא ומדויק לק"ג
+          <small>₪93–113 חומרים + עבודה לק"ג מוכן. תבלינים ₪1.83. עלות עבודה 32 דק/ק"ג.</small></div>
+        <span class="done-badge db-green">מספרים מדויקים</span>
+      </div>
+      <div class="done-item">
+        <div class="done-check">✓</div>
+        <div class="done-text">טבלת תמחור מלאה — מ-₪300 עד ₪833 (מחיר שוק)
+          <small>₪450 = רצפה בלבד. ₪600–700 = ריאלי ועדיין 20% מתחת לשוק (מזרח ומערב ₪833).</small></div>
+        <span class="done-badge db-green">הושלם</span>
+      </div>
+      <div class="done-item">
+        <div class="done-check">✓</div>
+        <div class="done-text">ניתוח FUMES לשלושה שווקים — יחידות עילית, רכש מוסדי, קמעונאי
+          <small>יחידות עילית 4.2/5 — ביקוש מוכח. רכש מוסדי 3.4/5 — חסם כשרות. קמעונאי 3.1/5.</small></div>
+        <span class="done-badge db-green">הושלם</span>
+      </div>
+      <div class="done-item">
+        <div class="done-check">✓</div>
+        <div class="done-text">מיפוי נכסים אסטרטגיים — קשרים ומינוף
+          <small>רפי פרץ (גיס), חבר רכש צבאי (נועם), טכנולוג מזון תנובה (נועם), חוות רונית (ראל).</small></div>
+        <span class="done-badge db-blue">נכסים חזקים</span>
+      </div>
+      <div class="done-item">
+        <div class="done-check">✓</div>
+        <div class="done-text">ניתוח אסטרטגיית פניות — רמת סודיות וגישה לכל גורם
+          <small>4 גורמים, 4 אסטרטגיות שונות. חוות רונית = הכי זהיר. רפי פרץ = הכי אחרון.</small></div>
+        <span class="done-badge db-green">הושלם</span>
+      </div>
+      <div class="done-item">
+        <div class="done-check">✓</div>
+        <div class="done-text">ניתוח שוק בינלאומי — יהודים דתיים/מסורתיים בחו"ל
+          <small>ארה"ב, אוסטרליה, קנדה, בריטניה — FUMES ראשוני + חסמים + הזדמנויות.</small></div>
+        <span class="done-badge db-blue">חוב פתוח לעמקות</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Files -->
+  <div class="sec">
+    <div class="sec-title">📦 מה יש לכם ביד</div>
+    <div class="files-grid">
+      <div class="file-item"><span class="file-icon">📊</span><div><div class="file-name">מודל תמחור מלא</div><div class="file-desc">עלויות מדויקות + טבלת מרווחים לכל מחיר</div></div></div>
+      <div class="file-item"><span class="file-icon">🎯</span><div><div class="file-name">ניתוח FUMES × 3 שווקים</div><div class="file-desc">יחידות עילית, רכש מוסדי, קמעונאי</div></div></div>
+      <div class="file-item"><span class="file-icon">📋</span><div><div class="file-name">שאלות — רכש צבאי</div><div class="file-desc">12 שאלות P1–P5 לשיחת נועם עם החבר</div></div></div>
+      <div class="file-item"><span class="file-icon">🔬</span><div><div class="file-name">שאלות — טכנולוג מזון</div><div class="file-desc">רגולציה, כשרות, תהליך, שוק</div></div></div>
+      <div class="file-item"><span class="file-icon">🤝</span><div><div class="file-name">שיחת חוות רונית</div><div class="file-desc">אסטרטגיית "שמיעה בלבד" + סקריפט</div></div></div>
+      <div class="file-item"><span class="file-icon">🏛️</span><div><div class="file-name">שיחת רפי פרץ</div><div class="file-desc">שאלות דעה + הכנה למפגש</div></div></div>
+      <div class="file-item"><span class="file-icon">🗺️</span><div><div class="file-name">מפת התקדמות</div><div class="file-desc">מה הושלם, חובות פתוחים, Milestones</div></div></div>
+    </div>
+  </div>
+
+  <!-- International market analysis -->
+  <div class="sec">
+    <div class="sec-title">🌍 ניתוח שוק בינלאומי</div>
+
+    <div class="insight">
+      <div class="insight-t">💡 ההזדמנות</div>
+      <p>קהילות יהודיות דתיות ומסורתיות בחו"ל — ארה"ב, אוסטרליה, קנדה, בריטניה — מחפשות מוצרי מזון <strong>כשרים, ישראליים, אותנטיים</strong>. בילטונג ישראלי = מוצר ייחודי שלא קיים בשוק זה. <strong>המחיר הגבוה יותר מתקבל כ"פרמיום ישראלי"</strong> ולא כ"יקר".</p>
+    </div>
+
+    <div class="intl-box">
+      <div class="intl-header">
+        <span class="flag">🇺🇸</span>
+        <span class="country">ארצות הברית</span>
+        <span class="pop">~6–7 מיליון יהודים · ~1.5M דתיים/מסורתיים</span>
+        <span class="score score-high">FUMES: 3.8/5</span>
+      </div>
+      <div class="intl-body">
+        <div>
+          <div class="intl-col-label">✓ יתרונות</div>
+          <div class="intl-point"><strong>שוק ענק</strong> — NY, NJ, FL, CA, IL</div>
+          <div class="intl-point"><strong>כשרות מוכרת</strong> — OU, OK רגילים לייבוא ישראלי</div>
+          <div class="intl-point"><strong>ChannelS קיימים</strong> — חנויות כשרות, אמזון, Kosher.com</div>
+          <div class="intl-point"><strong>נוסטלגיה ישראלית</strong> — עולים וישראלים בחו"ל</div>
+          <div class="intl-point"><strong>מחיר</strong> — $40–60 לפאונד (≈450 גרם) ריאלי</div>
+        </div>
+        <div>
+          <div class="intl-col-label">✗ חסמים</div>
+          <div class="intl-point"><strong>FDA + USDA</strong> — ייבוא בשר מיובש מורכב ויקר</div>
+          <div class="intl-point"><strong>כשרות על ייצור</strong> — חובה. OU/OK דורשים פיקוח מלא</div>
+          <div class="intl-point"><strong>מתחרים</strong> — Kosher beef jerky מקומי קיים</div>
+          <div class="intl-point"><strong>לוגיסטיקה</strong> — קירור? מדף-יציב? עלות משלוח</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="intl-box">
+      <div class="intl-header">
+        <span class="flag">🇦🇺</span>
+        <span class="country">אוסטרליה</span>
+        <span class="pop">~120,000 יהודים · ~40,000 דתיים — מלבורן וסידני</span>
+        <span class="score score-high">FUMES: 4.0/5</span>
+      </div>
+      <div class="intl-body">
+        <div>
+          <div class="intl-col-label">✓ יתרונות</div>
+          <div class="intl-point"><strong>בילטונג = מוכר!</strong> — תרבות בשר מיובש קיימת (SA heritage)</div>
+          <div class="intl-point"><strong>קהילה מרוכזת</strong> — מלבורן קהילה דתית גדולה ואמידה</div>
+          <div class="intl-point"><strong>פחות תחרות</strong> — בילטונג כשר ישראלי = ייחודי</div>
+          <div class="intl-point"><strong>חיבורים קיימים</strong> — ראל דרום-אפריקאי, אולי יש קשרים</div>
+        </div>
+        <div>
+          <div class="intl-col-label">✗ חסמים</div>
+          <div class="intl-point"><strong>AQIS</strong> — רגולציית ייבוא בשר מחמירה מאוד</div>
+          <div class="intl-point"><strong>קהל קטן יחסית</strong> — 40K דתיים בלבד</div>
+          <div class="intl-point"><strong>מרחק לוגיסטי</strong> — עלות משלוח גבוהה</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="intl-box">
+      <div class="intl-header">
+        <span class="flag">🇬🇧</span>
+        <span class="country">בריטניה</span>
+        <span class="pop">~290,000 יהודים · ~80,000 דתיים — לונדון</span>
+        <span class="score score-mid">FUMES: 3.5/5</span>
+      </div>
+      <div class="intl-body">
+        <div>
+          <div class="intl-col-label">✓ יתרונות</div>
+          <div class="intl-point"><strong>קהילה גדולה ואמידה</strong> — Golders Green, Stamford Hill</div>
+          <div class="intl-point"><strong>ייבוא מישראל מוכר</strong> — מוצרים ישראליים רגילים</div>
+          <div class="intl-point"><strong>Ocado, kosher chains</strong> — ערוצי הפצה קיימים</div>
+        </div>
+        <div>
+          <div class="intl-col-label">✗ חסמים</div>
+          <div class="intl-point"><strong>Post-Brexit</strong> — כללי ייבוא חדשים ומסובכים</div>
+          <div class="intl-point"><strong>תחרות מקומית</strong> — בילטונג בריטי קיים (לא כשר)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="warn">
+      <div class="warn-t">⚠ דרישות בסיסיות לכל שוק בינלאומי</div>
+      <p>
+        <strong>כשרות מלאה על תהליך הייצור</strong> — חובה מוחלטת. OU או בד"ץ בינלאומי.<br>
+        <strong>אישור ייצוא ממשרד החקלאות הישראלי</strong> — לפני כל ייצוא בשר.<br>
+        <strong>תיוג מלא באנגלית</strong> — ערכים תזונתיים, אלרגנים, תאריך תפוגה.<br>
+        <strong>מדף-יציב ללא קירור</strong> — תנאי הכרחי למשלוח בינלאומי יעיל.
+      </p>
+    </div>
+
+    <div class="insight">
+      <div class="insight-t">🎯 המסלול הריאלי לבינלאומי</div>
+      <p>
+        <strong>שלב 1 — קודם ישראל:</strong> לסגור ייצור, כשרות, ורישוי מקומי.<br>
+        <strong>שלב 2 — פיילוט אוסטרליה:</strong> יש לראל חיבור תרבותי (דרום אפריקאי). שוק קטן = קל לבדוק.<br>
+        <strong>שלב 3 — ארה"ב:</strong> השוק הגדול, אבל הכי מורכב רגולטורית. לשלב 5+.<br>
+        <strong>FUMES חו"ל נוסף: E=5</strong> — שוק גדל עם כל עלייה ישראלית ועם גידול הקהילות.
+      </p>
+    </div>
+  </div>
+
+  <!-- Open debts -->
+  <div class="sec">
+    <div class="sec-title">⚠ חובות פתוחים</div>
+    <div class="debt-list">
+      <div class="debt-item">
+        <div class="debt-dot d-red"></div>
+        <div class="debt-text">שיחת רכש צבאי — תקציב, כשרות, מסלול כניסה
+          <small>מסמך שאלות מוכן. הכי קריטי לאסטרטגיה.</small></div>
+        <span class="debt-who dw-n">נועם</span>
+      </div>
+      <div class="debt-item">
+        <div class="debt-dot d-red"></div>
+        <div class="debt-text">שיחת טכנולוג מזון — רגולציה, כשרות, אישורים
+          <small>מסמך שאלות מוכן. חובה לכל מסלול — ישראל וחו"ל.</small></div>
+        <span class="debt-who dw-n">נועם</span>
+      </div>
+      <div class="debt-item">
+        <div class="debt-dot d-orange"></div>
+        <div class="debt-text">מכירה ראשונה ב-₪450+ לק"ג — לקוח קיים
+          <small>לבחור לקוח קיים ולגשת אליו עם המחיר הנכון השבוע.</small></div>
+        <span class="debt-who dw-r">ראל</span>
+      </div>
+      <div class="debt-item">
+        <div class="debt-dot d-orange"></div>
+        <div class="debt-text">שיחת חוות רונית — לשמוע בלבד
+          <small>מסמך מוכן. לא לחשוף. אחרי שיחות 1+2.</small></div>
+        <span class="debt-who dw-r">ראל</span>
+      </div>
+      <div class="debt-item">
+        <div class="debt-dot d-yellow"></div>
+        <div class="debt-text">שיחת רפי פרץ — דעה ראשונית
+          <small>מסמך מוכן. הכי אחרון — מגיעים מוכנים.</small></div>
+        <span class="debt-who dw-r">ראל</span>
+      </div>
+      <div class="debt-item">
+        <div class="debt-dot d-yellow"></div>
+        <div class="debt-text">החלטת שותפות ראל–נועם: כן / לא / תנאים
+          <small>לאחר שתי השיחות הראשונות — לשבת ולהחליט.</small></div>
+        <span class="debt-who dw-b">שניהם</span>
+      </div>
+      <div class="debt-item">
+        <div class="debt-dot d-yellow"></div>
+        <div class="debt-text">עמקות ניתוח שוק בינלאומי — OU + ייצוא
+          <small>לבדוק עלות ותהליך קבלת כשרות OU ואישור ייצוא ממשהח"ל.</small></div>
+        <span class="debt-who dw-b">שניהם</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Next steps -->
+  <div class="sec">
+    <div class="sec-title">➡️ הצעדים הבאים — לפי סדר עדיפות</div>
+    <div class="next-box">
+      <div class="next-title">📅 השבוע הקרוב</div>
+      <div class="next-item">
+        <div class="next-num">1</div>
+        <div class="next-content">
+          <div class="next-action">שיחת רכש צבאי + שיחת טכנולוג מזון</div>
+          <div class="next-detail">מסמכי שאלות מוכנים. שתי השיחות הכי קריטיות.</div>
+        </div>
+        <span class="next-who dw-n">נועם</span>
+      </div>
+      <div class="next-item">
+        <div class="next-num">2</div>
+        <div class="next-content">
+          <div class="next-action">מכירה אחת ב-₪450–500 ללקוח קיים</div>
+          <div class="next-detail">לבחור לקוח שקנה בעבר ולהציע מחיר חדש. לקבל "כן" אחד.</div>
+        </div>
+        <span class="next-who dw-r">ראל</span>
+      </div>
+      <div class="next-item">
+        <div class="next-num">3</div>
+        <div class="next-content">
+          <div class="next-action">שיחת חוות רונית — שלום וקשב</div>
+          <div class="next-detail">לשמוע מה קורה. לא לספר כלום.</div>
+        </div>
+        <span class="next-who dw-r">ראל</span>
+      </div>
+      <div class="next-item">
+        <div class="next-num">4</div>
+        <div class="next-content">
+          <div class="next-action">לחזור עם סיכומי השיחות לסשן הבא</div>
+          <div class="next-detail">מה למדנו מכל שיחה → החלטת המשך לשלב 3.</div>
+        </div>
+        <span class="next-who" style="background:rgba(188,140,255,.1);color:#bc8cff;font-size:11px;padding:2px 8px;border-radius:10px;">שניהם</span>
+      </div>
+    </div>
+
+    <div class="milestone">
+      <div class="milestone-title">🏆 Milestone לסיום שלב 2 — מה צריך לסמן</div>
+      <div class="ms-grid">
+        <div class="ms-item"><div class="ms-box"></div>שיחת רכש + טכנולוג — בוצעו וסוכמו</div>
+        <div class="ms-item"><div class="ms-box"></div>מכירה ₪450+ — לקוח משלם מחיר נכון</div>
+        <div class="ms-item"><div class="ms-box"></div>כשרות — נתיב ברור (עלות + זמן)</div>
+        <div class="ms-item"><div class="ms-box"></div>החלטת שותפות ראל–נועם</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    בילטונג בוטיקי · סשן 1 · נוצר עם Enter AI<br>
+    🏋️ חדר כושר ליזמות בעידן ה-AI
+  </footer>
+
+</div>
+</body>
+</html>

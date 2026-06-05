@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>שיחת גילוי — רכש צה"ל | בילטונג</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body {
+  font-family: 'Heebo', sans-serif;
+  background: #0d1117;
+  color: #e6edf3;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 28px;
+}
+
+/* Header */
+.header {
+  border-bottom: 1px solid #21262d;
+  padding-bottom: 36px;
+  margin-bottom: 48px;
+}
+
+.header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.logo-area h1 {
+  font-size: 13px;
+  font-weight: 500;
+  color: #58a6ff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.doc-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #f0f6fc;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.doc-sub {
+  font-size: 15px;
+  color: #8b949e;
+}
+
+.meta-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.badge-confidential {
+  background: rgba(248,81,73,0.15);
+  color: #f85149;
+  border: 1px solid rgba(248,81,73,0.3);
+}
+
+.badge-discovery {
+  background: rgba(88,166,255,0.1);
+  color: #58a6ff;
+  border: 1px solid rgba(88,166,255,0.2);
+}
+
+.badge-priority {
+  background: rgba(63,185,80,0.1);
+  color: #3fb950;
+  border: 1px solid rgba(63,185,80,0.2);
+}
+
+/* Intro box */
+.intro-box {
+  background: #161b22;
+  border: 1px solid #21262d;
+  border-right: 3px solid #58a6ff;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 48px;
+}
+
+.intro-box p {
+  font-size: 14px;
+  color: #8b949e;
+  line-height: 1.8;
+}
+
+.intro-box strong {
+  color: #e6edf3;
+  font-weight: 500;
+}
+
+/* Section */
+.section {
+  margin-bottom: 48px;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.section-num {
+  width: 28px;
+  height: 28px;
+  background: #58a6ff;
+  color: #0d1117;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.section-num.orange { background: #f0883e; }
+.section-num.green  { background: #3fb950; }
+.section-num.red    { background: #f85149; }
+.section-num.purple { background: #bc8cff; }
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f0f6fc;
+}
+
+.section-desc {
+  font-size: 13px;
+  color: #8b949e;
+  margin-top: 2px;
+}
+
+/* Question card */
+.q-card {
+  background: #161b22;
+  border: 1px solid #21262d;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.q-card:hover {
+  border-color: #30363d;
+}
+
+.q-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
+}
+
+.q-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: #58a6ff;
+  background: rgba(88,166,255,0.1);
+  padding: 3px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+}
+
+.q-num.p1 { color: #f85149; background: rgba(248,81,73,0.1); }
+.q-num.p2 { color: #f0883e; background: rgba(240,136,62,0.1); }
+.q-num.p3 { color: #e3b341; background: rgba(227,179,65,0.1); }
+.q-num.p4 { color: #3fb950; background: rgba(63,185,80,0.1); }
+.q-num.p5 { color: #58a6ff; background: rgba(88,166,255,0.1); }
+
+.q-content { flex: 1; }
+
+.q-text {
+  font-size: 15px;
+  color: #f0f6fc;
+  font-weight: 500;
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.q-why {
+  font-size: 13px;
+  color: #8b949e;
+  line-height: 1.6;
+}
+
+.q-followups {
+  border-top: 1px solid #21262d;
+  padding: 12px 20px 12px 54px;
+  background: rgba(255,255,255,0.01);
+}
+
+.q-followup-label {
+  font-size: 11px;
+  color: #58a6ff;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.q-followup-item {
+  font-size: 13px;
+  color: #8b949e;
+  padding: 4px 0;
+  padding-right: 16px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.q-followup-item::before {
+  content: '↳';
+  position: absolute;
+  right: 0;
+  color: #30363d;
+}
+
+/* Answer space */
+.answer-space {
+  border-top: 1px solid #21262d;
+  padding: 12px 20px 12px 54px;
+}
+
+.answer-label {
+  font-size: 11px;
+  color: #3fb950;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.answer-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.answer-line {
+  height: 1px;
+  background: #21262d;
+  border-radius: 1px;
+}
+
+/* Priority legend */
+.priority-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  padding: 14px 18px;
+  background: #161b22;
+  border: 1px solid #21262d;
+  border-radius: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #8b949e;
+}
+
+/* Warning box */
+.warning-box {
+  background: rgba(227,179,65,0.08);
+  border: 1px solid rgba(227,179,65,0.25);
+  border-right: 3px solid #e3b341;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.warning-box .warn-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #e3b341;
+  margin-bottom: 6px;
+}
+
+.warning-box p {
+  font-size: 13px;
+  color: #8b949e;
+  line-height: 1.7;
+}
+
+/* Summary box */
+.summary-box {
+  background: #161b22;
+  border: 1px solid #21262d;
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 48px;
+}
+
+.summary-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f0f6fc;
+  margin-bottom: 16px;
+}
+
+.decision-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.decision-item {
+  background: #0d1117;
+  border: 1px solid #21262d;
+  border-radius: 6px;
+  padding: 14px 16px;
+}
+
+.decision-q {
+  font-size: 12px;
+  color: #8b949e;
+  margin-bottom: 6px;
+}
+
+.decision-a {
+  font-size: 13px;
+  color: #f0f6fc;
+  font-weight: 500;
+}
+
+.answer-field {
+  border-bottom: 1px dashed #30363d;
+  min-height: 24px;
+  margin-top: 4px;
+}
+
+footer {
+  text-align: center;
+  padding: 40px 0 20px;
+  font-size: 12px;
+  color: #484f58;
+  border-top: 1px solid #21262d;
+  margin-top: 60px;
+}
+
+@media (max-width: 600px) {
+  .doc-title { font-size: 24px; }
+  .header-top { flex-direction: column; }
+  .meta-badges { align-items: flex-start; }
+  .decision-grid { grid-template-columns: 1fr; }
+}
+.print-btn{position:fixed;bottom:24px;left:24px;background:#f0883e;color:#0d1117;border:none;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;box-shadow:0 4px 12px rgba(240,136,62,.4);z-index:999;}
+.print-btn:hover{background:#e07a30;}
+@media print{.print-btn{display:none;}body{background:#fff;color:#111;}.page{max-width:100%;padding:20px;}}
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">🖨 הדפס / שמור PDF</button>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-top">
+      <div class="logo-area">
+        <h1>Enter AI · Customer Discovery</h1>
+        <div class="doc-title">שיחת גילוי — רכש בשר צה"ל</div>
+        <div class="doc-sub">מסמך הכנה לנועם · שיחה עם החבר מרכש הצבא</div>
+      </div>
+      <div class="meta-badges">
+        <span class="badge badge-confidential">🔒 סודי — לשימוש פנימי</span>
+        <span class="badge badge-discovery">📋 Customer Discovery</span>
+        <span class="badge badge-priority">🎯 עדיפות עליונה</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <div class="intro-box">
+    <p>
+      <strong>מטרת השיחה:</strong> להבין את מציאות הרכש הצבאי — לא למכור. לא להציע. לשאול ולשמוע.<br>
+      <strong>הכלל הכי חשוב (The Mom Test):</strong> לא מזכירים מוצר, לא מציגים רעיון עסקי. שואלים על <strong>חיי האיש</strong> ועל האופן שבו המערכת עובדת כיום.<br>
+      <strong>משך מומלץ:</strong> 20–30 דקות. תן לו לדבר. אל תמלא שקטים מהר מדי.
+    </p>
+  </div>
+
+  <!-- Priority Legend -->
+  <div class="priority-legend">
+    <div class="legend-item"><span class="q-num p1" style="padding:2px 8px;">P1</span> קריטי — חובה לשאול</div>
+    <div class="legend-item"><span class="q-num p2" style="padding:2px 8px;">P2</span> חשוב מאוד</div>
+    <div class="legend-item"><span class="q-num p3" style="padding:2px 8px;">P3</span> בינוני</div>
+    <div class="legend-item"><span class="q-num p4" style="padding:2px 8px;">P4</span> אם יש זמן</div>
+    <div class="legend-item"><span class="q-num p5" style="padding:2px 8px;">P5</span> בונוס</div>
+  </div>
+
+  <!-- SECTION 1: Budget & procurement -->
+  <div class="section">
+    <div class="section-label">
+      <div class="section-num">1</div>
+      <div>
+        <div class="section-title">תקציב ומסלולי רכש</div>
+        <div class="section-desc">להבין כמה כסף זז, מי מחליט, ואיך קונים</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num p1">P1</span>
+        <div class="q-content">
+          <div class="q-text">כשיחידה רוצה לקנות מזון שאינו חלק מהמנה הסטנדרטית — איך זה עובד מבחינה תקציבית? מאיפה הכסף בא?</div>
+          <div class="q-why">מפה לאוזן עצר כאן — לא ידענו אם יחידות עילית קונות לבד או דרך מרכז</div>
+        </div>
+      </div>
+      <div class="q-followups">
+        <div class="q-followup-label">המשך →</div>
+        <div class="q-followup-item">יש "קופה קטנה" / אשראי מג"ד? מה גודלה בערך?</div>
+        <div class="q-followup-item">האם יחידות עילית פועלות אחרת מגדודי קו?</div>
+        <div class="q-followup-item">מי מאשר הוצאה על מזון מחוץ לרשימה?</div>
+      </div>
+      <div class="answer-space">
+        <div class="answer-label">תשובה / הערות</div>
+        <div class="answer-lines">
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num p1">P1</span>
+        <div class="q-content">
+          <div class="q-text">מה ההבדל בין רכש מרוכז (מרמ"ח) לבין רכש עצמאי ביחידה? מה ניתן לקנות בכל מסלול?</div>
+          <div class="q-why">קובע אם אנחנו מוכרים ל-100 אנשים קטנים או לגוף מרכזי אחד</div>
+        </div>
+      </div>
+      <div class="q-followups">
+        <div class="q-followup-label">המשך →</div>
+        <div class="q-followup-item">מה סף הסכום שמעבר אליו חייב מכרז?</div>
+        <div class="q-followup-item">חטיפים / מזון אנרגיה — איזה מסלול?</div>
+      </div>
+      <div class="answer-space">
+        <div class="answer-label">תשובה / הערות</div>
+        <div class="answer-lines">
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num p2">P2</span>
+        <div class="q-content">
+          <div class="q-text">כשאתה היית אחראי על רכש הבשר — מה היה גודל התקציב? כמה ק"ג בשר נכנסים לצבא בחודש?</div>
+          <div class="q-why">לאמוד את גודל השוק הכולל</div>
+        </div>
+      </div>
+      <div class="answer-space">
+        <div class="answer-label">תשובה / הערות</div>
+        <div class="answer-lines">
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: Kashrut -->
+  <div class="section">
+    <div class="section-label">
+      <div class="section-num orange">2</div>
+      <div>
+        <div class="section-title">כשרות — החסם הגדול</div>
+        <div class="section-desc">להבין בדיוק מה נדרש ומה גמיש</div>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <div class="warn-title">⚠ מצב נוכחי</div>
+      <p>הבשר כשר ברמת חומר הגלם — אבל אין פיקוח כשרות על תהליך הייצור. זה יכול להיות חסם לרכש מוסדי.</p>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num p1">P1</span>
+        <div class="q-content">
+          <div class="q-text">מה בדיוק נדרש כדי שמוצר בשר מעובד יוכל להיכנס לצה"ל? יש רמות שונות של כשרות?</div>
+          <div class="q-why">זה השאלה שתחליט אם המסלול הצבאי בכלל אפשרי ובאיזה עלות</div>
+        </div>
+      </div>
+      <div class="q-followups">
+        <div class="q-followup-label">המשך →</div>
+        <div class="q-followup-item">האם יש הבדל בין יחידות בצפון לדרום? בין קרבי לאחורי?</div>
+        <div class="q-followup-item">חטיפים / snacks — אותה דרישה כמו ארוחה מלאה?</div>
+        <div class="q-followup-item">מי מפקח? הרבנות הצבאית? גוף פנימי? חיצוני?</div>
+      </div>
+      <div class="answer-space">
+        <div class="answer-label">תשובה / הערות</div>
+        <div class="answer-lines">
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num p1">P1</span>
+        <div class="q-content">
+          <div class="q-text">כמה עולה לקבל תעודת כשרות על מוצר בשר מעובד בייצור ביתי-קטן? מה התהליך?</div>
+          <div class="q-why">לדעת אם זה עלות חד-פעמית, שנתית, או בלתי אפשרי בקנה מידה קטן</div>
+        </div>
+      </div>
+      <div class="answer-space">
+        <div class="answer-label">תשובה / הערות</div>
+        <div class="answer-lines">
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num p2">P2</span>
+        <div class="q-content">
+          <div class="q-text">ידעת על מקרים שמוצר נכנס לצבא עם כשרות חלקית? יש גמישות במצבי מלחמה / שטח?</div>
+          <div class="q-why">בדיקת גבולות — אולי יש מסלול אפור שניתן לנצל לשלב הראשון</div>
+        </div>
+      </div>
+      <div class="answer-space">
+        <div class="answer-label">תשובה / הערות</div>
+        <div class="answer-lines">
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: Competition & gaps -->
+  <div class="section">
+    <div class="section-label">
+      <div class="section-num green">3</div>
+      <div>
+        <div class="section-title">שוק קיים וחסכים</div>
+        <div class="section-desc">מה קיים כיום ומה חסר</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num p2">P2</span>
+        <div class="q-content">
+          <div class="q-text">מה אוכלים חיילים בשטח כיום כשצריכים חטיף / מזון קל לנשיאה שאינו הקרב? מה האופציות הקיימות?</div>
+          <div class="q-why">לזהות את המתחרים האמיתיים — טונה בוואקום, חטיפי חלבון, מה עוד?</div>
+        </div>
+      </div>
+      <div class="q-followups">
+        <div class="q-followup-label">המשך →</div>
+        <div class="q-followup-item">מה החיילים מביאים מהבית? מה מתנדבים שולחים?</div>
+        <div class="q-followup-item">יש מוצרים שנכנסו ויצאו? למה?</div>
+      </div>
+      <div class="answer-space">
+        <div class="answer-label">תשובה / הערות</div>
+        <div class="answer-lines">
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num p2">P2</span>
+        <div class="q-content">
+          <div class="q-text">מה הכי חסר לחיילים בשטח מבחינת תזונה / אוכל? מה המתלונות שנשמעו הכי הרבה כשהיית בתפקיד?</div>
+          <div class="q-why">לגלות את הכאב הלא פתור — אולי בילטונג פותר בדיוק את זה</div>
+        </div>
+      </div>
+      <div class="answer-space">
+        <div class="answer-label">תשובה / הערות</div>
+        <div class="answer-lines">
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: Entry path -->
+  <div class="section">
+    <div class="section-label">
+      <div class="section-num red">4</div>
+      <div>
+        <div class="section-title">מסלול כניסה ריאלי</div>
+        <div class="section-desc">מה הדרך הקצרה ביותר מ"רעיון" ל"הסכם"</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num p2">P2</span>
+        <div class="q-content">
+          <div class="q-text">אם ספק קטן רצה להיכנס לצבא עם מוצר מזון חדש — מה הצעד הראשון? איפה מתחילים?</div>
+          <div class="q-why">מפת דרכים ריאלית — לא תיאורטית</div>
+        </div>
+      </div>
+      <div class="q-followups">
+        <div class="q-followup-label">המשך →</div>
+        <div class="q-followup-item">יש מסלול "פיילוט" או "ניסיון" לפני חוזה מלא?</div>
+        <div class="q-followup-item">כמה זמן לוקח בממוצע מגישה ראשונה להסכם?</div>
+      </div>
+      <div class="answer-space">
+        <div class="answer-label">תשובה / הערות</div>
+        <div class="answer-lines">
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num p3">P3</span>
+        <div class="q-content">
+          <div class="q-text">האם קשרים אישיים — לדוגמה עם הרב הצבאי הראשי לשעבר — עוזרים בתהליך? או שהביורוקרטיה עוקפת הכל?</div>
+          <div class="q-why">לדעת אם הנכס של רפי פרץ רלוונטי לזה, ואיך בדיוק</div>
+        </div>
+      </div>
+      <div class="answer-space">
+        <div class="answer-label">תשובה / הערות</div>
+        <div class="answer-lines">
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: Bonus -->
+  <div class="section">
+    <div class="section-label">
+      <div class="section-num purple">5</div>
+      <div>
+        <div class="section-title">שאלות בונוס — אם הזמן מאפשר</div>
+        <div class="section-desc">תובנות נוספות שיעשירו את התמונה</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num p4">P4</span>
+        <div class="q-content">
+          <div class="q-text">מה דעתך אישית — האם בילטונג (בשר מיובש / מטורף) מתאים לשוק הצבאי? מה היתרונות והחסרונות שאתה רואה?</div>
+          <div class="q-why">לקבל ביקורת כנה מחבר, לא ממוכר</div>
+        </div>
+      </div>
+      <div class="answer-space">
+        <div class="answer-label">תשובה / הערות</div>
+        <div class="answer-lines">
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num p4">P4</span>
+        <div class="q-content">
+          <div class="q-text">יש מישהו נוסף שכדאי לי לדבר איתו? מי ה"שומר סף" האמיתי בנושא הזה היום?</div>
+          <div class="q-why">הפניות — הזהב של customer discovery</div>
+        </div>
+      </div>
+      <div class="answer-space">
+        <div class="answer-label">תשובה / הערות</div>
+        <div class="answer-lines">
+          <div class="answer-line"></div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary decision matrix -->
+  <div class="summary-box">
+    <div class="summary-title">📋 סיכום החלטות — למלא אחרי השיחה</div>
+    <div class="decision-grid">
+      <div class="decision-item">
+        <div class="decision-q">תקציב ביחידות עילית</div>
+        <div class="decision-a">☐ קופה קטנה בלבד &nbsp; ☐ רכש עצמאי משמעותי</div>
+        <div class="answer-field"></div>
+      </div>
+      <div class="decision-item">
+        <div class="decision-q">כשרות — חסם אמיתי?</div>
+        <div class="decision-a">☐ חסם מוחלט &nbsp; ☐ פתיר &nbsp; ☐ גמיש</div>
+        <div class="answer-field"></div>
+      </div>
+      <div class="decision-item">
+        <div class="decision-q">מסלול כניסה</div>
+        <div class="decision-a">☐ פיילוט אפשרי &nbsp; ☐ מכרז בלבד &nbsp; ☐ לא ברור</div>
+        <div class="answer-field"></div>
+      </div>
+      <div class="decision-item">
+        <div class="decision-q">ערך רפי פרץ לתהליך</div>
+        <div class="decision-a">☐ קריטי &nbsp; ☐ עוזר &nbsp; ☐ לא רלוונטי</div>
+        <div class="answer-field"></div>
+      </div>
+      <div class="decision-item">
+        <div class="decision-q">הצעד הבא המומלץ</div>
+        <div class="answer-field"></div>
+      </div>
+      <div class="decision-item">
+        <div class="decision-q">פניות — מי לדבר איתו בהמשך</div>
+        <div class="answer-field"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    בילטונג בוטיקי · Customer Discovery · נוצר עם Enter AI<br>
+    מסמך זה סודי — לשימוש ראל ונועם בלבד
+  </footer>
+
+</div>
+</body>
+</html>

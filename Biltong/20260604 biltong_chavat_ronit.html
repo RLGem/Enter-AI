@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>שיחת חידוש קשר — חוות רונית | בילטונג</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Heebo',sans-serif;background:#0d1117;color:#e6edf3;line-height:1.7;}
+.page{max-width:860px;margin:0 auto;padding:48px 28px;}
+.header{border-bottom:1px solid #21262d;padding-bottom:36px;margin-bottom:48px;}
+.chip{display:inline-flex;align-items:center;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;letter-spacing:.5px;margin-bottom:12px;}
+.chip-orange{background:rgba(240,136,62,.15);color:#f0883e;border:1px solid rgba(240,136,62,.3);}
+.chip-red{background:rgba(248,81,73,.12);color:#f85149;border:1px solid rgba(248,81,73,.25);}
+.doc-title{font-size:30px;font-weight:700;color:#f0f6fc;line-height:1.2;margin-bottom:8px;}
+.doc-sub{font-size:15px;color:#8b949e;}
+.strategy-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:40px;}
+.s-card{background:#161b22;border:1px solid #21262d;border-radius:8px;padding:18px 20px;}
+.s-label{font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:8px;}
+.s-green{color:#3fb950;} .s-red{color:#f85149;}
+.s-txt{font-size:13px;color:#8b949e;line-height:1.7;}
+.s-txt strong{color:#e6edf3;font-weight:500;}
+.danger-box{background:rgba(248,81,73,.07);border:1px solid rgba(248,81,73,.2);border-right:3px solid #f85149;border-radius:8px;padding:18px 22px;margin-bottom:40px;}
+.danger-t{font-size:14px;font-weight:700;color:#f85149;margin-bottom:8px;}
+.danger-box p{font-size:13px;color:#8b949e;line-height:1.8;}
+.danger-box strong{color:#e6edf3;font-weight:500;}
+.section{margin-bottom:44px;}
+.sec-label{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.sec-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;color:#0d1117;}
+.n-orange{background:#f0883e;} .n-green{background:#3fb950;} .n-blue{background:#58a6ff;} .n-purple{background:#bc8cff;}
+.sec-title{font-size:18px;font-weight:700;color:#f0f6fc;}
+.sec-desc{font-size:13px;color:#8b949e;margin-top:2px;}
+.q-card{background:#161b22;border:1px solid #21262d;border-radius:8px;margin-bottom:10px;overflow:hidden;}
+.q-card:hover{border-color:#30363d;}
+.q-head{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;}
+.pnum{font-size:11px;font-weight:700;padding:3px 8px;border-radius:4px;flex-shrink:0;margin-top:2px;}
+.p1{color:#f85149;background:rgba(248,81,73,.1);}
+.p2{color:#f0883e;background:rgba(240,136,62,.1);}
+.p3{color:#e3b341;background:rgba(227,179,65,.1);}
+.p4{color:#3fb950;background:rgba(63,185,80,.1);}
+.listen{color:#bc8cff;background:rgba(188,140,255,.1);}
+.q-txt{font-size:15px;color:#f0f6fc;font-weight:500;margin-bottom:5px;line-height:1.5;}
+.q-why{font-size:13px;color:#8b949e;line-height:1.6;}
+.follows{border-top:1px solid #21262d;padding:12px 20px 12px 54px;background:rgba(255,255,255,.01);}
+.fl{font-size:11px;color:#58a6ff;font-weight:700;letter-spacing:1px;margin-bottom:7px;}
+.fi{font-size:13px;color:#8b949e;padding:3px 0 3px 16px;position:relative;line-height:1.5;}
+.fi::before{content:'↳';position:absolute;right:0;color:#30363d;}
+.ans{border-top:1px solid #21262d;padding:12px 20px 12px 54px;}
+.al{font-size:11px;color:#3fb950;font-weight:700;letter-spacing:1px;margin-bottom:7px;}
+.aline{height:1px;background:#21262d;margin:7px 0;}
+.script-box{background:#161b22;border:1px solid #21262d;border-right:3px solid #f0883e;border-radius:8px;padding:20px 24px;margin-bottom:28px;}
+.script-t{font-size:13px;font-weight:700;color:#f0883e;margin-bottom:10px;letter-spacing:.5px;}
+.script-txt{font-size:14px;color:#c9d1d9;line-height:1.9;font-style:italic;}
+.outcome-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:28px;}
+.outcome{background:#161b22;border:1px solid #21262d;border-radius:8px;padding:14px 16px;}
+.out-label{font-size:11px;color:#8b949e;margin-bottom:5px;font-weight:700;letter-spacing:.5px;}
+.out-val{font-size:13px;color:#f0f6fc;font-weight:500;}
+.out-chk{font-size:12px;color:#8b949e;margin-top:4px;}
+footer{text-align:center;padding:36px 0 18px;font-size:12px;color:#484f58;border-top:1px solid #21262d;margin-top:56px;}
+@media(max-width:600px){.strategy-grid{grid-template-columns:1fr;}.outcome-grid{grid-template-columns:1fr;}.doc-title{font-size:22px;}}
+.print-btn{position:fixed;bottom:24px;left:24px;background:#f0883e;color:#0d1117;border:none;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;box-shadow:0 4px 12px rgba(240,136,62,.4);z-index:999;}
+.print-btn:hover{background:#e07a30;}
+@media print{.print-btn{display:none;}body{background:#fff;color:#111;}.page{max-width:100%;padding:20px;}.q-card,.s-card,.danger-box,.script-box,.outcome{border:1px solid #ccc !important;background:#f9f9f9 !important;}.q-txt,.doc-title,.sec-title{color:#111 !important;}.q-why,.s-txt,.doc-sub,.sec-desc,.script-txt,.out-val,.out-chk{color:#444 !important;}.q-card:hover{border-color:#ccc;}}
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">🖨 הדפס / שמור PDF</button>
+<div class="page">
+  <div class="header">
+    <span class="chip chip-orange">חידוש קשר</span>
+    <span class="chip chip-red" style="margin-right:8px;">🔒 שמיעה בלבד</span>
+    <div class="doc-title">שיחה עם בעלי חוות רונית</div>
+    <div class="doc-sub">מסמך הכנה לראל · לקוח לשעבר · חידוש קשר אחרי 2.5 שנים</div>
+  </div>
+
+  <div class="danger-box">
+    <div class="danger-t">🔒 כלל הזהב לשיחה הזו</div>
+    <p>
+      חוות רונית הם <strong>שחקן בשוק</strong> — לא חבר, לא יועץ. הם קנו ממך כי לא יכלו לייצר לבד.<br>
+      <strong>המטרה:</strong> לשמוע מה קורה איתם — לא לספר מה קורה איתך.<br>
+      <strong>לא לחשוף:</strong> חזון עסקי, שותפים, חיבורים לצבא, תמחור חדש, כמויות.<br>
+      <strong>הטון:</strong> "שלום, חשבתי עליך, מה קורה?" — ולא יותר מזה בשלב הזה.
+    </p>
+  </div>
+
+  <div class="strategy-grid">
+    <div class="s-card"><div class="s-label s-green">✓ מה הם יכולים להיות</div>
+      <div class="s-txt">
+        <strong>לקוח גדול</strong> — מינימום 15–30 ק"ג/שבוע<br>
+        <strong>ערוץ הפצה</strong> — מוכרים ללקוחות שלהם<br>
+        <strong>לגיטימציה</strong> — "חוות רונית בוחרת ראל" = מותג
+      </div>
+    </div>
+    <div class="s-card"><div class="s-label s-red">✗ מה הסיכון</div>
+      <div class="s-txt">
+        <strong>מתחרה פוטנציאלי</strong> — אם ישמעו על הרחבה<br>
+        <strong>שיבוש מחיר</strong> — יספרו בשוק מה שילמו<br>
+        <strong>גניבת רעיון</strong> — ישכרו טכנולוג מיד
+      </div>
+    </div>
+  </div>
+
+  <!-- פתיחה -->
+  <div class="section">
+    <div class="sec-label">
+      <div class="sec-num n-orange">1</div>
+      <div><div class="sec-title">פתיחת השיחה — הסקריפט</div><div class="sec-desc">איך מחדשים קשר בטבעיות</div></div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-t">📞 פתיחה מומלצת</div>
+      <div class="script-txt">
+        "שלום [שם], ראל קאהן. זמן רב לא דיברנו — חשבתי עליך. שמעתי שחוות רונית ממשיכה לצמוח, איך אתה? מה קורה?"
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-t">💬 אם שואל "מה איתך?"</div>
+      <div class="script-txt">
+        "עסוק כרגיל, הבילטונג נמשך ורוצים. עדיין עובד ידני, בודק דברים. אבל קודם כל — ספר לי עליך, מה קורה בחווה?"
+      </div>
+    </div>
+  </div>
+
+  <!-- שמיעה -->
+  <div class="section">
+    <div class="sec-label">
+      <div class="sec-num n-green">2</div>
+      <div><div class="sec-title">שאלות שמיעה — לגלות מה קורה איתם</div><div class="sec-desc">לשאול על הם, לא על אנחנו</div></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span class="pnum listen">האזן</span>
+        <div><div class="q-txt">מה קורה עם חוות רונית בתקופה האחרונה? מה השתנה מאז דיברנו?</div>
+        <div class="q-why">לפתוח שיחה ולתת לו לדבר — לא לדבר אנחנו</div></div>
+      </div>
+      <div class="ans"><div class="al">תשובה / הערות</div><div class="aline"></div><div class="aline"></div><div class="aline"></div></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span class="pnum p1">P1</span>
+        <div><div class="q-txt">מה מוכרים עכשיו — מה הקו המוביל? מה עבד כי מה לא?</div>
+        <div class="q-why">להבין אם בילטונג עדיין בתמונה אצלם, ואם כן — כמה</div></div>
+      </div>
+      <div class="follows"><div class="fl">המשך →</div>
+        <div class="fi">בילטונג עדיין חלק מהמוצרים שלהם?</div>
+        <div class="fi">קנו ממישהו אחר? ייצרו לבד?</div>
+      </div>
+      <div class="ans"><div class="al">תשובה</div><div class="aline"></div><div class="aline"></div><div class="aline"></div></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span class="pnum p2">P2</span>
+        <div><div class="q-txt">מה הכי קשה להם עכשיו בעסק? מה מעיר אותך בלילה?</div>
+        <div class="q-why">לזהות כאב שאנחנו יכולים לפתור — אולי הם צריכים ספק אמין</div></div>
+      </div>
+      <div class="ans"><div class="al">תשובה</div><div class="aline"></div><div class="aline"></div></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span class="pnum p2">P2</span>
+        <div><div class="q-txt">מה הלקוחות שלהם מבקשים שאין להם כרגע? מה הם "מחפשים" בשוק?</div>
+        <div class="q-why">לגלות ביקוש שאנחנו יכולים לספק</div></div>
+      </div>
+      <div class="ans"><div class="al">תשובה</div><div class="aline"></div><div class="aline"></div></div>
+    </div>
+  </div>
+
+  <!-- בדיקת טמפרטורה -->
+  <div class="section">
+    <div class="sec-label">
+      <div class="sec-num n-blue">3</div>
+      <div><div class="sec-title">בדיקת טמפרטורה — רק אם השיחה זורמת</div><div class="sec-desc">לא לשאול אם התחושה לא טובה</div></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span class="pnum p3">P3</span>
+        <div><div class="q-txt">הבילטונג שלקחת ממני — הלקוחות שלך אהבו? מה אמרו?</div>
+        <div class="q-why">לשמוע ביקורת אמיתית על המוצר, ולהבין מה הלקוחות שלו רוצים</div></div>
+      </div>
+      <div class="ans"><div class="al">תשובה</div><div class="aline"></div><div class="aline"></div></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span class="pnum p3">P3</span>
+        <div><div class="q-txt">אם היית צריך בילטונג באיכות גבוהה — 20–30 ק"ג בחודש — היכן היית מחפש?</div>
+        <div class="q-why">לבדוק אם הוא בכלל צריך ספק, בלי לחשוף שאנחנו מציעים</div></div>
+      </div>
+      <div class="follows"><div class="fl">המשך →</div>
+        <div class="fi">יש ספק כזה שהוא מכיר?</div>
+        <div class="fi">מה חשוב לו — מחיר? עקביות? כשרות?</div>
+      </div>
+      <div class="ans"><div class="al">תשובה</div><div class="aline"></div><div class="aline"></div><div class="aline"></div></div>
+    </div>
+  </div>
+
+  <!-- תוצאות אפשריות -->
+  <div class="outcome-grid">
+    <div class="outcome">
+      <div class="out-label">תרחיש א׳</div>
+      <div class="out-val">הם צריכים ספק</div>
+      <div class="out-chk">→ לחזור אליהם בשלב 2 עם הצעה</div>
+    </div>
+    <div class="outcome">
+      <div class="out-label">תרחיש ב׳</div>
+      <div class="out-val">הם ייצרו לבד</div>
+      <div class="out-chk">→ תחרות. לשמור מרחק מידע.</div>
+    </div>
+    <div class="outcome">
+      <div class="out-label">תרחיש ג׳</div>
+      <div class="out-val">הם שותף הפצה</div>
+      <div class="out-chk">→ לחקור בשלב הבא בזהירות</div>
+    </div>
+  </div>
+
+  <footer>בילטונג בוטיקי · חידוש קשר · נוצר עם Enter AI · סודי — לא לשיתוף</footer>
+</div>
+</body>
+</html>

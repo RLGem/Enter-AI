@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enter AI — AIlex Knowledge Base</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/marked@12/marked.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      background: #0F1117;
+      min-height: 100vh;
+      color: #E2E8F0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+    .fade-in-up { animation: fadeInUp 0.5s ease-out forwards; opacity: 0; }
+
+    /* Layout */
+    #app { display: flex; height: 100vh; overflow: hidden; }
+
+    /* Sidebar */
+    .sidebar {
+      width: 300px;
+      min-width: 300px;
+      background: #161B27;
+      border-right: 1px solid #2D3748;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: width 0.3s ease;
+    }
+    .sidebar.collapsed { width: 0; min-width: 0; }
+
+    .sidebar-header {
+      padding: 20px 16px 16px;
+      border-bottom: 1px solid #2D3748;
+      background: linear-gradient(135deg, #1A1F2E, #0D1117);
+    }
+    .sidebar-logo {
+      font-size: 20px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #6366F1, #8B5CF6, #EC4899);
+      background-size: 200% 200%;
+      animation: gradientMove 4s ease infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+    .sidebar-subtitle {
+      font-size: 11px;
+      color: #64748B;
+      margin-top: 2px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .sidebar-search {
+      padding: 12px 12px 8px;
+      border-bottom: 1px solid #1E2533;
+    }
+    .search-input {
+      width: 100%;
+      background: #0F1117;
+      border: 1px solid #2D3748;
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: #E2E8F0;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-input:focus { border-color: #6366F1; }
+    .search-input::placeholder { color: #4A5568; }
+
+    .sidebar-nav {
+      flex: 1;
+      overflow-y: auto;
+      padding: 8px 0;
+    }
+    .sidebar-nav::-webkit-scrollbar { width: 4px; }
+    .sidebar-nav::-webkit-scrollbar-track { background: transparent; }
+    .sidebar-nav::-webkit-scrollbar-thumb { background: #2D3748; border-radius: 2px; }
+
+    .stage-group { margin-bottom: 4px; }
+    .stage-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+    }
+    .stage-header:hover { background: rgba(99, 102, 241, 0.05); }
+    .stage-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .stage-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      flex: 1;
+    }
+    .stage-count {
+      font-size: 10px;
+      color: #4A5568;
+      background: #1E2533;
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+    .stage-chevron {
+      font-size: 10px;
+      color: #4A5568;
+      transition: transform 0.2s;
+    }
+    .stage-chevron.open { transform: rotate(90deg); }
+
+    .guide-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px 7px 32px;
+      cursor: pointer;
+      transition: all 0.15s;
+      border-left: 2px solid transparent;
+      font-size: 13px;
+      color: #94A3B8;
+    }
+    .guide-item:hover {
+      background: rgba(99, 102, 241, 0.06);
+      color: #C7D2FE;
+    }
+    .guide-item.active {
+      background: rgba(99, 102, 241, 0.12);
+      border-left-color: #6366F1;
+      color: #A5B4FC;
+      font-weight: 500;
+    }
+    .guide-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: #4A5568;
+      min-width: 28px;
+    }
+    .guide-item.active .guide-num { color: #6366F1; }
+
+    /* Main content */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: #0F1117;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 24px;
+      border-bottom: 1px solid #1E2533;
+      background: #161B27;
+      min-height: 56px;
+    }
+    .toggle-btn {
+      background: none;
+      border: 1px solid #2D3748;
+      border-radius: 6px;
+      color: #64748B;
+      cursor: pointer;
+      padding: 6px 8px;
+      font-size: 14px;
+      transition: all 0.15s;
+      line-height: 1;
+    }
+    .toggle-btn:hover { border-color: #6366F1; color: #6366F1; }
+
+    .breadcrumb {
+      font-size: 13px;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+    }
+    .breadcrumb-sep { color: #2D3748; }
+    .breadcrumb-current { color: #94A3B8; }
+
+    .content-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 40px 48px;
+    }
+    .content-area::-webkit-scrollbar { width: 6px; }
+    .content-area::-webkit-scrollbar-track { background: transparent; }
+    .content-area::-webkit-scrollbar-thumb { background: #2D3748; border-radius: 3px; }
+
+    /* Home view */
+    .home-hero {
+      text-align: center;
+      padding: 60px 0 48px;
+    }
+    .home-badge {
+      display: inline-block;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #A5B4FC;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .home-title {
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #E2E8F0 0%, #A5B4FC 50%, #EC4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .home-tagline {
+      font-size: 18px;
+      color: #64748B;
+      margin-bottom: 8px;
+    }
+    .home-sub {
+      font-size: 14px;
+      color: #4A5568;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 16px;
+      margin: 40px 0;
+      justify-content: center;
+    }
+    .stat-card {
+      background: #161B27;
+      border: 1px solid #2D3748;
+      border-radius: 12px;
+      padding: 20px 28px;
+      text-align: center;
+      min-width: 120px;
+    }
+    .stat-num {
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #6366F1, #8B5CF6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+
+    .stages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .stage-card {
+      background: #161B27;
+      border: 1px solid #2D3748;
+      border-radius: 14px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+    }
+    .stage-card:hover {
+      border-color: var(--stage-color);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .stage-card-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--stage-color);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+    .stage-card-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #E2E8F0;
+      margin-bottom: 4px;
+    }
+    .stage-card-hebrew {
+      font-size: 13px;
+      color: #64748B;
+      margin-bottom: 10px;
+    }
+    .stage-card-meta {
+      font-size: 12px;
+      color: #4A5568;
+    }
+    .stage-card-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--stage-color);
+      margin-bottom: 12px;
+    }
+
+    /* Guide viewer */
+    .guide-container { max-width: 780px; }
+
+    .guide-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .guide-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.4px;
+    }
+    .guide-tag-stage {
+      background: rgba(99, 102, 241, 0.15);
+      color: #A5B4FC;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    .guide-tag-type {
+      background: rgba(16, 185, 129, 0.1);
+      color: #6EE7B7;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .guide-prose { line-height: 1.8; color: #CBD5E1; font-size: 15px; }
+    .guide-prose h1 { font-size: 30px; font-weight: 800; color: #E2E8F0; margin: 0 0 24px 0; letter-spacing: -0.5px; border-bottom: 1px solid #2D3748; padding-bottom: 16px; }
+    .guide-prose h2 { font-size: 20px; font-weight: 700; color: #C7D2FE; margin: 36px 0 14px 0; border-bottom: 1px solid #1E2533; padding-bottom: 8px; }
+    .guide-prose h3 { font-size: 16px; font-weight: 700; color: #A5B4FC; margin: 24px 0 10px 0; }
+    .guide-prose h4 { font-size: 14px; font-weight: 600; color: #94A3B8; margin: 16px 0 8px 0; }
+    .guide-prose p { margin: 0 0 14px 0; }
+    .guide-prose ul, .guide-prose ol { margin: 0 0 14px 24px; }
+    .guide-prose li { margin-bottom: 6px; }
+    .guide-prose strong { color: #E2E8F0; font-weight: 600; }
+    .guide-prose em { color: #94A3B8; }
+    .guide-prose hr { border: none; border-top: 1px solid #2D3748; margin: 32px 0; }
+    .guide-prose blockquote {
+      border-left: 3px solid #6366F1;
+      margin: 16px 0;
+      padding: 12px 16px;
+      background: rgba(99, 102, 241, 0.06);
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: #94A3B8;
+    }
+    .guide-prose code {
+      background: #1E2533;
+      border: 1px solid #2D3748;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 13px;
+      color: #6EE7B7;
+      font-family: 'Consolas', 'Monaco', monospace;
+    }
+    .guide-prose pre {
+      background: #1A1F2E;
+      border: 1px solid #2D3748;
+      border-radius: 10px;
+      padding: 20px;
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+    .guide-prose pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #A5B4FC;
+    }
+    .guide-prose table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 13px;
+    }
+    .guide-prose th {
+      background: #1A1F2E;
+      color: #A5B4FC;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 2px solid #2D3748;
+    }
+    .guide-prose td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #1E2533;
+      color: #CBD5E1;
+      vertical-align: top;
+    }
+    .guide-prose tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* Loading */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 300px;
+      color: #4A5568;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .loading-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #6366F1;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+    .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+    .loading-dots { display: flex; gap: 6px; }
+
+    /* Error */
+    .error-box {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 10px;
+      padding: 20px 24px;
+      color: #FCA5A5;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar { position: fixed; z-index: 100; height: 100vh; }
+      .sidebar.collapsed { width: 0; }
+      .content-area { padding: 24px 20px; }
+      .home-title { font-size: 32px; }
+      .stages-grid { grid-template-columns: 1fr; }
+      .stats-row { flex-wrap: wrap; }
+    }
+
+    /* Section header */
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #4A5568;
+      margin-bottom: 16px;
+    }
+
+    /* Nav arrows */
+    .guide-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #1E2533;
+    }
+    .guide-nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #161B27;
+      border: 1px solid #2D3748;
+      border-radius: 8px;
+      padding: 10px 16px;
+      color: #94A3B8;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .guide-nav-btn:hover {
+      border-color: #6366F1;
+      color: #A5B4FC;
+    }
+    .guide-nav-btn:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+    .guide-nav-btn:disabled:hover {
+      border-color: #2D3748;
+      color: #94A3B8;
+    }
+  </style>
+</head>
+<body>
+<div id="app"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useCallback, useRef } = React;
+
+const STAGES = [
+  { id: 1, name: 'Pain Proof', hebrew: 'הוכחת כאב', hours: '3.5h', color: '#EF4444', trainings: 2 },
+  { id: 2, name: 'Demand Proof', hebrew: 'הוכחת ביקוש', hours: '5.5h', color: '#F59E0B', trainings: 3 },
+  { id: 3, name: 'Working Product', hebrew: 'מוצר שעובד', hours: '8.5h', color: '#10B981', trainings: 3 },
+  { id: 4, name: 'Money on Table', hebrew: 'כסף על השולחן', hours: '6.0h', color: '#3B82F6', trainings: 3 },
+  { id: 5, name: 'Working Machine', hebrew: 'מכונה שעובדת', hours: '12.0h', color: '#8B5CF6', trainings: 6 },
+  { id: 6, name: 'Growing Company', hebrew: 'חברה שצומחת', hours: '8.5h', color: '#EC4899', trainings: 4 },
+];
+
+const GUIDES = [
+  // Stage 1
+  { id: '1.1', stage: 1, title: 'Problem Discovery', file: 'Guides/1.1 - Problem Discovery.md', type: 'Core' },
+  { id: '1.2', stage: 1, title: "Crazy 8's & Ideation", file: "Guides/1.2 - Crazy 8s & Ideation.md", type: 'Core' },
+  { id: '1.3', stage: 1, title: 'Opportunity Assessment', file: 'Guides/1.3 - Opportunity Assessment.md', type: 'Core' },
+  // Stage 2
+  { id: '2.1', stage: 2, title: 'Customer Discovery', file: 'Guides/2.1 - Customer Discovery.md', type: 'Core' },
+  { id: '2.2', stage: 2, title: 'Pretotyping', file: 'Guides/2.2 - Pretotyping.md', type: 'Core' },
+  { id: '2.3', stage: 2, title: 'Landing Page Testing', file: 'Guides/2.3 - Landing Page Testing.md', type: 'Core' },
+  { id: '2.4', stage: 2, title: '5 Second Test & Usability', file: 'Guides/2.4 - 5 Second Test & Usability.md', type: 'Core' },
+  // Stage 3
+  { id: '3.1', stage: 3, title: 'Business Model Canvas', file: 'Guides/3.1 - Business Model Canvas.md', type: 'Core' },
+  { id: '3.2', stage: 3, title: 'Value Proposition Design', file: 'Guides/3.2 - Value Proposition Design.md', type: 'Core' },
+  { id: '3.3', stage: 3, title: 'PRD & Product Definition', file: 'Guides/3.3 - PRD & Product Definition.md', type: 'Core' },
+  { id: '3.4', stage: 3, title: 'MVP Development', file: 'Guides/3.4 - MVP Development.md', type: 'Core' },
+  { id: '3.5', stage: 3, title: 'No-Code & AI Tools', file: 'Guides/3.5 - No-Code & AI Tools.md', type: 'Core' },
+  // Stage 4
+  { id: '4.1', stage: 4, title: 'Go-To-Market Strategy', file: 'Guides/4.1 - Go-To-Market Strategy.md', type: 'Core' },
+  { id: '4.2', stage: 4, title: 'Pricing Strategy', file: 'Guides/4.2 - Pricing Strategy.md', type: 'Core' },
+  { id: '4.3', stage: 4, title: 'Growth Hacking Basics', file: 'Guides/4.3 - Growth Hacking Basics.md', type: 'Core' },
+  { id: '4.4', stage: 4, title: 'Sales Fundamentals', file: 'Guides/4.4 - Sales Fundamentals.md', type: 'Core' },
+  // Stage 5
+  { id: '5.1', stage: 5, title: 'Unit Economics', file: 'Guides/5.1 - Unit Economics.md', type: 'Core' },
+  { id: '5.2', stage: 5, title: 'Agile Operations', file: 'Guides/5.2 - Agile Operations.md', type: 'Core' },
+  { id: '5.3', stage: 5, title: 'Team Building', file: 'Guides/5.3 - Team Building.md', type: 'Core' },
+  { id: '5.4', stage: 5, title: 'Fundraising Basics', file: 'Guides/5.4 - Fundraising Basics.md', type: 'Core' },
+  // Stage 6
+  { id: 'A.1', stage: 6, title: 'Product Analytics & Metrics', file: 'Guides/A.1 - Product Analytics & Metrics.md', type: 'Elective' },
+  { id: 'C.1', stage: 6, title: 'Content Marketing & SEO', file: 'Guides/C.1 - Content Marketing & SEO.md', type: 'Elective' },
+  { id: 'F.1', stage: 6, title: 'Money Management for Founders', file: 'Guides/F.1 - Money Management for Founders.md', type: 'Elective' },
+  { id: 'L.1', stage: 6, title: 'Legal & Business Setup', file: 'Guides/L.1 - Legal & Business Setup.md', type: 'Elective' },
+  { id: 'M.1', stage: 6, title: 'Founder Mindset & Resilience', file: 'Guides/M.1 - Founder Mindset & Resilience.md', type: 'Elective' },
+  { id: 'P.1', stage: 6, title: 'Pivot Decision Framework', file: 'Guides/P.1 - Pivot Decision Framework.md', type: 'Elective' },
+  { id: 'R.1', stage: 6, title: 'Customer Retention & Churn', file: 'Guides/R.1 - Customer Retention & Churn.md', type: 'Elective' },
+];
+
+function Sidebar({ activeGuide, onSelect, collapsed, search, onSearch }) {
+  const [openStages, setOpenStages] = useState({ 1:true, 2:true, 3:true, 4:true, 5:true, 6:true });
+
+  const toggleStage = (id) => setOpenStages(s => ({ ...s, [id]: !s[id] }));
+
+  const filtered = search.trim()
+    ? GUIDES.filter(g => g.title.toLowerCase().includes(search.toLowerCase()) || g.id.includes(search))
+    : null;
+
+  return (
+    <div className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
+      <div className="sidebar-header">
+        <div className="sidebar-logo">Enter AI</div>
+        <div className="sidebar-subtitle">AIlex Knowledge Base</div>
+      </div>
+      <div className="sidebar-search">
+        <input
+          className="search-input"
+          placeholder="Search guides..."
+          value={search}
+          onChange={e => onSearch(e.target.value)}
+        />
+      </div>
+      <nav className="sidebar-nav">
+        {filtered ? (
+          <div style={{ padding: '4px 0' }}>
+            {filtered.length === 0 && (
+              <div style={{ padding: '16px', color: '#4A5568', fontSize: 13 }}>No guides found</div>
+            )}
+            {filtered.map(g => {
+              const stage = STAGES.find(s => s.id === g.stage);
+              return (
+                <div
+                  key={g.id}
+                  className={`guide-item ${activeGuide?.id === g.id ? 'active' : ''}`}
+                  onClick={() => onSelect(g)}
+                  style={{ paddingLeft: 16 }}
+                >
+                  <span className="guide-num" style={{ color: stage.color }}>{g.id}</span>
+                  <span>{g.title}</span>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          STAGES.map(stage => {
+            const guides = GUIDES.filter(g => g.stage === stage.id);
+            return (
+              <div key={stage.id} className="stage-group">
+                <div className="stage-header" onClick={() => toggleStage(stage.id)}>
+                  <span className="stage-dot" style={{ background: stage.color }} />
+                  <span className="stage-label" style={{ color: stage.color }}>
+                    Stage {stage.id} — {stage.name}
+                  </span>
+                  <span className="stage-count">{guides.length}</span>
+                  <span className={`stage-chevron ${openStages[stage.id] ? 'open' : ''}`}>▶</span>
+                </div>
+                {openStages[stage.id] && guides.map(g => (
+                  <div
+                    key={g.id}
+                    className={`guide-item ${activeGuide?.id === g.id ? 'active' : ''}`}
+                    onClick={() => onSelect(g)}
+                  >
+                    <span className="guide-num">{g.id}</span>
+                    <span>{g.title}</span>
+                  </div>
+                ))}
+              </div>
+            );
+          })
+        )}
+      </nav>
+    </div>
+  );
+}
+
+function HomeView({ onSelect }) {
+  return (
+    <div className="fade-in-up" style={{ animationFillMode: 'forwards' }}>
+      <div className="home-hero">
+        <div className="home-badge">AIlex Knowledge Base</div>
+        <div className="home-title">Enter AI</div>
+        <div className="home-tagline">The AI Co-Founder for Solo Founders</div>
+        <div className="home-sub">43 guides · 6 stages · 21 core trainings · ~44.5 hours to a growing company</div>
+      </div>
+
+      <div className="stats-row">
+        {[
+          { num: '21', label: 'Core Trainings' },
+          { num: '7', label: 'Electives' },
+          { num: '6', label: 'Stages' },
+          { num: '44.5h', label: 'Full Program' },
+          { num: '~23h', label: 'To First Revenue' },
+        ].map(s => (
+          <div key={s.label} className="stat-card">
+            <div className="stat-num">{s.num}</div>
+            <div className="stat-label">{s.label}</div>
+          </div>
+        ))}
+      </div>
+
+      <div className="section-title">The 6-Stage Journey</div>
+      <div className="stages-grid">
+        {STAGES.map(stage => (
+          <div
+            key={stage.id}
+            className="stage-card"
+            style={{ '--stage-color': stage.color }}
+            onClick={() => {
+              const first = GUIDES.find(g => g.stage === stage.id);
+              if (first) onSelect(first);
+            }}
+          >
+            <div className="stage-card-dot" />
+            <div className="stage-card-num">Stage {stage.id}</div>
+            <div className="stage-card-name">{stage.name}</div>
+            <div className="stage-card-hebrew">{stage.hebrew}</div>
+            <div className="stage-card-meta">{stage.trainings} trainings · {stage.hours}</div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ marginTop: 48, padding: '24px', background: '#161B27', borderRadius: 14, border: '1px solid #2D3748' }}>
+        <div style={{ fontSize: 13, color: '#64748B', marginBottom: 8 }}>Core Philosophy</div>
+        <div style={{ fontSize: 16, color: '#A5B4FC', fontWeight: 600 }}>
+          "Do first, understand later" — נעשה ונשמע
+        </div>
+        <div style={{ fontSize: 14, color: '#64748B', marginTop: 6 }}>
+          Every session produces a tangible output. Theory follows action. You're already an entrepreneur — you just don't know it yet.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function GuideView({ guide, onSelect }) {
+  const [content, setContent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const stage = STAGES.find(s => s.id === guide.stage);
+  const allGuides = GUIDES;
+  const currentIdx = allGuides.findIndex(g => g.id === guide.id);
+  const prevGuide = currentIdx > 0 ? allGuides[currentIdx - 1] : null;
+  const nextGuide = currentIdx < allGuides.length - 1 ? allGuides[currentIdx + 1] : null;
+
+  useEffect(() => {
+    setLoading(true);
+    setError(null);
+    setContent(null);
+
+    fetch(guide.file)
+      .then(r => {
+        if (!r.ok) throw new Error(`Could not load ${guide.file} (${r.status})`);
+        return r.text();
+      })
+      .then(text => {
+        setContent(marked.parse(text));
+        setLoading(false);
+      })
+      .catch(err => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, [guide.id]);
+
+  return (
+    <div className="guide-container fade-in">
+      <div className="guide-meta">
+        <span className="guide-tag guide-tag-stage" style={{ color: stage.color, borderColor: stage.color + '40', background: stage.color + '18' }}>
+          Stage {stage.id} — {stage.name}
+        </span>
+        <span className="guide-tag guide-tag-type">{guide.type}</span>
+        <span style={{ fontSize: 12, color: '#4A5568' }}>Guide {guide.id}</span>
+      </div>
+
+      {loading && (
+        <div className="loading">
+          <div className="loading-dots">
+            <div className="loading-dot" />
+            <div className="loading-dot" />
+            <div className="loading-dot" />
+          </div>
+          <span style={{ fontSize: 13 }}>Loading guide...</span>
+        </div>
+      )}
+
+      {error && (
+        <div className="error-box">
+          <strong>Could not load guide</strong><br />
+          {error}<br /><br />
+          <span style={{ color: '#94A3B8', fontSize: 13 }}>
+            Make sure the server is running from the <code>EAI Coacher</code> directory so the <code>Guides/</code> folder is accessible.
+          </span>
+        </div>
+      )}
+
+      {content && !loading && (
+        <div
+          className="guide-prose"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      )}
+
+      <div className="guide-nav">
+        <button
+          className="guide-nav-btn"
+          onClick={() => prevGuide && onSelect(prevGuide)}
+          disabled={!prevGuide}
+        >
+          ← {prevGuide ? `${prevGuide.id} ${prevGuide.title}` : 'First guide'}
+        </button>
+        <button
+          className="guide-nav-btn"
+          onClick={() => nextGuide && onSelect(nextGuide)}
+          disabled={!nextGuide}
+        >
+          {nextGuide ? `${nextGuide.id} ${nextGuide.title}` : 'Last guide'} →
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const [activeGuide, setActiveGuide] = useState(null);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [search, setSearch] = useState('');
+  const contentRef = useRef(null);
+
+  const handleSelect = useCallback((guide) => {
+    setActiveGuide(guide);
+    setSearch('');
+    if (contentRef.current) contentRef.current.scrollTop = 0;
+  }, []);
+
+  const stage = activeGuide ? STAGES.find(s => s.id === activeGuide.stage) : null;
+
+  return (
+    <div id="app-inner" style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
+      <Sidebar
+        activeGuide={activeGuide}
+        onSelect={handleSelect}
+        collapsed={sidebarCollapsed}
+        search={search}
+        onSearch={setSearch}
+      />
+      <div className="main">
+        <div className="topbar">
+          <button className="toggle-btn" onClick={() => setSidebarCollapsed(c => !c)} title="Toggle sidebar">
+            {sidebarCollapsed ? '☰' : '✕'}
+          </button>
+          <div className="breadcrumb">
+            <span
+              style={{ cursor: 'pointer', color: activeGuide ? '#4A5568' : '#94A3B8' }}
+              onClick={() => setActiveGuide(null)}
+            >
+              Enter AI
+            </span>
+            {activeGuide && (
+              <>
+                <span className="breadcrumb-sep">/</span>
+                <span style={{ color: stage.color }}>Stage {stage.id}</span>
+                <span className="breadcrumb-sep">/</span>
+                <span className="breadcrumb-current">{activeGuide.title}</span>
+              </>
+            )}
+          </div>
+          {activeGuide && (
+            <button
+              className="toggle-btn"
+              onClick={() => setActiveGuide(null)}
+              title="Back to home"
+              style={{ fontSize: 12, padding: '5px 10px' }}
+            >
+              Home
+            </button>
+          )}
+        </div>
+        <div className="content-area" ref={contentRef}>
+          {activeGuide
+            ? <GuideView key={activeGuide.id} guide={activeGuide} onSelect={handleSelect} />
+            : <HomeView onSelect={handleSelect} />
+          }
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('app'));
+root.render(<App />);
+</script>
+</body>
+</html>

@@ -100,3 +100,17 @@ backups/
 *.db
 *.sqlite
 *.sqlite3
+
+# ============================================
+# Google Drive shortcuts & forms
+# ============================================
+*.gdoc
+*.gsheet
+*.gslides
+*.gform
+*.gdraw
+
+# ============================================
+# PDF files (binary, large interview/session docs)
+# ============================================
+*.pdf

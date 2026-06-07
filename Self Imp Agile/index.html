@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agile Scrum — המסע שלך מתחיל כאן | טד"מ למ"ס</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/marked@12/marked.min.js"></script>
+  <style>
+    /* ═══ Reset & Base ═══ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      background: linear-gradient(180deg, #F0F4F8 0%, #E2E8F0 50%, #F0F4F8 100%);
+      min-height: 100vh;
+      direction: rtl;
+      color: #2C3E50;
+      line-height: 1.6;
+    }
+
+    /* ═══ Animations ═══ */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
+    .fade-in { animation: fadeIn 0.5s ease-out forwards; opacity: 0; }
+    .slide-in-right { animation: slideInRight 0.5s ease-out forwards; opacity: 0; }
+    .float-anim { animation: float 3s ease-in-out infinite; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
+
+    /* ═══ Glass Card ═══ */
+    .glass {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(26, 82, 118, 0.08), 0 1px 4px rgba(0,0,0,0.04);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .glass:hover {
+      box-shadow: 0 8px 32px rgba(26, 82, 118, 0.12), 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .glass-clickable:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(26, 82, 118, 0.15);
+      cursor: pointer;
+    }
+    .glass-clickable:active {
+      transform: translateY(0);
+    }
+
+    /* ═══ Role Cards ═══ */
+    .role-card {
+      border: 2.5px solid var(--role-color);
+      border-radius: 20px;
+      padding: 24px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .role-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--role-light);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+    .role-card:hover::before { opacity: 1; }
+    .role-card:hover {
+      transform: scale(1.06) translateY(-4px);
+      box-shadow: 0 12px 32px var(--role-shadow);
+    }
+    .role-card > * { position: relative; z-index: 1; }
+
+    /* ═══ Phase Card ═══ */
+    .phase-card {
+      width: 130px;
+      min-height: 120px;
+      border-radius: 16px;
+      border: 2.5px solid var(--phase-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 8px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: white;
+      text-align: center;
+    }
+    .phase-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px var(--phase-shadow);
+    }
+    .phase-card.active {
+      background: var(--phase-color);
+      transform: scale(1.08);
+      box-shadow: 0 8px 28px var(--phase-shadow);
+    }
+
+    /* ═══ Week Card ═══ */
+    .week-card {
+      flex: 1;
+      border: 2.5px solid var(--week-color);
+      border-radius: 16px;
+      padding: 18px 14px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: white;
+    }
+    .week-card:hover { transform: scale(1.03); }
+    .week-card.active {
+      background: var(--week-color);
+      transform: scale(1.04);
+      box-shadow: 0 6px 20px var(--week-shadow);
+    }
+
+    /* ═══ Doc Item ═══ */
+    .doc-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 12px;
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1.5px solid transparent;
+      text-decoration: none;
+      color: inherit;
+    }
+    .doc-item:hover {
+      background: white;
+      border-color: var(--doc-color, #2E86C1);
+      transform: translateX(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    /* ═══ Prompt Card ═══ */
+    .prompt-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #F4ECF7;
+      border-radius: 12px;
+      padding: 12px 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+    }
+    .prompt-card:hover {
+      background: #EDE1F2;
+      border-color: #8E44AD30;
+    }
+    .prompt-card.copied {
+      border-color: #27AE60;
+      background: #EAFAF1;
+    }
+
+    /* ═══ CTA Button ═══ */
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #1A5276, #2E86C1);
+      background-size: 200% 200%;
+      animation: gradientMove 3s ease infinite;
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 18px 52px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 28px rgba(26, 82, 118, 0.3);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      text-decoration: none;
+    }
+    .cta-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 36px rgba(26, 82, 118, 0.35);
+    }
+
+    /* ═══ Expand/Collapse ═══ */
+    .expand-content {
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+    }
+
+    /* ═══ Flow Step ═══ */
+    .flow-step {
+      flex: 1;
+      border-radius: 14px;
+      padding: 16px 12px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .flow-step:hover { transform: scale(1.04); }
+
+    /* ═══ Muscle Card ═══ */
+    .muscle-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 12px;
+      padding: 12px 14px;
+      transition: transform 0.2s ease;
+    }
+    .muscle-card:hover { transform: scale(1.02); }
+
+    /* ═══ Print styles ═══ */
+    @media print {
+      body { background: white; }
+      .no-print { display: none !important; }
+      .glass { box-shadow: none; border: 1px solid #ddd; }
+    }
+
+    /* ═══ Guide Viewer ═══ */
+    .guide-viewer {
+      direction: rtl;
+      text-align: right;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      line-height: 1.8;
+      color: #2C3E50;
+      font-size: 16px;
+    }
+    .guide-viewer h1 { font-size: 28px; color: #1A5276; margin: 0 0 20px 0; border-bottom: 3px solid #2E86C1; padding-bottom: 12px; }
+    .guide-viewer h2 { font-size: 22px; color: #1A5276; margin: 32px 0 14px 0; border-bottom: 2px solid #E2E8F0; padding-bottom: 8px; }
+    .guide-viewer h3 { font-size: 18px; color: #2E86C1; margin: 24px 0 10px 0; }
+    .guide-viewer h4 { font-size: 16px; color: #566573; margin: 18px 0 8px 0; }
+    .guide-viewer p { margin: 0 0 14px 0; }
+    .guide-viewer ul, .guide-viewer ol { margin: 0 24px 14px 0; padding: 0; }
+    .guide-viewer li { margin-bottom: 6px; }
+    .guide-viewer strong { color: #1A5276; }
+    .guide-viewer blockquote {
+      border-right: 4px solid #2E86C1; border-left: none;
+      margin: 16px 0; padding: 12px 20px 12px 0;
+      background: #F0F9FF; border-radius: 0 8px 8px 0;
+      font-style: italic; color: #1A5276;
+    }
+    .guide-viewer table {
+      width: 100%; border-collapse: collapse; margin: 16px 0;
+      direction: rtl; text-align: right;
+    }
+    .guide-viewer table thead, .guide-viewer table tbody, .guide-viewer table tr {
+      direction: rtl;
+    }
+    .guide-viewer th {
+      background: #1A5276; color: white; padding: 10px 14px;
+      font-weight: 600; font-size: 14px; text-align: right;
+    }
+    .guide-viewer td {
+      padding: 10px 14px; border-bottom: 1px solid #E2E8F0;
+      font-size: 14px; text-align: right; vertical-align: top;
+    }
+    .guide-viewer tr:nth-child(even) { background: #F8FAFE; }
+    .guide-viewer tr:hover { background: #EBF5FB; }
+    .guide-viewer code {
+      background: #F0F4F8; padding: 2px 6px; border-radius: 4px;
+      font-family: 'Consolas', 'Courier New', monospace; font-size: 14px;
+      direction: ltr; unicode-bidi: embed;
+    }
+    .guide-viewer pre {
+      background: #2C3E50; color: #ECF0F1; padding: 18px;
+      border-radius: 10px; overflow-x: auto; margin: 16px 0;
+      direction: rtl; text-align: right;
+    }
+    .guide-viewer pre code { background: none; padding: 0; color: inherit; direction: inherit; unicode-bidi: normal; }
+    .guide-viewer hr { border: none; border-top: 2px solid #E2E8F0; margin: 28px 0; }
+    .guide-viewer a { color: #2E86C1; text-decoration: none; }
+    .guide-viewer a:hover { text-decoration: underline; }
+    .guide-viewer input[type="checkbox"] { margin-left: 8px; }
+
+    /* ═══ Guide Viewer — Print ═══ */
+    @page {
+      margin: 0.5cm;
+    }
+    @media print {
+      body { background: white !important; margin: 0 !important; padding: 0 !important; }
+      .guide-toolbar, .no-print { display: none !important; }
+      .guide-print-area {
+        padding: 0 !important; margin: 0 !important;
+        box-shadow: none !important; border: none !important;
+        width: 100% !important;
+      }
+      .guide-viewer h1 { font-size: 24px; }
+      .guide-viewer h2 { font-size: 18px; break-after: avoid; }
+      .guide-viewer table { font-size: 12px; }
+      .guide-viewer { font-size: 14px; line-height: 1.6; }
+    }
+
+    /* ═══ Video Section ═══ */
+    .video-container {
+      position: relative; width: 100%; padding-bottom: 56.25%;
+      background: #1A1A2E; border-radius: 16px; overflow: hidden;
+    }
+    .video-container video {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    }
+
+    /* ═══ Responsive ═══ */
+    @media (max-width: 700px) {
+      .role-grid { grid-template-columns: 1fr 1fr !important; }
+      .phase-row { flex-wrap: wrap; justify-content: center; }
+      .phase-card { width: 100px; min-height: 100px; }
+      .doc-grid { grid-template-columns: 1fr !important; }
+      .flow-row { flex-direction: column; }
+      .muscle-grid { grid-template-columns: 1fr !important; }
+      .principle-grid { grid-template-columns: 1fr !important; }
+      .week-row { flex-direction: column; }
+      .illustration-row { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    // ═══════════════════════════════════════════════════════════════
+    //  Data
+    // ═══════════════════════════════════════════════════════════════
+
+    const CONTENT_DIR = "content/";
+
+    const roles = [
+      { id: "dev", emoji: "👩‍💻", name: "מפתח/ת", sub: "Developer", desc: "אני כותב/ת קוד ורוצה להמשיך לעבוד בשקט", color: "#2E86C1", light: "#EBF5FB", shadow: "#2E86C130", icon: "💻" },
+      { id: "po", emoji: "📋", name: "Product Owner", sub: "בעל/ת המוצר", desc: "אני אחראי/ת על מה נבנה ולמה", color: "#8E44AD", light: "#F4ECF7", shadow: "#8E44AD30", icon: "🎯" },
+      { id: "sm", emoji: "🏃", name: "Scrum Master", sub: "מנחה אג'ילי", desc: "אני מנחה את הצוות ומסיר/ה חסימות", color: "#27AE60", light: "#EAFAF1", shadow: "#27AE6030", icon: "🛡️" },
+      { id: "mgr", emoji: "📊", name: "מנהל/ת", sub: "Manager", desc: "אני רוצה לתמוך בצוות בלי לשלוט", color: "#E67E22", light: "#FDEBD0", shadow: "#E67E2230", icon: "🏢" },
+      { id: "client", emoji: "🤝", name: "לקוח/ה", sub: "Client / Stakeholder", desc: "אני רוצה לראות תוצאות ולתת משוב", color: "#E74C3C", light: "#FADBD8", shadow: "#E74C3C30", icon: "💬" },
+      { id: "service", emoji: "🔧", name: "תפקיד שירות", sub: "Architect / DBA / DevOps", desc: "אני תומך/ת בצוות כשצריך אותי", color: "#566573", light: "#EAECEE", shadow: "#56657330", icon: "⚙️" },
+    ];
+
+    const phases = [
+      { num: 1, name: "התנעה", sub: "Kickoff · Day 1", emoji: "🚀", desc: "כולם: סרטון קצר, בחירת תפקיד, היכרות עם המסע", color: "#2E86C1", light: "#EBF5FB", shadow: "#2E86C130" },
+      { num: 2, name: "לימוד התפקיד", sub: "Days 1-3", emoji: "📖", desc: "קריאת המדריך, הבנת הציפיות, הכנה לספרינט הראשון", color: "#8E44AD", light: "#F4ECF7", shadow: "#8E44AD30" },
+      { num: 3, name: "ספרינט ראשון", sub: "Weeks 1-3", emoji: "⚡", desc: "3 שבועות: לשרוד עם כלים ביד. כל טקס קורה. אף אחד לא נבהל", color: "#27AE60", light: "#EAFAF1", shadow: "#27AE6030" },
+      { num: 4, name: "צוברים ביטחון", sub: "Sprints 2-3", emoji: "💪", desc: "מ'עוקבים אחרי הסקריפט' ל'מבינים למה'. בעיות אמיתיות — מערכת שתופסת", color: "#E67E22", light: "#FDEBD0", shadow: "#E67E2230" },
+      { num: 5, name: "עצמאות", sub: "Sprint 4+", emoji: "🏆", desc: "הצוות עצמאי. המערכת משתפרת מעצמה. מוכנים להרחיב", color: "#E74C3C", light: "#FADBD8", shadow: "#E74C3C30" },
+    ];
+
+    const principles = [
+      { icon: "⚡", title: "נעשה ונשמע", desc: "קודם עושים, אחר כך מבינים. כבר בדקה הראשונה — כלי ביד." },
+      { icon: "🗺️", title: "מסע אישי", desc: "לא קורס אחיד. מסלול מותאם לתפקיד שלך עם התקדמות מדידה." },
+      { icon: "🛡️", title: "סקריפט לכל טקס", desc: "אף SM לא צריך לאלתר. יש סקריפט דקה-אחר-דקה לכל מפגש." },
+      { icon: "🤖", title: "AIlex — המאמן שלך", desc: "תקוע? לא בטוח? שאל את AIlex. הוא מכיר את כל החומר ועונה בעברית." },
+    ];
+
+    const sprintWeeks = [
+      { num: 1, name: "שבוע השקה", emoji: "🚀", color: "#2E86C1", shadow: "#2E86C130", focus: "Sprint Planning + התחלת עבודה", ceremonies: ["Sprint Planning", "Daily Standup"] },
+      { num: 2, name: "שבוע עבודה עמוקה", emoji: "🔨", color: "#27AE60", shadow: "#27AE6030", focus: "קידוד מרבי + Refinement", ceremonies: ["Daily Standup", "Backlog Refinement"] },
+      { num: 3, name: "שבוע קציר", emoji: "🎯", color: "#E67E22", shadow: "#E67E2230", focus: "השלמה + Review + Retro", ceremonies: ["Daily Standup", "Sprint Review", "Sprint Retrospective"] },
+    ];
+
+    const muscles = [
+      { num: 1, name: "הנחייה", eng: "Facilitation", icon: "🎙️", phase: 3, desc: "הנחיית טקסים בביטחון" },
+      { num: 2, name: "אמידה", eng: "Estimation", icon: "🎯", phase: 3, desc: "הערכת מאמץ ב-Story Points" },
+      { num: 3, name: "תיעדוף", eng: "Prioritization", icon: "📊", phase: 2, desc: "מה קודם, מה אחר כך, מה לא" },
+      { num: 4, name: "שקיפות", eng: "Transparency", icon: "🔍", phase: 3, desc: "הלוח, המטריקות, הכל גלוי" },
+      { num: 5, name: "משוב", eng: "Feedback", icon: "💬", phase: 3, desc: "Review, Retro, שיפור מתמיד" },
+      { num: 6, name: "שיתוף פעולה", eng: "Collaboration", icon: "🤝", phase: 3, desc: "Daily, Planning, עבודה ביחד" },
+      { num: 7, name: "תיחום זמן", eng: "Timeboxing", icon: "⏱️", phase: 3, desc: "ספרינט 3 שבועות, Daily 15 דק'" },
+      { num: 8, name: "הסתגלות", eng: "Adaptability", icon: "🔄", phase: 4, desc: "כשהתוכנית משתנה — מתאימים" },
+      { num: 9, name: "איכות", eng: "Quality", icon: "✅", phase: 3, desc: "Definition of Done, בדיקות, קוד ריוויו" },
+      { num: 10, name: "ארגון עצמי", eng: "Self-Organization", icon: "🧩", phase: 4, desc: "הצוות מחליט איך לעבוד" },
+    ];
+
+    const coachingFlow = [
+      { icon: "🎯", title: "Quick Win", desc: "תוצר מוחשי תוך 5 דקות", color: "#27AE60" },
+      { icon: "🎁", title: "כלי ביד", desc: "צ'קליסט, סקריפט, או תבנית", color: "#2E86C1" },
+      { icon: "💡", title: "הבנה קצרה", desc: "משפט אחד — למה זה עובד", color: "#8E44AD" },
+      { icon: "🚀", title: "צעד הבא", desc: "פעולה אחת ברורה", color: "#E74C3C" },
+    ];
+
+    // ─── Documents (with new filenames using stage prefixes) ───
+    const docs = [
+      // Phase 0
+      { id: "role-map", name: "תבנית מיפוי תפקידים", file: "0.1 Role Mapping Template H 20260304 by CC.md", phase: 0, roles: ["mgr"], icon: "📋", stage: "0.1" },
+      { id: "azure", name: "מדריך Azure DevOps", file: "0.2 Azure DevOps Setup Guide H V2 20260304 by CC.md", phase: 0, roles: ["mgr", "sm"], icon: "☁️", stage: "0.2" },
+      // Phase 1
+      { id: "intro", name: "מבוא ל-Agile", file: "1.1 Agile Intro H V2 20260304 by CC.md", phase: 1, roles: ["all"], icon: "🌱", stage: "1.1" },
+      { id: "video", name: "סרטון מבוא (3 דק')", file: "1.2 Intro Video Script H V2 20260304 by CC.md", phase: 1, roles: ["all"], icon: "🎬", stage: "1.2" },
+      { id: "ailex", name: "שאלו את AIlex — המאמן שלך", file: "1.3 Ask AIlex H V2 20260305 by CC.md", phase: 1, roles: ["all"], icon: "🤖", stage: "1.3" },
+      { id: "dictionary", name: "מילון מונחים — Agile A-Z", file: "Dictionary - Agile A-Z V2 20260304 by CC.md", phase: 1, roles: ["all"], icon: "📖", stage: "1.4" },
+      // Phase 2
+      { id: "sprint-struct", name: "מבנה ספרינט 3 שבועות", file: "2.1 Sprint Structure H V2 20260304 by CC.md", phase: 2, roles: ["all"], icon: "📅", stage: "2.1" },
+      { id: "dev-guide", name: "מדריך מפתח/ת", file: "2.2 Developer Guide H V2 20260304 by CC.md", phase: 2, roles: ["dev"], icon: "📘", stage: "2.2" },
+      { id: "po-guide", name: "מדריך Product Owner", file: "2.3 Product Owner Guide H V2 20260304 by CC.md", phase: 2, roles: ["po"], icon: "📘", stage: "2.3" },
+      { id: "sm-guide", name: "מדריך Scrum Master", file: "2.4 Scrum Master Guide H V2 20260304 by CC.md", phase: 2, roles: ["sm"], icon: "📘", stage: "2.4" },
+      { id: "mgr-guide", name: "מדריך מנהל/ת", file: "2.5 Manager Guide H V2 20260304 by CC.md", phase: 2, roles: ["mgr"], icon: "📘", stage: "2.5" },
+      { id: "client-guide", name: "מדריך לקוח/ה", file: "2.6 Client Guide H V2 20260304 by CC.md", phase: 2, roles: ["client"], icon: "📘", stage: "2.6" },
+      { id: "service-guide", name: "מדריך תפקידי שירות", file: "2.7 Service Roles Guide H V2 20260304 by CC.md", phase: 2, roles: ["service"], icon: "📘", stage: "2.7" },
+      { id: "stories", name: "מדריך User Stories", file: "2.8 User Stories Guide H V2 20260304 by CC.md", phase: 2, roles: ["po", "dev"], icon: "📝", stage: "2.8" },
+      { id: "daily", name: "מדריך Daily Standup", file: "2.9 Daily Standup Guide H V2 20260304 by CC.md", phase: 2, roles: ["sm", "dev", "po"], icon: "📋", stage: "2.9" },
+      { id: "planning", name: "מדריך Sprint Planning", file: "2.10 Sprint Planning Guide H V2 20260304 by CC.md", phase: 2, roles: ["sm", "po", "dev"], icon: "📋", stage: "2.10" },
+      { id: "refinement", name: "מדריך Backlog Refinement", file: "2.11 Backlog Refinement Guide H V2 20260304 by CC.md", phase: 2, roles: ["sm", "po", "dev"], icon: "📋", stage: "2.11" },
+      { id: "review", name: "מדריך Sprint Review", file: "2.12 Sprint Review Guide H V2 20260304 by CC.md", phase: 2, roles: ["sm", "po", "client", "mgr"], icon: "📋", stage: "2.12" },
+      { id: "retro", name: "מדריך Sprint Retrospective", file: "2.13 Sprint Retrospective Guide H V2 20260304 by CC.md", phase: 2, roles: ["sm", "dev", "po"], icon: "📋", stage: "2.13" },
+      // Phase 3
+      { id: "cards", name: "כרטיסי טקסים (להדפסה)", file: "3.1 Ceremony Cards H V2 20260304 by CC.md", phase: 3, roles: ["sm", "all"], icon: "🃏", stage: "3.1" },
+      { id: "scripts", name: "סקריפטים להנחיה", file: "3.2 Facilitation Scripts H V2 20260304 by CC.md", phase: 3, roles: ["sm"], icon: "🎙️", stage: "3.2" },
+      { id: "board", name: "מדריך Sprint Board", file: "3.3 Sprint Board Guide H V2 20260304 by CC.md", phase: 3, roles: ["sm", "dev"], icon: "📌", stage: "3.3" },
+      { id: "estimation", name: "מדריך אמידה", file: "3.4 Estimation Guide H V2 20260304 by CC.md", phase: 3, roles: ["dev", "po", "sm"], icon: "🔢", stage: "3.4" },
+      { id: "dod", name: "Definition of Done", file: "3.5 Definition of Done Guide H V2 20260304 by CC.md", phase: 3, roles: ["dev", "sm"], icon: "✅", stage: "3.5" },
+      { id: "playbooks", name: "Playbooks למצבים", file: "3.6 Situation Playbooks H V2 20260304 by CC.md", phase: 3, roles: ["sm", "all"], icon: "🚨", stage: "3.6" },
+      { id: "playbook-charts", name: "לוח משימות ספרינט (להדפסה)", file: "Sprint Playbook Charts H 20260304 by CC.md", phase: 3, roles: ["all"], icon: "📊", stage: "3.7" },
+      // Phase 4
+      { id: "lk-dev", name: "Launch Kit: מפתח/ת", file: "4.1 Launch Kit Developer H V2 20260304 by CC.md", phase: 4, roles: ["dev"], icon: "🚀", stage: "4.1" },
+      { id: "lk-po", name: "Launch Kit: PO", file: "4.2 Launch Kit PO H V2 20260304 by CC.md", phase: 4, roles: ["po"], icon: "🚀", stage: "4.2" },
+      { id: "lk-sm", name: "Launch Kit: SM", file: "4.3 Launch Kit SM H V2 20260304 by CC.md", phase: 4, roles: ["sm"], icon: "🚀", stage: "4.3" },
+      { id: "lk-mgr", name: "Launch Kit: מנהל/ת", file: "4.4 Launch Kit Manager H V2 20260304 by CC.md", phase: 4, roles: ["mgr"], icon: "🚀", stage: "4.4" },
+      { id: "lk-client", name: "Launch Kit: לקוח/ה", file: "4.5 Launch Kit Client H V2 20260304 by CC.md", phase: 4, roles: ["client"], icon: "🚀", stage: "4.5" },
+      { id: "lk-service", name: "Launch Kit: שירות", file: "4.6 Launch Kit Service Roles H V2 20260304 by CC.md", phase: 4, roles: ["service"], icon: "🚀", stage: "4.6" },
+      { id: "mvp", name: "פירוק MVP", file: "4.7 MVP Breakdown Guide H V2 20260304 by CC.md", phase: 4, roles: ["po"], icon: "🎯", stage: "4.7" },
+      { id: "metrics", name: "מדדים ובריאות צוות", file: "4.8 Metrics Guide H V2 20260304 by CC.md", phase: 4, roles: ["sm", "mgr"], icon: "📈", stage: "4.8" },
+      { id: "quick-ref", name: "מה את/ה עושה עכשיו?", file: "4.9 Role Quick Reference H V2 20260304 by CC.md", phase: 4, roles: ["all"], icon: "⚡", stage: "4.9" },
+      // Phase 5
+      { id: "anti", name: "אנטי-פטרנים", file: "5.1 Anti-Patterns Guide H V2 20260304 by CC.md", phase: 5, roles: ["sm", "all"], icon: "🚫", stage: "5.1" },
+      { id: "cheat", name: "דפי עזר (Cheat Sheets)", file: "5.2 Cheat Sheets H V2 20260304 by CC.md", phase: 5, roles: ["all"], icon: "📄", stage: "5.2" },
+      { id: "raci", name: "מטריצת RACI", file: "5.3 RACI Matrix H V2 20260304 by CC.md", phase: 5, roles: ["all"], icon: "📊", stage: "5.3" },
+    ];
+
+    // ─── AIlex Prompts ───
+    const ailexPrompts = {
+      dev: [
+        { timing: "לפני Planning", prompt: "אני מפתח/ת. יש לנו Planning מחר. מה אני צריך/ה להכין?" },
+        { timing: "כשתקוע/ה", prompt: "אני מפתח/ת בשבוע 2 של הספרינט. יש לי Task שלוקח יותר מהצפוי. מה לעשות?" },
+        { timing: "אחרי Daily", prompt: "ה-Daily שלנו לוקח 25 דקות במקום 15. איך לקצר?" },
+        { timing: "לפני Review", prompt: "אני צריך/ה להציג Demo מחר. מה הפורמט?" },
+      ],
+      po: [
+        { timing: "כתיבת Stories", prompt: "אני PO חדש/ה. תעזור לי לכתוב User Story עם Acceptance Criteria" },
+        { timing: "לפני Refinement", prompt: "יש לי Refinement מחר. איך אני מכין/ה את ה-Items?" },
+        { timing: "תיעדוף", prompt: "יש לי 15 פריטים ב-Backlog ומקום ל-8 בספרינט. איך לתעדף?" },
+        { timing: "Scope Creep", prompt: "בעל עניין ביקש להוסיף פיצ'ר באמצע הספרינט. מה אני עונה?" },
+      ],
+      sm: [
+        { timing: "לפני Planning", prompt: "אני SM חדש/ה. יש לי Sprint Planning מחר. תן לי סקריפט דקה-אחר-דקה." },
+        { timing: "Retro שקט", prompt: "ה-Retro שלנו שקט — אף אחד לא מדבר. מה לעשות?" },
+        { timing: "חסימה", prompt: "יש לנו חסימה טכנית שלא נפתרת 3 ימים. מה הצעדים?" },
+        { timing: "אנטי-פטרן", prompt: "ה-PO לא מגיע ל-Daily. איך אני מטפל/ת בזה?" },
+      ],
+      mgr: [
+        { timing: "הבנת מדדים", prompt: "אני מנהל/ת. הצוות סיים ספרינט 1. איך אני קורא/ת את ה-Burndown?" },
+        { timing: "דיווח להנהלה", prompt: "אני צריך/ה לדווח להנהלה על מעבר לאג'ייל. מה הפורמט?" },
+        { timing: "רצון להתערב", prompt: "אני רואה שהצוות מתקשה. מתי נכון שאתערב ומתי לא?" },
+      ],
+      client: [
+        { timing: "לפני Review", prompt: "אני לקוח/ה שמגיע/ה ל-Sprint Review. מה מצפים ממני?" },
+        { timing: "בקשת שינוי", prompt: "אני צריך/ה שינוי דחוף. הצוות אומר 'ספרינט הבא'. למה?" },
+        { timing: "מתן משוב", prompt: "ראיתי את ה-Demo. איך אני נותן/ת משוב אפקטיבי?" },
+      ],
+      service: [
+        { timing: "הבנת הקצב", prompt: "אני DBA שתומך/ת בצוות Scrum. מתי הם יצטרכו אותי?" },
+        { timing: "Refinement", prompt: "הזמינו אותי ל-Refinement. מה מצפים ממני שם?" },
+      ],
+    };
+
+    // ─── Week activities per role ───
+    const weekActivities = {
+      dev: {
+        1: ["📋 Planning: הערכת מאמץ, בחירת Tasks", "💻 התחלת קידוד", "🔄 Daily Standup (15 דק')", "📊 עדכון לוח"],
+        2: ["💻 קידוד מרבי (75%+ מהזמן)", "🔄 Daily Standup", "📋 Refinement: שאלות טכניות + הערכות", "📊 עדכון לוח כל יום"],
+        3: ["💻 השלמת פיצ'רים", "🎬 הכנת Demo", "🎯 Sprint Review: הצגת מה שנבנה", "🔄 Retrospective: שיפור"],
+      },
+      po: {
+        1: ["📋 Planning: הצגת Backlog מתועדף + Sprint Goal", "💬 מענה לשאלות הצוות", "📊 תקשורת עם בעלי עניין"],
+        2: ["📝 כתיבת Stories לספרינט הבא", "📋 ניהול Backlog", "📋 הובלת Refinement", "💬 מענה לצוות"],
+        3: ["📝 סיום Stories לספרינט הבא (DoR)", "🎯 הכנת Sprint Review", "🎯 הובלת Review", "🔄 Retro"],
+      },
+      sm: {
+        1: ["🎙️ הנחיית Planning (עם סקריפט!)", "🎙️ הנחיית Daily", "🚧 הסרת חסימות", "📋 הכנת טקסים"],
+        2: ["🎙️ הנחיית Daily + Refinement", "🏋️ אימון הצוות", "🚧 הסרת חסימות", "📊 עדכון Dashboard"],
+        3: ["🎙️ הנחיית Review + Retro", "📊 ניתוח מדדי ספרינט", "📋 הכנה לספרינט הבא"],
+      },
+      mgr: {
+        1: ["👀 צפייה ב-Planning (אופציונלי)", "📊 תקשורת עם הנהלה", "🚧 הסרת חסימות ארגוניות"],
+        2: ["📊 תקשורת עם הנהלה", "👥 פיתוח אנשים", "🚧 הסרת חסימות ארגוניות", "📊 בדיקת Dashboard"],
+        3: ["🎯 השתתפות ב-Sprint Review!", "👥 פיתוח אנשים", "📊 בדיקת בריאות צוות עם SM"],
+      },
+      client: {
+        1: ["💬 משוב ל-PO", "📞 זמינות לשאלות הצוות"],
+        2: ["📞 זמינות לשאלות", "💬 מתן הקשר עסקי לפי הצורך"],
+        3: ["🎯 השתתפות ב-Sprint Review!", "💬 מתן משוב על מה שהוצג", "📊 צפייה ב-Dashboard"],
+      },
+      service: {
+        1: ["🔧 מענה לבקשות מ-Planning", "📞 זמינות לשאלות"],
+        2: ["📋 Refinement (כשהתחום שלך על הפרק)", "🔧 מענה לבקשות"],
+        3: ["🎯 Review (כשרלוונטי)", "🔧 מענה לבקשות אחרונות"],
+      },
+    };
+
+    const roleWelcome = {
+      dev: "המעבר לאג'ייל לא אומר יותר ישיבות. זה אומר שאת/ה מחליט/ה מה לעבוד, מעריך/ה את הזמן, ומציג/ה את מה שבנית. 60%+ מהזמן — קוד.",
+      po: "את/ה הקול של המוצר. את/ה מחליט/ה מה נבנה ולמה, כותב/ת Stories, מתעדף/ת בלי רחמים, ואומר/ת 'לא' כשצריך. הצוות מחליט איך.",
+      sm: "את/ה לא מנהל/ת — את/ה מנחה ומאפשר/ת. יש לך סקריפט לכל טקס, Playbook לכל מצב, ומאמן AI שתומך בך. את/ה יכול/ה.",
+      mgr: "התפקיד שלך משתנה: מבקרת איכות למסיר/ת חסימות. את/ה לא מחלק/ת משימות — את/ה מגן/ה על הצוות ומדווח/ת להנהלה במטריקות.",
+      client: "כל 3 שבועות תראה/י תוכנה עובדת ב-Sprint Review. תיתן/י משוב, תבקש/י שינויים — והם ייכנסו לספרינט הבא. את/ה שותף/ה.",
+      service: "הצוות יפנה אליך כשצריך. מענה תוך 24 שעות, השתתפות ב-Refinement כשהנושא שלך על הפרק. סה\"כ 2-4 שעות בשבוע.",
+    };
+
+    const roleNextSteps = {
+      dev: "1. קרא/י את מדריך המפתח/ת (15 דק') ← 2. הסתכל/י על Sprint Playbook Chart ← 3. הגע/י ל-Planning מוכן/ה",
+      po: "1. קרא/י את מדריך ה-PO (15 דק') ← 2. למד/י לכתוב User Stories ← 3. הכן/י Backlog ראשוני ל-Planning",
+      sm: "1. קרא/י את מדריך ה-SM (15 דק') ← 2. הדפס/י סקריפטים וכרטיסי טקסים ← 3. הנח/י את ה-Planning הראשון עם הסקריפט",
+      mgr: "1. מלא/י את תבנית מיפוי התפקידים ← 2. קרא/י את מדריך המנהל/ת (10 דק') ← 3. שלח/י לכולם את הלינק לאתר",
+      client: "1. קרא/י את מדריך הלקוח (5 דק') ← 2. הבן/י מה קורה ב-Sprint Review ← 3. הגע/י ל-Review הראשון",
+      service: "1. קרא/י את מדריך תפקידי השירות (3 דק') ← 2. הכר/י את לוח הספרינט ← 3. תגיב/י לבקשות תוך 24 שעות",
+    };
+
+    // ─── Helpers ───
+    function getDocsForRole(roleId, phaseNum) {
+      return docs.filter(d => d.phase === phaseNum && (d.roles.includes(roleId) || d.roles.includes("all")));
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    //  SVG Illustrations
+    // ═══════════════════════════════════════════════════════════════
+
+    function SprintCycleSVG({ size = 200 }) {
+      return (
+        <svg width={size} height={size} viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="85" stroke="#E8EDF2" strokeWidth="8" fill="none" />
+          <path d="M100 15 A85 85 0 0 1 173.5 57" stroke="#2E86C1" strokeWidth="8" strokeLinecap="round" fill="none" />
+          <path d="M173.5 57 A85 85 0 0 1 173.5 143" stroke="#27AE60" strokeWidth="8" strokeLinecap="round" fill="none" />
+          <path d="M173.5 143 A85 85 0 0 1 100 185" stroke="#E67E22" strokeWidth="8" strokeLinecap="round" fill="none" />
+          <path d="M100 185 A85 85 0 0 1 100 15" stroke="#95A5A6" strokeWidth="4" strokeDasharray="8 6" strokeLinecap="round" fill="none" />
+          <circle cx="100" cy="100" r="42" fill="white" stroke="#E8EDF2" strokeWidth="2" />
+          <text x="100" y="90" textAnchor="middle" fill="#1A5276" fontSize="12" fontWeight="700">ספרינט</text>
+          <text x="100" y="108" textAnchor="middle" fill="#1A5276" fontSize="12" fontWeight="700">3 שבועות</text>
+          <text x="100" y="122" textAnchor="middle" fill="#95A5A6" fontSize="10">🔄 חוזר</text>
+          <text x="155" y="38" textAnchor="middle" fill="#2E86C1" fontSize="10" fontWeight="600">שבוע 1</text>
+          <text x="184" y="100" textAnchor="middle" fill="#27AE60" fontSize="10" fontWeight="600">שבוע 2</text>
+          <text x="155" y="170" textAnchor="middle" fill="#E67E22" fontSize="10" fontWeight="600">שבוע 3</text>
+          <circle cx="130" cy="22" r="4" fill="#2E86C1" />
+          <text x="130" y="16" textAnchor="middle" fill="#2E86C1" fontSize="7" fontWeight="600">Planning</text>
+          <circle cx="188" cy="100" r="4" fill="#27AE60" />
+          <circle cx="130" cy="178" r="4" fill="#E67E22" />
+          <text x="130" y="190" textAnchor="middle" fill="#E67E22" fontSize="7" fontWeight="600">Review</text>
+        </svg>
+      );
+    }
+
+    function ScrumBoardSVG({ size = 280 }) {
+      const w = size, h = size * 0.55;
+      const cols = ["To Do", "In Progress", "Review", "Done"];
+      const colW = (w - 20) / 4;
+      const colors = ["#E74C3C", "#E67E22", "#2E86C1", "#27AE60"];
+      return (
+        <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} fill="none">
+          <rect x="0" y="0" width={w} height={h} rx="12" fill="white" stroke="#E8EDF2" strokeWidth="2" />
+          {cols.map((col, i) => {
+            const x = 10 + i * colW;
+            return (
+              <g key={i}>
+                <rect x={x} y="8" width={colW - 6} height="22" rx="6" fill={colors[i] + "18"} />
+                <text x={x + (colW - 6) / 2} y="23" textAnchor="middle" fill={colors[i]} fontSize="10" fontWeight="700">{col}</text>
+                {i === 0 && [0, 1].map(j => (
+                  <rect key={j} x={x + 4} y={38 + j * 28} width={colW - 14} height="22" rx="4" fill="#FEF9E7" stroke="#F1C40F" strokeWidth="1" />
+                ))}
+                {i === 1 && (
+                  <rect x={x + 4} y={38} width={colW - 14} height="22" rx="4" fill="#EBF5FB" stroke="#2E86C1" strokeWidth="1" />
+                )}
+                {i === 2 && (
+                  <rect x={x + 4} y={38} width={colW - 14} height="22" rx="4" fill="#F4ECF7" stroke="#8E44AD" strokeWidth="1" />
+                )}
+                {i === 3 && [0, 1, 2].map(j => (
+                  <rect key={j} x={x + 4} y={38 + j * 28} width={colW - 14} height="22" rx="4" fill="#EAFAF1" stroke="#27AE60" strokeWidth="1" />
+                ))}
+              </g>
+            );
+          })}
+          <rect x={10 + colW + 2} y={h - 24} width={colW - 10} height="16" rx="8" fill="#E74C3C" />
+          <text x={10 + colW + (colW - 10) / 2 + 2} y={h - 13} textAnchor="middle" fill="white" fontSize="8" fontWeight="700">WIP: 2</text>
+        </svg>
+      );
+    }
+
+    function BurndownSVG({ size = 240 }) {
+      const w = size, h = size * 0.5;
+      return (
+        <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} fill="none">
+          <rect x="0" y="0" width={w} height={h} rx="12" fill="white" stroke="#E8EDF2" strokeWidth="2" />
+          <line x1="35" y1="15" x2="35" y2={h - 20} stroke="#BDC3C7" strokeWidth="1.5" />
+          <line x1="35" y1={h - 20} x2={w - 15} y2={h - 20} stroke="#BDC3C7" strokeWidth="1.5" />
+          <line x1="35" y1="18" x2={w - 15} y2={h - 22} stroke="#BDC3C7" strokeWidth="1.5" strokeDasharray="6 4" />
+          <polyline
+            points={`35,18 ${35 + (w - 50) * 0.15},22 ${35 + (w - 50) * 0.3},30 ${35 + (w - 50) * 0.4},45 ${35 + (w - 50) * 0.5},40 ${35 + (w - 50) * 0.65},55 ${35 + (w - 50) * 0.75},70 ${35 + (w - 50) * 0.85},85 ${w - 15},${h - 25}`}
+            stroke="#2E86C1" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"
+          />
+          <polyline
+            points={`35,18 ${35 + (w - 50) * 0.15},22 ${35 + (w - 50) * 0.3},30 ${35 + (w - 50) * 0.4},45 ${35 + (w - 50) * 0.5},40 ${35 + (w - 50) * 0.65},55 ${35 + (w - 50) * 0.75},70 ${35 + (w - 50) * 0.85},85 ${w - 15},${h - 25} ${w - 15},${h - 20} 35,${h - 20}`}
+            fill="#2E86C120"
+          />
+          <text x={w / 2} y={h - 5} textAnchor="middle" fill="#95A5A6" fontSize="9">ימי ספרינט →</text>
+          <text x={w - 50} y="14" fill="#2E86C1" fontSize="8" fontWeight="600">Burndown</text>
+          <circle cx={w - 15} cy={h - 25} r="4" fill="#27AE60" />
+        </svg>
+      );
+    }
+
+    function TeamSVG({ size = 180 }) {
+      const people = [
+        { x: 90, y: 35, color: "#2E86C1", label: "SM" },
+        { x: 40, y: 85, color: "#8E44AD", label: "PO" },
+        { x: 140, y: 85, color: "#27AE60", label: "Dev" },
+        { x: 60, y: 138, color: "#27AE60", label: "Dev" },
+        { x: 120, y: 138, color: "#27AE60", label: "Dev" },
+      ];
+      return (
+        <svg width={size} height={size} viewBox="0 0 180 180" fill="none">
+          {people.map((p, i) =>
+            people.slice(i + 1).map((p2, j) => (
+              <line key={`${i}-${j}`} x1={p.x} y1={p.y} x2={p2.x} y2={p2.y} stroke="#E8EDF2" strokeWidth="1.5" />
+            ))
+          )}
+          {people.map((p, i) => (
+            <g key={i}>
+              <circle cx={p.x} cy={p.y} r="20" fill={p.color + "15"} stroke={p.color} strokeWidth="2" />
+              <circle cx={p.x} cy={p.y - 5} r="6" fill={p.color} />
+              <path d={`M${p.x - 10} ${p.y + 8} Q${p.x} ${p.y + 2} ${p.x + 10} ${p.y + 8}`} stroke={p.color} strokeWidth="2" fill="none" />
+              <text x={p.x} y={p.y + 32} textAnchor="middle" fill={p.color} fontSize="9" fontWeight="700">{p.label}</text>
+            </g>
+          ))}
+          <text x="90" y="100" textAnchor="middle" fill="#1A5276" fontSize="10" fontWeight="600">Scrum Team</text>
+        </svg>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    //  Main App
+    // ═══════════════════════════════════════════════════════════════
+
+    function App() {
+      const [selectedRole, setSelectedRole] = useState(null);
+      const [activePhase, setActivePhase] = useState(null);
+      const [showMuscles, setShowMuscles] = useState(false);
+      const [activeWeek, setActiveWeek] = useState(null);
+      const [copiedPrompt, setCopiedPrompt] = useState(null);
+      const [showAllDocs, setShowAllDocs] = useState(false);
+      const [viewingDoc, setViewingDoc] = useState(null);
+      const [docContent, setDocContent] = useState("");
+      const [docLoading, setDocLoading] = useState(false);
+      const [docError, setDocError] = useState(null);
+
+      const role = roles.find(r => r.id === selectedRole);
+
+      const copyPrompt = (prompt, idx) => {
+        navigator.clipboard?.writeText(prompt);
+        setCopiedPrompt(idx);
+        setTimeout(() => setCopiedPrompt(null), 2000);
+      };
+
+      const openDoc = (doc) => {
+        setViewingDoc(doc);
+        setDocContent("");
+        setDocLoading(true);
+        setDocError(null);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        fetch(CONTENT_DIR + doc.file)
+          .then(res => {
+            if (!res.ok) throw new Error("לא ניתן לטעון את המסמך");
+            return res.text();
+          })
+          .then(text => {
+            let cleaned = text.replace(/<div dir="rtl">\s*/g, "").replace(/<\/div>/g, "");
+            cleaned = cleaned.replace(/\u200F/g, "");
+            setDocContent(cleaned);
+            setDocLoading(false);
+          })
+          .catch(err => {
+            setDocError(err.message);
+            setDocLoading(false);
+          });
+      };
+
+      const closeDoc = () => {
+        setViewingDoc(null);
+        setDocContent("");
+        setDocError(null);
+      };
+
+      // ─────────────────────────────────────
+      //  Landing Page
+      // ─────────────────────────────────────
+      if (!selectedRole) {
+        return (
+          <div style={{ maxWidth: 920, margin: "0 auto", padding: "28px 16px" }}>
+
+            {/* Hero */}
+            <div className="fade-in-up" style={{ textAlign: "center", marginBottom: 36, paddingTop: 16 }}>
+              <div className="float-anim" style={{
+                display: "inline-block",
+                background: "linear-gradient(135deg, #1A5276 0%, #2E86C1 50%, #27AE60 100%)",
+                borderRadius: 24,
+                padding: "20px 28px",
+                marginBottom: 20,
+                boxShadow: "0 8px 32px rgba(26, 82, 118, 0.2)",
+              }}>
+                <span style={{ fontSize: 56 }}>🏃‍♂️</span>
+              </div>
+              <h1 style={{
+                fontSize: 40,
+                fontWeight: 700,
+                color: "#1A5276",
+                margin: "0 0 10px 0",
+                letterSpacing: -0.5,
+                lineHeight: 1.2,
+              }}>
+                Agile Scrum — המסע שלך מתחיל כאן
+              </h1>
+              <p style={{ fontSize: 18, color: "#566573", margin: "0 0 4px 0" }}>
+                תוכנית אימוץ אג'ייל עצמאית — בנויה בדיוק בשבילך
+              </p>
+              <p style={{ fontSize: 14, color: "#95A5A6" }}>טד"מ למ"ס • 2026</p>
+            </div>
+
+            {/* Illustrations */}
+            <div className="illustration-row fade-in-up delay-1" style={{ display: "flex", justifyContent: "center", gap: 24, marginBottom: 32 }}>
+              <div className="glass" style={{ padding: 20, textAlign: "center" }}>
+                <SprintCycleSVG size={180} />
+                <div style={{ fontSize: 13, color: "#95A5A6", marginTop: 6, fontWeight: 600 }}>מחזור ספרינט 3 שבועות</div>
+              </div>
+              <div className="glass" style={{ padding: 20, textAlign: "center" }}>
+                <TeamSVG size={180} />
+                <div style={{ fontSize: 13, color: "#95A5A6", marginTop: 6, fontWeight: 600 }}>צוות Scrum</div>
+              </div>
+            </div>
+
+            {/* Welcome Card */}
+            <div className="glass fade-in-up delay-2" style={{
+              padding: "28px 32px",
+              marginBottom: 28,
+              borderRight: "5px solid #1A5276",
+            }}>
+              <h2 style={{ fontSize: 24, color: "#1A5276", margin: "0 0 10px 0" }}>
+                🧭 ברוכים הבאים למסע האג'ילי!
+              </h2>
+              <p style={{ fontSize: 16, lineHeight: 1.9, color: "#2C3E50", margin: "0 0 20px 0" }}>
+                אנחנו עוברים לעבוד ב-Scrum — שיטה שמאפשרת לנו לראות תוצאות כל 3 שבועות, להגיב מהר לשינויים, ולעבוד יחד בצורה טובה יותר.
+                <br />
+                <strong>אין צורך בניסיון קודם.</strong> יש מדריך לכל תפקיד, סקריפט לכל טקס, ומאמן AI שעונה על כל שאלה.
+              </p>
+              <div className="principle-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                {principles.map((p, i) => (
+                  <div key={i} className={`slide-in-right delay-${i + 2}`} style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: 12,
+                    fontSize: 14,
+                    color: "#34495E",
+                    background: "#F4F7FA",
+                    borderRadius: 12,
+                    padding: "14px 16px",
+                    lineHeight: 1.7,
+                  }}>
+                    <span style={{ fontSize: 24, flexShrink: 0, marginTop: 2 }}>{p.icon}</span>
+                    <div>
+                      <div style={{ fontWeight: 700, color: "#1A5276", marginBottom: 3, fontSize: 15 }}>{p.title}</div>
+                      <span style={{ fontSize: 13 }}>{p.desc}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Intro Video */}
+            <div className="glass fade-in-up delay-3" style={{ padding: "28px 32px", marginBottom: 28 }}>
+              <h2 style={{ fontSize: 22, color: "#1A5276", margin: "0 0 6px 0", textAlign: "center" }}>
+                🎬 סרטון מבוא — מה זה Agile Scrum?
+              </h2>
+              <p style={{ fontSize: 14, color: "#95A5A6", textAlign: "center", margin: "0 0 18px 0" }}>
+                ~20 דקות · כולם צופים · לפני בחירת תפקיד
+              </p>
+              <div className="video-container" style={{ borderRadius: 16, overflow: "hidden" }}>
+                <video
+                  controls
+                  preload="metadata"
+                  poster=""
+                  style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+                >
+                  <source src="video/Agile Scrum Intro - טדמ למס - V2.mp4" type="video/mp4" />
+                  הדפדפן שלך לא תומך בהפעלת וידאו.
+                  <a href="video/Agile Scrum Intro - טדמ למס - V2.mp4">לחצ/י להורדת הסרטון</a>
+                </video>
+              </div>
+              <p style={{ fontSize: 12, color: "#AAB7B8", textAlign: "center", marginTop: 10 }}>
+                אם הסרטון לא נטען — ודאו שהקובץ נמצא בתיקיית <code>video/</code>
+              </p>
+            </div>
+
+            {/* Role Selector */}
+            <div id="role-selector" className="glass fade-in-up delay-4" style={{ padding: "28px 32px", marginBottom: 28 }}>
+              <h2 style={{ fontSize: 24, color: "#1A5276", margin: "0 0 6px 0", textAlign: "center" }}>
+                👤 מה התפקיד שלך?
+              </h2>
+              <p style={{ fontSize: 14, color: "#95A5A6", textAlign: "center", margin: "0 0 24px 0" }}>
+                בחר/י את התפקיד — ותקבל/י מסלול אישי עם כל מה שצריך
+              </p>
+              <div className="role-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 14 }}>
+                {roles.map((r, i) => (
+                  <div
+                    key={r.id}
+                    className={`role-card fade-in-up delay-${Math.min(i + 1, 6)}`}
+                    style={{ "--role-color": r.color, "--role-light": r.light, "--role-shadow": r.shadow }}
+                    onClick={() => { setSelectedRole(r.id); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                  >
+                    <div style={{ fontSize: 40, marginBottom: 10 }}>{r.emoji}</div>
+                    <div style={{ fontSize: 17, fontWeight: 700, color: r.color, marginBottom: 3 }}>{r.name}</div>
+                    <div style={{ fontSize: 12, color: "#95A5A6", marginBottom: 10 }}>{r.sub}</div>
+                    <div style={{ fontSize: 13, color: "#566573", lineHeight: 1.6 }}>{r.desc}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Journey Overview */}
+            <div className="glass fade-in-up delay-5" style={{ padding: "28px 32px", marginBottom: 28 }}>
+              <h2 style={{ fontSize: 22, color: "#1A5276", margin: "0 0 4px 0", textAlign: "center" }}>
+                🗺️ 5 שלבים — מאפס לצוות עצמאי
+              </h2>
+              <p style={{ fontSize: 13, color: "#95A5A6", textAlign: "center", margin: "0 0 20px 0" }}>
+                כל אחד עובר את אותו מסע • בקצב שלו • עם כלים מותאמים לתפקיד
+              </p>
+              <div className="phase-row" style={{ display: "flex", alignItems: "stretch", justifyContent: "center", gap: 8 }}>
+                {phases.map((p, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <div style={{
+                      width: 136,
+                      minHeight: 120,
+                      borderRadius: 16,
+                      border: `2.5px solid ${p.color}`,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "12px 10px",
+                      background: p.light,
+                      textAlign: "center",
+                    }}>
+                      <div style={{ fontSize: 10, fontWeight: 700, color: "#AAA", marginBottom: 3 }}>שלב {p.num}</div>
+                      <div style={{ fontSize: 30, marginBottom: 4 }}>{p.emoji}</div>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: p.color, lineHeight: 1.3 }}>{p.name}</div>
+                      <div style={{ fontSize: 10, color: "#7F8C8D", marginTop: 3 }}>{p.sub}</div>
+                    </div>
+                    {i < 4 && <div style={{ fontSize: 18, color: "#D5D8DC", transform: "scaleX(-1)" }}>‹</div>}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* למ"ס Story */}
+            <div className="glass fade-in-up delay-5" style={{
+              padding: "22px 28px",
+              marginBottom: 28,
+              display: "flex",
+              alignItems: "flex-start",
+              gap: 16,
+              borderRight: "5px solid #27AE60",
+            }}>
+              <span style={{ fontSize: 32, flexShrink: 0 }}>🏆</span>
+              <div>
+                <div style={{ fontSize: 18, fontWeight: 700, color: "#27AE60", marginBottom: 6 }}>
+                  אנחנו כבר יודעים שזה עובד
+                </div>
+                <div style={{ fontSize: 14, color: "#34495E", lineHeight: 1.8 }}>
+                  הפרויקט שלנו שניהלנו באג'ייל <strong>זכה בפרס</strong>. עכשיו הזמן להביא את זה לכל הצוותים — בלי מאמנים חיצוניים.
+                  <br />
+                  המדריכים, הסקריפטים, ו-AIlex — הם המאמן שלכם.
+                </div>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="fade-in-up delay-6" style={{ textAlign: "center", padding: "12px 0 40px" }}>
+              <a href="#role-selector" className="cta-btn">⬆️ בחר/י תפקיד והתחל/י</a>
+              <p style={{ fontSize: 13, color: "#AAB7B8", marginTop: 14 }}>בחר/י למעלה — והמסלול האישי שלך ייפתח</p>
+            </div>
+          </div>
+        );
+      }
+
+      // ─────────────────────────────────────
+      //  Guide Viewer (full-page overlay)
+      // ─────────────────────────────────────
+      if (viewingDoc) {
+        return (
+          <div style={{ maxWidth: 920, margin: "0 auto", padding: "24px 16px" }}>
+            {/* Toolbar */}
+            <div className="guide-toolbar no-print" style={{
+              display: "flex", justifyContent: "space-between", alignItems: "center",
+              marginBottom: 20, gap: 12,
+            }}>
+              <button
+                onClick={closeDoc}
+                style={{
+                  background: "#EBF5FB", border: "2px solid #2E86C1", borderRadius: 12,
+                  padding: "10px 22px", fontSize: 15, fontWeight: 700, color: "#2E86C1",
+                  cursor: "pointer", display: "flex", alignItems: "center", gap: 8,
+                }}
+              >
+                → חזרה לדשבורד
+              </button>
+              <div style={{ display: "flex", gap: 10 }}>
+                <button
+                  onClick={() => window.print()}
+                  style={{
+                    background: "#EAFAF1", border: "2px solid #27AE60", borderRadius: 12,
+                    padding: "10px 18px", fontSize: 14, fontWeight: 600, color: "#27AE60",
+                    cursor: "pointer",
+                  }}
+                >
+                  🖨️ הדפסה / PDF
+                </button>
+              </div>
+            </div>
+
+            {/* Document content */}
+            <div className="glass guide-print-area" style={{ padding: "32px 36px", marginBottom: 28 }}>
+              {docLoading && (
+                <div style={{ textAlign: "center", padding: 60 }}>
+                  <div style={{
+                    width: 40, height: 40, border: "4px solid #E8EDF2",
+                    borderTopColor: "#2E86C1", borderRadius: "50%",
+                    animation: "spin 0.8s linear infinite", margin: "0 auto 16px",
+                  }} />
+                  <div style={{ color: "#95A5A6", fontSize: 15 }}>טוען מסמך...</div>
+                </div>
+              )}
+              {docError && (
+                <div style={{ textAlign: "center", padding: 60 }}>
+                  <div style={{ fontSize: 48, marginBottom: 12 }}>⚠️</div>
+                  {docError === "file://" ? (
+                    <div>
+                      <div style={{ color: "#E74C3C", fontSize: 16, fontWeight: 600, marginBottom: 10 }}>
+                        לא ניתן לטעון מסמכים בפתיחה ישירה מהדיסק
+                      </div>
+                      <div style={{ color: "#566573", fontSize: 14, lineHeight: 1.8, marginBottom: 16 }}>
+                        הדפדפן חוסם טעינת קבצים מקומיים. יש שני פתרונות:
+                      </div>
+                      <div style={{ background: "#F8F9FA", borderRadius: 12, padding: 20, textAlign: "right", display: "inline-block", maxWidth: 500 }}>
+                        <div style={{ fontWeight: 700, color: "#1A5276", marginBottom: 8 }}>אפשרות 1 — שרת מקומי (מומלץ):</div>
+                        <code style={{ background: "#2C3E50", color: "#ECF0F1", padding: "8px 14px", borderRadius: 6, display: "block", direction: "ltr", textAlign: "left", fontSize: 13, marginBottom: 14 }}>npx serve .</code>
+                        <div style={{ fontWeight: 700, color: "#1A5276", marginBottom: 8 }}>אפשרות 2 — פתיחת הקובץ ישירות:</div>
+                        <a href={CONTENT_DIR + viewingDoc.file} target="_blank" style={{ color: "#2E86C1", fontSize: 14 }}>
+                          📄 פתח את {viewingDoc.name} בחלון חדש
+                        </a>
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <div style={{ color: "#E74C3C", fontSize: 16, fontWeight: 600 }}>{docError}</div>
+                      <div style={{ color: "#95A5A6", fontSize: 13, marginTop: 8 }}>
+                        ודאו שהקובץ <code>{viewingDoc.file}</code> קיים בתיקיית <code>content/</code>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+              {!docLoading && !docError && docContent && (
+                <div
+                  className="guide-viewer"
+                  key={viewingDoc?.id || 'doc'}
+                  dangerouslySetInnerHTML={{ __html: marked.parse(docContent) }}
+                />
+              )}
+            </div>
+
+            {/* Bottom back button */}
+            <div className="no-print" style={{ textAlign: "center", paddingBottom: 32 }}>
+              <button
+                onClick={closeDoc}
+                style={{
+                  background: "#EBF5FB", border: "2px solid #2E86C1", borderRadius: 12,
+                  padding: "10px 22px", fontSize: 15, fontWeight: 700, color: "#2E86C1",
+                  cursor: "pointer",
+                }}
+              >
+                → חזרה לדשבורד
+              </button>
+            </div>
+          </div>
+        );
+      }
+
+      // ─────────────────────────────────────
+      //  Role Dashboard
+      // ─────────────────────────────────────
+      return (
+        <div style={{
+          maxWidth: 920,
+          margin: "0 auto",
+          padding: "24px 16px",
+        }}>
+
+          {/* Top Bar */}
+          <div className="fade-in" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
+            <div
+              className="glass glass-clickable"
+              onClick={() => { setSelectedRole(null); setActivePhase(null); setActiveWeek(null); }}
+              style={{ display: "flex", alignItems: "center", gap: 8, padding: "10px 18px", fontSize: 14, color: "#7F8C8D", borderRadius: 24 }}
+            >
+              ← חזרה לבחירת תפקיד
+            </div>
+            <div className="glass" style={{
+              display: "flex", alignItems: "center", gap: 10, padding: "10px 20px", borderRadius: 24,
+              borderRight: `4px solid ${role.color}`,
+            }}>
+              <span style={{ fontSize: 22 }}>{role.emoji}</span>
+              <span style={{ fontSize: 16, fontWeight: 700, color: role.color }}>{role.name}</span>
+            </div>
+          </div>
+
+          {/* Role Welcome */}
+          <div className="glass fade-in-up" style={{
+            padding: "32px 36px",
+            marginBottom: 28,
+            borderRight: `5px solid ${role.color}`,
+          }}>
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 24 }}>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 14, color: "#95A5A6", marginBottom: 6 }}>המסע שלך כ-{role.sub}</div>
+                <h1 style={{ fontSize: 30, fontWeight: 700, color: "#1A5276", margin: "0 0 12px 0" }}>
+                  {role.emoji} שלום, {role.name}!
+                </h1>
+                <p style={{ fontSize: 16, color: "#2C3E50", lineHeight: 1.9, margin: 0 }}>
+                  {roleWelcome[selectedRole]}
+                </p>
+              </div>
+              <div className="float-anim" style={{
+                flexShrink: 0,
+                width: 90, height: 90,
+                borderRadius: 22,
+                background: `linear-gradient(135deg, ${role.color}20, ${role.color}40)`,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: 44,
+              }}>
+                {role.icon}
+              </div>
+            </div>
+          </div>
+
+          {/* Phase Journey */}
+          <div className="glass fade-in-up delay-1" style={{ padding: "28px 32px", marginBottom: 28 }}>
+            <h2 style={{ fontSize: 22, color: "#1A5276", margin: "0 0 4px 0", textAlign: "center" }}>
+              🗺️ המסלול שלך — שלב אחרי שלב
+            </h2>
+            <p style={{ fontSize: 13, color: "#95A5A6", textAlign: "center", margin: "0 0 20px 0" }}>
+              לחצ/י על שלב כדי לראות מה לעשות ואיזה חומרים צריך
+            </p>
+            <div className="phase-row" style={{ display: "flex", alignItems: "stretch", justifyContent: "center", gap: 8, marginBottom: 18 }}>
+              {phases.map((p, i) => {
+                const isActive = activePhase === p.num;
+                const docCount = getDocsForRole(selectedRole, p.num).length;
+                return (
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <div
+                      className={`phase-card ${isActive ? 'active' : ''}`}
+                      style={{ "--phase-color": p.color, "--phase-shadow": p.shadow }}
+                      onClick={() => setActivePhase(isActive ? null : p.num)}
+                    >
+                      <div style={{ fontSize: 10, fontWeight: 700, color: isActive ? "rgba(255,255,255,0.7)" : "#AAA", marginBottom: 3 }}>
+                        שלב {p.num}
+                      </div>
+                      <div style={{ fontSize: 28, marginBottom: 4 }}>{p.emoji}</div>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: isActive ? "white" : p.color, lineHeight: 1.3 }}>
+                        {p.name}
+                      </div>
+                      {docCount > 0 && (
+                        <div style={{
+                          marginTop: 5, fontSize: 10,
+                          color: isActive ? "rgba(255,255,255,0.9)" : "#95A5A6",
+                          background: isActive ? "rgba(255,255,255,0.2)" : "#F4F7FA",
+                          borderRadius: 8, padding: "3px 10px",
+                        }}>
+                          {docCount} חומרים
+                        </div>
+                      )}
+                    </div>
+                    {i < 4 && <div style={{ fontSize: 16, color: "#D5D8DC", transform: "scaleX(-1)" }}>‹</div>}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Expanded phase */}
+            {activePhase !== null && (() => {
+              const phase = phases.find(p => p.num === activePhase);
+              const phaseDocs = getDocsForRole(selectedRole, activePhase);
+              return (
+                <div className="fade-in" style={{
+                  background: phase.light,
+                  borderRadius: 14,
+                  padding: "22px 26px",
+                  borderRight: `4px solid ${phase.color}`,
+                }}>
+                  <div style={{ fontSize: 20, fontWeight: 700, color: phase.color, marginBottom: 8 }}>
+                    {phase.emoji} שלב {phase.num}: {phase.name}
+                  </div>
+                  <div style={{ fontSize: 15, color: "#2C3E50", lineHeight: 1.8, marginBottom: 16 }}>
+                    {phase.desc}
+                  </div>
+                  {phaseDocs.length > 0 && (
+                    <div>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: "#7F8C8D", marginBottom: 10 }}>
+                        📚 החומרים שלך בשלב הזה:
+                      </div>
+                      <div className="doc-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+                        {phaseDocs.map((doc, i) => (
+                          <div
+                            key={i}
+                            className="doc-item"
+                            style={{ "--doc-color": phase.color }}
+                            onClick={() => openDoc(doc)}
+                          >
+                            <span style={{ fontSize: 20, flexShrink: 0 }}>{doc.icon}</span>
+                            <div style={{ flex: 1 }}>
+                              <div style={{ fontSize: 14, fontWeight: 600, color: "#2C3E50" }}>{doc.name}</div>
+                              <div style={{ fontSize: 10, color: "#95A5A6" }}>{doc.stage}</div>
+                            </div>
+                            <div style={{
+                              fontSize: 11, color: phase.color,
+                              background: phase.color + "15",
+                              padding: "4px 10px", borderRadius: 8,
+                              fontWeight: 600, whiteSpace: "nowrap",
+                            }}>
+                              📄 פתח
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
+          </div>
+
+          {/* Sprint Weeks */}
+          <div className="glass fade-in-up delay-2" style={{ padding: "28px 32px", marginBottom: 28 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 18 }}>
+              <div>
+                <h2 style={{ fontSize: 22, color: "#1A5276", margin: "0 0 4px 0" }}>
+                  📅 מה קורה בכל שבוע של הספרינט?
+                </h2>
+                <p style={{ fontSize: 13, color: "#95A5A6", margin: 0 }}>
+                  ספרינט = 3 שבועות • לחצ/י על שבוע לפרטים
+                </p>
+              </div>
+              <SprintCycleSVG size={80} />
+            </div>
+
+            <div className="week-row" style={{ display: "flex", gap: 12, marginBottom: 14 }}>
+              {sprintWeeks.map((w) => {
+                const isActive = activeWeek === w.num;
+                return (
+                  <div
+                    key={w.num}
+                    className={`week-card ${isActive ? 'active' : ''}`}
+                    style={{ "--week-color": w.color, "--week-shadow": w.shadow }}
+                    onClick={() => setActiveWeek(isActive ? null : w.num)}
+                  >
+                    <div style={{ fontSize: 28, marginBottom: 6 }}>{w.emoji}</div>
+                    <div style={{ fontSize: 15, fontWeight: 700, color: isActive ? "white" : w.color, marginBottom: 3 }}>{w.name}</div>
+                    <div style={{ fontSize: 12, color: isActive ? "rgba(255,255,255,0.8)" : "#7F8C8D" }}>שבוע {w.num}</div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {activeWeek !== null && (() => {
+              const week = sprintWeeks.find(w => w.num === activeWeek);
+              const activities = weekActivities[selectedRole]?.[activeWeek] || [];
+              return (
+                <div className="fade-in" style={{
+                  background: `${week.color}08`,
+                  borderRadius: 14,
+                  padding: "18px 22px",
+                  borderRight: `4px solid ${week.color}`,
+                }}>
+                  <div style={{ fontSize: 17, fontWeight: 700, color: week.color, marginBottom: 10 }}>
+                    {week.emoji} {week.name} — {week.focus}
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+                    {activities.map((a, i) => (
+                      <div key={i} className={`slide-in-right delay-${Math.min(i + 1, 6)}`} style={{
+                        display: "flex", alignItems: "center", gap: 8,
+                        background: "rgba(255,255,255,0.75)", borderRadius: 10,
+                        padding: "10px 14px", fontSize: 14, color: "#2C3E50",
+                      }}>
+                        {a}
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ marginTop: 12, display: "flex", gap: 8, flexWrap: "wrap" }}>
+                    {week.ceremonies.map((c, i) => (
+                      <span key={i} style={{
+                        fontSize: 12, background: week.color + "18", color: week.color,
+                        padding: "4px 12px", borderRadius: 10, fontWeight: 600,
+                      }}>{c}</span>
+                    ))}
+                  </div>
+                </div>
+              );
+            })()}
+          </div>
+
+          {/* Illustrations */}
+          <div className="illustration-row fade-in-up delay-3" style={{ display: "flex", gap: 18, marginBottom: 28, flexWrap: "wrap" }}>
+            <div className="glass" style={{ flex: 1, minWidth: 260, padding: 18, textAlign: "center" }}>
+              <ScrumBoardSVG size={270} />
+              <div style={{ fontSize: 14, fontWeight: 600, color: "#1A5276", marginTop: 10 }}>Sprint Board</div>
+              <div style={{ fontSize: 12, color: "#95A5A6" }}>ככה נראה הלוח שלכם</div>
+            </div>
+            <div className="glass" style={{ flex: 1, minWidth: 260, padding: 18, textAlign: "center" }}>
+              <BurndownSVG size={270} />
+              <div style={{ fontSize: 14, fontWeight: 600, color: "#1A5276", marginTop: 10 }}>Burndown Chart</div>
+              <div style={{ fontSize: 12, color: "#95A5A6" }}>ככה עוקבים אחרי ההתקדמות</div>
+            </div>
+          </div>
+
+          {/* 10 Muscles */}
+          <div className="glass fade-in-up delay-3" style={{
+            padding: "28px 32px", marginBottom: 28,
+            borderRight: `5px solid ${role.color}`,
+          }}>
+            <div onClick={() => setShowMuscles(!showMuscles)} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer" }}>
+              <div>
+                <h2 style={{ fontSize: 22, color: role.color, margin: "0 0 4px 0" }}>💪 10 שרירים אג'יליים</h2>
+                <p style={{ fontSize: 13, color: "#7F8C8D", margin: 0 }}>יכולות שתבנה/י לאורך המסע — אחת-אחת</p>
+              </div>
+              <div style={{ fontSize: 22, color: role.color, transition: "transform 0.3s", transform: showMuscles ? "rotate(180deg)" : "rotate(0)" }}>▼</div>
+            </div>
+            {showMuscles && (
+              <div className="muscle-grid fade-in" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginTop: 18 }}>
+                {muscles.map((m) => {
+                  const ph = phases.find(p => p.num === m.phase);
+                  return (
+                    <div key={m.num} className="muscle-card" style={{ background: ph.light, borderRight: `3px solid ${ph.color}` }}>
+                      <span style={{ fontSize: 22, flexShrink: 0 }}>{m.icon}</span>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: 14, fontWeight: 700, color: "#2C3E50" }}>{m.name}</div>
+                        <div style={{ fontSize: 11, color: "#7F8C8D" }}>{m.desc}</div>
+                      </div>
+                      <div style={{
+                        fontSize: 10, color: ph.color,
+                        background: "rgba(255,255,255,0.7)",
+                        padding: "3px 8px", borderRadius: 6, fontWeight: 600, whiteSpace: "nowrap",
+                      }}>שלב {m.phase}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Coaching Flow */}
+          <div className="glass fade-in-up delay-4" style={{
+            padding: "28px 32px", marginBottom: 28,
+            borderRight: "5px solid #2E86C1",
+          }}>
+            <h2 style={{ fontSize: 22, color: "#2E86C1", margin: "0 0 6px 0" }}>🔄 כל אינטראקציה — אותה מתודה</h2>
+            <p style={{ fontSize: 13, color: "#7F8C8D", margin: "0 0 18px 0" }}>בין אם קוראים מדריך או שואלים את AIlex — תמיד 4 צעדים:</p>
+            <div className="flow-row" style={{ display: "flex", gap: 10 }}>
+              {coachingFlow.map((f, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, flex: 1 }}>
+                  <div className="flow-step" style={{ background: `${f.color}10`, border: `2px solid ${f.color}30` }}>
+                    <div style={{ fontSize: 28, marginBottom: 6 }}>{f.icon}</div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: f.color, marginBottom: 3 }}>{f.title}</div>
+                    <div style={{ fontSize: 12, color: "#666", lineHeight: 1.5 }}>{f.desc}</div>
+                  </div>
+                  {i < 3 && <div style={{ fontSize: 16, color: "#D5D8DC", flexShrink: 0, transform: "scaleX(-1)" }}>‹</div>}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* AIlex */}
+          <div className="glass fade-in-up delay-4" style={{
+            padding: "28px 32px", marginBottom: 28,
+            borderRight: "5px solid #8E44AD",
+          }}>
+            <h2 style={{ fontSize: 22, color: "#8E44AD", margin: "0 0 4px 0" }}>🤖 שאל/י את AIlex — המאמן האג'ילי שלך</h2>
+            <p style={{ fontSize: 13, color: "#7F8C8D", margin: "0 0 18px 0" }}>העתק/י שאלה ← הדבק/י בצ'אט עם AIlex ← קבל/י תשובה מיידית</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {(ailexPrompts[selectedRole] || []).map((p, i) => (
+                <div
+                  key={i}
+                  className={`prompt-card ${copiedPrompt === i ? 'copied' : ''}`}
+                  onClick={() => copyPrompt(p.prompt, i)}
+                >
+                  <div style={{
+                    fontSize: 11, fontWeight: 700, color: "#8E44AD",
+                    background: "rgba(255,255,255,0.7)", padding: "4px 10px",
+                    borderRadius: 8, whiteSpace: "nowrap", minWidth: 85, textAlign: "center",
+                  }}>{p.timing}</div>
+                  <div style={{ fontSize: 14, color: "#2C3E50", flex: 1, lineHeight: 1.6 }}>"{p.prompt}"</div>
+                  <div style={{
+                    fontSize: 12, color: copiedPrompt === i ? "#27AE60" : "#8E44AD",
+                    fontWeight: 700, whiteSpace: "nowrap",
+                  }}>
+                    {copiedPrompt === i ? "✅ הועתק!" : "📋 העתק"}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{
+              marginTop: 16, background: "#F0F9FF", borderRadius: 12,
+              padding: "14px 18px", fontSize: 14, color: "#1A5276",
+              lineHeight: 1.8, textAlign: "center",
+            }}>
+              <strong>AIlex</strong> מכיר את כל 31 המדריכים, יודע בדיוק באיזה שבוע של הספרינט את/ה, ועונה בעברית.
+              <br />
+              <span style={{ fontSize: 12, color: "#7F8C8D" }}>עובד עם Claude, ChatGPT, Grok — כל LLM שתבחר/י</span>
+            </div>
+          </div>
+
+          {/* Full Doc Library */}
+          <div className="glass fade-in-up delay-5" style={{ padding: "28px 32px", marginBottom: 28 }}>
+            <div onClick={() => setShowAllDocs(!showAllDocs)} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer" }}>
+              <div>
+                <h2 style={{ fontSize: 22, color: "#1A5276", margin: "0 0 4px 0" }}>📚 כל החומרים שלך</h2>
+                <p style={{ fontSize: 13, color: "#7F8C8D", margin: 0 }}>
+                  {docs.filter(d => d.roles.includes(selectedRole) || d.roles.includes("all")).length} מסמכים — לחצ/י לפתוח או להדפיס
+                </p>
+              </div>
+              <div style={{ fontSize: 22, color: "#1A5276", transition: "transform 0.3s", transform: showAllDocs ? "rotate(180deg)" : "rotate(0)" }}>▼</div>
+            </div>
+            {showAllDocs && (
+              <div className="fade-in" style={{ marginTop: 18 }}>
+                {phases.map(phase => {
+                  const phaseDocs = getDocsForRole(selectedRole, phase.num);
+                  if (phaseDocs.length === 0) return null;
+                  return (
+                    <div key={phase.num} style={{ marginBottom: 18 }}>
+                      <div style={{ fontSize: 15, fontWeight: 700, color: phase.color, marginBottom: 10, display: "flex", alignItems: "center", gap: 8 }}>
+                        <span>{phase.emoji}</span> שלב {phase.num}: {phase.name}
+                      </div>
+                      <div className="doc-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+                        {phaseDocs.map((doc, i) => (
+                          <div key={i} className="doc-item" style={{ "--doc-color": phase.color }} onClick={() => openDoc(doc)}>
+                            <span style={{ fontSize: 18 }}>{doc.icon}</span>
+                            <div style={{ flex: 1 }}>
+                              <span style={{ fontSize: 13, fontWeight: 600, color: "#2C3E50" }}>{doc.name}</span>
+                              <div style={{ fontSize: 10, color: "#95A5A6" }}>{doc.stage}</div>
+                            </div>
+                            <span style={{ fontSize: 11, color: phase.color, fontWeight: 600 }}>📄</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Next Steps */}
+          <div className="glass fade-in-up delay-5" style={{
+            padding: "22px 28px", marginBottom: 28,
+            display: "flex", alignItems: "flex-start", gap: 16,
+            borderRight: "5px solid #27AE60",
+          }}>
+            <span style={{ fontSize: 30, flexShrink: 0 }}>✨</span>
+            <div>
+              <div style={{ fontSize: 18, fontWeight: 700, color: "#27AE60", marginBottom: 6 }}>מה לעשות עכשיו?</div>
+              <div style={{ fontSize: 15, color: "#34495E", lineHeight: 1.9 }}>{roleNextSteps[selectedRole]}</div>
+            </div>
+          </div>
+
+          {/* Footer CTA */}
+          <div className="fade-in-up delay-6" style={{ textAlign: "center", padding: "12px 0 40px" }}>
+            <div
+              className="cta-btn"
+              style={{ background: `linear-gradient(135deg, ${role.color}, ${role.color}CC)`, backgroundSize: "200% 200%" }}
+              onClick={() => { setActivePhase(1); window.scrollTo({ top: 300, behavior: 'smooth' }); }}
+            >
+              🚀 יאללה, מתחילים!
+            </div>
+            <p style={{ fontSize: 14, color: "#566573", marginTop: 14 }}>
+              לחצ/י על <strong>שלב 1</strong> למעלה והתחל/י את המסע
+            </p>
+            <p style={{ fontSize: 12, color: "#AAB7B8", marginTop: 8 }}>
+              טד"מ למ"ס • Agile Adoption Program • 2026
+            </p>
+          </div>
+        </div>
+      );
+    }
+
+    // ─── Render ───
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>

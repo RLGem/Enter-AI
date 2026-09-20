@@ -1,0 +1,191 @@
+<svg width="1200" height="628" viewBox="0 0 1200 628" xmlns="http://www.w3.org/2000/svg" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #ffffff;">
+
+<rect x="0" y="0" width="1200" height="628" fill="#ffffff"/>
+<line x1="570" y1="40" x2="570" y2="540" stroke="#D3D1C7" stroke-width="1" stroke-dasharray="6 4"/>
+<text x="280" y="38" text-anchor="middle" font-size="17" font-weight="500" fill="#888780">Today</text>
+<text x="885" y="38" text-anchor="middle" font-size="17" font-weight="500" fill="#888780">Tomorrow</text>
+
+<!-- ============ CLUSTER: DEVELOPERS ============ -->
+<rect x="15" y="50" width="370" height="250" rx="14" fill="none" stroke="#D3D1C7" stroke-width="0.5" stroke-dasharray="4 3"/>
+<text x="200" y="72" text-anchor="middle" font-size="11" font-weight="500" fill="#888780">Developers</text>
+
+<!-- Dev #1 Claude Code -->
+<circle cx="75" cy="130" r="26" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text x="75" y="126" text-anchor="middle" font-size="8" font-weight="500" fill="#712B13">Claude Code</text>
+<text x="75" y="137" text-anchor="middle" font-size="7" fill="#993C1D">Dev #1</text>
+<line x1="58" y1="107" x2="30" y2="68" stroke="#D85A30" stroke-width="1" marker-end="url(#a)"/>
+<text x="16" y="64" font-size="8" font-weight="500" fill="#D85A30">DB</text>
+<line x1="95" y1="108" x2="135" y2="78" stroke="#D85A30" stroke-width="1" marker-end="url(#a)"/>
+<text x="130" y="74" font-size="8" font-weight="500" fill="#D85A30">Architecture</text>
+
+<!-- Dev #2 Cursor -->
+<circle cx="210" cy="130" r="26" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="210" y="126" text-anchor="middle" font-size="8" font-weight="500" fill="#0C447C">Cursor</text>
+<text x="210" y="137" text-anchor="middle" font-size="7" fill="#185FA5">Dev #2</text>
+<line x1="193" y1="107" x2="170" y2="76" stroke="#378ADD" stroke-width="1" marker-end="url(#a)"/>
+<text x="160" y="72" font-size="8" font-weight="500" fill="#378ADD" text-anchor="end">UX</text>
+<line x1="230" y1="110" x2="268" y2="82" stroke="#378ADD" stroke-width="1" marker-end="url(#a)"/>
+<text x="272" y="78" font-size="8" font-weight="500" fill="#378ADD">Security</text>
+
+<!-- Dev #3 Copilot -->
+<circle cx="340" cy="130" r="26" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+<text x="340" y="126" text-anchor="middle" font-size="8" font-weight="500" fill="#27500A">Copilot</text>
+<text x="340" y="137" text-anchor="middle" font-size="7" fill="#3B6D11">Dev #3</text>
+<line x1="322" y1="108" x2="300" y2="78" stroke="#639922" stroke-width="1" marker-end="url(#a)"/>
+<text x="310" y="74" font-size="8" font-weight="500" fill="#639922" text-anchor="end">DB</text>
+<line x1="360" y1="110" x2="395" y2="82" stroke="#639922" stroke-width="1" marker-end="url(#a)"/>
+<text x="400" y="78" font-size="8" font-weight="500" fill="#639922">Architecture</text>
+
+<!-- Dev #4 Gemini -->
+<circle cx="120" cy="215" r="26" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="120" y="211" text-anchor="middle" font-size="8" font-weight="500" fill="#633806">Gemini</text>
+<text x="120" y="222" text-anchor="middle" font-size="7" fill="#854F0B">Dev #4</text>
+<line x1="100" y1="235" x2="62" y2="268" stroke="#BA7517" stroke-width="1" marker-end="url(#a)"/>
+<text x="50" y="264" font-size="8" font-weight="500" fill="#BA7517">DB</text>
+<line x1="140" y1="236" x2="175" y2="268" stroke="#BA7517" stroke-width="1" marker-end="url(#a)"/>
+<text x="178" y="264" font-size="8" font-weight="500" fill="#BA7517">Security</text>
+
+<!-- Dev #5 Claude Code -->
+<circle cx="280" cy="215" r="26" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text x="280" y="211" text-anchor="middle" font-size="8" font-weight="500" fill="#712B13">Claude Code</text>
+<text x="280" y="222" text-anchor="middle" font-size="7" fill="#993C1D">Dev #5</text>
+<line x1="260" y1="236" x2="228" y2="268" stroke="#D85A30" stroke-width="1" marker-end="url(#a)"/>
+<text x="218" y="264" font-size="8" font-weight="500" fill="#D85A30">UX</text>
+<line x1="300" y1="236" x2="335" y2="268" stroke="#D85A30" stroke-width="1" marker-end="url(#a)"/>
+<text x="340" y="264" font-size="8" font-weight="500" fill="#D85A30">Architecture</text>
+<line x1="280" y1="241" x2="280" y2="278" stroke="#D85A30" stroke-width="1" marker-end="url(#a)"/>
+<text x="292" y="276" font-size="8" font-weight="500" fill="#D85A30">DB</text>
+
+<!-- ============ CLUSTER: QA ============ -->
+<rect x="15" y="310" width="260" height="135" rx="14" fill="none" stroke="#D3D1C7" stroke-width="0.5" stroke-dasharray="4 3"/>
+<text x="145" y="332" text-anchor="middle" font-size="11" font-weight="500" fill="#888780">QA Engineers</text>
+
+<!-- QA #1 Copilot -->
+<circle cx="85" cy="390" r="26" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+<text x="85" y="386" text-anchor="middle" font-size="8" font-weight="500" fill="#27500A">Copilot</text>
+<text x="85" y="397" text-anchor="middle" font-size="7" fill="#3B6D11">QA #1</text>
+<line x1="65" y1="370" x2="38" y2="342" stroke="#639922" stroke-width="1" marker-end="url(#a)"/>
+<text x="26" y="338" font-size="8" font-weight="500" fill="#639922">Security</text>
+<line x1="105" y1="370" x2="140" y2="345" stroke="#639922" stroke-width="1" marker-end="url(#a)"/>
+<text x="145" y="341" font-size="8" font-weight="500" fill="#639922">Development</text>
+
+<!-- QA #2 Cursor -->
+<circle cx="210" cy="390" r="26" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="210" y="386" text-anchor="middle" font-size="8" font-weight="500" fill="#0C447C">Cursor</text>
+<text x="210" y="397" text-anchor="middle" font-size="7" fill="#185FA5">QA #2</text>
+<line x1="190" y1="411" x2="155" y2="435" stroke="#378ADD" stroke-width="1" marker-end="url(#a)"/>
+<text x="140" y="432" font-size="8" font-weight="500" fill="#378ADD">Architecture</text>
+<line x1="232" y1="408" x2="258" y2="430" stroke="#378ADD" stroke-width="1" marker-end="url(#a)"/>
+<text x="262" y="426" font-size="8" font-weight="500" fill="#378ADD">DB</text>
+
+<!-- ============ CLUSTER: ANALYSTS ============ -->
+<rect x="290" y="310" width="260" height="135" rx="14" fill="none" stroke="#D3D1C7" stroke-width="0.5" stroke-dasharray="4 3"/>
+<text x="420" y="332" text-anchor="middle" font-size="11" font-weight="500" fill="#888780">Analysts</text>
+
+<!-- Analyst #1 Gemini -->
+<circle cx="370" cy="390" r="26" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="370" y="386" text-anchor="middle" font-size="8" font-weight="500" fill="#633806">Gemini</text>
+<text x="370" y="397" text-anchor="middle" font-size="7" fill="#854F0B">Analyst #1</text>
+<line x1="350" y1="411" x2="318" y2="438" stroke="#BA7517" stroke-width="1" marker-end="url(#a)"/>
+<text x="306" y="434" font-size="8" font-weight="500" fill="#BA7517">Architecture</text>
+<line x1="390" y1="411" x2="425" y2="440" stroke="#BA7517" stroke-width="1" marker-end="url(#a)"/>
+<text x="430" y="436" font-size="8" font-weight="500" fill="#BA7517">UX</text>
+
+<!-- Analyst #2 Claude Code -->
+<circle cx="490" cy="390" r="26" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text x="490" y="386" text-anchor="middle" font-size="8" font-weight="500" fill="#712B13">Claude Code</text>
+<text x="490" y="397" text-anchor="middle" font-size="7" fill="#993C1D">Analyst #2</text>
+<line x1="510" y1="370" x2="538" y2="345" stroke="#D85A30" stroke-width="1" marker-end="url(#a)"/>
+<text x="542" y="341" font-size="8" font-weight="500" fill="#D85A30">DB</text>
+<line x1="490" y1="416" x2="490" y2="448" stroke="#D85A30" stroke-width="1" marker-end="url(#a)"/>
+<text x="502" y="446" font-size="8" font-weight="500" fill="#D85A30">Security</text>
+
+<!-- Chaos summary -->
+<text x="280" y="495" text-anchor="middle" font-size="11" font-weight="500" fill="#A32D2D">9 agents, 20 arrows, 0 coordination</text>
+
+<!-- Legend -->
+<circle cx="55" cy="530" r="5" fill="#FAECE7" stroke="#993C1D" stroke-width="0.4"/>
+<text x="66" y="534" font-size="9" fill="#5F5E5A">Claude Code</text>
+<circle cx="158" cy="530" r="5" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.4"/>
+<text x="169" y="534" font-size="9" fill="#5F5E5A">Cursor</text>
+<circle cx="228" cy="530" r="5" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.4"/>
+<text x="239" y="534" font-size="9" fill="#5F5E5A">Copilot</text>
+<circle cx="308" cy="530" r="5" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.4"/>
+<text x="319" y="534" font-size="9" fill="#5F5E5A">Gemini</text>
+
+<!-- ============ RIGHT SIDE: ORCHESTRATED ============ -->
+<rect x="815" y="80" width="140" height="44" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text x="885" y="106" text-anchor="middle" font-size="12" font-weight="500" fill="#3C3489" dominant-baseline="central">Project Intelligence</text>
+
+<line x1="885" y1="124" x2="720" y2="190" stroke="#534AB7" stroke-width="1" marker-end="url(#a)"/>
+<line x1="885" y1="124" x2="830" y2="190" stroke="#534AB7" stroke-width="1" marker-end="url(#a)"/>
+<line x1="885" y1="124" x2="940" y2="190" stroke="#534AB7" stroke-width="1" marker-end="url(#a)"/>
+<line x1="885" y1="124" x2="1050" y2="190" stroke="#534AB7" stroke-width="1" marker-end="url(#a)"/>
+
+<!-- Persistent agents -->
+<circle cx="720" cy="226" r="34" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="720" y="220" text-anchor="middle" font-size="10" font-weight="500" fill="#085041">Architect</text>
+<text x="720" y="234" text-anchor="middle" font-size="8" fill="#0F6E56">persistent</text>
+
+<circle cx="830" cy="226" r="34" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="830" y="220" text-anchor="middle" font-size="10" font-weight="500" fill="#085041">DBA</text>
+<text x="830" y="234" text-anchor="middle" font-size="8" fill="#0F6E56">persistent</text>
+
+<circle cx="940" cy="226" r="34" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="940" y="220" text-anchor="middle" font-size="10" font-weight="500" fill="#085041">QA Lead</text>
+<text x="940" y="234" text-anchor="middle" font-size="8" fill="#0F6E56">persistent</text>
+
+<circle cx="1050" cy="226" r="34" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="1050" y="220" text-anchor="middle" font-size="10" font-weight="500" fill="#085041">Security</text>
+<text x="1050" y="234" text-anchor="middle" font-size="8" fill="#0F6E56">persistent</text>
+
+<!-- Bidirectional arrows to decision log -->
+<line x1="720" y1="260" x2="720" y2="310" stroke="#0F6E56" stroke-width="1" marker-end="url(#a)"/>
+<line x1="735" y1="310" x2="735" y2="260" stroke="#0F6E56" stroke-width="1" marker-end="url(#a)"/>
+<line x1="830" y1="260" x2="830" y2="310" stroke="#0F6E56" stroke-width="1" marker-end="url(#a)"/>
+<line x1="845" y1="310" x2="845" y2="260" stroke="#0F6E56" stroke-width="1" marker-end="url(#a)"/>
+<line x1="940" y1="260" x2="940" y2="310" stroke="#0F6E56" stroke-width="1" marker-end="url(#a)"/>
+<line x1="955" y1="310" x2="955" y2="260" stroke="#0F6E56" stroke-width="1" marker-end="url(#a)"/>
+<line x1="1050" y1="260" x2="1050" y2="310" stroke="#0F6E56" stroke-width="1" marker-end="url(#a)"/>
+<line x1="1065" y1="310" x2="1065" y2="260" stroke="#0F6E56" stroke-width="1" marker-end="url(#a)"/>
+
+<!-- Decision log -->
+<rect x="670" y="318" width="440" height="38" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="890" y="341" text-anchor="middle" font-size="11" font-weight="500" fill="#633806" dominant-baseline="central">Shared decision log — living memory</text>
+
+<!-- Arrows to team clusters -->
+<line x1="770" y1="356" x2="770" y2="390" stroke="#0F6E56" stroke-width="1" marker-end="url(#a)"/>
+<line x1="890" y1="356" x2="890" y2="390" stroke="#0F6E56" stroke-width="1" marker-end="url(#a)"/>
+<line x1="1010" y1="356" x2="1010" y2="390" stroke="#0F6E56" stroke-width="1" marker-end="url(#a)"/>
+
+<!-- Team clusters on right -->
+<rect x="720" y="398" width="100" height="60" rx="8" fill="#F1EFE8" stroke="#D3D1C7" stroke-width="0.5"/>
+<text x="770" y="420" text-anchor="middle" font-size="10" font-weight="500" fill="#444441">Developers</text>
+<circle cx="748" cy="442" r="4" fill="#FAECE7" stroke="#993C1D" stroke-width="0.3"/>
+<circle cx="760" cy="442" r="4" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.3"/>
+<circle cx="772" cy="442" r="4" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.3"/>
+<circle cx="784" cy="442" r="4" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.3"/>
+
+<rect x="840" y="398" width="100" height="60" rx="8" fill="#F1EFE8" stroke="#D3D1C7" stroke-width="0.5"/>
+<text x="890" y="420" text-anchor="middle" font-size="10" font-weight="500" fill="#444441">QA</text>
+<circle cx="872" cy="442" r="4" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.3"/>
+<circle cx="884" cy="442" r="4" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.3"/>
+<circle cx="896" cy="442" r="4" fill="#FAECE7" stroke="#993C1D" stroke-width="0.3"/>
+
+<rect x="960" y="398" width="100" height="60" rx="8" fill="#F1EFE8" stroke="#D3D1C7" stroke-width="0.5"/>
+<text x="1010" y="420" text-anchor="middle" font-size="10" font-weight="500" fill="#444441">Analysts</text>
+<circle cx="992" cy="442" r="4" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.3"/>
+<circle cx="1004" cy="442" r="4" fill="#FAECE7" stroke="#993C1D" stroke-width="0.3"/>
+<circle cx="1016" cy="442" r="4" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.3"/>
+
+<text x="890" y="490" text-anchor="middle" font-size="12" font-weight="500" fill="#0F6E56">Any tool, same truth</text>
+
+<!-- Bottom tagline -->
+<text x="600" y="590" text-anchor="middle" font-size="15" font-weight="500" fill="#5F5E5A">N agents, N solutions — or one orchestrated team?</text>
+
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+</svg>

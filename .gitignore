@@ -102,15 +102,12 @@ backups/
 *.sqlite3
 
 # ============================================
-# Google Drive shortcuts & forms
+# Google Drive shortcuts & forms — TRACKED since 21.9.2026.
+# They are 186-byte pointers to Drive documents, worth keeping.
 # ============================================
-*.gdoc
-*.gsheet
-*.gslides
-*.gform
-*.gdraw
 
 # ============================================
-# PDF files (binary, large interview/session docs)
+# PDFs — TRACKED since 21.9.2026.
+# Documents belong in git; only media (photo albums, video, large
+# archives) stays out. See the Source vs Infrastructure Standard.
 # ============================================
-*.pdf
